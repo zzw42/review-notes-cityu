@@ -1,0 +1,175 @@
+% finished : chapter1-6 :P 2017/4/18 -WEI 
+% v 0.6
+\documentclass[UTF8,a4paper,10pt,openany]{book}
+\usepackage{amsmath,amssymb,amsthm}
+% \usepackage{euler} % ams euler font
+\usepackage{hyperref}
+\hypersetup{
+ colorlinks,
+ linkcolor=blue
+ }
+%\usepackage{indentfirst}
+\usepackage[utf8]{inputenc} %\frontmatter & \mainmatter
+
+% figures are in the folder ~\figures\   (Windows)
+\usepackage{graphicx}
+\graphicspath {{figures/}}
+\usepackage{float} % adjust the picture
+
+%\usepackage{titlepic}
+
+\usepackage[margin=1 in]{geometry}
+
+\usepackage{pgfplots}
+% the package run in compatible mode according the log
+% Used to create histogram
+\pgfplotsset{compat=1.12}
+
+% Used to create enviroment for therorem 
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter] % reset theorem numbering for each chapter
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}[thm]{Example} % same for example numbers
+\newtheorem{theo}[thm]{Theorem}
+\newtheorem{axio}[thm]{Axiom}
+\newtheorem{prop}[thm]{Proposition}
+% not quite sure about how this works and I would not change it now - commented by WEI
+
+\newenvironment{solution}
+  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+  {\end{proof}}   % proof and solution environment with \begin{proof} or \begin{solution}
+
+% ceil and floor function
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
+
+
+
+
+
+% The document starts here
+\begin{document}
+
+% Title page
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE City University of Hong Kong}\\[1.5cm] % Name of your university/college
+\textsc{\Large MA Courses Review Notes}\\[0.5cm] % Major heading such as course name
+\textsc{\large MA2506}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries  Probability and Statistics}\\[0.4cm] % Title of your document
+\rightline{Version 0.6 Alpha}
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+anonymous
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Instructor:} \\
+Junhui \textsc{Wang} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+\vspace{5cm}
+\includegraphics[scale=0.1]{figures/CityU_logo_2015.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+\end{titlepage}
+
+\noindent
+Copyright \copyright 2017 Zongpu \textsc{Li} and Zezhu \textsc{Wei}. All rights reserved.
+
+This document is free; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This document is distributed in the hope that it will be useful, but \emph{without any warranty}; without even the implied warranty of \emph{merchantability} or \emph{fitness for a particular purpose}. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this document; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+All \texttt{.tex} files of this document can be accessed from:
+
+\url{https://github.com/zzw42/review-notes-cityu}
+
+Textbook: Probability and Statistics for Engineering and the Sciences, by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. 
+
+Schedules:
+
+\begin{center}
+\begin{tabular}{cl}
+\hline\hline
+Week & Brief Description \\
+\hline
+1 & Introduction; descriptive statistics \\
+2 & Probability; random variables \\
+3 & Discrete random variables \\
+4 & Continuous random variables \\
+5 & Expectation, variance, moments \\
+6 & Multivariate random variables \\
+7 & Conditional distribution and expectation \\
+8 & Correlation coefficient; independence \\
+9 & Sampling distribution; point estimation \\
+10 & Confidence intervals  \\
+11 & Hypothesis testing \\
+12 & One sample hypothesis tests \\
+13 & Two sample hypothesis tests; review \\
+\hline\hline
+\end{tabular}
+\end{center}
+
+% Rest
+\frontmatter
+\tableofcontents
+\listoffigures
+
+% Page 1
+\mainmatter
+\clearpage
+\setcounter{page}{1}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{chapter6}
+
+\end{document}
