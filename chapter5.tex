@@ -1,0 +1,531 @@
+\chapter{Joint Probability Distributions and Random Samples}
+\section{Jointly Distributed Random Variables}
+\subsection{Two Discrete Random Variables}
+$X$,$Y$ are r.v's defined on $\mathcal{S}$. The joint p.m.f is defined as 
+\[p(x,y)=P(X=x,Y=y)\]
+Let $A$ be an event consisting of pairs of $(x,y)$. Then
+\[P\left((X,Y)\in A\right) = \sum_{(X,Y)\in A}p(x,y)\]
+
+\begin{exmp}
+Insurance company. For a a newcomer, he has two insurance. Home \& Cars. Deductible amount: Auto \$100, \$250; Home \$0, \$100, \$200.
+\begin{center}
+\begin{tabular}{|c|c|ccc|}
+\hline
+    &     &    & $Y$ &   \\
+\hline
+    & $p(x,y)$ & 0    & 100  & 200  \\
+$X$ & 100      & 0.2  & 0.1  & 0.2  \\
+    & 250      & 0.05 & 0.15 & 0.3  \\
+\hline
+\end{tabular}
+\end{center}
+An individual home-owner is randomly selected.
+\begin{align*}
+P(Y \geq 100)=& P(X=100, Y=100)+P(X=250, Y=100)+P(X=100, Y=200)+\\
+&P(X=250, Y=200)\\
+=& 0.1+0.15+0.2+0.3=0.75
+\end{align*}
+\end{exmp}
+
+\begin{defn}
+"Marginal" p.m.f of $X$ and $Y$, denoted by $p_X(x)$ and $p_Y(y)$ respectively, are given by
+\begin{align*}
+p_X(x)&=\sum_{y}p(x,y)	\\
+p_Y(y)&=\sum_{x}p(x,y)	\\
+p_X(x)&=P(X=x)=P(X+x,Y=\dots)+\dots
+\end{align*}
+\end{defn}
+
+\begin{exmp}
+In the Insurance example,
+\[P(X=x)=\begin{cases}
+P_X(100)=\dots=0.5\\
+P_X(250)=\dots=0.5\\
+\end{cases}\]
+\[P(Y=y)=\begin{cases}
+P_Y(0)=\dots=0.25 \\
+P_Y(100)=\dots=0.25\\
+P_Y(200)=\dots=0.5\\
+\end{cases}\]
+\end{exmp}
+\begin{center}
+\begin{tabular}{|c|c|ccc|c|}
+\hline
+    &     &    & $Y$ &   & \\
+\hline
+    & $p(x,y)$ & 0    & 100  & 200 & $p_X(x)$  \\
+$X$ & 100      & 0.2  & 0.1  & 0.2 & 0.5 \\
+    & 250      & 0.05 & 0.15 & 0.3 & 0.5 \\
+    \hline
+    & $p_Y(y)$ & 0.25 & 0.25 & 0.5 & 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Two Continuous Random Variables}
+$(X,Y)$ continuous r.v. $f(x,y)$ is the joint p.d.f of $X$ and $Y$ if for any 2-dimensional set.
+\[P((X,Y)\in A)=\iint_{A} f(x,y)\,dx \,dy\]
+Particularly for $A =\{(x,y),a \leq x\leq b,c \leq y \leq d\}$,
+\begin{align*}
+P(A)&=P(a\leq X \leq b,c  \leq Y \leq d)\\
+&= \int_{a}^b \int_c^d f(x,y) \,dy \,dx=\int_c^d \int_{a}^b f(x,y) \,dx \,dy
+\end{align*}
+
+\begin{exmp}
+\begin{align*}
+X=&\text{ right front tyre pressure}\\
+Y=&\text{ left front tyre pressure}
+\end{align*}
+\[f(x,y)=\begin{cases}
+k(x^2+y^2)   & 20\leq x,y \leq 30\\
+0, 		& o.w.
+\end{cases}\]
+(1) What is $k$?
+\begin{align*}
+1=& \int_{20}^{30}\int_{20}^{30} k(x^2+y^2) dx dy = k\int_{20}^{30}  \left(\left.\left( \frac{x^3}{3}+xy^2 \right)\right|_{20}^{30} \right)dy \\
+=& k \int_{20}^{30}  \left(\frac{19000}{3}+10y^2\right)dy=k\left(\frac{19000}{3}+\frac{19000}{3}\right) \\
+&\Rightarrow k=\frac{3}{38000}
+\end{align*}
+(2)\begin{align*}
+P(X\leq 26, Y\leq 26)=& \int_{20}^{26}\int_{20}^{26} k(x^2+y^2) dx dy\\
+=&   k \int_{20}^{26}  \left(\frac{26^3-20^3}{3}+6y^2\right)dy\\
+=&	2k\cdot 6 \cdot\frac{1}{3} (26^3-20^3)=0.3024
+\end{align*}
+\end{exmp}
+
+\begin{defn}
+Marginal rv
+\begin{align*}
+f_X(x)&=\int_{-\infty}^{\infty} f(x,y) dy	\\
+f_Y(y)&=\int_{-\infty}^{\infty} f(x,y) dx	
+\end{align*}
+\end{defn}
+
+\begin{exmp}
+Example 5.4 (continued)
+
+(3)
+\begin{align*}
+f_X(x)=& \int_{20}^{30} k(x^2+y^2) dy =k  \left. \left( \frac{y^3}{3}+x^2 y \right)\right|_{20}^{30}  \\
+=& k\left(10x^2 +\frac{19000}{3}\right)=\frac{3}{38000}x^2+\frac{1}{20} \qquad 20 \leq x \leq 30
+\end{align*}
+\[f_Y(y)=\frac{3}{38000}y^2+\frac{1}{20} \qquad 20\leq y \leq 30\]
+(4)
+\[P(20 \leq X \leq 25)=\int_{20}^{25} f_X(x)dx=\dots=0.45\]
+
+\end{exmp}
+
+\begin{defn}
+Expected Values
+\[E[h(X,Y)]=\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} h(x,y) f(x,y) dx dy \]
+\end{defn}
+
+\begin{exmp}
+Example 5.4 (continued)
+
+(5)
+\[E(X+Y)=\int_{20}^{26}\int_{20}^{26}(x+y) k(x^2+y^2) dx dy=\dots\]
+\end{exmp}
+
+\subsection{Independent Random Variables}
+$X$ and $Y$ are said to be independent, if 
+\begin{align*}
+discrete: p(x,y)&=p_X(x)p_Y(y) \text{ for all }(x,y)\\
+continuous: f(x,y)&=f_X(x)f_Y(y) \text{ for all }(x,y)
+\end{align*}
+
+\begin{exmp}
+Example 5.4 (continued)
+
+(6)
+\begin{align*}
+f(x,y) =& \frac{3}{38000} (x^2+y^2) \qquad 20 \leq x,y \leq 30\\
+f_X(x) =&  \frac{3}{38000}x^2+\frac{1}{20} \qquad 20 \leq x \leq 30 \\
+f_Y(y) =&  \frac{3}{38000}y^2+\frac{1}{20} \qquad 20 \leq y \leq 30
+\end{align*}
+\[f(x,y)\neq f_X(x)f_Y(y) \qquad \text{for } x=20, y=20\]
+$X$ and $Y$ are not independent. 
+\end{exmp}
+
+\begin{exmp}
+\[f(x,y)=\lambda_1\lambda_2 e^{-\lambda_1 x - \lambda_2 y}, x\geq0,y\geq0\]
+Are $X$ and $Y$ independent?
+\begin{align*}
+f_X(x)&=\int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x-\lambda_2 y} dy \\
+&=\lambda_1 e^{-\lambda_1 x} \int_{0}^{\infty} \lambda_2 e^{-\lambda_2 y} dy = \lambda_1 e^{-\lambda_1} \qquad x \geq 0
+\end{align*}
+\[f_Y(y)=\lambda_2 e^{-\lambda_2} \qquad y \geq 0\]
+\[f(x,y)= f_X(x)f_Y(y) \qquad \text{for any } (x,y)\]
+So, $X \!\perp\!\!\!\perp Y$.
+\end{exmp}
+
+
+\subsection{More Than Two Random Variables}
+\begin{defn}
+$X_1,X_2,\dots,X_n$ are discrete rvs', the joint p.m.f is defined as
+\[p(x_1,x_2,\dots,x_n)=P(X_1=x_1,\dots ,X_n=x_n)\]
+In continuous case, the joint p.d.f $f(x_1,x_2,\dots,x_n)$ is such that
+\[P(A) =\int_A\dots\int f(x_1,x_2,\dots,x_n) d x_n \dots d x_1\]
+\end{defn}
+
+Particularly, $A=\{a_1\leq x_1 \leq b_1,\dots,a_n\leq x_n \leq b_n\}$
+\begin{align*}
+P(A)=&P(a_1\leq x_1 \leq b_1,\dots,a_n\leq x_n \leq b_n)\\
+&=\int_{a_1}^{b_1}\dots\int_{a_n}^{b_n} f(x_1,x_2,\dots,x_n) d x_n \dots d x_1
+\end{align*}
+
+\begin{exmp}
+A dice is rolled 100 times. $X_i=$\# of $i$ dots out of 100 times; $i=1,2,\dots,6$
+\[p_i=P(i \text{ dots}) \qquad p_1+p_2+\dots+p_6=1\]
+\[P(X_1=x_1,\dots,X_6=x_6)=\frac{100!}{x_1!x_2!\dots x_6!}p_1^{x_1}p_2^{x_2}\dots p_6^{x_6} \quad(0\leq x_1,\dots,x_6 \leq 100, x_1+\dots+x_6=100)\]
+\end{exmp}
+
+\begin{exmp}
+$(X_1,X_2,X_3)$ has the joint p.d.f
+\[f(x_1,x_2,x_3)=\begin{cases}
+kx_1 x_2(1-x_3)   & 0\leq x_1,x_2,x_3 \leq 1,x_1+x_2+x_3\leq 1\\
+0, 		& o.w.
+\end{cases}\]
+(1) What is $k$?
+\begin{align*}
+1&=\iiint kx_1 x_2(1-x_3) \,dx_3 \,dx_2 \,dx_1 \\
+&=\int_0^1 \int_0^{1-x_1} \int_{0}^{1-x_2-x_1} kx_1 x_2(1-x_3) \,dx_3 \,dx_2 \,dx_1 \\
+&= \frac{k}{144} \Rightarrow k=144
+\end{align*}
+(2)
+\begin{align*}
+P(X_1+X_2 \leq 0.5)=\iiint kx_1 x_2(1-x_3) \,dx_3 \,dx_2 \,dx_1 =0.606
+\end{align*}
+$0\leq x_1,x_2,x_3 \leq 1, x_1+x_2 \leq 0.5$ \footnote{The value might be wrong, run this in Mathematica -\texttt{ Integrate[144*x y (1 - z), \{x, 0, 0.5\}, \{y, 0, 0.5 - x\}, \{z, 0, 1 - x - y\}]} }
+\end{exmp}
+
+\subsubsection{Independence}
+\begin{defn}
+$X_1,X_2,\dots,X_n$ are independent if 
+\[p(x_1,x_2,\dots,x_n)=p_{X_1}(x_1)\dots p_{X_n}(x_n)\]
+or
+\[f(x_1,x_2,\dots,x_n)=f_{X_1}(x_1)\dots f_{X_n}(x_n)\]
+for all possible $(x_1,\dots,x_n)$
+\end{defn}
+
+\subsection{Conditional Distributions}
+
+\begin{defn}
+$(X,Y)$ with $f(x,y),f_X(x),f_Y(y)$, then the conditional p.d.f of $Y$ given $X=x$,
+\[f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}\]
+for discrete case
+\[p_{Y|X}(y|x)=\frac{p(x,y)}{p_X(x)}\]
+\end{defn}
+
+\begin{exmp}
+\[f(x,y)=\begin{cases}
+\frac{6}{5} (x+y^2) & 0\leq x\leq 1,0\leq y\leq 1 \\
+0 & o.w.
+\end{cases}\]
+\begin{align*}
+f_X(x)=& \int_0^1 \frac{6}{5} (x+y^2) \,dy = \left.\left( \frac{6}{5}xy +\frac{6}{5}\frac{1}{3}y^3\right)\right|_0^1\\
+=& \frac{6}{5} x +\frac{2}{5}. \qquad 0\leq x \leq 1 
+\end{align*}
+\[f_{Y|X}(y|0.8)=\frac{f(0.8,y)}{f_X(0.8)}=\frac{15}{17}y^2+\frac{12}{17} \qquad 0\leq y \leq 1 \]
+\[E(Y|X=0.8)=\int_0^1 y f_{Y|X}(y|0.8) \,dy=\int_0^1 y\left(\frac{15}{17}y^2+\frac{12}{17}\right)\,dy=\frac{39}{68}\]
+\end{exmp}
+
+\section{Expected Values, Covariance, and Correlation}
+\begin{prop}
+\[E[h(x,y)]=\begin{cases}
+\sum_{x}\sum_{y} h(x,y)p(x,y) & discrete \\
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} h(x,y) f(x,y) dx dy & continuous
+\end{cases}\]
+\end{prop}
+
+\begin{exmp}
+\begin{align*}
+X &= \text{amount of almonds}\\
+Y &= \text{amount of pecans}
+\end{align*}
+\[f(x)=
+\begin{cases}
+24xy & \text{if }0\leq x,y\leq1, x+y\leq1\\
+0 & o.w. 
+\end{cases}\]
+Unit test: almonds: \$1.00; pecans: \$1.00; peanuts: \$ 0.50
+\[h(X,Y)=X+1.5Y+0.5(1-X-Y)=0.5+0.5X+Y\]
+\[E[h(x,y)]=\int_{0}^{1} \int_{0}^{1-y}(0.5+0.5x+y)24xy \,dx \,dy=1.10\]
+\end{exmp}
+
+\subsection{Covariance}
+\begin{defn}
+\[Cov(X,Y)=E\Big((X-\mu_X)(Y-\mu_Y)\Big)\]
+where $\mu_X=E(X)$,$\mu_Y=E(Y)$
+\[\Rightarrow Cov(X,Y)=E(XY)-E(X)E(Y)\]
+\end{defn}
+
+\begin{exmp}
+In Example 5.1
+\begin{center}
+\begin{tabular}{|c|c|ccc|c|}
+\hline
+    &     &    & $Y$ &   & \\
+\hline
+    & $p(x,y)$ & 0    & 100  & 200 & $p_X(x)$  \\
+$X$ & 100      & 0.2  & 0.1  & 0.2 & 0.5 \\
+    & 250      & 0.05 & 0.15 & 0.3 & 0.5 \\
+    \hline
+    & $p_Y(y)$ & 0.25 & 0.25 & 0.5 & 1 \\
+\hline
+\end{tabular}
+\end{center}
+\begin{align*}
+E(X)&=100\times 0.5+ 250 \times 0.5= 175 \\
+E(Y)&=\dots= 125 \\
+Cov(X,Y)&=\dots=1875
+\end{align*}
+\end{exmp}
+
+\begin{exmp}
+\[f(x)=
+\begin{cases}
+24xy & \text{if }0\leq x,y\leq1, x+y\leq1\\
+0 & o.w. 
+\end{cases}\]
+\[Cov(X,Y)=E(XY)-E(X)E(Y)\]
+\[f_X(x)=\int_0^{1-x}\]
+Similarly,
+\[f_Y(y)=12y(1-y)^2,0\leq y\leq 1\]
+\begin{align*}
+E(X)&=\int_0^1 x \cdot 12x(1-x)^2 dx =\frac{2}{5}\\
+E(Y)&=\frac{2}{5}\\
+E(XY)&=\int_0^1  \left(\int_0^{1-y} xy \cdot 24xy \,dx\right)\,dy =\frac{2}{15}\\
+Cov(X,Y)&=E(XY)-E(X)-E(Y)=-\frac{2}{75}
+\end{align*}
+$X,Y$ are negatively related. But Covariance cannot indicate the relation is strong or weak.
+\end{exmp}
+
+\subsection{Correlation}
+\begin{defn}
+The correlation coefficient of $X$ and $Y$, denoted by $Corr(X, Y)$, $\rho_{X,Y}$, or just $\rho$, is defined by
+\[Corr(X,Y)=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}\]
+\end{defn}
+
+Back to Example 5.21,
+\[Var(X)=E(X^2)-{E(X)}^2\]
+\[E(X^2)=\int_0^1 x^2 12x (1-x)^2 \,gx= 12\int_0^1 x^3 (1-x)^2 \,dx=\frac{1}{5}\]
+\[Var(X)=\frac{1}{5}-\left(\frac{2}{5}\right)=\frac{1}{25}\]
+Similarly, \[Var(Y)=\frac{1}{25}\]
+\[Corr(X,Y)=\frac{-\frac{2}{75}}{\sqrt{\frac{1}{25}\frac{1}{25}}}=-\frac{2}{3}\]
+
+\begin{prop}
+\textbf{Fact}: for any $X$ and $Y$,
+\[-1\leq Corr(X,Y)\leq 1\]
+\end{prop}
+
+\begin{prop}
+If $ac >0$\footnote{$a$ and $c$ are either both positive or negative}, then
+\[Corr(aX+b,cX+d)=Corr(X,Y)\]
+"unit free" 
+\end{prop}
+
+\begin{prop}
+\begin{enumerate}
+\item If $X$ and $Y$ are independent,then
+\[Corr(X,Y)=0\]
+But $Corr(X,Y)=0 \not\Rightarrow$ $X$ and $Y$ are independent.
+\item If $Corr(X,Y)=1$ or $-1$ if and only if $Y=aX+b$ for some $a,b$ with $a \neq 0$.
+\end{enumerate}
+\end{prop}
+
+\begin{exmp}
+$X$ and $Y$ are discrete r.v.'s
+\[p(x,y)=\begin{cases}
+\frac{1}{4} &(x,y)=(-4,1),(4,-1),(2,2),(-2,-2)\\
+0 & o.w.
+\end{cases}\]
+\[p_X(x)=\begin{cases}
+\frac{1}{4} &x=-4,-2,2,4\\
+0 & o.w.
+\end{cases}\]
+\[p_Y(y)=\begin{cases}
+\frac{1}{4} &y=-2,-1,1,2\\
+0 & o.w.
+\end{cases}\]
+\[E(X)=\frac{1}{4}(-4+-2+2+4)=0 \qquad E(Y)=0\]
+\[E(XY)=\frac{1}{4}(-4+-4+4+4)=0\]
+\[Cov(X,Y)=0-0\times0=0 \qquad Corr(X,Y)=0\]
+But $X  \not\!\perp\!\!\!\perp Y$.
+\end{exmp}
+
+\begin{exmp}
+$X \sim N(0,1)$, $Y=X^2 \sim \chi^2 (1)$
+\[E(X)=0 \qquad E(Y)=E(X^2)=(Var(X))=1\]
+\[E(XY)=E(X^3)=\int_{-\infty}^{\infty}x^3 \phi(x)\,dx=0\]
+\[Cov(X,Y)=E(XY)-E(X)E(Y)=0-0\times1=0\]
+\[Cov(X,Y)=0 \qquad X  \not\!\perp\!\!\!\perp Y\]
+\end{exmp}
+
+\subsection{Properties (The Distribution of a Linear Combination)}
+\begin{prop}
+\textbf{(1)}. $X_1,X_2 \dots X_n$ are rv's. For any constant $a_1,a_2 \dots a_n$,
+\begin{align*}
+E(a_1 X_1+\dots+a_n X_n)&=a_1E(X_1)+\dots +a_n E(X_n)\\
+Var(a_1 X_1+\dots+a_n X_n)&=\sum_{i=1}^n a_i^2 Var(X_i)+\sum_{i\neq j} a_i a_j Cor(X_i,Y_j)\\
+&=\sum_{i=1}^n a_i^2 Var(X_i)+2\sum_{i=1}^{n}\sum_{j=i+1}^{n} a_i a_j Cor(X_i,Y_j)
+\end{align*}
+If $X_1,X_2 \dots X_n$ are independent
+\[Var(a_1 X_1+\dots+a_n X_n)=\sum_{i=1}^n a_i^2 Var(X_i)\]
+\[Var(X)=Cov(X,X)=E(XX)-E(X)E(X)\]
+
+\textbf{(2)}. If $X_1,X_2 \dots X_n$ are independent, and $X_i\sim N(\mu_i,\sigma_i^2)$. Then
+\[a_1 X_1+\dots+a_n X_n \sim N(\sum_{i=1}^{n} a_i \mu_i,\sum_{i=1}^{n} a_i \sigma^2)\]
+Particularly, if $\mu_i=\mu, \sigma_i=\sigma ,a_i=\frac{1}{n}(i=1,\dots,n)$, then
+\[\bar{X} \sim N(\mu,\frac{\sigma^2}{n})\]
+\end{prop}
+
+\section{Statistics and Their Distributions}
+\begin{exmp}
+Number of certificate obtained by students: 2,1,4,2,0. 
+
+Sample mean: $\bar{x}=\frac{2+1+4+2+0}{5}=1.8$
+
+Sample variance: $s^2=\frac{(2-1.8)^2+(1-1.8)^2+(4-1.8)^2+\dots}{4}$
+
+Generally, $x_1,x_2,\dots,x_n$,
+
+Sample mean:\[\bar{x}=\frac{x_1+\dots+x_n}{n}\]
+
+Sample variance:\[s^2=\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n-1}\]
+\end{exmp}
+
+
+\begin{defn}
+A statistic is a function of data before sampling (or before data are observed). There is an uncertainty on what value the statistic will result.
+
+Usually, we use upper-case letter to denote statistic, and lower-case letter to denote observe values of a statistic.
+\[\bar{X}= \frac{X_1+\dots+X_n}{n} \qquad S^2=\frac{\sum (X_i-\bar{X})^2}{n}\]
+$\bar{x},s^2$. $T=\frac{\bar{X}}{S}$ is also a statistic.
+\end{defn}
+
+
+\subsection{Random Samples}
+\begin{defn}
+$X_1,X_2 \dots X_n$ are said to be a random sample of size $n$ if they are independent and identically distributed (i.i.d).
+\end{defn}
+
+\subsection{Deriving the Sampling Distribution of a Statistic}
+\begin{exmp}
+A car dealer, tune-up charge (\$40,\$45,\$50) for (4,6,8) cylinder cars. At a particular day, of all tune-up cars, (20\%, 30\%, 50\%) are (4,6,8) cylinder cars.
+
+The pmf of revenue is
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+$x$ & 40 & 45 & 50\\
+\hline
+$p(x)$ & 0.2 & 0.3 & 0.5 \\
+\hline
+\end{tabular}
+\end{center}
+\[E(X)=46.5 \qquad Var(X)=15.25\]
+At another day, two tune-ups are done.
+\begin{align*}
+X_1&=\text{revenue for the 1st car}\\
+X_2&=\text{revenue for the 2nd car}
+\end{align*}
+Then $X_1, X_2$ iid $X$ with pmf $p(x)$, $\bar{X}=\frac{X_1+X_2}{2}$.
+\begin{center}
+\begin{tabular}{|l|l|c|c|c|}
+\hline
+$x_1$ &$x_2$ & $p(x_1,x_2)$ & $\bar{x}$ & $s^2$\\
+\hline
+40 & 40 & 0.04 & 40 & 0 \\
+\hline
+40 & 45 & 0.06 & 42.5 & 12.5 \\
+\hline
+40 & 50 & 0.10 & 45 & 50 \\
+\hline
+45 & 40 & 0.06 & 42.5 & 12.5 \\
+\hline
+45 & 45 & 0.09 & 45 & 0 \\
+\hline
+45 & 50 & 0.15 & 47.5 & 12.5 \\
+\hline
+50 & 40 & 0.10 & 45 & 50 \\
+\hline
+50 & 45 & 0.09 & 47.5 & 12.5 \\
+\hline
+50 & 50 & 0.25 & 50 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+Distribution of $\bar{X}$
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+$\bar{x}$ & 40 & 42.5 & 45 & 47.5 & 50\\
+\hline
+$p_{\bar{X}}(\bar{x})$ & 0.04 & 0.12 & 0.29 & 0.3 & 0.25 \\
+\hline
+\end{tabular}
+\end{center}
+
+Distribution of $S^2$
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+$s^2$ & 0 & 12.5 & 50\\
+\hline
+$p_{S^2}(s^2)$ & 0.38 & 0.42 & 0.20 \\
+\hline
+\end{tabular}
+\end{center}
+\begin{align*}
+E(\bar{X})=& 46.5 \\
+E(S^2)=& 15.25 = Var(X) \\
+Var(S^2)=&
+\end{align*}
+\end{exmp}
+
+\begin{exmp}
+(Example 5.21 in the textbook)
+$X_1,X_2 \overset{iid}{\sim}exp(\lambda)$
+\[f(x)=\begin{cases}
+\lambda e^{-\lambda x}, 	& x >0\\
+0. &\text{otherwise}
+\end{cases}\]
+$Y=X_1+X_2$ is the statistic of interest. $f_Y(y)=?$.
+\begin{align*}
+F_Y(y)=&P(Y \leq y)=P(X_1+X_2\leq y) \\
+=&\iint_{X_1+X_2\leq y} f(x_1,x_2) \,dx_1 \,dx_2 =\int_0^y \int_0^{y-x_2} \lambda e^{-\lambda x_1} \lambda e^{-\lambda x_2} dx_1 \, dx_2 \\
+=& \int_0^y \int_0^{y-x_2} \lambda^2 e^{-\lambda(x_1+x_2)} dx_1 \, dx_2= \dots = 1-e^{-\lambda y}- \lambda y e^{-\lambda y} \qquad 0\leq y \leq \infty
+\end{align*}
+\[f_Y(y)=F'_Y(y)=\lambda e^{-\lambda y} -\lambda e^{-\lambda y}+\lambda^2 y e^{-\lambda y} =\lambda^2 y e^{-\lambda y} \qquad y \geq 0 \]
+\[Y\sim Gamma(2,\frac{1}{\lambda})\]
+\[E(Y)=\frac{2}{\lambda} \qquad Var(Y)=\frac{2}{\lambda^2}\]
+\end{exmp}
+
+\section{The Distribution of the Sample Mean}
+\begin{prop}
+Let $X_1, X_2, \dots , X_n$ be a random sample from a distribution with mean $\mu$ and variance $\sigma^2$. Then 
+\[E(\bar{X})=\mu \qquad  Var(\bar{X})=\frac{\sigma^2}{n} \qquad s.d(\bar{X})=\frac{\sigma}{\sqrt{n}}\]
+If $T=X_1+ X_2+ \dots + X_n$,
+\[E(T)=n \mu \qquad  Var(T)=n\sigma^2 \qquad s.d(T)=\sqrt{n}\sigma\]
+\end{prop}
+
+\subsection{The Case of a Normal Population Distribution}
+\begin{exmp}
+In a previous class of MA2506, students' final exam score $\sim N(70,20^2)$. This year, the same class, 36 students.
+\[\bar{X}=\text{ average score}\]
+\[P(65 \leq \bar{X} \leq 75)\]
+Since $X_1, X_2, \dots , X_n \overset{iid}{\sim}(70,20^2)$, 
+$\bar{X}\sim N(70,\frac{20^2}{36})$
+\[P(65 \leq \bar{X} \leq 75)=P\left(\frac{65-70}{20/6} \leq \frac{\bar{X}-70}{20/6} \leq \frac{75-70}{20/6}\right)=\Phi(-1.5 \leq Z \leq 1.5)=0.8664\]
+\end{exmp}
+
+\subsection{The Central Limit Theorem}
+What if $X_1, X_2, \dots , X_n \overset{iid}{\sim}(\mu,\sigma^2)$? No normality.
+\begin{theo}
+\textbf{The Central Limit Theorem(CLT)}
+
+Let $X_1, X_2, \dots , X_n$ be a random sample from a distribution with mean $\mu$ and variance $\sigma^2$. Then if $n$ is sufficiently large, $\bar{X}$ has approximately a normal distribution with $\mu_{\bar{X}}=\mu$ and $\sigma_{\bar{X}}=\frac{\sigma^2}{n}$, and $T$ also has approximately a normal distribution with $\mu_{T}=n \mu$, $\sigma_{T}^2=n \sigma^2$. The larger the value of $n$, the better the approximation. Usually, $n \geq 30$.
+\end{theo}

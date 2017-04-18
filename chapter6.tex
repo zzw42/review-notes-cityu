@@ -1,0 +1,212 @@
+\chapter{Point Estimation}
+\section{Some General Concepts of Point Estimation}
+\begin{exmp}
+Population $N(\mu,1)$.
+\[10.2, 9.8, 9.5, 11, 13, 9\]
+A "guess" of $\mu$ can be $\frac{10.2+9.8+9.5+11+13+9}{6}=10.4$
+\end{exmp}
+
+\begin{defn}
+Generally, we need to estimate a parameter $\theta$ based on a sample data set $x_1,x_2,\dots,x_n$. A point estimate of $\theta$ is a suitable statistic on $X_1,X_2,\dots,X_n$.
+\end{defn}
+
+\begin{exmp}
+(Example 6.1 in textbook)
+% An unfinished exmp!!
+\end{exmp}
+
+\begin{exmp}
+(Example 6.2 in textbook)
+% An unfinished exmp!!
+\end{exmp}
+
+\subsection{Unbiased Estimators}
+\begin{defn}
+An estimate $\hat{\theta}$ is said to be unbiased if
+\[E(\hat{\theta})=\theta\]
+Otherwise $E(\hat{\theta})-\theta$ is called the bias of $\hat{\theta}$.
+\end{defn}
+
+\begin{exmp}
+$X \sim Bin(n,p)$, $\hat{p}=\frac{X}{n}$
+\[E(\hat{p})=E\left(\frac{X}{n}\right)=\frac{1}{n}E(X)=p\]
+So $\hat{p}$ is an unbiased estimate of $p$.
+\end{exmp}
+
+\begin{exmp}
+$X_1,\dots,X_n \overset{iid}{\sim} (\mu,\sigma^2)$
+\[\hat{\mu}=\bar{X} \qquad \hat{\sigma^2}=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X})^2\]
+\[E(\hat{\mu})=E(\frac{X_1+\dots+X_n}{n})=\frac{1}{n}E(X_1+\dots+X_n)\]
+\begin{align*}
+E(a_1 X_1+\dots+a_n X_n)&=a_1E(X_1)+\dots +a_n E(X_n)\\
+Var(a_1 X_1+\dots+a_n X_n)&=\sum_{i=1}^n a_i^2 Var(X_i) \qquad \text{ if }X_1,\dots,X_n \text{ are independent  }  
+\end{align*}
+
+\begin{align*}
+\Rightarrow E(\hat{\mu})&=\frac{1}{n}(E(X_1)+\dots+E(X_n))=\frac{1}{n}(\mu+\dots+\mu)=\mu \\
+ E(S^2)&= E\left(\frac{\sum_{i=1}^n(X_i-\bar{X})^2}{n-1}\right)= \frac{1}{n-1} E\left(\sum_{i=1}^n (X_i^2 -2X_i \bar{X}+\bar{X}^2) \right) \\
+ &= \frac{1}{n-1} E\left( \left(\sum_{i=1}^n X_i^2 \right) - n \bar{X}^2 \right) = \frac{1}{n-1} \left( \sum_{i=1}^n E ( X_i^2 ) - n E(\bar{X}^2) \right)
+\end{align*}
+Recall: $Var(X_i)=E(X_i^2)-(E(X_i))^2, E(X_i)=\mu, Var(X_i)=\sigma^2$ in normal distribution. $\Rightarrow E(X_i^2)=\mu^2+\sigma^2$. $Var(\bar{X})=E(\bar{X}^2)-(E(\bar{X}))^2 \Rightarrow E(\bar{X}^2)=\mu^2 +\frac{\sigma^2}{n}$.
+\[E(S^2)=\frac{1}{n-1} \left( \sum_{i=1}^n (\mu^2+\sigma^2) - n \left(\mu^2 +\frac{\sigma^2}{n}\right) \right)=\sigma^2 \]
+So, $S^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\bar{X})^2$ is an unbiased estimate of $\sigma^2$. If we use $\frac{1}{n}\sum_{i=1}^n(X_i-\bar{X})^2$, would generate a bias.
+\end{exmp}
+
+\begin{exmp}
+(Example 6.4 in textbook)
+% An unfinished exmp!!
+\end{exmp}
+
+\begin{prop}
+If $X_1, X_2,\dots, X_n$ is a random sample from a distribution with mean $\mu$, then $\bar{X}$ is an unbiased estimator of $\mu$. If in addition the distribution is continuous and symmetric, then $\tilde{X}$ (Sample median) and any trimmed mean are also unbiased estimators of $\mu$.
+\end{prop}
+
+\subsection{Estimators with Minimum Variance}
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Principle of Minimum Variance Unbiased Estimation} 
+        
+        Among all estimators of $\theta$ that are unbiased, choose the one that has minimum variance. The resulting is called the minimum variance unbiased estimator (MVUE) of $\theta$.
+    }%
+}
+
+\begin{exmp}
+(Example 6.6 in textbook)
+
+% An unfinished exmp!!
+\end{exmp}
+
+\begin{theo}
+$X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma^2)$, then $\hat{\mu}=\bar{X}$ is the MVUE of $\mu$.
+\end{theo}
+
+\section{Methods of Point Estimation}
+\subsection{The Method of Moments}
+\begin{defn}
+$X_1,\dots,X_n$ random sample. \\
+$k$-th sample moment:
+\[\frac{1}{n}\sum_{i=1}^n X_i^k\]
+$k$-th population moment:
+\[E(X^k)\]
+\end{defn}
+
+\begin{defn}
+Point estimation: use $\frac{1}{n}\sum_{i=1}^n X_i^k \to E(X^k)$
+\end{defn}
+
+\begin{exmp}
+$X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma^2)$
+\[E(X)=\mu \qquad E(X^2)=(E(X))^2+Var(X)=\mu^2+\sigma^2\]
+\begin{align*}       %方程组开始
+\left  \{              %方程组的左边包括大括号\{
+\begin{array}{ll}     %设定列阵的格式：{lll}是三个L，表示三列的对齐方式为Left对齐
+\hat{\mu}=\frac{1}{n}\sum_{i=1}^n X_i \\    %$——分隔列的标记，\\——表示换行
+\hat{\mu^2}+\hat{\sigma^2}=\frac{1}{n}\sum_{i=1}^n X_i^2     %$同上
+\end{array}           %方程列阵的结束
+\right.  \Rightarrow            %方程组的右边无符号，利用“.“来标示
+\left  \{              %方程组的左边包括大括号\{
+\begin{array}{ll}     %设定列阵的格式：{lll}是三个L，表示三列的对齐方式为Left对齐
+\hat{\mu}=\bar{X} \\    %$——分隔列的标记，\\——表示换行
+\hat{\sigma^2}=\frac{1}{n}\sum_{i=1}^n X_i^2 -\bar{X}^2=\frac{1}{n} \sum_{i=1}^n (X_i-\bar{X})^2   %$同上
+\end{array}           %方程列阵的结束
+\right.
+\end{align*}        %方程组结束
+% An unfinished exmp!!
+\end{exmp}
+
+\begin{exmp}
+$X_1,\dots,X_n \overset{iid}{\sim} Unif(0,\theta)$
+\[E(X)=\frac{\theta}{2}\]
+\[\frac{\hat{\theta}}{2}=\frac{1}{n}\sum_{i=1}^n X_i \Rightarrow \hat{\theta}=2\bar{X}\]
+% An unfinished exmp!!
+\end{exmp}
+
+\begin{exmp}
+(Example 6.13 in textbook)
+
+$X_1,\dots,X_n \overset{iid}{\sim} Gamma(\alpha,\beta)$
+\begin{align*}       %方程组开始
+\left  \{              %方程组的左边包括大括号\{
+\begin{array}{ll}     %设定列阵的格式：{lll}是三个L，表示三列的对齐方式为Left对齐
+\hat{\alpha}\hat{\beta}=\bar{X} \\    %$——分隔列的标记，\\——表示换行
+\hat{\alpha}\hat{\beta}^2+(\hat{\alpha}\hat{\beta})^2=\frac{1}{n}\sum_{i=1}^n X_i^2     %$同上
+\end{array}           %方程列阵的结束
+\right.  \Rightarrow            %方程组的右边无符号，利用“.“来标示
+\left  \{              %方程组的左边包括大括号\{
+\begin{array}{ll}     %设定列阵的格式：{lll}是三个L，表示三列的对齐方式为Left对齐
+\hat{\alpha}=\frac{\bar{X}^2}{\frac{1}{n}\sum_{i=1}^n X_i^2 - \bar{X}^2} \\    %$——分隔列的标记，\\——表示换行
+\hat{\beta}=\frac{1}{\bar{X}}\left( \frac{1}{n}\sum_{i=1}^n X_i^2 -\bar{X}^2 \right)  %$同上
+\end{array}           %方程列阵的结束
+\right.
+\end{align*}        %方程组结束
+% An unfinished exmp!!
+\end{exmp}
+
+\subsection{Maximum Likelihood Estimation}
+\begin{exmp}
+(Similar to Example 6.15 in the textbook)
+A coin, $P(H)=p$, unknown.
+\[X_i=\begin{cases}
+1, & H\\
+0. & T
+\end{cases}\]
+10100000001, $\hat{p}$.
+
+The probability of the sequence happening is $p^3(1-p)^7$. try to make $p^3(1-p)^7$ large, Let $L=p^3(1-p)^7$.
+\[\ln{L}=3\ln{p} +7 \ln{(1-p)}\]
+\[\arg\!\max {L}=\arg\!\max{\ln{L}}\]
+\[\arg\!\max{ (\log{p}+7\log{1-p}) }=\frac{3}{10}\]
+\[(\log{L})'=\frac{3}{p}-\frac{7}{1-p} \qquad \hat{p}=\frac{3}{10}\]
+\end{exmp}
+
+\begin{defn}
+Let $X_1,\dots,X_n$ have joint pmf or pdf $f(x_1,\dots,x_n;\theta)$. The MLE of $\theta$ is the one that maximizes the joint pdf (pmf) or $f(x_1,\dots,x_n;\hat{\theta_{MLE}})\geq f(x_1,\dots,x_n;\theta)$ for any $\theta$.
+\end{defn}
+
+\begin{exmp}
+(Example 6.16 in the textbook)
+\end{exmp}
+
+\begin{exmp}
+(Example 6.17 in the textbook)
+\end{exmp}
+
+\subsection{Estimating Functions of Parameters}
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\begin{prop}
+The Invariance Principle
+
+Let $\hat{\theta_1},\dots,\hat{\theta_n}$ be the mle’s of the parameters $\theta_1,\dots,\theta_m$. Then the mle of any function $h(\theta_1,\dots,\theta_m)$ of these parameters is the function $h(\hat{\theta_1},\dots,\hat{\theta_m})$ of the mle’s.
+\end{prop}
+	}
+}
+
+\begin{exmp}
+(Example 6.20 in the textbook)
+the mle for $\sigma$ is $\sqrt{\frac{1}{n} \sum_{i=1}^n (X_i -\bar{X})^2 } $
+\[h(\mu,\sigma^2)=\sqrt{\sigma^2}\]
+\end{exmp}
+
+\begin{exmp}
+$X_1,\dots,X_n \overset{iid}{\sim} f(x;\theta)=\begin{cases}
+(\theta+1)x^{\theta} & 0 \leq x \leq 1 \\
+0 & o.w.
+\end{cases}$, with $\theta>-1$
+\begin{enumerate}
+\item Use MM
+\[E(X)=\int_0^1 x(\theta+1)x^{\theta} \,dx= (\theta+1)\left.\frac{x^{\theta+2}}{\theta+2}\right|_0^1 =\frac{\theta+1}{\theta+2}\]
+\[\hat{E(X)}=\frac{1}{n}\sum_{i=1}^n X_i\]
+\[\frac{\theta+1}{\theta+2}=\bar{X} \Rightarrow \hat{\theta}_{MM}=\frac{2\bar{X}-1}{1-\bar{X}}\]
+\item Use MLE
+\[L(\theta)=f(x_1,\dots,x_n;\theta)=\prod_{i=1}^n (\theta+1)x_i^n=(\theta+1)^n \left(\prod_{i=1}^n x_i\right)^{\theta}\]
+\[l(\theta)=n\log{\theta+1}+\theta \sum_{i=1}^n \log{x_i}\]
+\[l'(\theta)=\frac{n}{\theta+1}+\sum_{i=1}^n \log{x_i} \Rightarrow \hat{\theta}_{MLE}=-\frac{n}{\sum_{i=1}^n \log{X_i}}-1\]
+\item Compare $\hat{\theta}_{MM}$ and $\hat{\theta}_{MLE}$ by their variance
+\end{enumerate}
+\end{exmp}
+
+\subsection{Some Complications}
+\begin{exmp}
+(Example 6.22 in the textbook)
+\end{exmp}
