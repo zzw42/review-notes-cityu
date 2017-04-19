@@ -14,14 +14,12 @@
 % figures are in the folder ~\figures\   (Windows)
 \usepackage{graphicx}
 \graphicspath {{figures/}}
-\usepackage{float} % adjust the picture
-
-%\usepackage{titlepic}
+\usepackage{float} % adjust the picture [H]
 
 \usepackage[margin=1 in]{geometry}
 
 \usepackage{pgfplots}
-% the package run in compatible mode according the log
+% the package run in compatible mode according to the log
 % Used to create histogram
 \pgfplotsset{compat=1.12}
 
@@ -112,6 +110,7 @@ Junhui \textsc{Wang} % Supervisor's Name
 \vfill % Fill the rest of the page with whitespace
 \end{titlepage}
 
+% copyright page
 \noindent
 Copyright \copyright 2017 Zongpu \textsc{Li} and Zezhu \textsc{Wei}. All rights reserved.
 
@@ -124,6 +123,12 @@ You should have received a copy of the GNU General Public License along with thi
 All \texttt{.tex} files of this document can be accessed from:
 
 \url{https://github.com/zzw42/review-notes-cityu}
+
+\newpage
+
+\frontmatter
+
+\textbf{Course Information}
 
 Textbook: Probability and Statistics for Engineering and the Sciences, by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. 
 
@@ -151,8 +156,7 @@ Week & Brief Description \\
 \end{tabular}
 \end{center}
 
-% Rest
-\frontmatter
+% content, figures 
 \tableofcontents
 \listoffigures
 
