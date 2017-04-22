@@ -60,10 +60,11 @@ where $S=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (X_i-\bar{X})^2}$ is the sample s.d.
 \begin{figure}[H]
 \caption{t and Z distribution}
 \centering
-\includegraphics[scale=0.7]{t-distro.png}
+\includegraphics[scale=0.7]{t_distribution.png}
 \end{figure}
- \[P\left(-t_{\alpha/2,n-1} \leq \frac{\bar{X}-\mu}{S/\sqrt{n}}  \leq  t_{\alpha/2,n-1} \right) = 1-\alpha\]
- where $t_{\alpha/2,n-1}$ denotes the $\frac{\alpha}{2}$-th upper percentile of $t(n-1)$.
+
+\[P\left(-t_{\alpha/2,n-1} \leq \frac{\bar{X}-\mu}{S/\sqrt{n}}  \leq  t_{\alpha/2,n-1} \right) = 1-\alpha\]
+where $t_{\alpha/2,n-1}$ denotes the $\frac{\alpha}{2}$-th upper percentile of $t(n-1)$.
 
 Then $\bar{x} \pm  t_{\alpha/2,n-1} \frac{S}{\sqrt{n}} $ is the $100(1-\alpha)\%$ CI for $\mu$.
 \end{theo}
@@ -175,7 +176,8 @@ MLE: $L(p)= \binom {37}{x} p^x (1-p)^{37-x}$
 \[l(p)=\log{\binom {37}{x}}+x \log{p}+(37-x)\log{(1-p)}\]
 \[l'(p)=0 \qquad \hat{p}=\frac{x}{n}=\frac{24}{37}\]
 \[\hat{p}=\frac{X}{n}\overset{\cdot}{\sim} N\left(p,\frac{p(1-p)}{n}\right)\]
-99\% CI for $p$ is $\hat{p} \pm  z_{0.005} \sqrt{\frac{\hat{p}(1-\hat{p})}{n} }=(0.4465,0.8507) $.
+99\% CI for $p$ is $\hat{p} \pm  z_{0.005} \sqrt{\frac{\hat{p}(1-\hat{p})}{n} }=(0.4465,0.8507)$.
+
 (2) Width of 99\% CI is 
 \[2 z_{0.005} \sqrt{\frac{\hat{p}(1-\hat{p})}{n} } \leq 0.1\]
 \[n \geq \left(\frac{2\times 2.575}{0.1}\right)^2 \hat{p}(1-\hat{p})\]
