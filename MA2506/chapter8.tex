@@ -1,0 +1,422 @@
+% chapter 8 Last edit: 2017/4/23
+\chapter{Tests of Hypotheses Based on a Single Sample}
+\section{Hypotheses and Test Procedures}
+A test hypothesis is a method using sample data to describe between two competing claims about a population a population characteristic.
+
+\begin{exmp}
+$X_1,\dots,X_n \overset{iid}{\sim} f(x;\theta)$
+
+Claim 1: $\theta=0$
+
+Claim 2: $\theta\neq 0$
+\end{exmp}
+
+\begin{defn}
+Null hypothesis ($H_0$): a population characteristic is usually assumed to be true. Alternative hypothesis ($H_a$): competing claim.
+
+$H_0$ be rejected in favour of $H_a$, if sample evidence suggests that $H_0$ is false.
+\end{defn}
+
+\begin{exmp}
+\[H_0:\mu=0.75 \qquad H_a:\mu>0.75\]
+Only if the sample data strongly suggests that $\theta$ is something different from 0.75, should $H_0$ be rejected. Otherwise, $H_a$ will be rejected.
+\end{exmp}
+
+Usually, $H_0:\theta=\theta_0$
+\begin{enumerate}
+\item $H_a:\theta > \theta_0$ (One-sided alternative)
+\item $H_a:\theta <\theta_0$ (One-sided alternative)
+\item $H_a:\theta \neq \theta_0$
+\end{enumerate}
+
+\begin{exmp}
+\[H_0:\mu=0.75 \qquad H_a:\mu>0.75\]
+$x_1=0.01,x_2=0.03,x_3=0.02$. Even though the dataset indicates that$\hat{\mu}$ should be very small, if we have to choose one from $H_0,H_a$, choose $H_0$. "Not reject $H_0$".
+\end{exmp}
+
+
+\subsection{Test Procedures}
+A test procedure: a rule, based on sample data, for deciding whether to reject $H_0$.
+
+\begin{exmp}
+$X$=\# of defective among 200 randomly selected products.
+\[H_0:p=0.1 \qquad H_a:p<0.1\]
+Here $p$ is the defective rate.
+\[X \sim Bin(200,p)\]
+Under $H_0 \Rightarrow E(X)=20$. If $H_0$ is true, we would expect $<$ 20 deflective products.
+
+If $x=19,18,17$, they are not strong enough for us to make a decision.
+
+If $x=1,2,3$, they are very strong.
+  
+\end{exmp}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+    \textbf{Test Procedure}:
+    \begin{enumerate}
+    \item A test statistic: a function of sample data on which the decision is made.
+    \item Rejection Region (RR): the set of all the statistic values for which $H_0$ will be rejected.
+    \end{enumerate}
+	}
+}
+
+\subsection{Errors in Hypothesis Testing}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+ & $H_0$ True & $H_0$ False \\
+ \hline
+ Reject $H_0$ & Type I Error & \checkmark \\
+ \hline
+ Not Reject $H_0$ & \checkmark & Type II Error \\
+ \hline
+\end{tabular}
+\end{center}
+Denote $\alpha=P$(Type I Error), $\beta=P$(Type II Error).
+
+\begin{exmp}
+(See Example 8.1 in textbook)
+\end{exmp}
+
+\begin{exmp}
+(See Example 8.2 in textbook)
+
+As the $\mu$ become smaller and smaller, the probability of Type II error is getting down.
+\end{exmp}
+
+
+\begin{prop}
+Suppose the sample size is fixed, and a test statistic is chosen. Then decreasing the size of RR to obtain a small $\alpha$ result in a larger $\beta$ for any particular parameter consisting with $H_a$.
+\end{prop}
+
+\subsection{Level-$\alpha$ Test}
+A type I error is usually more serious than a type II error. The approach adhered to by most statistical practitioners is then to specify the largest value of $\alpha$ that can be tolerated and find a rejection region having that value of $\alpha$ rather than anything smaller. This makes $\beta$ as small as possible subject to the bound on $\alpha$. The resulting value of $\alpha$ is often referred to as the \textbf{significance level} of the test. Traditional levels of significance are 0.10, 0.05, and 0.01, though the level in any particular problem will depend on the seriousness of a type I error—the more serious this error, the smaller should be the significance level. The corresponding test procedure is called a \textbf{level $\alpha$ test} (e.g., a level 0.05 test or a level 0.01 test). A test with significance level $\alpha$ is one for which the type I error probability is controlled at the specified level.
+
+\begin{exmp}
+(See Example 8.5 in textbook)
+\begin{align*}
+\beta(1.55)= & P(\bar{X}\leq 1.56 \text{ if }H_0 \text{ is false } ) \\
+= & P(\bar{X} \leq 1.56) \qquad \bar{X}\sim N\left(1.55,\frac{0.2^2}{32}\right) \\
+= & P\left(\frac{\bar{X}-1.55}{\frac{0.2}{\sqrt{32}}} \leq  \frac{1.56-1.55}{\frac{0.2}{\sqrt{32}}} \right)=0.6103
+\end{align*}
+\end{exmp}
+
+
+
+\section{Tests About a Population Mean}
+\subsection{Case I: A Normal Population with Known $\sigma_0^2$}
+\[H_0:\mu=\mu_0\]
+Test statistic \[Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}\]
+
+Use of the following sequence of steps is recommended when testing hypotheses
+about a parameter.
+\begin{enumerate}
+\item With $H_a: \mu>\mu_0$, $RR:Z\geq c$.
+
+Level-$\alpha$ test
+\[P(Z\geq c)\leq 0.05 \Rightarrow x \geq z_{0.05}=1.645 \Rightarrow c=1.645\]
+\item With $H_a: \mu<\mu_0$, $RR:Z\leq c$.
+
+Level-$\alpha$ test
+\[P(Z\leq c)\leq 0.05 \Rightarrow x \leq -z_{0.05}=-1.645 \Rightarrow c=-1.645\]
+\item With $H_a: \mu\neq\mu_0$, $RR:Z\geq c$ or $Z \leq -c$.
+
+Level-$\alpha$ test
+\[P(Z\geq c \text{ or } Z \leq -c)\leq 0.05 \Rightarrow x \geq z_{0.025}=1.96 \Rightarrow c=1.96\]
+\end{enumerate}
+
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+\textbf{Conclusion}:
+
+$H_0:\mu=\mu_0$. Test statistic $Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}$
+
+\begin{enumerate}
+\item $H_a:\mu < \mu_0$, $RR: Z\leq -z_{\alpha}$
+\item $H_a:\mu > \mu_0$, $RR: Z\geq z_{\alpha}$
+\item $H_a:\mu \neq \mu_0$, $RR: |Z|\geq z_{\alpha/2}$ 
+\end{enumerate}
+	}
+}
+
+\subsubsection{Procedure}
+\begin{enumerate}
+\item identify the parameter of interest
+\item determine the null value \& state $H_0$
+\item state the "appropriate" $H_a$
+\item construct a test statistic
+\item for the given significance level $\alpha$, state $RR$
+\item compare the observed test statistic' value
+\item decide whether to reject $H_0$, give conclusion
+\end{enumerate}
+
+
+\begin{exmp}
+(See Example 8.6 in textbook)
+\end{exmp}
+
+\subsubsection{$\beta$ and Sample Size Determination}
+$H_0:\mu=\mu_0$. 
+\[H_a:\mu >\mu_0\]
+\[Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}\overset{H_0}{\sim} N(0,1) \qquad RR: Z\geq z_{\alpha}\]
+For $\mu'>\mu_0$: 
+\begin{align*}
+\beta(\mu')= & P(Z\leq z_{\alpha}) \qquad \bar{X}\sim \left(\mu',\frac{\sigma_0^2}{n}\right) \\
+= & P\left(\bar{X}\leq \mu_0+z_{\alpha}\frac{\sigma_0}{\sqrt{n}}\right) \\
+= & P\left( \frac{\bar{X}-\mu'}{\sigma_0/\sqrt{n}} \leq \frac{\mu_0+z_{\alpha} \frac{\sigma_0}{\sqrt{n}}-\mu'}	{\sigma_0/\sqrt{n} } \right) \\
+= & \Phi\left( \frac{\mu_0-\mu'}	{\sigma_0/\sqrt{n} }++z_{\alpha}  \right)
+\end{align*}
+Recall that $\Phi$ increases.
+
+$\beta(\mu')$ decreases if $\mu'$ increases, $n$ increases.
+
+If $\beta(\mu')\leq \beta$, $\beta$ is given
+\[ \Phi\left( \frac{\mu_0-\mu'}	{\sigma_0/\sqrt{n} }++z_{\alpha}  \right)\leq \beta\]
+\[n \geq \left(\frac{z_{\alpha}+ z_{\beta}}{\mu_0-\mu'}\cdot\sigma_0\right)^2\]
+
+For two-sided $H_a$:
+\[n \geq \left(\frac{z_{\alpha/2}+ z_{\beta}}{\mu_0-\mu'}\cdot\sigma_0\right)^2\]
+
+\begin{exmp}
+(See Example 8.7 in textbook)
+\end{exmp}
+
+\subsection{Case II: Large-Sample Tests}
+$X_1,\dots,X_n \overset{iid}{\sim} (\mu,\sigma^2)$ with large $n$ ($n \geq 30$)
+
+$H_0:\mu=\mu_0$, $Z=\frac{\bar{X}-\mu_0}{S/\sqrt{n}} \overset{\cdot}{\sim}N(0,1)$
+\begin{enumerate}
+\item With $H_a: \mu>\mu_0$, $RR:Z\geq z_{\alpha}$.
+\item With $H_a: \mu<\mu_0$, $RR:Z\leq -z_{\alpha}$.
+\item With $H_a: \mu\neq\mu_0$, $RR:|Z|\geq z_{\alpha/2}$.
+\end{enumerate}
+
+\begin{exmp}
+(See Example 8.8 in textbook)
+\end{exmp}
+
+\subsubsection{$\beta$ and Sample Size Determination}
+
+Determination of $\beta$ and the necessary sample size for these large-sample tests can be based either on specifying a plausible value of $\sigma$ and using the case I formulas (even though $s$ is used in the test) or on using the methodology to be introduced shortly in connection with case III.
+
+\subsection{Case III: A Normal Population Distribution}
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma^2)\]
+
+$H_0:\mu=\mu_0$. Test statistic: $T=\frac{\bar{X}-\mu_0}{S/\sqrt{n}} \sim t(n-1) \text{ under } H_0$
+
+$H_a: \mu>\mu_0$, $RR:\{T\geq ?\}$
+\[\alpha=P(\text{Type I Error})=P(T\geq ?) \text{ if }H_0\text{ is true} =P(T\geq t_{\alpha,n-1}) \]
+
+\begin{enumerate}
+\item With $H_a: \mu>\mu_0$, $RR:T\geq t_{\alpha,n-1}$.
+\item With $H_a: \mu<\mu_0$, $RR:T\leq -t_{\alpha,n-1}$.
+\item With $H_a: \mu\neq\mu_0$, $RR:|T|\geq t_{\alpha/2,n-1}$.
+\end{enumerate}
+
+\begin{exmp}
+$N(\mu,\sigma^2)$, $\sigma$ unknown. Sample: 25.8, 36.6, 26.3, 21.8, 27.2.
+\[H_0:\mu=25, \qquad H_a:\mu>25 \]
+\[T=\frac{\bar{X}}{S/\sqrt{n}} \sim t(4) \text{ under } H_0\]
+\[RR:T\geq t_{0.05,4}=2.132\]
+obviously that statistic $T^*=\frac{27.54-25}{5.47/\sqrt{5}}=1.04$. $T^* \notin RR$. Fail to reject $H_0$.
+\end{exmp}
+
+\subsubsection{$\beta$ and Sample Size Determination}
+See the text in textbook.
+\\
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Claim: 99.9\% of MTR train will be on-time. 
+\[X_1,\dots,X_n \overset{iid}{\sim} Bern(p)\]
+\[H_0:p=0.999\]
+\begin{enumerate}
+\item $H_a:p\neq0.999$
+\item $H_a:p<0.999$ work against MTR
+\item $H_a:p>0.999$ work for MTR
+\end{enumerate}
+	}
+}
+
+\begin{exmp}
+(See Exercise 8.32 in textbook)
+\end{exmp}
+
+\subsection{Connection to CI}
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma_0^2)\]
+$\sigma_0$ known. $100(1-\alpha)\%$ CI for $\mu$ is $\bar{x} \pm  z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}} $.
+\[H_0:\mu=\mu_0 \qquad H_a:\mu\neq\mu_0\]
+\begin{align*}
+RR:\left| \frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}\geq z_{\alpha/2} \right| \Leftrightarrow & \mu_0\geq \bar{X}+ z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}} \text{ or } \mu_0\leq \bar{X}- z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}} \\
+\Leftrightarrow & \mu_0 \notin \left(\bar{X}-  z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}},\bar{X}+ z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}}\right) \\
+\Leftrightarrow & \mu_0 \notin 100(1-\alpha)\% \text{ CI for} \mu
+\end{align*}
+However, when $H_a$ is not two-sided.
+\[ H_a:\mu>\mu_0\]
+\begin{align*}
+RR: \frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}\geq z_{\alpha} \Leftrightarrow &  \mu_0\leq \bar{X}- z_{\alpha} \frac{\sigma_0}{\sqrt{n}} \\
+\Leftrightarrow &  \mu_0 \notin \left(\bar{X}- z_{\alpha} \frac{\sigma_0}{\sqrt{n}},+\infty \right) \\
+\Rightarrow & \text{is not a CI for }\mu_0 
+\end{align*}
+
+\section{Tests Concerning a Population Proportion}
+\subsection{Large-Sample Tests}
+
+Generally, for a parameter $\theta$, if
+\begin{enumerate}
+\item sample size is large
+\item $\hat{\theta}$ is approximately normal
+\item $\sigma_{\hat{\theta}}^2$ is available
+\end{enumerate}
+
+Test statistic: $Z=\frac{\hat{\theta}-\theta}{\sigma_{\hat{\theta}}}$.
+
+Suppose $X\sim Bin(n,p)$, $\hat{p}=\frac{X}{n}$, $Var(\hat{p})=Var\left(\frac{X}{n}\right)=\frac{p(1-p)}{n}$
+\[Z=\frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}} \overset{\cdot}{\sim}N(0,1)\]
+\[H_0:p=p_0 \qquad H_a:p>p_0\]
+\[Z=\frac{\hat{p}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}} \overset{\cdot}{\sim}N(0,1) \text{ under }H_0\]
+
+Reject $H_0$ if $Z\geq z_{\alpha}$.
+
+\begin{exmp}
+(See Exercise 8.39 in textbook)
+A random sample of 150 recent donations at a certain blood bank reveals that 82 were type A blood. Does this suggest that the actual percentage of type A donations differs from 40\%, the percentage of the population having type A blood? Carry out a test of the appropriate hypotheses using a significance level of 0.01. Would your conclusion have been different if a significance level of 0.05 had been used?
+\end{exmp}
+
+
+\subsubsection{$\beta$ and Sample Size Determination}
+\[H_0:p=p_0 \qquad H_a:p'>p_0\]
+\[RR:Z=\frac{\frac{X}{n}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}\geq z_{\alpha}\]
+\begin{align*}
+\beta(p') =& P(\text{fail to reject }H_0 \text{ if }H_0 \text{ is false}) \\
+= & P(Z\leq z_{\alpha}) \qquad X \sim Bin(n,p') \\
+= & P\left(\frac{\frac{X}{n}-p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}} \leq z_{\alpha}\right) = P\left(\frac{X}{n}\leq p_0+z_{\alpha}\sqrt{\frac{p_0(1-p_0)}{n}} \right) \\
+= & P\left( \frac{\frac{X}{n}-p'}{\sqrt{\frac{p'(1-p')}{n}}}  \leq \frac{p_0+z_{\alpha}\sqrt{\frac{p_0(1-p_0)}{n}}-p'}{\sqrt{\frac{p'(1-p')}{n}}} \right) \\
+= & \Phi\left(\frac{p_0+z_{\alpha}\sqrt{\frac{p_0(1-p_0)}{n}}-p'}{\sqrt{\frac{p'(1-p')}{n}}}\right) \leq \beta
+\end{align*}
+\[\frac{p_0+z_{\alpha}\sqrt{\frac{p_0(1-p_0)}{n}}-p'}{\sqrt{\frac{p'(1-p')}{n}}} \leq -z_{\beta} \Rightarrow n \geq \left( \frac{z_{\alpha}\sqrt{p_0(1-p_0)}+z_{\beta}\sqrt{p'(1-p')}}{p'-p_0}\right)^2\]
+
+"One-sided" for $p'<p_0$
+\[\beta(p')= 1- \Phi\left(\frac{p_0-p'-z_{\alpha}\sqrt{\frac{p_0(1-p_0)}{n}}}{\sqrt{\frac{p'(1-p')}{n}}}\right) \leq \beta \]
+
+"Two-sided" for $p'\neq p_0$
+\[\beta(p')= \Phi\left(\frac{p_0-p'+z_{\alpha/2}\sqrt{\frac{p_0(1-p_0)}{n}}}{\sqrt{\frac{p'(1-p')}{n}}}\right)- \Phi\left(\frac{p_0-p'-z_{\alpha/2}\sqrt{\frac{p_0(1-p_0)}{n}}}{\sqrt{\frac{p'(1-p')}{n}}}\right) \leq \beta \]
+
+\begin{exmp}
+(See Example 8.12 in textbook)
+\end{exmp}
+
+\subsection{Small-Sample Tests}
+\[H_0:p=p_0 \qquad H_a:p>p_0\]
+Observe $X \sim Bin(n,p)$, reject $H_0$ if $X\geq c$.
+\begin{align*}
+P(\text{Type I error})= & P(X \geq x) \qquad \text{ if }H_0 \text{ is true} \\
+= & 1- B(c-1;n;p_0) \leq\alpha
+\end{align*}
+\begin{align*}
+\beta(p')= & P(X \leq c-1) \qquad X \sim Bin(n,p') \\
+= & B(c-1;n;p')
+\end{align*}
+
+\begin{exmp}
+(See Example 8.13 in textbook)
+\end{exmp}
+
+\section{$P$-Values}
+\begin{exmp}
+In a community, the mean household water usage for Jan. 93 is 0.6. In 94, water conservation was conducted. In Jan. 95, $n=50$ households are randomly selected. $n=50,\bar{x}=0.054,s=0.016$. Does the data suggest that the water usage become less?
+\[H_0:\mu=0.6 \qquad H_a:\mu<0.6\]
+\[Z=\frac{\bar{X}-0.6}{S/\sqrt{n}}\overset{H_0}{\sim} N(0,1)\]
+\[RR: Z\leq z_{-\alpha}=\begin{cases}
+-1.645 &\text{if }\alpha=0.05, \\
+-2.33 &\text{if }\alpha=0.01, 
+\end{cases}\]
+\[z^*=\frac{0.054-0.6}{0.016/\sqrt{50}}=-2.61\]
+
+If $\alpha=0.05$, reject $H_0$; If $\alpha=0.01$, reject $H_0$.
+
+$P$-value: $P(Z\leq-2.61)=0.0045$. Consider $\alpha=0.0045$, $RR:Z\leq-2.61$.
+\end{exmp}
+
+\begin{defn}
+$P$-value is the smallest level of significance at which $H_0$ will be rejected when the test is used on a given database.
+\end{defn}
+
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+Conclusion:
+
+If $P$-value$\leq \alpha$, then reject $H_0$. If $P$-value$\geq \alpha$, then fail to reject $H_0$. 
+	}
+}
+
+\begin{defn}
+The P-value is the probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample. The smaller the $P$-value, the more contradiction is the data to $H_0$.
+\end{defn}
+
+\subsection{$P$-Values for z Tests}
+\subsubsection{Case I: A Normal Population with Known $\sigma_0^2$}
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma_0^2)\]
+
+$H_0:\mu=\mu_0$. Test statistic $Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}$
+
+$H_a:\mu>\mu_0$. $P$-value $= P(Z \geq Z^*)$
+
+$H_a:\mu<\mu_0$. $P$-value $= P(Z \leq Z^*)$
+
+$H_a:\mu\neq\mu_0$. $P$-value $= P(|Z| \geq |Z^*|)=2(1-\Phi(|Z^*|))$
+
+\subsubsection{Case II: Large-Sample Tests}
+Similar as Case I.
+
+\begin{exmp}
+(See Example 8.17 in textbook)
+\end{exmp}
+
+\subsection{$P$-Values for t Tests}
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma^2)\]
+
+$H_0:\mu=\mu_0$. Test statistic: $T=\frac{\bar{X}-\mu_0}{S/\sqrt{n}} \sim t(n-1) \text{ under } H_0$
+
+$H_a:\mu>\mu_0$. $P$-value $= P(T \geq T^*)=1-CDF_{n-1}(T^*)$
+
+$H_a:\mu<\mu_0$. $P$-value $= P(T \leq T^*)=CDF_{n-1}(T^*)$
+
+$H_a:\mu\neq\mu_0$. $P$-value $= P(|T| \geq |T^*|)=2(1-CDF_{n-1}(|T^*|))$
+
+\begin{exmp}
+Six readings from a device: 85, 77, 82, 68, 72, 69. It is believed that the CO concentration is set at 70 ppm. Is recalibration of this device necessary? $\alpha=0.05$
+
+$H_0:\mu=70$. Test statistic: $T=\frac{\bar{X}-70}{S/\sqrt{n}} \overset{H_0}{\sim} t(n-1) $
+
+$H_a:\mu\neq 70$. $T^*=\frac{75.5-70}{7/\sqrt{6}}=1.92 $
+\[P-Value=P(|T|\geq 1.92)=2(1-CDF_5(1.92))=0.116>0.05\]
+
+Fail to reject $H_0$.
+\end{exmp}
+
+\section{Hypotheses Testing For $\sigma^2$}
+Then $X_1,\dots,X_n$ are a random sample from $N(\mu,\sigma^2)$. $\mu,\sigma^2$ unknown.
+
+(a)\[H_0:\sigma^2=\sigma_0^2 \qquad H_a:\sigma^2 \neq\sigma_0^2\]
+\[\frac{(n-1)S^2}{\sigma^2} \overset{H_0}{\sim} \chi^2(n-1)\]
+\[RR:\{\chi^2 \leq \chi^2_{1-\alpha/2,n-1} \text{ or } \chi^2 \geq \chi^2_{\alpha/2,n-1}\}\]
+
+(b) $H_a:\sigma^2 >\sigma_0^2$, $RR:\{\chi^2 \geq \chi^2_{\alpha,n-1}\}$
+
+(c) $H_a:\sigma^2 <\sigma_0^2$, $RR:\{\chi^2 \leq \chi^2_{1-\alpha,n-1}\}$
+
+\begin{exmp}
+A battery manufacture claims that he produce batteries have a s.d. equal to 0.9 year. A random sample is collected $n=10$, $s=1.2$ year. Does the data suggest that $\sigma>0.9$? Assume normality.
+
+\[H_0:\sigma=0.9 \qquad H_a:\sigma \geq 0.9\]
+\[H_0:\sigma^2=0.81 \qquad H_a:\sigma^2 \geq 0.81\]
+\[\frac{(n-1)S^2}{0.81} \overset{H_0}{\sim} \chi^2(n-1)\]
+$RR:\{\chi^2 \geq \chi^2_{0.05,9}\}=\{\chi^2 \geq 16.919\}$
+\[(\chi^2)^*=\frac{(10-1)1.2^2}{0.9^2}=16.0 \notin RR \]
+Fail to reject $H_0$.
+\[P-Value=P(\chi^2\geq (\chi^2)^* )=P(\chi^2\geq  16)=0.07\]
+$P$-Value $>0.05$, fail to reject $H_0$.
+\end{exmp}
