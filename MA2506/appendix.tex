@@ -1,0 +1,184 @@
+% Appendix
+% Last edit: 2017-4-24
+\appendix
+\chapter{Moment generating function}
+\section{Definition}
+\begin{defn}
+The moment generating function (MGF) of a r.v. $X$ is defined as
+\[M_X(\theta)=E(e^{\theta x})=\begin{cases}
+\sum_{x \in \mathcal{D}} e^{\theta x} p(x) & \text{if }X \text{ is discrete}	\\
+\int_{-\infty}^{\infty} e^{\theta x} f(x)\,dx & \text{if }X \text{ is continues}	
+\end{cases} \]
+\end{defn}
+
+\begin{exmp}
+If $Z \sim N(0,1)$. Find the mgf $M_Z(\theta)$
+\begin{align*}
+M_Z(\theta)=E(e^{\theta x})=& \int_{-\infty}^{\infty} e^{\theta z} \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} z^2} \, dz \\
+= & \int_{-\infty}^{\infty}  \frac{1}{\sqrt{2 \pi}} e^{\theta z-\frac{1}{2} z^2} \,dz\\
+= & \int_{-\infty}^{\infty}  \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}\theta^2 + \theta z-\frac{1}{2} z^2 } e^{\frac{1}{2}\theta^2} \,dz\\
+= & e^{\frac{1}{2} \theta^2}
+\end{align*}
+\end{exmp}
+
+\section{Properties of $M_X{\theta}$}
+\begin{prop}
+\begin{enumerate}
+\item There is a unique distribution with mgf $M_X{\theta}$
+\item \begin{align*}
+M_X{\theta}=& E(e^{\theta x}) \\
+=& E\left(1+\frac{\theta X}{1!}+ \frac{\theta^2 X^2}{2!}+\dots \right) \\
+=& 1+\frac{\theta E(X)}{1!}+ \frac{\theta^2 E(X)^2}{2!}+\dots
+\end{align*}
+\item 
+\[\frac{d M_X(\theta)}{d \theta}=\frac{d E(e^{\theta x})}{d \theta}=E\left(\frac{d e^{\theta x}}{d \theta}\right)=E(e^{\theta X} X)\]
+\[\left.\frac{d M_X(\theta)}{d \theta}\right|_{\theta=0}=E(X)\]
+Similarly,
+\[\left.\frac{d^r M_X(\theta)}{d \theta^r}\right|_{\theta=0}=E(X^r) \qquad r=1,2,\dots,\]
+\item Let $Y=a+bX$, then $M_Y(\theta)=e^{a\theta} M_X(b\theta)$
+\[M_Y(\theta)=E(E^{\theta Y})=E(e^{\theta (a+bX)})=E(e^{a\theta+b\theta x})=e^{a\theta} E(e^{b\theta x})=e^{a \theta}M_X(b\theta)\]
+\end{enumerate}
+\end{prop}
+
+\begin{exmp}
+If $X \sim N(\mu,\sigma^2)$, find $M_Y(\theta)$
+\[Z=\frac{X-\mu}{\sigma}\sim N(0,1) \text{ then } X=\mu+\sigma Z\]
+by (4)
+\[M_Y(\theta)=e^{\mu \theta} M_Z(\sigma \theta)=e^{\mu\theta+\frac{1}{2} \sigma^2\theta^2}\]
+\[E(Y)=\left.\frac{d M_Y(\theta)}{d \theta}\right|_{\theta=0}=\mu\]
+\[E(Y^2)=\left.\frac{d^2 M_Y(\theta)}{d \theta^2}\right|_{\theta=0}=\mu^2+\sigma^2\]
+\[E(Y^3)=\left.\frac{d^3 M_Y(\theta)}{d \theta^3}\right|_{\theta=0}=\dots\]
+\end{exmp}
+
+\begin{theo}
+$X$ and $Y$ are two independent r.v. with mgf $M_X(\theta)$ and $M_Y(\theta)$ respectively. Then 
+\[M_{X+Y}(\theta)=M_X(\theta)M_Y(\theta)\]
+\begin{proof}
+\[M_{X+Y}(\theta)=E(e^{\theta(X+Y)})=E(e^{\theta X} e^{\theta Y})=M_X(\theta)M_Y(\theta)\]
+\end{proof}
+\end{theo}
+
+\begin{coro}
+If $X_1,\dots,X_n$ are independent r.v.'s
+\[M_{X_1+\dots+X_n}(\theta)=M_{X_1}(\theta)\dots M_{X_n}(\theta)\]
+\end{coro}
+
+\begin{exmp}
+\begin{enumerate}
+\item $Z^2 \sim \chi^2(1)$
+\item $Z_1,\dots,Z_n \overset{iid}{\sim} N(0,1)$, then 
+\[Z_1^2 +Z_2^2+\dots+Z_n^2 \sim \chi^2(n)\] 
+\end{enumerate}
+\begin{proof}
+\begin{enumerate}
+\item \begin{align*}
+M_{Z^2}(\theta)=E(e^{\theta z^2}) = & \int_{-\infty}^\infty e^{\theta z^2} \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} z^2} \, dz \\
+= & \int_{-\infty}^\infty \frac{1}{\sqrt{2 \pi}} e^{\left(\theta-\frac{1}{2}\right) z^2} \,dz \\
+= & \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2}\left(-2\theta+1\right) z^2} \,dz \\
+= & \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} y^2} \frac{1}{\sqrt{1-2\theta}} \,dy \\
+= & \frac{1}{\sqrt{1-2\theta}} \qquad \theta<\frac{1}{2}
+\end{align*}
+Assume $\theta <\frac{1}{2}$, Let $y=\sqrt{1-2\theta} z$.
+
+Let $A \sim \chi^2(1)$, then
+\[f_A(x)=\frac{1}{2^{1/2} \Gamma(1/2)} a^{-\frac{1}{2}} e^{-\frac{a}{2}}	\]
+
+Then
+\begin{align*}
+M_A(\theta)=E(e^{\theta A}) = & \int_0^\infty	e^{\theta a}\frac{1}{2^{1/2} \Gamma(1/2)} a^{-\frac{1}{2}} e^{-\frac{a}{2}}\,da	\\
+= & \int_0^\infty \frac{1}{2^{1/2} \Gamma(1/2)}  a^{-\frac{1}{2}} e^{\left(\theta-\frac{1}{2}\right)a}\,da \\
+= & \int_0^\infty \frac{1}{\Gamma(1/2)} (1-2\theta)^{\frac{1}{2}} t^{-\frac{1}{2}} e^{-t} \,dt	\\
+= & (1-2\theta)^{-\frac{1}{2}}  \qquad \theta<\frac{1}{2}
+\end{align*}
+Let $t=\frac{1}{2} (1-2\theta)a$, $\theta<\frac{1}{2}$ 
+
+Since $M_{Z^2}(\theta)=M_A(\theta) \Rightarrow Z^2\sim A\sim \chi^2(1)$
+\item Let $S=Z_1^2 +Z_2^2+\dots+Z_n^2$
+\[M_S(\theta)=(1-2\theta)^{-\frac{n}{2}}\]
+
+Let $B \sim \chi^2(n)$
+\[f_B(b)=\frac{1}{2^{n/2} \Gamma(n/2)} b^{\frac{n}{2}-1} e^{-\frac{b}{2}}	\]
+\[M_B(\theta)= \int_0^\infty e^{\theta b}	\frac{1}{2^{n/2} \Gamma(n/2)} b^{\frac{n}{2}-1} e^{-\frac{b}{2}} \,b=(1-2\theta)^{-\frac{n}{2}}\]
+\[M_S(\theta)=M_B(\theta) \Rightarrow S \sim B \sim \chi^2(n)\]
+\end{enumerate}
+\end{proof}
+\end{exmp}
+
+\section{Application}
+\begin{theo}
+Let $Y_1,Y_2,\dots,Y_n$ be a sequence of rv's with cdf $F_{Y_1}(y)$, $F_{Y_2}(y)$, \dots and mgf $M_{Y_1}(\theta), M_{Y_2}(\theta),\dots $. Suppose as $n \to\infty$ 
+
+\[M_{Y_n}(\theta) \rightarrow M_Y(\theta) \text{ for any }\theta\]
+where $M_Y(\theta)$ is the mgf of $Y$ with cdf $F(y)$ that
+\[F_{Y_n} \rightarrow F_Y(y) \text{ for any }y \text{ as }n \to \infty\]
+or $Y_n\overset{d}{\sim} Y$.\footnote{converge to distribution}
+\end{theo}
+
+\begin{exmp}
+If $X_n\sim Bin(n,p)$. $np=\lambda>0$. fixed
+\begin{align*}
+M_{X_n}(\theta)= & E(e^{\theta X_n}) =\sum_{i=1}^n e^{\theta k} {n \choose k} p^k (1-p)^{n-k}\\
+= & \sum_{k=0}^n {n \choose k} (pe^{\theta})^k (1-p)^{n-k} \\
+= & (pe^{\theta}+1-p)^n \\
+= & \left(1+\frac{\lambda}{n}(e^{\theta}-1)\right)^n 
+\end{align*}
+Let $n \to \infty$ ($p\to 0$)
+\[M_{X_n}(\theta)=  \left(1+\frac{\lambda}{n}(e^{\theta}-1)\right)^n \longrightarrow e^{\lambda(e^{\theta}-1)}\]
+Since $\lim_{n\to \infty}\left(1+\frac{a}{n}\right)^n=e^a$.
+
+Let $Y \sim Poisson(\lambda)$, $P(Y=k)=\frac{e^{-\lambda}\lambda^k}{k!}$
+\begin{align*}
+M_Y{\theta}= & E(e^{\theta Y}) =\sum_{k=0}^{\infty} e^{\theta k} \frac{e^{-\lambda}\lambda^k}{k!} \\
+= & \sum_{k=0}^{\infty} \frac{e^{-\lambda}(e^{\theta} \lambda)^k}{k!} \\
+= &  \sum_{k=0}^{\infty} \frac{e^{-\lambda e^{\theta}}(e^{\theta} \lambda)^k}{k!}  e^{\lambda e^{\theta}} e^{-\lambda} \\
+= & e^{\lambda (e^{\theta}-1)} 
+\end{align*}
+\[X_1, X_2,\dots,X_n\]
+\[X_n \sim Bin(n,p) \overset{d}{\longrightarrow} Y\sim Poisson(\lambda)\]
+\end{exmp}
+
+
+\begin{theo}
+Central Limit Theorem
+
+Let $X_1,\dots,X_n \overset{iid}{\sim} (\mu,\sigma^2)$. $S_n=X_1+\dots+X_n$.
+\[\bar{X}=\frac{S_n}{n} \qquad Z_n=\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}=\frac{S_n-n\mu}{\sqrt{n}\sigma}\]
+
+\begin{proof}
+Let $Y_i=X_i-\mu$, then $Y_1,Y_2,\dots,Y_n\overset{iid}{\sim} (0,\sigma^2)$.
+\[S_n-n\mu=Y_1+Y_2+\dots+Y_n\]
+\[M_{S_n-n\mu}(\theta)=M_{Y_1}(\theta)\dots M_{Y_n}(\theta)\]
+\begin{align*}
+M_{Z_n}(\theta)= & E(e^{\theta Z_n})=E\left(e^{\theta \frac{S_n-n\mu}{\sqrt{n}\sigma}} \right) \\
+= & E\left(e^{\frac{\theta}{\sqrt{n}\sigma}(S_n-n\mu)} \right) \\
+= & M_{S_n-n\mu} \left(\frac{\theta}{\sqrt{n}\sigma}\right) \\
+= & M_{Y_1}\left(\frac{\theta}{\sqrt{n}\sigma}\right) \dots M_{Y_n}\left(\frac{\theta}{\sqrt{n}\sigma}\right)\\
+= & \left(M_{Y_1}\left(\frac{\theta}{\sqrt{n}\sigma}\right)\right)^n
+\end{align*}
+Note that $E(Y_1)=0$, $E(Y_1^2)=Var(Y_1)+(E(Y_1))^2=\sigma^2$
+\begin{align*}
+M_{Y_1}(\theta) =& 1+ E(Y_1) \frac{\theta}{1!} + E(Y_2) \frac{\theta^2}{2!} +\dots \\
+= 1+ \sigma^2 \frac{\theta^2}{2} + \mathcal{O}(\theta^2)
+\end{align*}
+where $\mathcal{O}(\theta^2)$ denotes a function $g(\theta)$ s.t $\frac{g(\theta)}{\theta^2}\to 0$, as $\theta to 0$
+
+\begin{align*}
+M_{Z_n}(\theta) =& \left(		1+\frac{1}{2}\left(\frac{\theta}{\sqrt{n}\sigma}\right)^2+\mathcal{O}\left(\frac{\theta^2}{n\sigma^2}\right)		\right)^n \\
+= & \left(		1+\frac{\frac{1}{2}\theta^2}{n}+\mathcal{O}\left(\frac{1}{n}\right)		\right)^n \longrightarrow e^{\frac{1}{2}\theta^2} \text{ as } n\to\infty
+\end{align*}
+So, by theorem, $Z_n\overset{d}{\longrightarrow}N(0,1)$
+\end{proof}
+\end{theo}
+
+\begin{enumerate}
+\item $X_1,X_2,\dots,X_n \sim Bern(p)$. $E(X_1)=p$, $Var(X_1)=p(1-p)$
+by CLT, $\frac{X-np}{\sqrt{np(1-p)}}\overset{d}{\longrightarrow}N(0,1)$.
+\[X \overset{d}{\longrightarrow}N(np,np(1-p)\]
+\item What if $X_1,X_2,\dots,X_n \sim Bern(p_n)$ ?
+
+Modified CLT
+\[X_1,X_2,\dots,X_n \sim (\mu_n,\sigma_n^2)\]
+\[\frac{\sqrt{n}(\bar{X}-\mu_n)}{\sigma_n} \overset{d}{\longrightarrow} N(0,1)\]
+\end{enumerate}
+
+Happy \TeX(\LaTeX,~\LaTeXe)ing with pdf\TeX, \XeTeX, \LuaTeX!

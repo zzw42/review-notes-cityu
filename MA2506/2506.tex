@@ -1,6 +1,6 @@
-% finished : chapter1-9 :P 
+% all chapter and appendix finished :P  2017-4-24 -WEI
 % Last edit: 2017-4-24 -WEI
-% v 0.9 RC
+% v 0.99 
 \documentclass[UTF8,a4paper,10pt,openany]{book}
 \usepackage{amsmath,amssymb,amsthm}
 
@@ -26,6 +26,7 @@
 \newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
 \newtheorem{exmp}[thm]{Example} % same for example numbers
 \newtheorem{theo}[thm]{Theorem}
+\newtheorem{coro}[thm]{Corollary}
 \newtheorem{axio}[thm]{Axiom}
 \newtheorem{prop}[thm]{Proposition}
 % not quite sure about how this works and I would not change it now
@@ -38,6 +39,8 @@
 \usepackage{mathtools}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\usepackage{metalogo}
 
 %\usepackage{indentfirst}
 %\usepackage[utf8]{inputenc} 
@@ -69,7 +72,7 @@
 
 \HRule \\[0.4cm]
 { \huge \bfseries  Probability and Statistics}\\[0.4cm] % Title of your document
-\rightline{Version 0.9 RC}
+\rightline{Version 0.99}
 \HRule \\[1.5cm]
  
 %----------------------------------------------------------------------------------------
@@ -171,4 +174,5 @@ Week & Brief Description \\
 \include{chapter7}
 \include{chapter8}
 \include{chapter9}
+\include{appendix}
 \end{document}
