@@ -3,9 +3,8 @@
 \chapter{Inferences Based on Two Samples}
 \section{z Tests and Confidence Intervals for a Difference Between Two Population Means}
 
-$X_1,\dots,X_n \overset{iid}{\sim} N(\mu_1,\sigma_1^2)$, $\sigma_1$ known.
-
-$Y_1,\dots,Y_n \overset{iid}{\sim} N(\mu_2,\sigma_2^2)$, $\sigma_2$ known.
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu_1,\sigma_1^2), \sigma_1 \text{ known}.\]
+\[Y_1,\dots,Y_n \overset{iid}{\sim} N(\mu_2,\sigma_2^2), \sigma_2 \text{ known}.\]
 
 \begin{prop}
 \[E(\bar{X}-\bar{Y})=\mu_1-\mu_2\]
@@ -38,9 +37,12 @@ $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 \section{The Two-Sample t Test and Confidence Interval}
 Case III
 
-(a) $X_1,\dots,X_n \overset{iid}{\sim} N(\mu_1,\sigma_1^2)$
+(a) 
 
-$Y_1,\dots,Y_n \overset{iid}{\sim} N(\mu_2,\sigma_2^2)$. $\sigma_1$,$\sigma_2$ independent 
+\[X_1,\dots,X_n \overset{iid}{\sim} N(\mu_1,\sigma_1^2)\]
+\[Y_1,\dots,Y_n \overset{iid}{\sim} N(\mu_2,\sigma_2^2)\] 
+
+$\sigma_1,\sigma_2 \text{ independent} $
 
 \[T=\frac{\bar{X}-\bar{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_1^2}{n}+\frac{S_2^2}{n}}} \sim t(\nu) \qquad \nu=\frac{\left( \frac{S_1^2}{n}+\frac{S_2^2}{n} \right)^2}{ \frac{\left( \frac{S_1^2}{m} \right)^2}{m-1}+ \frac{\left( \frac{S_1^2}{m} \right)^2}{n-1}  } \]
 
@@ -72,6 +74,7 @@ $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 \begin{exmp}
 Body weight gained on animal treatment: given 1mg/peller dose of soft steroid control: placebo.
 
+\begin{center}
 \begin{tabular}{l|c|c|c}
 \hline
 treatment & $m=8$ & $\bar{x}=32.8$ & $s_1=2.6$ \\
@@ -79,6 +82,8 @@ treatment & $m=8$ & $\bar{x}=32.8$ & $s_1=2.6$ \\
 placebo & $n=8$ & $\bar{y}=40.5$ & $s_2=2.5$ \\
 \hline
 \end{tabular}
+\end{center}
+
 
 Does the data suggest the average weight gain in the control group exceeds that in the treatment group by more than 5g? $\alpha$
 

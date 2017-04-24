@@ -1,5 +1,5 @@
 % chapter 1
-% Last edit: 2017-4-27
+% Last edit: 2017-4-24
 \chapter{Overview and Descriptive Statistics}
 \section{Populations, Samples, and Processes}
 \begin{defn}
@@ -34,8 +34,8 @@ In statistics, there are two important parts: Estimation and Influence.
 \end{exmp}
 
 \section{Pictorial and Tabular Methods in Descriptive Statistics}
-\subsection{Stem-and-leaf plot}
 
+\subsection{Stem-and-leaf Plot}
 \textbf{Procedure}
 
 \begin{enumerate}
@@ -47,9 +47,9 @@ In statistics, there are two important parts: Estimation and Influence.
 
 Therefore,
 \begin{table}[H]
-  \centering
-  \caption{stem-and-leaf plot, Key: $1 | 1= 11$}
-    \begin{tabular}{r|lllllllllllllllllll}
+\centering
+\caption{stem-and-leaf plot, Key: $1 | 1= 11$}
+\begin{tabular}{r|lllllllllllllllllll}
     0     & 0   \\
     1     \\
     2     & 4   \\
@@ -61,14 +61,14 @@ Therefore,
     8     & 0   & 0   & 3   & 3   & 4   & 5   & 6   & 6   & 6   & 6   & 6   & 6   & 7   & 8   & 8   & 8   & 8   & 9   & 9  \\
     9     & 0   & 1   & 5   & 5   & 5   & 8   \\
     10    & 0   & 0   & 0 \\
-    \end{tabular}
+\end{tabular}
 \end{table}
 
 
 \subsection{Bar Plot}
 Each observation is repeated as a dot above the corresponding location on a horizontal line with measurement scale.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
 \centering
 \includegraphics{figures/barplot.jpg}
 \caption{A dotplot of the data from Example 1.8}
@@ -165,9 +165,11 @@ You can also use the relative frequency.
   
   $\Rightarrow $  0-10K, 10K-20K, 20K-30K, 30K-40K, 40K-50K,  50K-100K, 100K-200K
 \end{exmp}
+
 For the unequal class, frequency or relative frequency may mislead some people because of a wide range. Therefore, we use density.
-\[ \text{Density} = \frac{\text{relative frequency of the class}}{\text{class width}}
-\]
+
+\[ \text{Density} = \frac{\text{relative frequency of the class}}{\text{class width}}	\]
+
 Use density as height to draw histogram within unequal class.
 \subsubsection{Shape of histogram}
 \begin{itemize}
@@ -191,11 +193,10 @@ Sample mean:
 \[\bar{x}=\frac{\sum_{i=1}^{n} x_i}{n}\]
 
 Sample median:
-\[
-\tilde{x}=\begin{cases}
+\[	\tilde{x}=\begin{cases}
 \frac{n+1}{2}\text{th ordered value}, &\text{if n is odd}\\
 \frac{n}{2}\text{ or }\frac{n+2}{2}\text{th ordered value}. &\text{if n is even}
-\end{cases}\]
+\end{cases}		\]
 
 
 \begin{itemize}
@@ -206,7 +207,6 @@ Sample median:
 
 If you want your mean closer to your sample median. You can use \textbf{truncated mean}.
 
-
 \subsection{Variability}
 \begin{exmp}
 Two dataset
@@ -216,13 +216,9 @@ Two dataset
   \end{itemize}
 \end{exmp}
 
-
-\vspace{4mm}
 Sample Variance: \[S^2=\frac{\sum_{i=1}^{n} (x_i-\bar{x})^2}{n-1}\]
 
 Sample Standard deviation (s.d): $S=\sqrt{S^2}$
-
-\vspace{4mm}
 
 Short-cut formula:
 \[S^2=\frac{{\sum_{i=1}^{n} x_i^2} - n{\bar{x}}^2}{n-1}
@@ -232,26 +228,32 @@ Short-cut formula:
 \sum_{i=i}^{n}(x_i^2+2x_i\bar{x}+{\bar{x}}^2)=
 \sum_{i=i}^{n}x_i^2-2\bar{x}\sum_{i=1}^{n}x_i+
 \sum_{i=i}^{n}\bar{x}^2 \]
-Since \[\bar{x}=\frac{\sum_{i=1}^{n} x_i}{n}, \qquad n\bar{x}=\sum_{i=1}^{n} x_i \]
+
+Since 
+
+\[\bar{x}=\frac{\sum_{i=1}^{n} x_i}{n}, \qquad n\bar{x}=\sum_{i=1}^{n} x_i \]
+
 Substitute this, and the proof is done. 
 \end{proof}
 
 \begin{prop}
-  Let $x_1 \dots x_n$ be a sample, and $c$ be any nonzero constant.
-  \begin{enumerate}
-    \item Let $y_1=x_1+c,y_2=x_2+c,\dots,y_n=x_n+c$, then
-    \[\bar{y}=\bar{x}+c, S_y^2=S_x^2\]
-    \item Let $z_1=cx_1,z_2=cx_2,\dots,z_n=cx_n$, then
-    \[\bar{z}=c \bar{x}, S_z^2=c^2S_z^2\]
-    \end{enumerate}
+Let $x_1 \dots x_n$ be a sample, and $c$ be any nonzero constant.
+
+\begin{enumerate}
+\item Let $y_1=x_1+c,y_2=x_2+c,\dots,y_n=x_n+c$, then
+\[\bar{y}=\bar{x}+c, S_y^2=S_x^2\]
+\item Let $z_1=cx_1,z_2=cx_2,\dots,z_n=cx_n$, then
+\[\bar{z}=c \bar{x}, S_z^2=c^2S_z^2\]
+\end{enumerate}
 \end{prop}
 
 \subsection{Boxplot}
 The simplest boxplot is based on the following five-number summary:
 
 smallest $x_i$, \quad lower fourth,\quad median, \quad upper fourth, \quad largest $x_i$
+
 \begin{defn}
-  Any observation farther than 1.5$f_s$ from the closest fourth is an \textbf{outlier}. An outlier is \textbf{extreme} if it is more than 3$f_s$ from the nearest fourth, and it is \textbf{mild} otherwise.
+Any observation farther than 1.5$f_s$ from the closest fourth is an \textbf{outlier}. An outlier is \textbf{extreme} if it is more than 3$f_s$ from the nearest fourth, and it is \textbf{mild} otherwise.
 \end{defn}
 
 Each mild outlier is represented by a closed circle and each extreme outlier by an open circle.

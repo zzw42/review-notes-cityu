@@ -3,14 +3,9 @@
 % v 0.9 RC
 \documentclass[UTF8,a4paper,10pt,openany]{book}
 \usepackage{amsmath,amssymb,amsthm}
-% \usepackage{euler} % ams euler font
+
 \usepackage{hyperref}
-\hypersetup{
- colorlinks,
- linkcolor=blue
- }
-%\usepackage{indentfirst}
-%\usepackage[utf8]{inputenc} 
+\hypersetup{colorlinks, linkcolor=blue}
 
 % figures are in the folder ~\figures\   (Windows)
 \usepackage{graphicx}
@@ -33,7 +28,7 @@
 \newtheorem{theo}[thm]{Theorem}
 \newtheorem{axio}[thm]{Axiom}
 \newtheorem{prop}[thm]{Proposition}
-% not quite sure about how this works and I would not change it now - commented by WEI
+% not quite sure about how this works and I would not change it now
 
 \newenvironment{solution}
   {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
@@ -43,6 +38,10 @@
 \usepackage{mathtools}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%\usepackage{indentfirst}
+%\usepackage[utf8]{inputenc} 
+%\usepackage{euler} % ams euler font
 
 
 % The document starts here
@@ -126,10 +125,6 @@ You should have received a copy of the GNU General Public License along with thi
 All \LaTeX{} (\texttt{.tex}) files of this document can be accessed from:
 
 \url{https://github.com/zzw42/review-notes-cityu}
-
-\newpage
-
-
 
 % content, figures 
 \tableofcontents
