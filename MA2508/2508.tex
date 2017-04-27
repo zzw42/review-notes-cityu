@@ -43,9 +43,11 @@
 % the document starts here
 
 \begin{document}
+\frontmatter
 \maketitle
 \tableofcontents
 
+\mainmatter
 \chapter{Vector and the Geometry of Space}
 \section{Three-Dimensional Coordinate Systems}
 \begin{enumerate}
@@ -930,24 +932,24 @@ Generalization:
 As we can use the Jacobian Matrix to generalize the gradient of the scalar field. The Jacobian can also be thought of as describing the amount of "stretching", "rotating" or "transforming" that a transformation imposes locally. \\
 Therefore, in the polar coordinates case:
 \begin{align*}
-dxdy& =\det\mathcal{J}(r,\theta)drd\theta\\
+dxdy & =\det\mathcal{J}(r,\theta)\,dr \,d\theta\\
 &=\det
 \begin{vmatrix}
 \dfrac{\partial x}{\partial r} & \dfrac{\partial x}{\partial \theta} \\
 \dfrac{\partial y}{\partial r} & \dfrac{\partial y}{\partial \theta} \\
-\end{vmatrix}drd\theta\\
+\end{vmatrix} \,dr \,d\theta\\
 &=\det
 \begin{vmatrix}
 \cos \theta & -r\sin \theta \\
 \sin \theta & r\cos \theta \\
 \end{vmatrix}drd\theta\\
-&=rdrd\theta
+&=r \,dr \,d\theta
 \end{align*}
 Thus we obtain:
 $$dxdy=rdrd\theta$$
 Therefore, after substitute into the definition of the double integral in the polar coordinates:
 \begin{itemize}
-\item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\alpha_{1}}^{\alpha_{2}}\int_{\rho_{1}}^{\rho_{2}}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rdrd\theta$
+\item $\displaystyle\iint_{\mathcal{R}}f(x,y)\,dA=\int_{\alpha_{1}}^{\alpha_{2}}\int_{\rho_{1}}^{\rho_{2}}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})r \,dr \,d\theta$
 \item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\alpha_{1}}^{\alpha_{2}}\int_{h_{1}(\theta)}^{h_{2}(\theta)}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rdrd\theta$
 \item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\rho_{1}}^{\rho_{2}}\int_{g_{1}(r)}^{g_{1}(r)}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rd\theta dr$
 \end{itemize}
