@@ -1,5 +1,5 @@
 % chapter 3
-% Last edit: 2017-4-24
+% Last edit: 2017-4-28
 \chapter{Discrete Random Variables}
 \section{Random Variable}
 \begin{defn}
@@ -378,10 +378,9 @@ E(X)&=\sum_{k=0}^{n} k\binom nk p^k (1-p)^{n-k} =\sum_{k=0}^{n} k \frac{n!}{k!(n
 \end{prop}
 
 \begin{exmp}
-Six cola drinkers. two brand c.p.
-X= \# of cola C they choose
+Six cola drinkers. Two brand: c.p. $X$ = \# of cola C they choose.
 \[P(C)=\frac{1}{2} \qquad P(P)=\frac{1}{2}\]
-\[X \sim Bin(6,\frac{1}{2})\]
+\[X \sim Bin \left(6,\frac{1}{2} \right)\]
 \begin{align*}
 &P(X=3)=\binom 63 \left(\frac{1}{2}\right)^3	\left(1-\frac{1}{2}\right)^{6-3}=0.313 \\
 &P(X \leq 1)=P(X=0)+P(X=1)=0.109 \\
@@ -402,7 +401,7 @@ X= \# of cola C they choose
 \begin{exmp}
 Same step. without replacement.
 \[X= \text{\# of red balls out of 3}\]
-\[X \quad  not \sim  Bin\left(3,\frac{3}{5}\right)\]
+\[X \quad  \not\sim  Bin\left(3,\frac{3}{5}\right)\]
 \begin{align*}
 P(X=2)=& \frac{\text{\# of outcome in } E}{\text{\# of outcomes in } \mathcal{S}} \\
 =& \frac{\binom 32 \binom 21}{\binom 53} =\frac{3}{5}
