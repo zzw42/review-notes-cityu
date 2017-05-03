@@ -1,7 +1,7 @@
 % chapter 9
-% Last edit: 2017-4-24
+% Last edit: 2017-5-3
 \chapter{Inferences Based on Two Samples}
-\section{z Tests and Confidence Intervals for a Difference Between Two Population Means}
+\section{$z$ Tests and Confidence Intervals for a Difference Between Two Population Means}
 
 \[X_1,\dots,X_n \overset{iid}{\sim} N(\mu_1,\sigma_1^2), \sigma_1 \text{ known}.\]
 \[Y_1,\dots,Y_n \overset{iid}{\sim} N(\mu_2,\sigma_2^2), \sigma_2 \text{ known}.\]
@@ -23,7 +23,7 @@ $H_0:\mu_1-\mu_2=\Delta_0$
 \end{enumerate}
 
 \begin{exmp}
-(See Example 9.1 in textbook)
+(Example 9.1 in textbook)
 \end{exmp}
 
 \subsection{Large-Sample Tests}
@@ -34,7 +34,7 @@ Case II large sample, $\sigma^2$ unknown
 $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 \[ \bar{X}-\bar{Y} \pm z_{\alpha/2} \sqrt{\frac{S_1^2}{n}+\frac{S_2^2}{n}} \]
 
-\section{The Two-Sample t Test and Confidence Interval}
+\section{The Two-Sample $t$ Test and Confidence Interval}
 Case III
 
 (a) 
@@ -57,10 +57,10 @@ $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 \end{enumerate}
 
 \begin{exmp}
-(See Example 9.6 in textbook)
+(Example 9.6 in textbook)
 \end{exmp}
 
-\subsection{Pooled t Procedures}
+\subsection{Pooled $t$ Procedures}
 (b) Small sample size, $\sigma_1^2=\sigma_2^2$
 
 \[T=\frac{\bar{X}-\bar{Y}-(\mu_1-\mu_2)}{\sqrt{\frac{S_p^2}{n}+\frac{S_p^2}{n}}}\]
@@ -72,8 +72,8 @@ $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 \[S_1^2=\frac{1}{n-1} \sum_{i=1}^n (X_i-\bar{X})^2 \qquad S_2^2=\frac{1}{m-1} \sum_{i=1}^m (Y_i-\bar{Y})^2 \]
 
 \begin{exmp}
-Body weight gained on animal treatment: given 1mg/peller dose of soft steroid control: placebo.
-
+Body weight gained on animal treatment: given 1 mg/piller dose of soft steroid control: placebo.
+% what is the word 
 \begin{center}
 \begin{tabular}{l|c|c|c}
 \hline
@@ -84,8 +84,7 @@ placebo & $n=8$ & $\bar{y}=40.5$ & $s_2=2.5$ \\
 \end{tabular}
 \end{center}
 
-
-Does the data suggest the average weight gain in the control group exceeds that in the treatment group by more than 5g? $\alpha$
+Does the data suggest the average weight gain in the control group exceeds that in the treatment group by more than 5 g? $\alpha = 0.01$
 
 \begin{enumerate}
 \item $H_0:\mu_1-\mu_2 = -5 \qquad H_a:\mu_1-\mu_2 < -5$
@@ -129,10 +128,9 @@ $D=X-Y$ & $D_1=X_1-Y_1$ & $D_2=X_2-Y_2$ & \dots & $D_n=X_n-Y_n$ \\
 \subsection{The Paired t Test}
 
 \begin{exmp}
-(See Exercise 8.39 in textbook) reports the accompanying data on amount of milk ingested by each of 14 randomly selected infants.
+(Exercise 8.39 in textbook) reports the accompanying data on amount of milk ingested by each of 14 randomly selected infants.
 
 Does it appear that the true average difference between intake values measured by the two methods is something other than zero? Determine the $P$-value of the test, and use it to reach a conclusion at significance level 0.05.
-
 
 \end{exmp}
 
@@ -183,6 +181,7 @@ Sentenced to prison & $x=101$ & $y=56$ \\ \hline
 \[Z^* \in RR \Rightarrow \text{Reject }H_0\]
 
 Conclusion:
+% conclusion is needed
 \end{exmp}
 
 \section{Challenge Question 4}
@@ -236,5 +235,6 @@ Bootstrap: if $f(x)$ is "known"
 \tilde{X_n^{(B)}} \leftarrow & X_1^{(B)} \dots X_n^{(B)} \overset{iid}{\sim} f(x)  
 \end{align*}
 \[\tilde{f(x)}=\frac{1}{n} \qquad \text{if } x=x_i\]
+
 Sample $n$ values from $\{x_1,\dots,x_n\}$ with replacement.
 \end{proof}

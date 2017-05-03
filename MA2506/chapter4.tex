@@ -1,37 +1,40 @@
 % chapter 4
-% Last edit: 2017-4-24
+% Last edit: 2017-5-3
 \chapter{Continuous Random Variables and Probability Distributions}
 \section{Probability Density Functions}
 \begin{exmp}
 Study the ecology of a lake, measure the depth of the lake. Denote $L_{max}$ as the largest depth of the lake.
 \[X = \text{depth of the lake}\]
-The support of $X$ is $(0, L_{max}]$ \\
+The support of $X$ is $(0, L_{max}]$ 
+
 This is a continues r.v., but it shares some properties of a discrete r.v.
 \end{exmp}
 
 \begin{defn}
-In general, X is supported on $[a,b]$ . There is a $f(x)$ satisfying
+In general, $X$ is supported on $[a,b]$ . There is a $f(x)$ satisfying
 \begin{enumerate}
 \item $f(x) \geq 0, \qquad \forall x \in [a,b]$
 \item $\int _a^b f(x) dx=1$
 \item $P(c<x<d)=\int _c^d f(x)dx$
 \end{enumerate}
-Such an $f$ is called the \textbf{probability distribution function(p.d.f)} of $X$
+
+Such an $f(x)$ is called the \textbf{probability distribution function(p.d.f)} of $X$
 \[f(x)=\lim_{h \to 0} \frac{P(x \leq X \leq x+h)}{h} \]
 \end{defn}
 
 \begin{exmp}
-X=waiting time of a MTR at Kowloon Tong Station is 
+$X$=waiting time of a MTR at Kowloon Tong Station is 
 \[f(x)=\begin{cases}
 \frac{1}{15}, 	&0 \leq x \leq 15\\
 0. &\text{otherwise}
 \end{cases}\]
+
 Check
 \[\int_0^{15} f(x)dx=\int_0^{15} \frac{1}{15}dx=1\]
 \[P(5\leq X \leq 10)=\int_5^{10} \frac{1}{15}dx=\frac{1}{3}\]
+
 "uniform r.v"
 \end{exmp}
-
 
 \section{Cumulative Distribution Functions and Expected Values}
 \subsection{The Cumulative Distribution Function}
@@ -54,7 +57,7 @@ Let $X$ be a constant r.v. with c.d.f $f(x)$. Its \textbf{c.d.f.} is
 \end{exmp}
 
 \begin{exmp}
-$X \sim exp(\lambda)$,"exponential r.v"
+$X \sim exp(\lambda)$, "exponential r.v".
 \[f(x)=\begin{cases}
 \lambda e^{-\lambda x}, 	& x >0\\
 0. &\text{otherwise}
@@ -63,6 +66,7 @@ $X \sim exp(\lambda)$,"exponential r.v"
 0,		&\text{if } x < 0 \\
 1-e^{-\lambda x}. 		&\text{if } x \geq 0
 \end{cases}\]
+
 If $x>0$,
 \begin{align*}
 \int_{-\infty}^{x}f(y)dy= & \int_{0}^{x}\lambda e^{-\lambda y}dy=\int_{0}^{x}e^{-\lambda y}d(\lambda y)\\
@@ -71,13 +75,12 @@ If $x>0$,
 \end{exmp}
 
 \begin{prop}
-If X is continuous. For any constant $c$,
+If $X$ is continuous. For any constant $c$,
 \[P(X=c)=0\]
+
 Furthermore, for any $a,b$, we have
 \[P(a \leq X \leq b)=P(a <X\leq b)=P(a \leq X< b)=P(a <X< b)\]
 \end{prop}
-
-
 
 \subsection{Using $F(x)$ to Compute Probabilities}
 Let $X$ be a constant r.v. with p.d.f $f(x)$ and c.d.f. $F(x)$,Then
@@ -89,7 +92,7 @@ Let $X$ be a constant r.v. with p.d.f $f(x)$ and c.d.f. $F(x)$,Then
 \end{align*}
 
 \begin{exmp}
-X has a p.d.f 
+$X$ has a p.d.f 
 \[f(x)=\begin{cases}
 \frac{1}{8}+\frac{3}{8}x, &\text{if } 0\leq x\leq 2\\
 0&\text{otherwise}\\
@@ -122,6 +125,7 @@ John's exam score is at the 85th percentile of the class, meaning that John's sc
 \begin{defn}
 Let $0 \leq p \leq 1$, the $(100p)$th percentile of the distribution of $X$, denoted by $\eta_p$ is defined as 
 \[p=F(\eta_p)\]
+
 Set up the equation $F(\eta_p)=p$, solve for $\eta_p$.
 \end{defn}
 
@@ -135,15 +139,19 @@ $X$ has $f(x)=\begin{cases}
 2x-x^2, &\text{if } 0\leq x\leq 1\\
 1.		&\text{if  }x>1\\
 \end{cases}\]
+
 To get 90\% percentile
 \[F(\eta_{0.9})=0.9\]
+
 Solve the equation, $\eta_{0.9}=1 \pm \sqrt{0.1}$. Since $0 \leq \eta_{0.9} \leq 1$
 \[\eta_{0.9}=1 - \sqrt{0.1}\]
+
 To get 50th percentile, $F(\eta_{0.5})=0.5$
 \[\eta_{0.5}=1-\frac{\sqrt{2}}{2}\]
 \end{exmp}
 
 \textbf{Median} is the 50th percentile of the distribution of $X$.
+
 \subsection{Mean and Variance}
 \begin{defn}
 $X$ is continues with $f(x)$ and $F(x)$. The expected or mean value of a continuous rv $X$ with pdf $f(x)$ is
@@ -161,6 +169,7 @@ $X$ is continues with $f(x)$ and $F(x)$. The expected or mean value of a continu
 \begin{prop}
 $X$ is continues with $f(x)$, for any $h(x)$
 \[E(h(X))=\int_{-\infty}^{\infty}h(x)f(x)dx\]
+
 Particularly,
 \[h(x)=ax+b \qquad E(aX+b)=aE(X)+b\]
 \end{prop}
@@ -176,7 +185,6 @@ $X \sim uniform(0,1)$
 \[E(2X+3)=4 \qquad E(X)=\frac{1}{2}\]
 \end{exmp}
 
-
 \begin{defn}
 The \textbf{variance} of a continuous random variable $X$ with pdf $f(x)$ and mean value $\mu$ is
 \[Var(X)=\int_{-\infty}^{\infty} (x-\mu)^2f(x)dx=E[(X-\mu)^2]\]
@@ -189,14 +197,15 @@ The \textbf{variance} of a continuous random variable $X$ with pdf $f(x)$ and me
 \section{The Normal Distribution}
 X has p.d.f 
 \[f(x)=\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}   \qquad -\infty< x< \infty \]
-Then X has a normal distribution, or $X \sim N(\mu,\sigma^2)$
 
+Then X has a normal distribution, or $X \sim N(\mu,\sigma^2)$
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{figures/normal_distribution.png}
 \caption{Bell-shaped curve}
 \end{figure}
+
 Symmetric about $\mu$, $\mu$=shift, $\sigma$=scale, large $\sigma\Rightarrow$large spread out.
  
 \begin{prop}
@@ -251,6 +260,7 @@ For $Z$
 \subsection{$z_{\alpha}$ Notation for $z$ Critical Values}
 $z_{\alpha}$ will denote the value on the $z$ axis for which $\alpha$ of the area under the $z$ curve lies to the right of $z$. 
 \[z_{0.05}=\eta_{0.95}=1.645\]
+
 (lower percentile)
 \subsection{Nonstandard Normal Distributions}
 If $X \sim N(\mu,\sigma^2) $,then
@@ -259,6 +269,7 @@ If $X \sim N(\mu,\sigma^2) $,then
 P(a\leq X\leq b) &= P \left(\frac{a-\mu}{\sigma} \leq \frac{X-\mu}{\sigma} \leq \frac{b-\mu}{\sigma} \right)  \\
 & = P \left( \frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma} \right) =\Phi \left(\frac{b-\mu}{\sigma} \right)- \Phi \left(\frac{a-\mu}{\sigma} \right)
 \end{align*}
+
 Similarly,
 \begin{align*}
 P(X\leq a) &= P \left(\frac{X-\mu}{\sigma} \leq \frac{a-\mu}{\sigma} \right)  \\
@@ -295,6 +306,7 @@ If $X\sim N(\mu,\sigma^2)$ c.d.f $F(x)$, (100$p$)th percentile of $X$ is the roo
 P=F(\eta_p)=&P(X \leq \eta_p)\\ 
 =&P\left(\frac{X-\mu}{\sigma} \leq \frac{\eta_p-\mu}{\sigma} \right)=\Phi\left( \frac{\eta_p-\mu}{\sigma} \right)
 \end{align*}
+
 So,$\frac{\eta_p-\mu}{\sigma}$ is the $(100p)$th percentile of $N(0,1)$. Therefore, $(100p)$th percentile of $N(\mu,\sigma^2)$=$\mu+\sigma\times[100p\text{th percentile of }N(0,1)]$
 
 \begin{exmp}
@@ -305,7 +317,6 @@ $X \sim N(64,0.78^2)$. Then 99.5 percentile of $X$ is $64+0.78\times 2.58=66$, w
 If $X \sim Binom(n,p)$. When $n$ is large, and $p$ is not too small or too large, s.t. $np \geq 10, n(1-p) \geq 10$. Then $X \sim N(np,np(1-p))$
 \[p(x)=\binom nx p^x (1-p)^{n-x} \qquad x=0,1,\dots,n\]
 
-
 $X \sim Binom(n,p)$\footnote{$X \sim N(np,np(1-p))$, to avoid significant deviation},
 \begin{align*}
 P(a \leq X \leq b)&=P(a-0.5 \leq X \leq b+0.5)  \\
@@ -314,7 +325,7 @@ P(X \geq b) &= P(X \geq b-0.5)
 \end{align*}
 
 \begin{exmp}
-25\% of all drivers in HK don't have insurance. Randomly select 50 drivers. $X=$ \# of drivers uninsured.
+25\% of all drivers in Hong Kong don't have insurance. Randomly select 50 drivers. $X=$ \# of drivers uninsured.
 
 (1)$P(X \leq 10)$ \quad (2)$P(5 \leq X \leq 15)$ \\
 First $X\sim Binom(50,0.25) \dot{\sim} N(12.5,12.5\times1.75)$
@@ -347,11 +358,12 @@ $\Gamma(n)=(n-1)! \qquad n=1,2,\dots$
 
 \subsection{The Gamma Distribution}
 \begin{defn}
-X follows a Gamma distribution. $X \sim Gamma(\alpha,\beta)$
+$X$ follows a Gamma distribution. $X \sim Gamma(\alpha,\beta)$.
 \[f(x)=\begin{cases}
 \frac{1}{\Gamma(\alpha)} \frac{1}{\beta^{\alpha}} x^{\alpha-1} e^{-x/\beta}, & \text{if} \quad x\geq 0\\
 0. & \text{if} \quad x < 0
 \end{cases}\]
+
 for $\alpha>0, \beta>0$
 \end{defn}
 
@@ -382,6 +394,7 @@ E(X)&=\int_{0}^{\infty}x \frac{1}{\Gamma(\alpha)} \frac{1}{\beta^{\alpha}} x^{\a
 \begin{exmp}
 Suppose that the reaction time $X$ of a randomly selected individual to a certain stimulus has a standard Gamma distribution with $\alpha=2$.
 \[P(3 \leq X \leq 5)=F(5;2)-F(3;2)\]
+
 Here $F(x;\alpha)$ is the c.d.f of $\Gamma(\alpha,1)$
 \[Table A.4=0.960-0.801=0.159\]
 \end{exmp}
@@ -419,13 +432,13 @@ X=response time at some computer terminal. $X \sim exp(\lambda)$. Suppose that t
 \[P(X\leq 10)=\int_0^{10} \frac{1}{5} e^{-x/5} dx=\left. e^{-x/5}\right|_{0}^{10}=1-e^{-2}. \]
 \end{exmp}
 
-
 In general, if $X\sim exp(\lambda)$,
 \[F(x)=\int_0^{x} \lambda e^{-\lambda y} dy=\left. e^{-\lambda y}\right|_{0}^{x}=1-e^{-\lambda x}\]
 
 \subsubsection{Two applications}
 \textbf{(A)} Suppose \# of customers coming in any wait time $\sim Possion(\alpha)$, and \# of customers is non-overlapping intervals are independent. Then
 \[X= \text{the elapsed time between the successive customers coming in}\sim exp(\alpha)\]
+
 Why? Let $X_1$=waiting time before the 1st customer coming in. Want to show that $X_1 \sim exp()\lambda$, just need to find $f_{X_1}(x)$. Then we just need to find $F_{X_1}(x)$, as $f_{X_1}(x)=F'_{X_1}(x)$.
 \begin{align*}
 F_{X_1}(x)&= P(X_1\leq x)=P(\text{at least 1 customer in }(0,x)) \\

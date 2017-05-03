@@ -1,5 +1,5 @@
 % chapter 2
-% Last edit: 2017-4-28
+% Last edit: 2017-5-3
 \chapter{Probability}
 \section{Sample Spaces and Events}
 
@@ -114,8 +114,7 @@ Probability: Given a sample space $\mathcal{S}$, for any event $A\in \mathcal{S}
 
 \begin{axio}
 If $A_1, A_2,A_3,\dots$is an infinite collection of disjoint events, then 
-\[  P(A_1 \cup A_2\cup A_3 \cup \dots)=\sum_{i=1}^{\infty}P(A_i)
-\]
+\[  P(A_1 \cup A_2\cup A_3 \cup \dots)=\sum_{i=1}^{\infty}P(A_i)	\]
 \end{axio}
 
 \begin{prop}
@@ -131,8 +130,7 @@ Let $E_1=\varnothing,E_2=\varnothing,\dots E_n=\varnothing$
 \begin{prop}
 If $A$ and $B$ are disjoint, $P(A \cup B)=P(A)+P(B)$.
 \begin{proof}
-Let $E_1=A,E_2=B,E_3=\varnothing \dots E_n=\varnothing$
-Then, we can prove it by Axiom 3.
+Let $E_1=A,E_2=B,E_3=\varnothing \dots E_n=\varnothing$. Then, we can prove it by Axiom 3.
 \end{proof}
 \end{prop}
 
@@ -140,12 +138,14 @@ Then, we can prove it by Axiom 3.
 Flip a coin, $\mathcal{S}=\{H,T\}$
 \[P(H)=0.89 \qquad P(T)=0.1\]
 \[P(\mathcal{S})=P(H \cup T)=P(H)+P(T)=\boxed{0.99} \neq 1		\]
+
 not a probability.
 \end{exmp}
 
 \begin{exmp}
 Batteries come off an assembly line are tested one by one. The test will stop until a battery fails.
 \[F:\text{faliure} \qquad S=\text{success}\]
+
 Suppose $P(S)=0.99 \qquad P(F)=0.01$
 \[\mathcal{S}=\{ F,SF,SSF,SSSF,\dots		\}\]
 \[E_1=\{F\},E_2=\{SF\},E_3=\{SSF\},\dots		\]
@@ -189,10 +189,12 @@ Components connected in a series, each component has 0.3 probability of fail, an
 Let $E = B \cap A' $, A and E are disjoint
   \[A \cup B = A \cup E\]
   \[P(A\cup B)=P(A \cup E)=P(A)+P(E)  \qquad (*)\]
+
 Let $F= B\cap A$
   \[E \cup F =B \qquad E \cap F =\varnothing\]
   \[ P(B) = P(E \cup F)=P(E) + P(F)=P(E)+P(A\cap B)  \]
   \[P(E)= P(B)- P(A \cap B) \]
+
 Plug in (*),\[  P(A \cup B)= P(A) +P(B) -P(A \cap B)  \]
 \end{proof}
 \end{prop}
@@ -231,8 +233,10 @@ C: Cable \qquad I: Internet \qquad T:Telephone.\footnote{Acutually a mistake $P(
 \end{exmp}
 
 \subsection{Determining Probabilities Systematically}
-Any event $A$ is a union of simple events, i.e. with only one outcome.
-Then\[P(A)=\sum_{E_i \in A}P(E_i)\]
+Any event $A$ is a union of simple events, i.e. with only one outcome. Then
+
+\[P(A)=\sum_{E_i \in A}P(E_i)\]
+
 and we just need to determine $P(E_i)$.
 
 \begin{exmp}
@@ -241,7 +245,9 @@ Toss a dice, $\mathcal{S}=\{1,2,3,4,5,6\}$
 \[A=\{\text{the spot}< 4 \}=\{1,2,3\}\]
 \[E_i=\{i\};\qquad i=1,2,3,4,5,6\]
 \[A=E_1 \cup E_2 \cup E_3 \qquad  P(A)=P(E_1)+P(E_2)+P(E_3)\]
-Suppose \[P(1)=P(2)=P(6)=\frac{1}{9}\]
+
+Suppose 
+\[P(1)=P(2)=P(6)=\frac{1}{9}\]
 \[P(3)=P(4)=P(5)=\frac{2}{9}\]
 \[P(A)=P(1)+P(2)+P(3)=\frac{4}{9}\]
 \end{exmp}
@@ -249,7 +255,9 @@ Suppose \[P(1)=P(2)=P(6)=\frac{1}{9}\]
 \subsection{Equally Likely Outcomes}
 Suppose $\mathcal{S}$ has $N$ outcomes, $E_1,\dots E_N$, they are equally likely to occur, then
 \[P(E_i)=\frac{1}{N} \qquad i=1,2,\dots\]
-Then \[P(A)=\frac{\text{\# of outcome in A}}{N}\]
+
+Then 
+\[P(A)=\frac{\text{\# of outcome in A}}{N}\]
 
 \begin{exmp}
 Toss a pair of fair dices. What is the chance that the sum of spots is 3?
@@ -288,13 +296,13 @@ In general: suppose a set consists of $K$ ordered elements (K-tuples), 1st eleme
 \end{exmp}
 
 \begin{defn}
-The number of \textbf{permutation} of size $k$n of $n$ objects is denoted as $P_{k,n}=\frac{n!}{(n-k)!}$
+The number of \textbf{permutation} of size $k$n of $n$ objects is denoted as $P_{k,n}=\frac{n!}{(n-k)!}$.
 
 In specific, $P_{n,n}=n!\qquad (0!=1)$
 \end{defn}
 
 \begin{defn}
-Given $n$ distinct objects,any disordered subject of size $k$ is called a \textbf{combination} of size $k$. The number of combination of size $k$ of $n$ objects, is denoted as $C_{k,n}$ or $\binom nk=\frac{n!}{k!(n-k)!}$
+Given $n$ distinct objects,any disordered subject of size $k$ is called a \textbf{combination} of size $k$. The number of combination of size $k$ of $n$ objects, is denoted as $C_{k,n}$ or $\binom nk=\frac{n!}{k!(n-k)!}$.
 \end{defn}
 
 
@@ -313,7 +321,8 @@ Given $n$ distinct objects,any disordered subject of size $k$ is called a \textb
 \end{prop}
 
 \begin{exmp}
-"Birthday Paradox" \\
+"Birthday Paradox" 
+
 365 different dates, $n$ students.
 \begin{align*}
 &P\{\text{at least two students share the same birthday}\}\\
@@ -390,8 +399,7 @@ Axioms of probability
 \item  $P(\mathcal{S})=1$
 \item
 If $A_1, A_2,A_3,\dots$is an infinite collection of disjoint events, then 
-\[  P(A_1 \cup A_2\cup A_3 \cup \dots\cup A_n)=\sum_{i=1}^{n}P(A_i)
-\]
+\[  P(A_1 \cup A_2\cup A_3 \cup \dots\cup A_n)=\sum_{i=1}^{n}P(A_i)	\]
 \end{enumerate}
 
 Similarly,
@@ -422,12 +430,14 @@ Randomly select one reader
 
 (1)
 \[P(A|B)=\frac{P(A \cap B)}{P(B)}=\boxed{\frac{8}{23}}\]
+
 (2)
 \begin{align*}
 P(A|B\cup C)&=\frac{P(A\cap (B\cup C) )}{P(B\cup C)}\\
 &=\frac{P\big( (A\cap B)\cup(A \cap C) \big)}{P(B)+P(C)-P(B \cap C)}\\
 &=\frac{P(A\cap B)+P(A\cap C)-P(A\cap B\cap C)}{P(B)+P(C)-P(B \cap C)}
 \end{align*}
+
 (3)
 
 $P(A|A \cup B \cup C)$: What is the probability that the reader read "Art" Column given that  he/she reads at least one column?
@@ -436,12 +446,12 @@ P(A|A \cup B \cup C)&=\frac{P(A \cap (A \cup B \cup C) )}{P(A \cup B \cup C)}=\f
 &=\frac{P(A)}{P(A)+P(B)+P(C)-P(A \cap B)-P(B \cap C)-P(C \cap A)+P(A \cap B \cap C)}\\
 &=\boxed{\frac{14}{49}}
 \end{align*}
+
 (4)
 \begin{align*}
 P(A \cup B |C)=&\frac{P((A \cup B)\cap C)}{P(C)}\\
 =&\frac{P(A \cap C) +P(B \cap C)-P(A \cap B \cap C)}{P(C)}=\boxed{\frac{17}{37}}
 \end{align*}
-
 \end{exmp}
 
 \subsection{The Multiplication Rule for $P(A\cap B)$}
@@ -490,19 +500,17 @@ Introduce $D=\{\text{1st is either 3,4,\dots K of club}\}$
 \end{theo}
 
 \begin{exmp}
-  A store sells 3 brands of game consoles
+A store sells 3 brands of game consoles
 
-  \vspace{4mm}
 \begin{center}
-  \begin{tabular}{l|ccc}
-    \hline
-    Brand & 1 & 2 & 3 \\
-    \hline
-    Proportion & 50\% & 30\% & 20\%\\
-    \hline
-  \end{tabular}  
+ \begin{tabular}{l|ccc}
+ \hline
+ Brand & 1 & 2 & 3 \\
+ \hline
+ Proportion & 50\% & 30\% & 20\%\\
+ \hline
+ \end{tabular}  
 \end{center}
-
 
 A one year warranty is offered, known 
 
@@ -519,8 +527,11 @@ A one year warranty is offered, known
   \[B=\{\text{needs repaire under warranty}\} \]
   \[P(A_1)=0.5 \qquad P(A_2)=0.3 \qquad P(A_3)=0.2\]
   \[P(B|A_1)=0.25 \qquad P(B|A_2)=0.2 \qquad P(B|A_3)=0.1\]
+  
   Q1:\[P(B'|A_1)=1-P(B|A_1)=0.75\]
+
   Q2:\[P(B)=P(A_1)P(B|A_1)+P(A_2)P(B|A_2)+P(A_3)P(B|A_3)=0.205\]
+
   Q3:\begin{align*}
   &P(A_1|B)=\frac{P(A_1 \cap B)}{P(B)}=\frac{P(A_1)P(B|A_1)}{P(B)}=0.61\\
   &P(A_2|B)=0.29 \\
@@ -547,18 +558,22 @@ Let
 \[	A'=\{\text{the individual does not have the disease} \}		\]
 \[	B=\{\text{that positive} \}		\]
 \[	P(A)=\frac{1}{1000} \qquad P(B|A)=0.99 \qquad P(B|A')=0.20	\]
+
 Question:
 \[	P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{P(A)P(B|A)}{P(A)P(B|A)+P(A')P(B|A')}		\]
-because A and $A'$ are portions of $\mathcal{S}$
+
+Because $A$ and $A'$ are portions of $\mathcal{S}$
 \[	=\frac{0.001\times 0.99}{0.001\times 0.99+ 0.999\times 0.2}=0.493\%		\]
 \end{exmp}
 \section{Independence}
 \begin{defn}
-  Two events A and B. If A and B are \textbf{independent}, then
-  \[P(A\cap B)=P(A)P(B) \]
-  Note that $P(A \cap B)=P(A)P(B|A)$ apply for any condition.
-  \[  P(B)=P(B|A) \]
-  event A has nothing to do with event B.
+Two events A and B. If A and B are \textbf{independent}, then
+\[P(A\cap B)=P(A)P(B) \]
+
+Note that $P(A \cap B)=P(A)P(B|A)$ apply for any condition.
+\[  P(B)=P(B|A) \]
+
+event $A$ has nothing to do with event B.
 \end{defn}
 
 \begin{exmp}
@@ -567,11 +582,12 @@ because A and $A'$ are portions of $\mathcal{S}$
   \[  P(A)=\frac{3}{6}=\frac{1}{2} \]
   \[ P(A|B)=\frac{P(A\cap B)}{P(B)}=\frac{1/6}{3/6}=\frac{1}{3} \]
   \[ P(A|C)=\frac{P(A\cap C)}{P(C)}=\frac{2/6}{4/6}=\frac{1}{2} \]
+
 So $A$ and $C$ are independent. $A \not\!\perp\!\!\!\perp B$
 \end{exmp}
 
 \begin{prop}
-if A and B are independent
+if $A$ and $B$ are independent
 \begin{itemize}
   \item $A'$ and $B'$ are independent
   \item $A'$ and $B$ are independent
@@ -582,26 +598,28 @@ if A and B are independent
 \begin{exmp}
   Toss a fair coin repeatedly until the first H occurs.
   \[A=\{\text{at least 5 tosses result in the first H}\}\]
-  \[P(A)= \quad ?\]	 
-   Assume the tossing are independent.
-  \[A=\{TTTTH\}\cup	\{TTTTTH\} \cup \dots	\]
-  \begin{align*}
-  P(A)&=P(\{TTTTH\})+\dots =(P(T))^4 P(H)+(P(T))^5 P(H)\\
-  &=\left(\frac{1}{2}\right)^5+\left(\frac{1}{2}\right)^6+\dots=\frac{1}{16}
-  \end{align*}
-
+  \[P(A)= \quad ?\]
+	 
+Assume the tossing are independent.
+\[A=\{TTTTH\}\cup	\{TTTTTH\} \cup \dots	\]
+\begin{align*}
+P(A)&=P(\{TTTTH\})+\dots =(P(T))^4 P(H)+(P(T))^5 P(H)\\
+&=\left(\frac{1}{2}\right)^5+\left(\frac{1}{2}\right)^6+\dots=\frac{1}{16}
+\end{align*}
 \end{exmp}
 
 \subsection{Independence of More Than Two Events}
 \begin{defn}
 $A_1,A_2,\dots A_k$ are events. If for any indices $i,\dots, i_k$
 \[P(A_1 \cap A_2 \cap \dots A_k)=P(A_1)P(A_2)\dots P(A_k)\]
+
 Then $A_1,A_2,\dots A_k$ are said to be mutually independent.
 \end{defn}
 
 \begin{exmp}
 Component works with probability 0.9, and they work independently.
 \[P(\text{system works})\]
+
 Let
 \begin{align*}
 &A_i=\{ \text{the }i\text{th component works} \}	\\
@@ -620,15 +638,20 @@ Monty Hall problem.
  \begin{exmp}
  \begin{align*}
    &D=\{\text{David makes a right decision}\}	\\
-   &J=\{\text{Jhon makes a right decision}\}	\\
+   &J=\{\text{John makes a right decision}\}	\\
    &P=\{\text{Peter makes a right decision}\}	
  \end{align*}
+
 David and Peter make decision independently.
   \[  P(D) = 0.7 \qquad P(D|J)=0.9 \qquad P(D'|J')=0.8  \]
   \[  P(J|P)=0.3 \qquad P(J'|P')=0.2 \qquad P(D \cap J\cap P)=0.1 \]
-  Question: \\
-  (1) $P(J)= \quad ?$ \\
-  (2) $P(P)= \quad ?$ \\
+
+  Question: 
+  
+  (1) $P(J)= \quad ?$ 
+  
+  (2) $P(P)= \quad ?$ 
+  
   (3) $P(\text{at least two make right decision})=\quad ?$
 \end{exmp}
 
@@ -645,11 +668,13 @@ David and Peter make decision independently.
 
   (3)
   \[P(\text{at least two make right decision})\]
-Method A
+  
+Method A:
 \begin{align*}
   &=1-P(\text{no more than 1 make right decisions})\\
   &=1-P(D \cap J \cap P')-P(D' \cap J \cap P')-P(D' \cap J' \cap P)-P(D' \cap J' \cap P')
 \end{align*}
-Method B
+
+Method B:
 \[ =P(A \cap B)+P(B \cap C) + P(C \cap A)-2 P(A\cap B \cap C)\]
 \end{solution}
