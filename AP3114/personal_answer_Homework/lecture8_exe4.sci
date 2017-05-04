@@ -1,0 +1,7 @@
+disp('Exercise 4')
+p1 = poly([-10 1 0 5 0 3],'x','coeff')
+p2 = poly([1 0 -1 0 0 1 0 -6],'x','coeff')
+p3 = poly([3 1 -1 0 1],'x','coeff')
+disp(roots(p1))
+disp(roots(p2))
+disp(roots(p3))
