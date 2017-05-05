@@ -1,5 +1,5 @@
 % chapter 9
-% Last edit: 2017-5-3
+% Last edit: 2017-5-4
 \chapter{Inferences Based on Two Samples}
 \section{$z$ Tests and Confidence Intervals for a Difference Between Two Population Means}
 
@@ -51,9 +51,9 @@ $100(1-\alpha)$ CI for $\mu_1-\mu_2$
 
 \[H_0:\mu_1-\mu_2=\Delta_0 \qquad T=\frac{\bar{X}-\bar{Y}-\Delta_0}{\sqrt{\frac{S_1^2}{n}+\frac{S_2^2}{n}}} \sim t(\nu)\]
 \begin{enumerate}
-\item With $H_a: \mu_1-\mu_2>\Delta_0$, $RR:T\geq t_{\alpha,nu}$.
-\item With $H_a: \mu_1-\mu_2<\Delta_0$, $RR:T\leq -t_{\alpha,nu}$.
-\item With $H_a: \mu_1-\mu_2\neq\Delta_0$, $RR:|T|\geq t_{\alpha/2,nu}$.
+\item With $H_a: \mu_1-\mu_2>\Delta_0$, $RR:T\geq t_{\alpha,\nu}$.
+\item With $H_a: \mu_1-\mu_2<\Delta_0$, $RR:T\leq -t_{\alpha,\nu}$.
+\item With $H_a: \mu_1-\mu_2\neq\Delta_0$, $RR:|T|\geq t_{\alpha/2,\nu}$.
 \end{enumerate}
 
 \begin{exmp}
@@ -125,7 +125,7 @@ $D=X-Y$ & $D_1=X_1-Y_1$ & $D_2=X_2-Y_2$ & \dots & $D_n=X_n-Y_n$ \\
 \[T=\frac{\bar{D}-\Delta}{S_D/\sqrt{n}}\]
 \[\bar{D}=\frac{1}{n}\sum_{i=1}^n D_i \qquad  S_D^2=\frac{1}{n-1}\sum_{i=1}^n (D_i-\bar{D})^2\]
 
-\subsection{The Paired t Test}
+\subsection{The Paired $t$ Test}
 
 \begin{exmp}
 (Exercise 8.39 in textbook) reports the accompanying data on amount of milk ingested by each of 14 randomly selected infants.
@@ -224,9 +224,8 @@ Note that $p_n \to\frac{1}{2}, n\to \infty$. By CLT,
 
 Another proof: Bootstrap.
 \begin{proof}
-$X_1,\dots,X_n \overset{iid}{\sim} f(x)$. Distribution of $\tilde{X_n}$
+$X_1,\dots,X_n \overset{iid}{\sim} f(x)$. Distribution of $\tilde{X_n}$. Bootstrap: if $f(x)$ is "known".
 
-Bootstrap: if $f(x)$ is "known"
 \begin{align*}
 \tilde{X_n^{(1)}} \leftarrow & X_1^{(1)} \dots X_n^{(1)} \overset{iid}{\sim} f(x)  \\
 \tilde{X_n^{(2)}} \leftarrow & X_1^{(2)} \dots X_n^{(2)} \overset{iid}{\sim} f(x)  \\

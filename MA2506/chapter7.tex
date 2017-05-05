@@ -1,5 +1,5 @@
 % Chapter 7 
-% Last edit: 2017-4-20
+% Last edit: 2017-5-4
 \chapter{Statistical Intervals Based on a Single Sample}
 \section{Basic Properties of Confidence Intervals}
 $X_1,\dots,X_n \overset{iid}{\sim} f(x;\theta)$, use an interval to "estimate" $\theta$.
@@ -14,7 +14,7 @@ So the chance that $\mu$ is within $\bar{x}\pm \frac{\sigma_0}{\sqrt{n}} $ is 95
 \end{exmp}
 
 \subsection{Interpreting a Confidence Level}
-Get 10000 such random samples independently, then 10000 ?? $\bar{X}$'s. Almost 9500 of such intervals will cover $\mu$.
+Get 10000 such random samples independently, then 10000 different $\bar{X}$'s. Almost 9500 of such intervals will cover $\mu$.
 
 \subsection{Other Levels of Confidence}
 
@@ -118,6 +118,7 @@ For $\theta$, satisfying
 \item is approxiamtely unbiasd
 \item $\sigma_{\hat{\theta}}^2=Var(\hat{\theta})$ is available
 \end{enumerate}
+
 Then
 \[P\left(-z_{\alpha/2} \leq \frac{\hat{\theta}-\theta}{\sigma_{\hat{\theta}}}  \leq  z_{\alpha/2} \right) = 1-\alpha\]
 
@@ -127,9 +128,11 @@ A random sample of $n$ individual is selected from $Bern(p)$. $p=$ success rate.
 \[X_1,\dots,X_n \overset{iid}{\sim} Bern(p)\]
 \[\boxed{Var(X_i)=p(1-p)  \qquad \hat{p}=\bar{X}}\]
 \[Y=\sum_{i=1}^n X_i \sim Bin(n,p)\]
+
 $\hat{p}=\frac{Y}{n}$ is an estimate for $p$. By CLT,
 \[\frac{\sqrt{n}(\hat{p}-p)}{\sqrt{p(1-p)}} \overset{\cdot}{\sim} N(0,1)\]
 \[P\left(-z_{\alpha/2} \leq \frac{\sqrt{n}(\hat{p}-p)}{\sqrt{p(1-p)}}  \leq  z_{\alpha/2} \right) \overset{\cdot}{=} 1-\alpha\]
+
 So, $100(1-\alpha)\%$ CI for $p$ is $\hat{p} \pm  z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}}$, but $p$ is unknown.
 \end{exmp}
 
@@ -141,8 +144,10 @@ $\hat{p} \pm  z_{\frac{\alpha}{2}} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$
 \[P\left(-z_{\alpha/2} \leq \frac{\sqrt{n}(\hat{p}-p)}{\sqrt{p(1-p)}}  \leq  z_{\alpha/2} \right) \overset{\cdot}{=} 1-\alpha\]
 \[p-z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}} \leq\hat{p}\leq p+z_{\alpha/2}\sqrt{\frac{p(1-p)}{n}} \]
 \[(p-\hat{p})^2 \leq z_{\alpha/2}^2 \frac{p(1-p)}{n} \]
+
 Solving the quadratic equation for $p$.
 \[\frac{\hat{p}+\frac{z_{\alpha/2}}{2n} \pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}+\frac{z_{\alpha/2}^2}{4n^2}}}{1+z_{\alpha/2}^2 /n}\]
+
 is the $100(1-\alpha)\%$ CI for $p$.
 \end{enumerate}
 

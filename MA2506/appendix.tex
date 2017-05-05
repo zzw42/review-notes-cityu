@@ -1,5 +1,5 @@
 % Appendix
-% Last edit: 2017-5-3
+% Last edit: 2017-5-4
 \appendix
 \chapter{Moment generating function}
 \section{Definition}
@@ -33,6 +33,7 @@ M_X{\theta}=& E(e^{\theta x}) \\
 \item 
 \[\frac{d M_X(\theta)}{d \theta}=\frac{d E(e^{\theta x})}{d \theta}=E\left(\frac{d e^{\theta x}}{d \theta}\right)=E(e^{\theta X} X)\]
 \[\left.\frac{d M_X(\theta)}{d \theta}\right|_{\theta=0}=E(X)\]
+
 Similarly,
 \[\left.\frac{d^r M_X(\theta)}{d \theta^r}\right|_{\theta=0}=E(X^r) \qquad r=1,2,\dots,\]
 \item Let $Y=a+bX$, then $M_Y(\theta)=e^{a\theta} M_X(b\theta)$
@@ -43,6 +44,7 @@ Similarly,
 \begin{exmp}
 If $X \sim N(\mu,\sigma^2)$, find $M_Y(\theta)$
 \[Z=\frac{X-\mu}{\sigma}\sim N(0,1) \text{ then } X=\mu+\sigma Z\]
+
 by (4)
 \[M_Y(\theta)=e^{\mu \theta} M_Z(\sigma \theta)=e^{\mu\theta+\frac{1}{2} \sigma^2\theta^2}\]
 \[E(Y)=\left.\frac{d M_Y(\theta)}{d \theta}\right|_{\theta=0}=\mu\]
@@ -78,6 +80,7 @@ M_{Z^2}(\theta)=E(e^{\theta z^2}) = & \int_{-\infty}^\infty e^{\theta z^2} \frac
 = & \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} y^2} \frac{1}{\sqrt{1-2\theta}} \,dy \\
 = & \frac{1}{\sqrt{1-2\theta}} \qquad \theta<\frac{1}{2}
 \end{align*}
+
 Assume $\theta <\frac{1}{2}$, Let $y=\sqrt{1-2\theta} z$.
 
 Let $A \sim \chi^2(1)$, then
@@ -90,6 +93,7 @@ M_A(\theta)=E(e^{\theta A}) = & \int_0^\infty	e^{\theta a}\frac{1}{2^{1/2} \Gamm
 = & \int_0^\infty \frac{1}{\Gamma(1/2)} (1-2\theta)^{\frac{1}{2}} t^{-\frac{1}{2}} e^{-t} \,dt	\\
 = & (1-2\theta)^{-\frac{1}{2}}  \qquad \theta<\frac{1}{2}
 \end{align*}
+
 Let $t=\frac{1}{2} (1-2\theta)a$, $\theta<\frac{1}{2}$ 
 
 Since $M_{Z^2}(\theta)=M_A(\theta) \Rightarrow Z^2\sim A\sim \chi^2(1)$
@@ -178,9 +182,11 @@ So, by theorem, $Z_n\overset{d}{\longrightarrow}N(0,1)$
 \end{theo}
 
 \begin{enumerate}
-\item $X_1,X_2,\dots,X_n \sim Bern(p)$. $E(X_1)=p$, $Var(X_1)=p(1-p)$
-by CLT, $\frac{X-np}{\sqrt{np(1-p)}}\overset{d}{\longrightarrow}N(0,1)$.
-\[X \overset{d}{\longrightarrow}N(np,np(1-p)\]
+\item $X_1,X_2,\dots,X_n \sim Bern(p)$. $E(X_1)=p$, $Var(X_1)=p(1-p)$.
+
+By CLT, $\frac{X-np}{\sqrt{np(1-p)}}\overset{d}{\longrightarrow}N(0,1)$.
+\[X \overset{d}{\longrightarrow}N(np,np(1-p))\]
+
 \item What if $X_1,X_2,\dots,X_n \sim Bern(p_n)$ ?
 
 Modified CLT

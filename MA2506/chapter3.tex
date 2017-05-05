@@ -1,5 +1,5 @@
 % chapter 3
-% Last edit: 2017-4-28
+% Last edit: 2017-5-4
 \chapter{Discrete Random Variables}
 \section{Random Variable}
 \begin{defn}
@@ -99,6 +99,7 @@ P(X \leq x)=\frac{1}{6} &\text{if } 1 \leq x < 2 \\
 \dots \\
 P(X \leq x)=1 &\text{if } x \geq 6 \\
 \end{cases}\]
+
 It is called step function.
 \end{exmp}
 
@@ -136,6 +137,7 @@ Toss a coin until the first head. Suppose $P(\text{Head})=p$, $P(\text{Tail})=q=
 \[\mathcal{D}=\{1,2,3,\dots\}\]
 \[p(x)=q^{x-1}p, \qquad x=1,2,3,\dots\]
 \[F(x)=P(X \leq x)=\sum_{y \leq x}p(y)=\sum_{y \leq x}q^{y-1}p=p \frac{1-q^{\floor*{x}}}{1-q}=1-q^{\floor*{x}}\]
+
 where $\floor*{x}$ is the largest integer $\leq x$ (floor function).
 \[F(x)=\begin{cases}
 0, & \text{if } x <0 \\
@@ -146,10 +148,13 @@ where $\floor*{x}$ is the largest integer $\leq x$ (floor function).
 \subsubsection{How do we get p.m.f from c.d.f}
 In examples thus far, the cdf has been derived from the pmf. This process can be reversed to obtain the pmf from the cdf whenever the latter function is available.
 \[P(X=3)=P(x\leq 3)-P(x \leq 2)=F(3)-F(2)\]
+
 Suppose $X$ takes integer values, for any integers $a$ and $b$,
 \[P(a\leq X \leq b)=P( X \leq b)-P(X \leq a-1)=F(b)-F(a-1)\]
+
 Generally, for $a$ and $b$
 \[P(a\leq X \leq b)=F(b)-F(a_-)\]
+
 Here $a_-$ is the largest integer value that is strictly less than $a$. If $a=2$, $\floor*{a}=2$, $a_-=1$  
 
 \section{Expected Values}
@@ -163,9 +168,9 @@ Expected value
 
 \end{exmp}
 
-\subsection{The Expected Value of X}
+\subsection{The Expected Value of $X$}
 \begin{defn}
-Let X be a discrete rv with set of possible values $\mathcal{D}$ and pmf $p(x)$. The expected value or mean value of $X$, denoted by $E(X)$ or $\mu_X$ or just $\mu$, is
+Let $X$ be a discrete rv with set of possible values $\mathcal{D}$ and pmf $p(x)$. The expected value or mean value of $X$, denoted by $E(X)$ or $\mu_X$ or just $\mu$, is
 \[E(X)=\sum_{x\in \mathcal{D}} x p(x)\]
 \[x=\begin{cases}
 1,&\text{w.p.}\frac{18}{38} \\
@@ -175,7 +180,7 @@ Let X be a discrete rv with set of possible values $\mathcal{D}$ and pmf $p(x)$.
 \end{defn}
 
 \begin{exmp}
-X is a Bernoulli r.v
+$X$ is a Bernoulli r.v
 \[p(x)=\begin{cases}
 p, & \text{if} \quad x=1\\
 1-p. & \text{if} \quad x=0
@@ -193,13 +198,16 @@ A newly-wed couple want a girl. Their plan is to keep having children until they
 \[	pS=p^1+2p^2+3p^3+4p^4+\dots \]
 \[	(1-p)S=p^0+p^1+p^2+p^3+p^4+\dots=\frac{1}{1-p}\]
 \[	E(X)=q\frac{1}{(1-p)^2}=\frac{1}{q}\]
+
 Another method to calculate $\sum_{x=1}^{\infty} xp^{x-1}q$
 \[	\sum_{x=1}^{\infty} xp^{x-1}=\sum_{x=1}^{\infty}(p^{x})'=\Big( \sum_{x=1}^{\infty}p^{x} \Big)'	\]
 \end{exmp}
 
 \begin{exmp}
 \[	p(k)=\frac{1}{k^2}\frac{6}{\pi^2}	\qquad k=1,2,3,\dots\]
-Verify \[\sum_{k=1}^{\infty} p(k)=1\]
+
+Verify 
+\[\sum_{k=1}^{\infty} p(k)=1\]
 \[E(x)=\sum_{k=1}^{\infty} k\frac{1}{k^2}\frac{6}{\pi^2}		=\frac{6}{\pi^2}\sum_{k=1}^{\infty}\frac{1}{k}=\infty	\]
 \end{exmp}
 
@@ -214,6 +222,7 @@ Verify \[\sum_{k=1}^{\infty} p(k)=1\]
 
 Cost for $x$ cylinders
 \[	h(x)=20+3x+0.5 x^2		\]
+
 History shows that 
 \begin{center}
   \begin{tabular}{c|ccc}
@@ -225,9 +234,9 @@ History shows that
   \hline
   \end{tabular}
 \end{center}
-
   
-  \vspace{4mm}
+ \vspace{4mm}
+
  \[	E(h(x))=40\times0.5 +56\times 0.3+76\times 0.2 = \boxed{52}\]
 \end{exmp}
 
@@ -236,6 +245,7 @@ History shows that
 \begin{prop}
 Let $a$ and $b$ be two constant, $X$ r.v
 \[E(aX+b)=aE(X)+b\]
+
 Particularly,
 \[\text{if} \quad b=0, \quad E(aX)=aE(X)\]
 \[\text{if} \quad a=0, \quad E(X+b)=E(X)+b\]
@@ -243,6 +253,7 @@ Particularly,
 
 \begin{exmp}
   A computer store has purchased three computers of a certain type at \$500 apiece. It will sell them for \$1000 apiece. The manufacturer has agreed to repurchase any computers still unsold after a specified period at \$ 200 apiece. Let $X$ denote the number of computers sold.
+
 \begin{center}
 \begin{tabular}{c|cccc}
 \hline
@@ -258,7 +269,7 @@ $p(x)$  & 0.1 & 0.2  & 0.3  & 0.4 \\
 \[	E(Y)=800E(X)-900=700\]
 \end{exmp}
 
-\subsection{The Variance of X}
+\subsection{The Variance of $X$}
 \begin{exmp}
 \qquad
 \begin{tabular}{c|cccccc}
@@ -285,7 +296,7 @@ $p(x)$  & $\frac{1}{6}$ & $\frac{1}{6}$  \\
 \end{exmp}
 
 \begin{defn}
-X is a discrete random variable $E(X)=\mu$, 
+$X$ is a discrete random variable $E(X)=\mu$, 
 \[\sigma_{x}^2=Var(X)=E((X-\mu)^2)=\sum_{x \in \mathcal{D}} (x-\mu)^2p(x)\]
 \[\sigma_x=s.d(X)=\sqrt{Var(X)}\]
 \end{defn}
@@ -293,7 +304,7 @@ X is a discrete random variable $E(X)=\mu$,
 For Ex(1), $Var(X)=2.92$; For Ex(2), $Var(X)=0.25$.
 
 
-\subsection{Shortcut Formula}
+\subsection{Short-cut Formula}
 \begin{prop}
 \[Var(X)=E(X^2)-(E(X))^2\]
 \begin{proof}
@@ -309,6 +320,7 @@ Var(X)=& E((X-\mu)^2)= E(x^2-2X\mu+\mu^2)\\
 \begin{prop}
 \[Var(aX+b)=a^2 Var(X)\]
 \[s.d(aX+b)=|a| s.d(X)\]
+
 since $a$ could be negative.
 \end{prop}
 
@@ -359,10 +371,12 @@ $X$=\# of Heads. What's the distribution of $X$?
 Generally, $n$ Bernouli trails, independently. the success rate of each trail is constant $p$, then the \# of success out of these $n$ trails is a \textbf{Binomial} r.v, denoted as $X \sim Bin(n,p)$
 
 If $X \sim Bin(n,p)$,
-\[P(X=x)=\binom nx p^x (1-p)^{n-x}  \qquad x=0,1,\dots n\]
-Back to the Ex, \[P(X=0)=\binom 30 p^0 (1-p)^3=(1-p)^3\]
 
-\subsection{The Mean and Variance of X}
+\[P(X=x)=\binom nx p^x (1-p)^{n-x}  \qquad x=0,1,\dots n\]
+
+Back to the example, \[P(X=0)=\binom 30 p^0 (1-p)^3=(1-p)^3\]
+
+\subsection{The Mean and Variance of $X$}
 \begin{prop}
 If $X \sim Bin(n,p)$,
 \[E(X)=np \qquad Var(X)=np(1-p)\]
@@ -378,7 +392,7 @@ E(X)&=\sum_{k=0}^{n} k\binom nk p^k (1-p)^{n-k} =\sum_{k=0}^{n} k \frac{n!}{k!(n
 \end{prop}
 
 \begin{exmp}
-Six cola drinkers. Two brand: c.p. $X$ = \# of cola C they choose.
+Six cola drinkers. Two brand: C, P. $X$ = \# of cola C they choose.
 \[P(C)=\frac{1}{2} \qquad P(P)=\frac{1}{2}\]
 \[X \sim Bin \left(6,\frac{1}{2} \right)\]
 \begin{align*}
@@ -392,7 +406,7 @@ Six cola drinkers. Two brand: c.p. $X$ = \# of cola C they choose.
 
 \section{Hypergeometric and Negative Binomial\\ Distributions}
 \begin{exmp}
-5 balls in a box, 3 red, 2 blue. Randomly choose 3 ballsout of the box with replacement. What is the chance of getting 2 red and 1 blue balls?
+5 balls in a box, 3 red, 2 blue. Randomly choose 3 balls out of the box with replacement. What is the chance of getting 2 red and 1 blue balls?
 \[X= \text{\# of red balls out of 3}\]
 \[X \sim  Bin\left(3,\frac{3}{5}\right)\]
 \[P(X=2)=\binom 32 =\frac{54}{125}\]
@@ -422,24 +436,24 @@ If $X \sim \text{hypergeometric}(N,M,n)$,
 \[Var(X)=\frac{N-n}{N-1}\cdot n \cdot\frac{M}{N}\left(1-\frac{M}{N}\right)\]
 \end{prop}
 
-
 \begin{exmp}
-Five wolves are caught in a forest. Tagged and released to mix with other wolves. After a while, 10 wolves are caught.\\
-Assume there are 25 such wolves in the forest. P(X=2)=?
+Five wolves are caught in a forest. Tagged and released to mix with other wolves. After a while, 10 wolves are caught.
+
+Assume there are 25 such wolves in the forest. $P(X=2)=?$
 \[X \sim h.g.(25,5,10)\]
 \begin{align*}
 &P(X=2)=\frac{\binom 52 \binom {20}{8}}{\binom {25}{10}}=0.385 \\
 &E(X)=2	\\
 &Var(X)=1
 \end{align*}
-If we have no idea about the number of wolves in the forest.\\
-But $X=3$, how to estimate the \# of wolves in the forest.\\
-$N$=\# of wolves in total
+If we have no idea about the number of wolves in the forest.
+
+But $X=3$, how to estimate the \# of wolves in the forest.
+
+\[N= \text{\# of wolves in total}\]
 \[10 \cdot \frac{5}{N}=E(X)\approx 3\]
 \[N \approx 10 \cdot \frac{5}{3}\approx17\]
 \end{exmp}
-
-
 
 \subsection{The Negative Binomial Distribution}
 \begin{exmp}
@@ -448,6 +462,7 @@ A couple wants 3 girls. How many children they need to have to have fulfil his p
 \[\text{X=\# of children to attain this planning}\]
 \[x\geq 3 \qquad \mathcal{D}=\{3,4,\dots\}\]
 \[P(X=k)=\binom {k-1}{2} p^3(1-p)^{k-3}\]
+
 This is called "Negative binomial r.v"
 \end{exmp}
 
@@ -456,6 +471,7 @@ In general, $X \sim NegativeBinomial(r,p)$
 \[P(X=k)=\binom {k-1}{r-1} p^r (1-p)^{k-r}  \qquad k=r,r+1,\dots	\]
 \[E(X)=\frac{r}{p} \qquad  Var(X)=\frac{r(1-p)}{p^2} \]
 \end{prop}
+
 \begin{exmp}
 Roll a dice repeatedly until the first "one" occurs\\
 X=\# of rollings
@@ -463,19 +479,21 @@ X=\# of rollings
 \[E(X)=\frac{1}{\frac{1}{6}}=6  	\qquad Var(X)=30\]
 \end{exmp}
 
-
-
 \section{The Poisson Probability Distribution}
 \begin{defn}
 A r.v. $X$ takes value 0,1,2,3,\dots
  \[P(X=k)=\frac{\lambda^k}{k!} e^{-\lambda} \qquad k=0,1,2\dots\]
- where $\lambda >0$. Then we say $X \sim Poisson(\lambda)$
+
+where $\lambda >0$. Then we say $X \sim Poisson(\lambda)$
 \end{defn}
 
 Check
  \[\sum_{k=0}^{\infty} \frac{\lambda^k}{k!} e^{-\lambda}=e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} =1 \]
+
 Since 
-\[e^{\lambda}=\sum_{k=0}^{\infty} \frac{\lambda^k}{k!}  \ \](Taylor expansion)
+\[e^{\lambda}=\sum_{k=0}^{\infty} \frac{\lambda^k}{k!}  \]
+
+(Taylor expansion)
 \subsection{The Mean and Variance of X}
 \begin{prop}
 If $X \sim Poisson(\lambda)$,$E(X)=\lambda$, $Var(X)=\lambda$
@@ -512,7 +530,8 @@ Counting the number of customers at a bank counter. Suppose
 \item \[P(\text{more than one customer in } \Delta t)=o(\Delta t)\]
 \item Number of customers during $\Delta t$ is independent of that prior to this period
 \end{enumerate}
-Then P($k$ customers during $(0,t)$)=$\frac{(\alpha t)^k}{k!}e^{-\alpha t}$
+
+Then $P(k$ customers during $(0,t))=\frac{(\alpha t)^k}{k!}e^{-\alpha t}$.
 Let $X_t$ = \# of customers during $(0,t)$.
 \[X_t \sim Poisson(\alpha t)\]
 \[E(X_t)=\alpha t \qquad Var(X_t)=\alpha t\]

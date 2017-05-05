@@ -1,5 +1,5 @@
 % chapter 4
-% Last edit: 2017-5-3
+% Last edit: 2017-5-4
 \chapter{Continuous Random Variables and Probability Distributions}
 \section{Probability Density Functions}
 \begin{exmp}
@@ -327,8 +327,12 @@ P(X \geq b) &= P(X \geq b-0.5)
 \begin{exmp}
 25\% of all drivers in Hong Kong don't have insurance. Randomly select 50 drivers. $X=$ \# of drivers uninsured.
 
-(1)$P(X \leq 10)$ \quad (2)$P(5 \leq X \leq 15)$ \\
-First $X\sim Binom(50,0.25) \dot{\sim} N(12.5,12.5\times1.75)$
+\begin{enumerate}
+\item $P(X \leq 10)$
+\item $P(5 \leq X \leq 15)$ 
+\end{enumerate}
+
+First $X\sim Binom(50,0.25) \dot{\sim} N(12.5,12.5\times1.75)$.
 
 (1) \begin{align*}
 P(X\leq 10) =& P(X \leq 10.5) \\
@@ -436,7 +440,9 @@ In general, if $X\sim exp(\lambda)$,
 \[F(x)=\int_0^{x} \lambda e^{-\lambda y} dy=\left. e^{-\lambda y}\right|_{0}^{x}=1-e^{-\lambda x}\]
 
 \subsubsection{Two applications}
-\textbf{(A)} Suppose \# of customers coming in any wait time $\sim Possion(\alpha)$, and \# of customers is non-overlapping intervals are independent. Then
+\paragraph{(A)}
+
+Suppose \# of customers coming in any wait time $\sim Possion(\alpha)$, and \# of customers is non-overlapping intervals are independent. Then
 \[X= \text{the elapsed time between the successive customers coming in}\sim exp(\alpha)\]
 
 Why? Let $X_1$=waiting time before the 1st customer coming in. Want to show that $X_1 \sim exp()\lambda$, just need to find $f_{X_1}(x)$. Then we just need to find $F_{X_1}(x)$, as $f_{X_1}(x)=F'_{X_1}(x)$.
@@ -449,7 +455,7 @@ F_{X_1}(x)&= P(X_1\leq x)=P(\text{at least 1 customer in }(0,x)) \\
 \[X_1 \sim exp(\lambda)\]
 
 
-\textbf{(B)Memoryless property}
+\paragraph{(B)Memoryless property}
 
 Suppose component lifetime $\sim exp(\lambda)$. Putting this component into work, after $t_0$ time, check it and find it is still working. What is the probability that it will last at least another $t$ time?\\
 Let $T$ = lifetime of this component $\sim exp(\lambda)$
@@ -461,7 +467,7 @@ P(T\geq t_0+t|T \geq t_0)&=\frac{P(T\geq t_0+t \cap T \geq t_0)}{P(T \geq t_0)} 
 \end{align*}
 
 \subsection{The Chi-Squared Distribution}
-Let $\nu$ be an integer, if $X \sim Gamma(\nu,\frac{\nu}{2})$, then we say $X$ has a $\chi^2$-distribution with parameter $\nu$, $X \sim \chi^2 (\nu)$.
+Let $\nu$ be an integer, if $X \sim Gamma(\frac{\nu}{2},2)$, then we say $X$ has a $\chi^2$-distribution with parameter $\nu$, $X \sim \chi^2 (\nu)$.
 
 It's p.d.f is
 \[f(x;\nu)=\begin{cases}
