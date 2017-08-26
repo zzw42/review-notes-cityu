@@ -8,4 +8,4 @@ Include:
 
 + [AP3114 - Computational Methods for Physicists and Materials Engineers](https://www.cityu.edu.hk/ug/201617/course/AP3114.htm)
 
-+ [MA2503 - Linear Algebra]
++ [MA2503 - Linear Algebra](https://www.cityu.edu.hk/ug/201516/course/MA2503.htm)
