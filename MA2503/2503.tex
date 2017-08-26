@@ -1,0 +1,1479 @@
+%% The openany option is here just to remove the blank pages before a new chapter
+%\documentclass[UTF8,a4paper, 10pt, openany]{book}
+\documentclass[UTF8,a4paper, 10pt, openany]{svmono}
+\usepackage{pagenote}
+
+%\usepackage{euler}
+%\usepackage{mathspec}
+%\setmainfont{Myriad Pro}
+%\setmathsfont{Myriad Pro}
+
+\usepackage{amsmath,amssymb}
+\usepackage{forest}
+\usepackage{color}
+
+\usepackage{graphicx}
+\usepackage{titlepic}
+\usepackage{float}
+
+\usepackage{hyperref}
+\hypersetup{
+ colorlinks,
+ linkcolor=blue
+ }
+
+
+\usepackage[margin=1 in]{geometry}
+
+% For customising the endnote markers. Comment these out if you don't want them.
+% To prefix each note number with the chapter number
+\renewcommand{\thepagenote}{\thechapter-\arabic{pagenote}}
+
+% To have a slightly different formatting for the endnote numbers in the text -- smaller text, sans-serif, square brackets
+\renewcommand\notenumintext[1]{\space{\footnotesize\sffamily[FN-#1]}}
+
+% To have a slightly different formatting for the endnote numbers in the notes section. Just the square brackets and sans-serif; normal size.
+\renewcommand\notenuminnotes[1]{{\sffamily[FN-#1] }}
+
+% If you want a different name/heading for the end notes
+\renewcommand{\notesname}{Eventually, everything is connected.}
+%%%%%%%%%%%%% End customisation
+
+
+%\titlepic{\includegraphics[scale=0.07]{CityU_logo_2015.png} \includegraphics[scale=0.15]{Columbia_University_School_of_General_Studies_logo.png}}
+
+\title{MA Courses Review Notes\\MA2503 \\Linear Algebra}
+\author{Peilin \textsc{Wu}
+%\\ City University of Hong Kong
+%\\Columbia University School of General Studies
+}
+
+%% THIS LINE IS MANDATORY
+\makepagenote
+
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+\chapter{Linear Equations}
+\section{Linear System}
+\subsection{Introduction}
+The general problem is to calculate, if possible, a common solution
+for a system of $m$ linear algebraic equations in $n$ unknowns:
+
+\begin{center}
+$a_{11}x_1+a_{12}x_{2}+\cdots +a_{1n}x_{n} = b_{1}$\\
+$a_{21}x_1+a_{22}x_{2}+\cdots +a_{2n}x_{n} = b_{2}$\\
+$\vdots$\\
+$a_{m1}x_1+a_{m2}x_{2}+\cdots +a_{mn}x_{n} = b_{m}$\\
+\end{center}
+
+For which:
+\begin{itemize}
+\item{The $x_i$'s are the unknowns}
+\item{The $a_{ij}$'s are the coefficients of the system}
+\item{The $b_i$'s are the right-hand side of the system}
+\end{itemize}
+At this stage, we can introduce the concept of matrix. For the coefficient, we can define a coefficient matrix as following:\\ \\
+\textbf{Definition:}
+\\An $m \times n$ matrix A is a rectangular array of real or complex numbers (called scalars) with $m$ rows and $n$ columns:
+\begin{center}
+$A_{m,n}=  
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+ \end{pmatrix}$\\
+\end{center}
+Whenever $m = n$, A is called a square matrix, otherwise A is said to be rectangular. Matrices consisting of a single row or a single column are called row and column vectors, respectively. 
+\subsection{Rewriting the linear system}
+By the introducing of the matrix, we can rewrite it into the following matrix form:
+\begin{center}
+$A_{m,n}X_{n,1}= 
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+ \end{pmatrix} 
+ \begin{pmatrix}
+  x_{1}\\
+  x_{2}\\
+  \vdots \\
+  x_{n} 
+ \end{pmatrix}=
+ \begin{pmatrix}
+  b_{1}\\
+  b_{2}\\
+  \vdots \\
+  b_{m} 
+ \end{pmatrix}
+ =B_{m,1}$
+\end{center}
+In this way, for comprehensive understanding, matrix represents a particular transform to the vector space where the vector lying in. Each linear system con be considered as a process of space transform and its aim is to identify which vector in space will be transformed into the right hand side constant vector during the very process.
+
+\section{Gaussian Elimination and Matrices}
+\subsection{Three possibilities}
+As the transform occurred, there are three possibilities for the system:
+\begin{itemize}
+\item{unique solution}
+\item{no solution}
+\item{infinitely many solutions}
+\\note that: if a system has more than one solution, then it necessarily has infinitely many solutions.
+\end{itemize}
+\subsection{Gaussian Elimination}
+The key idea of Gaussian elimination is to systematically transform one system into another simpler, but equivalent, a system by successively eliminating unknowns, eventually arriving at a system that is easily solvable.\\
+\\First we write the augmented matrix $[A|b]$like ths following:
+\begin{center}
+$\left[
+\begin{array}{ccc|c}
+a_{11} & a_{12} & \cdots & b_{1} \\ 
+a_{21} & a_{12} & \cdots & b_{2} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{12} & \cdots & b_{m} 
+    \end{array}
+\right]$
+\end{center}
+The elimination process relies on three elementary operations:
+\begin{itemize}
+\item{interchanging the $i$-th and $j$-th equations}
+\item{replacing the $i$-th equation by a nonzero multiple of itself}
+\item{replacing the $j$-th equation by a combination of itself plus a multiple
+of the $i$-th equation}
+\end{itemize}
+After the elimination, the original matrix should transform into a upper triangular matrix like the following:
+\begin{center}
+$\left[
+\begin{array}{ccc|c}
+a'_{11} & a'_{12} & \cdots & b'_{1} \\ 
+* & a'_{12} & \cdots & b'_{2} \\
+\vdots & \vdots & \ddots & \vdots \\
+* & * & \cdots & b'_{n} 
+    \end{array}
+\right]$
+\end{center}
+One can solve the triangularized system using back substitution.\\
+\textbf{Note: }see the connection in the elementary matrix in the LU factorization.
+
+\section{Gauss-Jordan Method}
+The Gauss-Jordan method is a variation of Gaussian elimination and is distinct in the following two aspects:
+\begin{itemize}
+\item at each step, the \textbf{pivot} element is forced to be \textbf{1}
+\item at each step, all terms \textbf{above and below the pivot are eliminated}
+\end{itemize}
+Intuitively, Gauss-Jordan method is the strengthened version of Gaussian elimination adding up the back substitution.\\ \\
+After the Gauss-Jordan method, one would in the following form:\\
+\begin{center}
+$\left[
+\begin{array}{ccc|c}
+1 & * & \cdots & b''_{1} \\ 
+* & 1 & \cdots & b''_{2} \\
+\vdots & \vdots & \ddots & \vdots \\
+* & * & \cdots & b''_{n} 
+    \end{array}
+\right]$
+\end{center}
+\subsection{Operation counts}
+In spite of its apparent similarity to Gaussian elimination, the Gauss-Jordan method is more expensive to apply, and it is $50\% $ more work compared with Gaussian elimination. Nevertheless, the method has some theoretical advantages and is useful in other contexts, such as \textbf{matrix inversion}.
+\begin{center}
+\begin{table}
+    \begin{tabular}{l|ll}
+    ~                    & multiplications/divisions & additions/subtractions \\ \hline
+    Gaussian elimination & $\frac{n^{3}}{3}+n^{2}-\frac{n}{3}\sim \frac{n^{3}}{3}$ & $\frac{n^{3}}{3}-\frac{n^{2}}{2}-\frac{5n}{6}\sim \frac{n^{3}}{3}$ \\
+    Gauss-Jordan method  & $\frac{n^{3}}{2}+\frac{n^{2}}{2}\sim \frac{n^{3}}{2}$ & $\frac{n^{3}}{2}-\frac{n^{2}}{2}\sim \frac{n^{3}}{2}$ \\
+    \end{tabular}
+    \caption{\label{tab:counts}Operation counts of two methods}
+\end{table}
+\end{center}
+
+\section{Making Gaussian Elimination Work}
+\subsection{Floating-point Numbers}
+Definition:
+\begin{center}
+$\pm \mathit{d}_{1}\mathit{d}_{2}\cdots \mathit{d}_{t}\times \beta ^{\epsilon}=\mathit{f}\in \mathcal{F}(\beta , t, \mathit{L}, \mathit{U})$\\
+$0\leq \mathit{d}_{t}<\beta $, $\mathit{d}_{1}\neq 0$, $\epsilon \in [\mathit{L}, \mathit{U}]$
+\end{center}
+\begin{itemize}
+\item $\beta $ is the base
+\item $t$ is the precision
+\item $\epsilon \in [\mathit{L}, \mathit{U}]$ is the exponent range
+\end{itemize}
+Rules for floating-point numbers:
+\begin{itemize}
+\item floating-point addition and multiplication are both commutative.
+\item however,they are neither associative nor distributive.
+\end{itemize}
+
+\section{Ill-Conditioned Systems}
+An $2 \times 2$ ill-conditioned system where small perturbations in the system can lead to large changes in the solution, corresponds to two straight lines that are almost parallel. General ill-conditioned systems can be characterized in similar ways, with lines replaced by planes and hyperplanes.
+
+\chapter{Rectangular Systems and Echelon Forms}
+\section{Row Echelon Form and Rank}
+Analysis general linear systems of m equations in $n$ unknowns, where $m$ may be different from $n$. Rectangular systems with $m \neq n$ arise naturally when:
+\begin{enumerate}
+\item The number of constraints in the system exceeds the number of unknowns ($m > n$)\\
+e.g. in the determination of currents in terms of resistances and electromotive forces in an electrical circuit
+\item the number of unknowns in the system exceeds the number of constraints ($n > m$)\\
+e.g. in the computation of geographical locations in a Global Positioning System (GPS)
+\end{enumerate}
+\subsection{Modified Gaussian Elimination}
+Let $\mathit{U}$ be the augmented matrix associated with the system after $i$ -- $1$ elimination steps, to execute the $i$-th step:
+\begin{itemize}
+\item locate the first column in $\mathit{U}$ that contains a nonzero entry on or
+below the $i$-th row, say it is $\mathit{U}_{*j}$ $(i\leq j)$
+\item the pivot position for the $i$-th step is the $(i, j)$-position
+\item if necessary, interchange the $i$-th row with a lower row to bring a nonzero number into the $(i, j)$-position, and then eliminate all entries below this pivot
+\item if row $\mathit{U}_{i*}$ as well as all rows in U below $\mathit{U}_{*i}$ consist entirely of zeros, then the elimination process is complete.
+\end{itemize}
+
+\section{Reduced Row Echelon Form}
+\subsection{Definition of Row Echelon Form}
+An $m \times n$ matrix $E$ with rows $E_{i*}$ and columns $E_{*j}$ is said to be in row echelon form provided that:
+\begin{itemize}
+\item if $E_{i*}$ consists entirely of zeros, then all rows below $E_{i*}$ are also zero
+\item if the first nonzero entry in $E_{i*}$ lies in the $j$-th column, then all entries below the $i$-th row in columns $E_{*1}, E_{*2}, \cdots , E_{*j}$, are zero.
+\end{itemize}
+
+\subsection{Definition of Rank of a Matrix}
+Suppose $A_{m\times n}$ is reduced by row operations to an echelon form $E$. The rank of A is defined to be:
+\begin{align*}
+\textbf{rank} & = \text{number of pivots}\\
+& = \text{number of nonzero rows in }E\\
+& = \text{number of basic columns in }A
+\end{align*}
+
+where the \textbf{basic columns} of $A$ are defined to be those columns in $A$
+that contain the pivot positions.
+
+\subsection{Definition of Row Echelon Form determining}
+A matrix $E_{m\times n}$ is said to be in reduced row echelon form provided that:
+\begin{itemize}
+\item $E$ is in row echelon form
+\item the first nonzero entry in each row (i.e. each pivot) is $1$
+\item all entries above each pivot are $0$
+\end{itemize}
+
+\subsection{Properties of Reduced Row Echelon Forms}
+Unlike row echelon forms, the reduced row echelon form derived from a matrix $A$ is \textbf{uniquely} determined by $A$; we denote this unique reduced row echelon form by $E_A$\\
+\\Relationship between Basci Column with Reduced Row Echelon Forms:\\
+Each nonbasic column of $A$ can be expressed as a linear combination of the basic columns $[A_{*i}, A_{*j}, A_{*k}]$, and exactly the same relationships hold in $E_A$, in addition, the multipliers appearing in these relationships are precisely the nonzero entries in the two nonbasic columns of $E_A$, furthermore, only the basic columns to the left of a given nonbasic column are needed in the representation formula.
+
+\section{Consistency of Linear Systems}
+\subsection{Definition}
+A system of m linear equations in n unknowns is said to be a \textbf{consistent} system if it possesses \textbf{at least one solution}. If there are \textbf{no solutions}, then the system is called \textbf{inconsistent}.
+\subsection{Criteria for Determining Consistency}
+\begin{itemize}
+\item let $[A|b]$ be the augmented matrix associated with the system and reduce it by row operations to a row echelon form;
+\item if, somewhere in the elimination process, a situation arises in which
+the only nonzero entry in a row appears on the right-hand side:\\
+\begin{center}
+$\left(
+\begin{array}{cccccc|c}
+* & * & * & * & * & * & * \\
+0 & 0 & * & * & * & * & * \\
+0 & 0 & 0 & * & * & * & * \\
+0 & 0 & 0 & 0 & 0 & * & * \\
+0 & 0 & 0 & 0 & 0 & 0 & \alpha \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \end{array}
+\right)$, $\alpha \neq 0$
+\end{center}
+then the original system must be inconsistent.
+\item This method is also equivalent to identifying pivot in the last column.
+\item Conclusion: 
+\\If the system is consistent, then $b$ must be a nonbasic column of $[A|b]$, or equivalently $b$ must be a linear combination of the (basic) columns from $A$
+\item consistency is equivalent to:
+\begin{center}
+$rank[A|b] = rank(A)$
+\end{center}
+\end{itemize}
+
+\section{Homogeneous Systems}
+\subsection{Definition}
+All the RHS entries are zero (homogeneous system)
+\begin{center}
+$a_{11}x_1+a_{12}x_{2}+\cdots +a_{1n}x_{n} =0$\\
+$a_{21}x_1+a_{22}x_{2}+\cdots +a_{2n}x_{n} =0$\\
+$\vdots$\\
+$a_{m1}x_1+a_{m2}x_{2}+\cdots +a_{mn}x_{n} =0$\\
+\end{center}
+\subsection{Trivial vs. Nontrivial Solutions}
+Consistency is never an issue for homogeneous systems since the zero solution:
+\begin{center}
+$x_1+x_{2}+\cdots +x_{n} =0$
+\end{center}
+is always a solution, the so-called trivial solution.\\
+\\Other than the trivial solution would be the nontrivial solution which can be obtained by the Gaussian elimination.
+\subsection{Example}
+For the following system, 
+\begin{center}
+$1x_1+2x_{2}+2x_{3} +3x_{4} =0$\\
+$2x_1+3x_{2}+1x_{3} +3x_{4} =0$\\
+$3x_1+6x_{2}+1x_{3} +4x_{4} =0$
+\end{center}
+Written in augmented matrix and conduct Gaussian elimination:
+\begin{center}
+$\left(
+\begin{array}{cccc|c}
+1 & 2 & 2 & 3 & 0\\ 
+2 & 1 & 1 & 3 & 0\\
+3 & 6 & 1 & 4 & 0\\
+    \end{array}
+\right)\rightarrow $
+$\left(
+\begin{array}{cccc|c}
+1 & 2 & 2 & 3 & 0\\ 
+0 & 0 & -3 & -3 & 0\\
+0 & 0 & 0 & 0 & 0\\
+    \end{array}
+\right)$
+\end{center}
+After Gaussian elimination, the matrix is equivalent to the following equation system:
+\begin{center}
+$1x_1+2x_{2}+2x_{3}+3x_{4} =0$\\
+$-3x_{3}-3x_{4} =0$\\
+\end{center}
+Which leads to the nontrivial solution:
+\begin{center}
+$\left(
+\begin{array}{c}
+x_{1} \\ 
+x_{2} \\
+x_{3} \\
+x_{4} \\
+\end{array}
+\right)=x_{2}
+\left(
+\begin{array}{c}
+-2 \\ 
+1 \\
+0 \\
+0 \\
+\end{array}
+\right)+x_{4}
+\left(
+\begin{array}{c}
+-1 \\ 
+0 \\
+-1 \\
+1 \\
+\end{array}
+\right)$
+\end{center}
+with the understanding that $x_2$ and $x_4$ are free variables that can range over all real numbers, this representation will be called the general solution of the homogeneous system.
+\subsection{General Cases}
+Now consider a general homogeneous system $[A|0]$ of m linear equations in n unknowns; if $rank(A) = r$, then:
+\begin{itemize}
+\item there are exactly $r$ basic variables and $n - r$ free variables corresponding to the $r$ basic and $n - r$ nonbasic columns of $A$;
+\item reducing A to a row echelon form using Gaussian elimination and
+solving for the basic variables in terms of the free variables produces
+the general solution:
+\begin{center}
+$x=x_{f_{1}}h_{1}+x_{f_{2}}h_{2}+\cdots +x_{f_{n-r}}h_{n-r}$
+\end{center}
+where $x_{f_{1}}h_{1}, x_{f_{2}}h_{2},\cdots , x_{f_{n-r}}h_{n-r}$ are the free variables and $h_{1}, h_{2},\cdots ,$ $h_{n-r}$ are $n\times 1$ columns that represent particular solutions of the system; the $h_i$��s are \textbf{independent} of the particular row echelon form used;
+\item the system possesses a unique solution (the trivial solution) if and
+only if $rank(A) = n$.
+\end{itemize}
+
+\section{Nonhomogeneous Systems}
+\subsection{Definition}
+If at least one of the RHS entries is nonzero, the system is nonhomogeneous:
+\begin{center}
+$a_{11}x_1+a_{12}x_{2}+\cdots +a_{1n}x_{n} = b_{1}$\\
+$a_{21}x_1+a_{22}x_{2}+\cdots +a_{2n}x_{n} = b_{2}$\\
+$\vdots$\\
+$a_{m1}x_1+a_{m2}x_{2}+\cdots +a_{mn}x_{n} = b_{m}$\\
+\end{center}
+Assuming the existence of a solution, the solutions of a (consistent) nonhomogeneous system can be obtained by exactly the same method used for homogeneous systems.
+\subsection{Example}
+For the following system, 
+\begin{center}
+$1x_1+2x_{2}+2x_{3} +3x_{4} =4$\\
+$2x_1+4x_{2}+1x_{3} +3x_{4} =5$\\
+$3x_1+6x_{2}+1x_{3} +4x_{4} =7$
+\end{center}
+Written in augmented matrix and reduced to row echelon form:
+\begin{center}
+$\left(
+\begin{array}{cccc|c}
+1 & 2 & 2 & 3 & 4\\ 
+2 & 1 & 1 & 3 & 5\\
+3 & 6 & 1 & 4 & 7\\
+    \end{array}
+\right)\rightarrow $
+$\left(
+\begin{array}{cccc|c}
+1 & 2 & 0 & 1 & 2\\ 
+0 & 0 & 1 & 1 & 1\\
+0 & 0 & 0 & 0 & 0\\
+    \end{array}
+\right)$
+\end{center}
+After Gaussian elimination, the matrix is equivalent to the following equation system:
+\begin{center}
+$x_1+2x_{2}+x_{4} =2$\\
+$x_{3}+x_{4} =1$\\
+\end{center}
+Which leads to the nontrivial solution:
+\begin{center}
+$\left(
+\begin{array}{c}
+x_{1} \\ 
+x_{2} \\
+x_{3} \\
+x_{4} \\
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+2 \\ 
+0 \\
+1 \\
+0 \\
+\end{array}
+\right)+
+x_{2}
+\left(
+\begin{array}{c}
+-2 \\ 
+1 \\
+0 \\
+0 \\
+\end{array}
+\right)+x_{4}
+\left(
+\begin{array}{c}
+-1 \\ 
+0 \\
+-1 \\
+1 \\
+\end{array}
+\right)$
+\end{center}
+Note: In the exam, you should write the answer in form of:
+\begin{center}
+$answer=particular~solution+homogenous~solution$
+\end{center}
+
+\chapter{Matrix Algebra}
+\section{Introduction}
+\subsection{Function of Matrix}
+\begin{itemize}
+\item the elementary row operations in Gaussian elimination can be realized
+using a chain of multiplications by \textbf{elementary matrices};
+\item besides linear systems, linear functions that \textbf{map} $m$-vectors to $n$-vectors can also be represented by and manipulated using matrices;
+\item even problems involving \textbf{graphs} or \textbf{Markov chain processes} can be conveniently analyzed using matrices.
+\end{itemize}
+\section{Addition and Transposition}
+\subsection{Notation}
+\begin{itemize}
+\item a scalar is a complex number (unless otherwise stated)
+\item $\mathbb{R}$ and $\mathbb{C}$ denote the set of real and complex numbers, respectively
+\item $\mathbb{R}^{n}$ and $\mathbb{C}^{n}$ denote the set of all $n$-tuples of real and complex numbers,respectively
+\item $\mathbb{R}^{m\times n}$ and $\mathbb{C}^{m\times n}$ denote the set of all $m\times n$ matrices containing real and complex numbers, respectively
+\end{itemize}
+\subsection{Equal Matrix}
+Two matrices $A = [a_{ij}]$ and $B = [b_{ij}]$ are said to be equal if they
+have the \textbf{same shape} and \textbf{the corresponding entries are equal}.
+\\ \\Additionally, matrix can be considered as the composition of several column vectors or row vector.  
+\subsection{Addition of Matrices}
+If $A$ and $B$ are $m \times n$ matrices, the sum of $A$ and $B$ is defined to be the $m \times n$ matrix $A + B$ obtained by adding the corresponding entries, that is:
+\begin{center}
+$[A+B]_{ij}=[A]_{ij}+[B]_{ij} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\subsection{Additive Inverse}
+The matrix $-A$, called the additive inverse of $A$, is defined to be the matrix obtained by negating each entry of $A$, that is,
+\begin{center}
+$[-A]_{ij}=-[A]_{ij}\quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\subsection{Subtraction of Matrices}
+This allows matrix subtraction to be defined in the natural way: if $A$ and $B$ are $m \times n$ matrices, the difference of $A$ and $B$ is defined to be the $m \times n$ matrix $A - B = A + (-B)$ so that:
+\begin{center}
+$[A-B]_{ij}=[A]_{ij}+[-B]_{ij}=[A]_{ij}-[B]_{ij} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\subsection{Properties of Matrix Addition}
+For $m \times n$ matrices $A$, $B$, and $C$, the following properties hold:
+\begin{itemize}
+\item \textbf{Closure under addition:} $A + B$ is again an $m \times n$ matrix
+\item \textbf{Associative law:} $(A + B) + C = A + (B + C)$
+\item \textbf{Commutative law:} $A + B = B + A$
+\item \textbf{Existence of additive identity:} there exists one and only one element $0$ in $\mathbb{C}^{m\times n}$ such that $A+0=A$ for all $A\in \mathbb{C}^{m\times n}$
+\item \textbf{Existence of additive inverse:} for each $A\in \mathbb{C}^{m\times n}$, there exists one and only one element (-A) in $\mathbb{C}^{m\times n}$, such that $A+(-A)=0$
+\end{itemize}
+\subsection{Scalar Multiplication}
+The scalar multiplication of $\alpha $ scalar a and a matrix $A$, denoted by $\alpha A$, is defined to be the matrix obtained by multiplying each entry of $A$ by $\alpha $, that is,
+\begin{center}
+$[\alpha A]_{ij}=\alpha [A]_{ij} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\subsection{Properties of Scalar Multiplication}
+For $m \times n$ matrices $A$, $B$, and scalar $\alpha $, the following properties hold:
+\begin{itemize}
+\item \textbf{Closure under addition:} $\alpha A$ is again an $m \times n$ matrix
+\item \textbf{Associative law:} $(\alpha\beta )  A = \alpha (\beta A)$
+\item \textbf{Distributive law one:} $\alpha (A + B) = \alpha A+\alpha B$
+\item \textbf{Distributive law two:} $(\alpha+\beta) = \alpha A+\beta A$
+\item \textbf{Scalar identity:} $1\cdot A=A$ for all $A\in \mathbb{C}^{m\times n}$
+\end{itemize}
+\subsection{Transpose and Conjugate Transpose}
+If $A$ is an $m \times n$ matrix:
+\begin{itemize}
+\item \textbf{Transpose Matrix:} $A^{T}$
+\begin{center}
+$[A^{T}]_{ij}=[A]_{ji} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\item \textbf{Conjugate Matrix:} $\overline{A}$
+\begin{center}
+$[\overline{A}]_{ij}=\overline{[A]_{ij}} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\item \textbf{Conjugate Transpose Matrix:} $A^{*}$ or $A^{\dagger}$
+\begin{center}
+$[A^{*}]_{ij}=\overline{[A]_{ij}} \quad i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+\end{center}
+\end{itemize}
+\subsection{Properties of Matrix Transposition}
+For $m \times n$ matrices $A$, $B$ and scalar $\alpha $, the following holds:
+\begin{itemize}
+\item $(A + B)^{T} = A^{T}+B^{T}$, $(A + B)^{*} = A^{*}+B^{*}$
+\item $(\alpha A)^{T} = \alpha A^{T}$, $(\alpha A)^{*} = \alpha A^{*}$
+\end{itemize}
+Proof: for $i=1, 2,\cdots , m;j=1, 2,\cdots , n$
+
+\begin{align*}
+[(A + B)^T ]_{ij} &= [A + B]_{ji} = [A]_{ji} + [B]_{ji} = [A^T]_{ij} + [B^T]_{ij} = [A^T + B^T ]_{ij} \\
+[(A + B)^* ]_{ij} &= \overline{[A + B]_{ij}} = \overline{[A]_{ij}} + \overline{[B]_{ij}} = [A^*]_{ij} + [B^*]_{ij} = [A^* + B^* ]_{ij} \\
+[(\alpha A)^T ]_{ij} &= [\alpha A]_{ji} = \alpha [A]_{ji} = \alpha [A^T ]_{ij} \Rightarrow (\alpha A)^T = \alpha A^T\\
+[(\alpha A)^* ]_{ij} &= \overline{[\alpha A]_{ij}} = \overline{\alpha [A]_{ij}} = \alpha [A^* ]_{ij} \Rightarrow (\alpha A)^* = \alpha A^* 
+\end{align*}
+
+
+\subsection{Symmetries}
+Let $A$ be an $n \times n$ \textbf{square matrix}:
+\begin{itemize}
+\item \textbf{Symmetric:} $A^{T}=A$
+\begin{center}
+$[A^{T}]_{ij}=[A]_{ji}=[A]_{ij} \quad i=1, 2,\cdots , n;j=1, 2,\cdots , n$
+\end{center}
+\item \textbf{Skew-symmetric:} $A^{T}=-A$
+\begin{center}
+$[A^{T}]_{ij}=[A]_{ji}=-[A]_{ij} \quad i=1, 2,\cdots , n;j=1, 2,\cdots , n$
+\end{center}
+\item \textbf{Hermitian:} $A^{*}=A$
+\begin{center}
+$[A^{*}]_{ij}=\overline{[A]_{ij}}=[A]_{ij} \quad i=1, 2,\cdots , n;j=1, 2,\cdots , n$
+\end{center}
+\item \textbf{Skew-hermitian:} $A^{*}=-A$
+\begin{center}
+$[A^{*}]_{ij}=\overline{[A]_{ij}}=-[A]_{ij} \quad i=1, 2,\cdots , n;j=1, 2,\cdots , n$
+\end{center}
+\end{itemize}
+
+\section{Linearity}
+\subsection{Definition}
+Suppose that $\mathcal{D}$ and $\mathcal{R}$ are two sets equipped with an addition and a scalar multiplication operation (consider, for example, $\mathcal{D}=\mathbb{C}^n$ and $\mathcal{R}=\mathbb{C}^m$). A function f that maps points in $\mathcal{D}$ to points in $\mathcal{R}$ is said to be a linear function if f satisfies:
+\begin{center}
+$f (x + y) = f (x) + f (y)$ (\textbf{additivity})\\
+$f (\alpha x) = \alpha f (x)$ (\textbf{homogeneity} of degree $1$)
+\end{center}
+or equivalently,
+\begin{center}
+$f (\alpha x + y) = \alpha f (x) + f (y)$
+\end{center}
+for all $x, y \in \mathcal{D}$ and all scalars $\alpha $.\\ \\
+Additionally, linearity comes from the linear (homomorphism) map $Hom(\mathcal{D}, \mathcal{R})$ (or $Hom(\mathbb{C}^n, \mathbb{C}^m)$) in the vector space. 
+\subsection{Linear Operators Examples}
+\begin{itemize}
+\item \textbf{The zero map} between two left-modules (or two right-modules) over the same ring is always linear.
+\item \textbf{The identity map} on any module is a linear operator.
+\item Any\textbf{ homothecy} centered in the origin of a vector space, $v\mapsto cv$ where $c$ is a scalar, is a linear operator. This does not hold in general for modules, where such a map might only be \textbf{semilinear}.
+\item For real numbers, the map $x \mapsto  x + 1$ is \textbf{not} linear.
+\item \textbf{Differentiation} defines a linear map from the space of all differentiable functions to the space of all functions. It also defines a linear operator on the space of all smooth functions.
+\item \textbf{The (definite) integral} over some interval $I$ is a linear map from the space of all real-valued integrable functions on $I$ to $R$.
+\item etc.
+\end{itemize}
+Inclass \textbf{important examples} of linear operators (proof needed):
+\begin{itemize}
+\item \textbf{the transposition function} $f (X_{mn}) = X^T$ is linear since:
+\begin{center}
+$(A + B)^{T} = A^{T}+B^{T} \quad (\alpha A)^{T} = \alpha A^{T}$
+\end{center}
+\item \textbf{the trace function} of an $n \times n$ matrix $X = [x_{ij}]$, defined by:
+\begin{center}
+$f (X_{n\times n}) = trace(X) := x_{11} + x_{22} + \cdots   + x_{nn} = \displaystyle\sum_{i=1}^{n} x_{ii}$
+\end{center}
+is linear since:
+\begin{center}
+$f (\alpha A + B) = \displaystyle\sum_{i=1}^{n} (\alpha a_{ii}+b_{ii}) = \alpha \displaystyle\sum_{i=1}^{n} a_{ii} + \displaystyle\sum_{i=1}^{n} b_{ii} = \alpha f (A) + f (B)$
+\end{center}
+for all $A = [a_{ij}], B = [b_{ij}] \in \mathbb{C}^{n\times n}$ and all scalars $\alpha$.
+\item \textbf{Linear system} is also linear. \\
+By considering the linear  system as a function (linear transform function):
+\begin{center}
+$a_{11}x_1+a_{12}x_{2}+\cdots +a_{1n}x_{n} = u_{1}$\\
+$a_{21}x_1+a_{22}x_{2}+\cdots +a_{2n}x_{n} = u_{2}$\\
+$\vdots$\\
+$a_{m1}x_1+a_{m2}x_{2}+\cdots +a_{mn}x_{n} = u_{m}$\\
+\end{center}
+to be a function $u = f (x)$ that maps $x = (x_1, x_2, \cdots , x_n)^T \in \mathbb{C}^{n}$ to $u = (u_1, u_2, \cdots , u_m)^T \in \mathbb{C}^{m}$; $f (x)$ is linear since:
+\begin{center}
+$f (\alpha x + y) = \displaystyle\sum_{j=1}^{n} (\alpha x_{j}A_{*j}+y_{j}A_{*j}) = \alpha \displaystyle\sum_{i=1}^{n} x_{j}A_{*j} + \displaystyle\sum_{i=1}^{n} y_{j}A_{*j} = \alpha f (x) + f (y)$
+\end{center}
+\textbf{Notes the following:}
+in the above derivation, we have used the fact that for any $z = (z_1, z_2, \cdots , z_n)^T \in \mathbb{C}^{n}$
+\begin{center}
+$f(x)=\left(
+\begin{array}{c}
+a_{11}z_1+a_{12}z_{2}+\cdots +a_{1n}z_{n} \\ 
+a_{21}z_1+a_{22}z_{2}+\cdots +a_{2n}z_{n} \\
+\vdots \\
+a_{n1}z_1+a_{n2}z_{2}+\cdots +a_{nn}z_{n} \\
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+a_{11}z_1 \\ 
+a_{21}z_1 \\
+\vdots \\
+a_{n1}z_1 \\
+\end{array}
+\right)+
+\left(
+\begin{array}{c}
+a_{12}z_{2} \\ 
+a_{22}z_{2} \\
+\vdots \\
+a_{n2}z_{2} \\
+\end{array}
+\right)+\cdots+
+\left(
+\begin{array}{c}
+a_{1n}z_{n} \\ 
+a_{2n}z_{n} \\
+\vdots \\
+a_{nn}z_{n} \\
+\end{array}
+\right)=
+\displaystyle\sum_{j=1}^{n} z_{j}A_{*j}
+$
+\end{center}
+\end{itemize}
+
+\subsection{Linear Combination}
+The following terminology will be used in subsequent development: for scalars $\alpha _j$ and matrices $X_j$, the expression:
+\begin{center}
+$\alpha _{11}X_1+\alpha _{12}X_{2}+\cdots +\alpha _{1n}X_{n}=\displaystyle\sum_{j=1}^{n} \alpha _{j}X_{*j}$
+\end{center}
+is called a linear combination of the $X_j$��s.
+
+\section{Matrix Multiplication}
+\subsection{Motivation}
+Before proceeding to defining matrix multiplication, let��s consider the problem of composing two linear functions:
+\begin{center}
+$f(x)=f
+\left(
+\begin{array}{c}
+x_{1} \\ 
+x_{2} \\
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+a_{11}x_1+a_{12}x_{2} \\ 
+a_{21}x_1+a_{22}x_{2} \\
+\end{array}
+\right)
+$\\
+$
+g(x)=g
+\left(
+\begin{array}{c}
+x_{1} \\ 
+x_{2} \\
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+b_{11}x_1+b_{12}x_{2} \\ 
+b_{21}x_1+b_{22}x_{2} \\
+\end{array}
+\right)
+$
+\end{center}
+Then, we can construct another function:
+\begin{center}
+$h(x):=
+f(g(x))=
+\left(
+\begin{array}{c}
+(a_{11}b_{11}+a_{12}b_{21})x_1+(a_{11}b_{11}+a_{12}b_{22})x_{2} \\ 
+(a_{21}b_{11}+a_{22}b_{21})x_1+(a_{21}b_{12}+a_{22}b_{22})x_{2} \\
+\end{array}
+\right)
+$
+\end{center}
+Using matrix to simplify those function:
+\begin{center}
+$F=
+\left[
+\begin{array}{cc}
+a_{11} & a_{12} \\ 
+a_{21} & a_{22} \\
+\end{array}
+\right] \quad
+G=
+\left[
+\begin{array}{cc}
+b_{11} & b_{12} \\ 
+b_{21} & b_{22} \\
+\end{array}
+\right]
+$
+\end{center}
+Therefore, we can define the multiplication of matrix as the following:
+\begin{center}
+$h(x):=
+f(g(x))=
+\left[
+\begin{array}{cc}
+a_{11}b_{11}+a_{12}b_{21} & a_{11}b_{11}+a_{12}b_{22} \\ 
+a_{21}b_{11}+a_{22}b_{21} & a_{21}b_{12}+a_{22}b_{22} \\
+\end{array}
+\right]
+$
+\end{center}
+\subsection{General Definition of Matrix Multiplication}
+Matrices $A$ and $B$ are said to be conformable for multiplication in the order $AB$ if $A$ has exactly as many columns as B has rows, i.e. $A$ is $m \times p$ and $B$ is $p \times n$ (Inner index are the same). For conformable matrices $A_{m\times p} = [a_{ij}]$ and $B_{p\times n} = [b_{ij}]$, the matrix product $AB$ is defined to be the $m \times n$ matrix whose $(i, j)$-entry is the inner product of the $i$-th row of A with the $j$-th column in $B$, that is,
+\begin{center}
+$[AB]_{ij}=A_{i*}B_{*j}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots +a_{ip}b_{pj}=\displaystyle\sum_{k=1}^{p} a_{ik}b_{kj}$
+\end{center}
+In case $A$ and $B$ fail to be conformable, then no product $AB$ is defined.
+\subsection{An Illustration}
+\begin{center}
+$[AB]_{ij}=A_{i*}B_{*j}=a_{i1}b_{1j}+a_{i2}b_{2j}+\cdots +a_{ip}b_{pj}=\displaystyle\sum_{k=1}^{p} a_{ik}b_{kj}$\\
+$\left(
+\begin{array}{cccc}
+* & * & \cdots & * \\ 
+\vdots & \vdots & ~ & \vdots \\
+a_{i1} & a_{i2} & \vdots & a_{ip} \\
+\vdots & \vdots & ~ & \vdots \\
+* & * & \cdots & * \\ 
+    \end{array}
+\right)_{m\times p}
+\left(
+\begin{array}{ccccc}
+* & \cdots & b_{1j} & \cdots & * \\ 
+* & \cdots & b_{2j} & \cdots & * \\ 
+\vdots & ~ & \vdots & ~ & \vdots \\
+* & \cdots & b_{pj} & \cdots & * \\ 
+    \end{array}
+\right)_{p\times n}=
+\left(
+\begin{array}{ccccc}
+* & \cdots & * & \cdots & * \\ 
+\vdots & ~ & \vdots & ~ & \vdots \\
+* & \cdots & [AB]_{ij} & \cdots & * \\ 
+\vdots & ~ & \vdots & ~ & \vdots \\
+* & \cdots & * & \cdots & * \\ 
+    \end{array}
+\right)_{m\times n}
+$
+\end{center}
+\subsection{Differences between Matrix and Scalar Multiplications}
+\begin{itemize}
+\item matrix multiplication is a \textbf{noncommutative} operation: $AB \neq BA$
+\item the product $AB$ of nonzero matrices $A \neq 0, B \neq 0$ can be $0$
+\item the \textbf{cancellation law fails} for matrix multiplication
+\begin{center}
+$AB = AC, A \neq 0$ do not necessarily implies $B = C$
+\end{center}
+\end{itemize}
+\subsection{Rows and Columns of a Matrix Product}
+There are various ways to express the individual columns and rows of a matrix product: if $A = [a_{ij}]$ is $m \times p$ and $B = [b_{ij}]$ is $p \times n$, then:
+\begin{center}
+$[AB]_{i*}=A_{i*}B=a_{i1}B_{1*}+a_{i2}B_{2*}+\cdots +a_{ip}b_{p*}=\displaystyle\sum_{k=1}^{p} a_{ik}B_{k*}$\\
+$[AB]_{*j}=AB_{*j}=A_{*1}b_{1j}+A_{*2}b_{2j}+\cdots +A_{*p}b_{pj}=\displaystyle\sum_{k=1}^{p} A_{*k}b_{kj}$
+\end{center}
+In particular, these equations show that rows of $AB$ are linear combinations of rows of $B$, while columns of $AB$ are linear combinations of columns of $A$.
+\\ \\\textbf{Verification:}
+\begin{itemize}
+\item for example, in component form, $[AB]_{*j}$ can be written as:
+\begin{center}
+$[AB]_{*j}=
+\left(
+\begin{array}{c}
+\left[AB\right]_{1j} \\
+\left[AB\right]_{2j} \\
+\vdots  \\
+\left[AB\right]_{mj}
+\end{array}
+\right)
+=\left(
+\begin{array}{c}
+a_{11}b_{1j}+a_{12}b_{2j}+\cdots +a_{1p}b_{pj} \\ 
+a_{21}b_{1j}+a_{22}b_{2j}+\cdots +a_{2p}b_{pj} \\
+\vdots \\
+a_{m1}b_{1j}+a_{m2}b_{2j}+\cdots +a_{mp}b_{pj} \\
+\end{array}
+\right)=
+\left(
+\begin{array}{c}
+a_{11}b_{1j} \\ 
+a_{21}b_{1j} \\
+\vdots \\
+a_{m1}b_{1j} \\
+\end{array}
+\right)+
+\left(
+\begin{array}{c}
+a_{12}b_{2j} \\ 
+a_{22}b_{2j} \\
+\vdots \\
+a_{m2}b_{2j} \\
+\end{array}
+\right)+\cdots+
+\left(
+\begin{array}{c}
+a_{1p}b_{pj} \\ 
+a_{2p}b_{pj} \\
+\vdots \\
+a_{mp}b_{pj} \\
+\end{array}
+\right)=
+A_{*1}b_{1j}+A_{*2}b_{2j}+\cdots +A_{*p}b_{pj}$
+\end{center}
+
+\item in addition, using block matrix multiplication, the above expression can also be written as
+\begin{center}
+$[AB]_{*J}=A_{*1}b_{1j}+A_{*2}b_{2j}+\cdots +A_{*p}b_{pj}$\\$=
+[A_{*1}|A_{*2}|\cdots |A_{*p}]
+\left(
+\begin{array}{c}
+b_{1j} \\ 
+b_{2j} \\
+\vdots \\
+b_{pj} \\
+\end{array}
+\right)=AB_{*j}
+$
+\end{center}
+\end{itemize}
+\subsection{Matrix Representation of Linear Systems}
+Matrix multiplication provides a convenient representation for linear systems: every system of $m$ equations in $n$ unknowns:
+\begin{center}
+$a_{11}x_1+a_{12}x_{2}+\cdots +a_{1n}x_{n} = b_{1}$\\
+$a_{21}x_1+a_{22}x_{2}+\cdots +a_{2n}x_{n} = b_{2}$\\
+$\vdots$\\
+$a_{m1}x_1+a_{m2}x_{2}+\cdots +a_{mn}x_{n} = b_{m}$\\
+\end{center}
+can be written as a single matrix equation $Ax = b$ in which:
+\begin{center}
+$A_{m,n}=  
+ \begin{pmatrix}
+  a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+  a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{m,1} & a_{m,2} & \cdots & a_{m,n} 
+ \end{pmatrix},\qquad x=
+ \left(
+\begin{array}{c}
+x_{1} \\ 
+x_{2} \\
+\vdots \\
+x_{n} \\
+\end{array}
+\right)
+, \qquad b=
+\left(
+\begin{array}{c}
+b_{1} \\ 
+b_{2} \\
+\vdots \\
+b_{m} \\
+\end{array}
+\right)
+$
+\end{center}
+\subsection{Application}
+a linear system $A_{m\times n}x_{n\times 1} = b_{m\times 1}$ is consistent if and only if $b$ is a linear combination of the (basic) columns in $A$
+
+\section{Properties of Matrix Multiplication}
+Although not commutative and not satisfy the cancellation law, matrix multiplication is both distributive and associative; more precisely, for conformable matrices $A$, $B$, and $C$, there holds:
+\begin{itemize}
+\item \textbf{left-hand distributive law:} $A(B + C) = AB + AC$
+\begin{center}
+$[A(B + C)]_{ij}=A_{i*}(B+C)_{*j}=\displaystyle\sum _{k}[A]_{ik}[B+C]_{kj}=\displaystyle\sum _{k}[A]_{ik}([B]_{kj}+[C]_{kj})=\displaystyle\sum _{k}([A]_{ik}[B]_{kj}+[A]_{ik}[C]_{kj})=\displaystyle\sum _{k}([A]_{ik}[B]_{kj}+\displaystyle\sum _{k}[A]_{ik}[C]_{kj})=[A]_{i*}[B]_{*j}+[A]_{i*}[C]_{*j}=[AB]_{ij}+[AC]_{ij}=[AB+AC]_{ij}$
+\end{center}
+\item \textbf{right-hand distributive law:} $(A + B)C = AC + BC$
+\item \textbf{associative law:} $A(BC) = (AB)C$
+\begin{center}
+$[A(BC)]_{ij}=[A]_{i*}[BC]_{*j}=[A]_{i*}\displaystyle\sum _{k}^{q}B_{*k}c_{kj}=\displaystyle\sum _{k}^{q}[A]_{i*}B_{*k}c_{kj}=\displaystyle\sum _{k}^{q}[AB]_{ik}c_{kj}=[AB]_{i*}C_{*j}=[(AB)C]_{ij}$
+\end{center}
+\end{itemize}
+\subsection{Linearity of Matrix Multiplication}
+Let $A$ be an $m \times n$ matrix, and $f$ be the function defined by matrix multiplication:
+\begin{center}
+$f (X_{n\times p}) = AX$
+\end{center}
+the left-hand distributive law guarantees that $f$ is linear since
+\begin{center}
+$f (\alpha X +Y) = \alpha AX + AY = \alpha f (X) + f (Y)$
+\end{center}
+for all scalars a and all $n \times p$ matrices $X$ and $Y$.
+\subsection{Multiplicative Identity}
+\begin{center}
+$I_{n\times n}=\left[
+\begin{array}{cccc}
+1 & 0 & \cdots & 0 \\ 
+0 & 1 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & 1 
+    \end{array}
+\right]$
+\end{center}
+for every $m\times n$ matrix $A$, there holds:
+\begin{center}
+$AI_n = A\qquad I_mA = A.$
+\end{center}
+\subsection{Powers of Square Matrices}
+\begin{center}
+$A^0 = I_n$\\
+$A^rA^s = A^{r+s}$\\
+$(A^r)^s = A^{rs}$
+\end{center}
+Note that powers of non-square matrices are never defined.\\
+Note that: $(A + B)^2 = A^2 + BA + AB + B^2$ ($BA \neq AB$)
+\subsection{Transpose of a Matrix Product}
+The operation of transposition has an interesting effect upon a matrix product: a reversal of order occurs; more precisely, for conformable matrices $A$ and $B$, there holds: 
+\begin{center}
+$(AB)^T = B^TA^T \qquad (AB)^* = B^*A^*$
+\end{center}
+Proof: By definition
+\begin{center}
+$(AB)_{ij}^{T}=[AB]ji=A_{j*}B_{*i}$
+\end{center}
+Consider the $(i, j)$-entry of the matrix $B^TA^T$ and write:
+\begin{center}
+$[B^TA^T]_{ij}=(B^T)_{i*}(A^T)_{*j}=\displaystyle\sum _{k}[B^T]_{ik}[A^T]_{kj}=\displaystyle\sum _{k}[B]_{ki}[A]_{jk}=\displaystyle\sum _{k}[A]_{jk}[B]_{ki}=A_{j*}B_{*i}$
+\end{center}
+Therefore, $(AB)_{ij}^{T}=[B^TA^T]_{ij}$.\\ \\
+Application: For every $m \times n$ matrix $A$, the products $(A^TA)_{nn}$ and $(AA^T)_{mm}$ are both symmetric matrices because:
+\begin{center}
+$(A^TA)^T = A^T(A^T)^T = A^TA$\\
+$(AA^T)^T = (A^T)^TA^T = AA^T$
+\end{center}
+The matrix $A^TA$ is significant because it not only contains the singular values of $A$ but also plays a central role in the least-squares solution of the overdetermined system $Ax = b$.
+\subsection{Trace of a Matrix Product}
+For $m \times n$ matrix $A$ and $n \times m$ matrix $B$, the products $AB$ and $BA$ are both defined but may not be equal; nevertheless,
+\begin{center}
+$trace(AB) = trace(BA)$
+\end{center}
+Proof: By definition
+\begin{center}
+$trace(AB)=\displaystyle\sum _{i=1}^{m}A_{i*}B_{*i}=\displaystyle\sum _{k=1}^{m}A_{k*}B_{*k}=trace(BA)$
+\end{center}
+Note: This is true in spite of the fact that AB is $m \times m$ while $BA$ is $n \times n$. Furthermore, this result can be extended to say that any product of conformable matrices can be permuted \textbf{cyclically} without altering the trace of the product. For example,
+\begin{center}
+$trace (ABC) = trace (BCA) = trace (CAB)$\\
+$trace (ABC) \neq trace (BAC)$.
+\end{center}
+\subsection{Block Matrix Multiplication}
+Submatrices -  matrix contained within another matrix\\ \\
+A useful technique in matrix multiplication is to partition one or both factors into submatrices, or simply blocks: if
+\begin{center}
+$A=  
+ \begin{pmatrix}
+  A_{1,1} & A_{1,2} & \cdots & A_{1,r} \\
+  A_{2,1} & A_{2,2} & \cdots & A_{2,r} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  A_{s,1} & A_{s,2} & \cdots & A_{s,r} 
+ \end{pmatrix}\qquad B=
+ \begin{pmatrix}
+  B_{1,1} & B_{1,2} & \cdots & B_{1,t} \\
+  B_{2,1} & B_{2,2} & \cdots & B_{2,t} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  B_{r,1} & B_{r,2} & \cdots & B_{r,t} 
+ \end{pmatrix}$
+\end{center}
+are two conformably partitioned block matrices in which each pair $(A_{ik}, B_{kj})$ is conformable, then the $(i, j)$-block in $AB$ is given by:
+\begin{center}
+$A_{i1}B_{1j} + A_{i2}B_{2j} + \cdots + A_{ir}B_{rj}$
+\end{center}
+
+\section{Matrix Inversion}
+\subsection{Definition of Matrix Inversion}
+For a given square matrix $A_{n\times n}$, the matrix $B_{n\times n}$ that satisfies the conditions:
+\begin{center}
+$AB = I_n \qquad BA = I_n$
+\end{center}
+is called the inverse of $A$ and is denoted by $B = A^{-1}$. An invertible matrix is said to be \textbf{nonsingular}, and a square matrix with no inverse (such as the zero matrix) is called a \textbf{singular} matrix.\\ \\
+Note that matrix inversion is defined for square matrices only: the condition $AA^{-1} = A^{-1}A$ rules out inverses of non-square matrices.
+\subsection{Example}
+Inverse of 2  2 Matrices:
+\begin{center}
+$A=
+\begin{pmatrix}
+  a & b \\
+  c & d \\
+\end{pmatrix}\qquad
+and \quad \delta = ad-cb \neq 0$\\
+$A^{-1}=\frac{1}{\delta }
+\begin{pmatrix}
+  d & -b \\
+  -c & a \\
+\end{pmatrix}
+$
+\end{center}
+\subsection{Solving Matrix Equations}
+\begin{itemize}
+\item Uniqueness of Inverse Matrix:
+\begin{center}
+$X_1 = X_1AX_2 = X_2$
+\end{center}
+\item  Matrix Equations
+\begin{itemize}
+\item if $A$ is nonsingular, then the matrix equation $A_{n\times n}X_{n\times p} = B_{n\times p}$ has a unique solution given by:
+\begin{center}
+$X = A^{-1}B$
+\end{center}
+\item in particular, for a system of $n$ linear equations in $n$ unknowns, written in matrix form as $A_{n\times n}x_{n\times 1} = b_{n\times 1}$, there exists a unique solution $x = A^{-1}b$ if (and only if) $A$ is nonsingular.
+\end{itemize}
+\end{itemize}
+
+\subsection{Existence of Matrix Inverse}
+\textcolor{red}{
+Theorem 4 (Characterization of nonsingular matrices)\\
+For an $n \times n$ matrix $A$, the following statements are equivalent:
+\begin{enumerate}
+\item $A^{-1}$ exists ($A$ is nonsingular);
+\item $rank(A) = n$;
+\item $A \xrightarrow{Gauss-Jordan} I$;
+\item $Ax = 0$ has only the trivial solution $x = 0$.
+\end{enumerate}}
+
+\subsection{Computing Matrix Inverse: the Algorithm}
+To compute the inverse $X$ of a nonsingular matrix $A_{n\times n}$:
+\begin{enumerate}
+\item recall first that determining $A^{-1}$ is equivalent to solving $AX = I$, which is the same as solving the $n$ linear systems $Ax = I_{*j}$;
+\item if $A$ is nonsingular, then Gauss-Jordan reduces $[A|I_{*j}] to [I|X_{*j}]$;
+\item by applying Gauss-Jordan to $[A|I]$, the n linear systems $Ax = I_{*j}$ can be solved simultaneously, and the end result is $[I|A^{-1}]$;
+\item the only way for Gauss-Jordan to fail is for a row of zeros to emerge in the left-hand side of $[A|I]$ at some point during the elimination process, and this occurs if and only if $A$ is singular.
+\end{enumerate}
+Example:\\
+\begin{center}
+$A=
+\begin{pmatrix}
+1 & 1 & 1 \\
+1 & 2 & 2 \\
+1 & 2 & 3 \\
+\end{pmatrix}
+$
+\end{center}
+if it is nonsingular. Applying Gauss-Jordan to $[A|I]$ yields:
+\begin{center}
+$\left(\begin{array}{ccc|ccc}
+1 & 1 & 1 & 1 & 0 & 0 \\
+1 & 2 & 2 & 0 & 1 & 0 \\
+1 & 2 & 3 & 0 & 0 & 1 \\
+\end{array}\right)\rightarrow
+\left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & 2 & -1 & 0 \\
+0 & 1 & 0 & -1 & 2 & -1 \\
+0 & 0 & 1 & 0 & -1 & 1 \\
+\end{array}\right)
+$
+\end{center}
+so $A^{-1}$ exists and equals:
+\begin{center}
+$A^{-1}=
+\begin{pmatrix}
+2 & -1 & 0 \\
+-1 & 2 & -1 \\
+0 & -1 & 1 \\
+\end{pmatrix}
+$
+\end{center}
+Operation counts:\\
+It is not difficult to show that computing the inverse of an $n \times n$ nonsingular matrix by Gauss-Jordan requires $n^3$ multiplications/divisions and $n^3 + 2n^2 + n$ additions/subtractions.
+\subsection{Properties of Matrix Inversion}
+For nonsingular $n \times n$ matrices $A$ and $B$, the following holds:
+\begin{itemize}
+\item $(A^{-1})^{-1} = A$;
+\item the product $AB$ is also nonsingular;
+\item $(AB)^{-1} = B^{-1}A^{-1}$ (the reverse order law);
+\item $(A^{-1})^{T} = (A^{T})^{-1} \qquad and\qquad (A^{-1})^{*} = (A^{*})^{-1}$.
+\end{itemize}
+Proof:\\
+The first property follows directly from the definition of inversion.\\ \\
+For the second and third one:\\
+Let $X=B^{-1}A^{-1}$ and verify that $(AB)X=I$ by writing:
+\begin{center}
+$(AB)X=(AB)B^{-1}A^{-1}=A(BB^{-1})A^{-1}=A(I)A^{-1}=AA^{-1}=I$\\
+\end{center}
+and also from the previous conclusion, it guaranteed that $X(AB)=I$.\\
+For the last property, let $X=(A^{-1})^T$ and verify that $A^TX=I$:
+\begin{center}
+$A^TX=A^T(A^{-1})^T=(AA^{-1})^T=I^T=I$
+\end{center}
+and the proof for conjugate is similar. 
+\subsection{Products of Nonsingular Matrices}
+In this regards, the class of rank-$n$ (nonsingular) matrices in $\mathbb{C}^{n\times n}$ is special since the product of any two rank-$n$ matrices again has rank $n$; more generally, if $A_1, A_2,\cdots, A_k \in \mathbb{C}^{n\times n}$ each has rank n, then their product also has rank $n$, and
+\begin{center}
+$(A_1A_2\cdots A_k)=A_k^{-1}\cdots A_2^{-1}A_1^{-1}$
+\end{center}
+\subsection{Inverses of Sums}
+\textbf{Sherman-Morrison Formula:}
+If $A_{n\times n}$ is nonsingular matrix and if $c$ and $d$ are $n\times 1$ columns such that:
+\begin{center}
+$1+d^TA^{-1}=A^{-1}-\frac{A^{-1}cd^TA^{-1}}{1+d^TA^{-1}c}$ 
+\end{center}
+The Sherman-Morrison-Woodbury formula is a generalization. If $C$ and $D$ are $n\times k$ such that $(I+D^TA^{-1}C)^{-1}$ exists, then:
+\begin{center}
+$(A+CD^T)^{-1}=A^{-1}-A^{-1}C(I+D^TA^{-1}C)^{-1}D^TA^{-1}$
+\end{center}
+\textbf{Neumann Series:}
+If $\lim_{n\to \infty}A^n=0$. then $I-A$ is nonsingular and 
+\begin{center}
+$(I-A)^{-1}=I+A+A^2+\cdots =\displaystyle\sum_{k=0}^{\infty}A^k$
+\end{center}
+
+\section{Elementary Matrices and Equivalence}
+\subsection{Definition}
+Matrices of the form $I-uv^T$, where $u$ and $v$ are $n\times 1$ columns such that $v^Tu\neq 1$ are called \textbf{elementary matrices}, and we know from the previous conclusion that all such matrices are nonsingular and 
+\begin{center}
+$I+uv^T=I-\frac{uv^T}{v^Tu-1}$
+\end{center}
+Notice that inverses of elementary matrices are elementary matrices.
+\subsection{Three types of the Elementary Matrices}
+\begin{itemize}
+\item Type I is interchanging rows (columns) $i$ and $j$.
+\item Type II is multiplying rows (columns) $i$ by $\alpha \neq 0$.
+\item Type III is adding a multiple if rows (columns) $i$ to rows (columns) $j$. 
+\end{itemize}
+\begin{align*}
+E_1=\begin{pmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+, \qquad &
+E_2=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & \alpha & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+, \qquad &
+E_3=\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\alpha & 0 & 1 \\
+\end{pmatrix}
+\end{align*}
+\subsection{Properties of Elementary Matrices}
+\begin{itemize}
+\item when used as a \textbf{left-hand multiplier}, an elementary matrix of type
+I, II, or III executes the corresponding \textbf{row operation};
+\item when used as a \textbf{right-hand multiplier}, an elementary matrix of type
+I, II, or III executes the corresponding \textbf{column operation}.
+\end{itemize}
+\textbf{Example:}
+\begin{center}
+$A=\begin{pmatrix}
+1 & 2 & 4 \\
+2 & 4 & 8 \\
+3 & 6 & 13 \\
+\end{pmatrix}
+ \xrightarrow[]{R_2-2R_1,R_3-3R_1,R_2\leftrightarrow R_3,R_1-4R_2}
+\begin{pmatrix}
+1 & 2 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$
+\end{center}
+This reduction can be accomplished by series left-hand multiplications with the corresponding elementary matrices.
+\begin{center}
+$\begin{pmatrix}
+1 & -4 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-3 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}A=E_A
+$
+\end{center}
+\subsection{Products of Elementary Matrices}
+It turns out that a matrix $A$ is nonsingular if and only if it is the product of elementary matrices of type I, II, or III.
+\\ \\
+Proof:\\
+If $A$ is nonsingular, then Gauss-Jordan reduces $A$ to $I$ by row operations with corresponding elementary matrices $G_1, G_2, \cdots , G_k$:\\
+by Theorem.4 Part c
+\begin{center}
+$G_k\cdots G_2G_1A=I,\quad or \quad A={G_1}^{-1}{G_2}^{-1}\cdots {G_k}^{-1}$
+\end{center}
+Therefore, if $A = E_1E_2 \cdots E_k$ is a product of elementary matrices,
+then $A$ must be nonsingular because the $E_i$��s are nonsingular.\\ \\
+Notes: The inverse of elementary matrix is elementary matrix for sure.
+\subsection{Equivalence}
+whenever $B$ can be derived from $A$ by a combination of elementary row and column operations, we say that $A$ and $B$ are equivalent matrices and write $A \sim B$; in matrix terms,
+\begin{center}
+$A \sim B \iff PAQ=B \qquad$ for nonsingular P and Q\\
+$A \sim ^{row} B \iff PAQ=B \qquad$ for nonsingular P\\
+$A \sim ^{col} B \iff PAQ=B \qquad$ for nonsingular Q
+\end{center}
+\subsection{Column and Row Relationship}
+\begin{itemize}
+\item If $A \sim ^{row} B$, then linear relationships existing among columns of $A$ also hold among corresponding columns of $B$, that is,
+\begin{center}
+$B_{*k}=\displaystyle\sum_{j=1}^{n}\alpha_{j}B_{*j} \iff A_{*k}=\displaystyle\sum_{j=1}^{n}\alpha_{j}A_{*j}$
+\end{center}
+\item if $A \sim ^{col} B$, then linear relationships existing among rows of $A$ must
+also hold among corresponding rows of $B$;
+\item in summary, row equivalence preserves column relationships, and column equivalence preserves row relationships.
+\end{itemize}
+\subsection{Rank Normal Form}
+\textcolor{red}{Theorem 6(Rank normal form)\\
+If $A$ is an $m\times n$ matrix such that $rank(A) = r$, then
+\begin{center}
+$A \sim N_r = 
+\begin{pmatrix}
+I_r & 0 \\
+0 & 0 \\
+\end{pmatrix}$
+\end{center}
+where $N_r$ is called the rank normal form of $A$. It is the end product of a complete reduction of $A$ by using both row and column operations.}
+Proof:\\
+\begin{enumerate}
+\item Since $A \sim ^{row} E_A$, there is a nonsingular matrix P such that PA = EA.
+\item If rank($A$) = $r$, then $E_A$ has $r$ basic columns each of which is of the form $e_i$ $(i = 1, \cdots , r)$. Apply column interchanges to $E_A$ to move these columns to the far left of $E_A$ and denote by $Q_1$ the product of the corresponding elementary matrices. The result is
+\begin{center}
+$PAQ_1=
+\begin{pmatrix}
+I_r & J \\
+0 & 0 \\
+\end{pmatrix}$
+\end{center}
+\item Multiplying both sides of this equation on the right by
+\begin{center}
+$Q_2=
+\begin{pmatrix}
+I_r & -J \\
+0 & I \\
+\end{pmatrix}$
+\end{center}
+produces $PAQ_1Q_2=N_r$, which shows $A\sim N_r$
+\end{enumerate}
+Example:\\
+As an application, let's show:
+\begin{center}
+$rank
+\begin{pmatrix}
+A & 0 \\
+0 & B \\
+\end{pmatrix}
+= rank(A)+rank(B)$
+\end{center}
+Indeed, if $rank(A)=r$ and $rank(B)=s$, then $A\sim N_r$ and $B\sim N_s$.\\
+Consequently, 
+\begin{center}
+$\begin{pmatrix}
+A & 0 \\
+0 & B \\
+\end{pmatrix}\sim 
+\begin{pmatrix}
+N_r & 0 \\
+0 & N_s \\
+\end{pmatrix}$
+\end{center}
+which implies that
+\begin{center}
+$rank 
+\begin{pmatrix}
+A & 0 \\
+0 & B \\
+\end{pmatrix}=r+s$
+\end{center}
+\subsection{Testing for Equivalence}
+\textcolor{red}{Theorem 7 (Testing for equivalence):\\
+For $m\times n$ matrices $A$ and $B$ the following statement are true:
+\begin{itemize}
+\item a.$A\sim B \iff rank(A) = rank(B)$ 
+\item b.$A\sim^{row} B \iff E_A = E_B$
+\item c.$A\sim^{col} B \iff E_{A^T} = E_{B^T}$
+\end{itemize}}
+Note: in particular, that:
+\begin{itemize}
+\item either $A\sim^{row} B$ or $A\sim^{col} B$ implies $A\sim B$, but not vice versa
+\item multiplication by nonsingular matrices doesn't change rank.  
+\end{itemize}
+Proof:\\
+To prove (a), let $N_r$, $N_s$ be the rank normal form of $A$, $B$ where $rank(A) =r$ and $rank(B)=s$. Then note that $A\sim B$ if and only if:
+\begin{center}
+$N_r\sim A\sim B\sim N_s$
+\end{center}
+and $N_r\sim N_s$ if and only if $r=s$. To establish (b), let $E_A$ and $E_B$ be the unique reduced row echelon form of $A$, $B$, and note that:
+\begin{center}
+$A\sim^{row}B\sim^{row}\sim^{row}E_B\sim^{row}E_A$
+\end{center}
+if and only if $E_A=E_B$ (by uniqueness). Finally, the proof of (c) follows by observing
+\begin{center}
+$A\sim^{col}B \iff A^T \sim^{row}B^T$
+\end{center}
+\subsection{Transposition and Rank}
+For all $m\times n$ matrices,
+\begin{center}
+$rank(A)=rank(A^T)$, $\qquad rank(A)=rank(A^*)$
+\end{center}
+Proof: \\
+Let $rank(A)=r$ and $N_r$ be the rank normal form of $A$. The proof of the first half of the statement follows easily by observing that $A\sim N_r$ if and only if $A_T\sim N_r^T$, and by using the fact that $rank(N_r)=rank(N_r^T)$. The proof of the second half is similar. 
+
+\section{The LU Factorization}
+Example: constructing LU factorization\\
+Consider the following linear system:
+\begin{center}
+$A=
+\begin{pmatrix}
+2 & 2 & 2 \\
+4 & 7 & 7 \\
+6 & 18 & 22 \\
+\end{pmatrix}
+\xrightarrow[]{R_2\rightarrow 2R_1, R_3\rightarrow 3R_1, R_3\rightarrow 4R_2}
+\begin{pmatrix}
+2 & 2 & 2 \\
+0 & 3 & 3 \\
+0 & 0 & 4 \\
+\end{pmatrix}=\mathcal{U}$
+\end{center}
+To write the elimination process using matrices, note that:
+\begin{itemize}
+\item each of these (type III) row operations can be realized by means of a left-hand multiplication, with the corresponding elementary matrix $G_k$ and their product given by:
+\begin{center}
+$G_3=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & -4 & 1 \\
+\end{pmatrix}$\\
+$G_2G_1=
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+-3 & 0 & -1 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+-2 & 1 & 0 \\
+-3 & 0 & 1 \\
+\end{pmatrix}$
+\end{center}
+\item denote by $T_1 = G_2G_1$, $T_2 = G_3$ the (product of) elementary matrices that are used to eliminate the entries below the first and second pivot, respectively; these matrices have the form
+\begin{center}
+$T_k=I-c_ke_k^T$
+\end{center}
+where $e_k$ is the $k$-th unit column vector and $c_k$ is a column vector
+with zeros in the first $k$ positions; in our case, we have
+\begin{center}
+$c_1=(0,2,3)^T, \qquad c_2=(0,0,4)^T$
+\end{center}
+note also that the entries in $c_k$ are precisely the multipliers used in the $k$-th step of the elimination process;\\
+Note: In general, matrices of the form $T_k=I-\tau _ke_k^T\in \mathbb{C}^{n\times n}$ are called \textbf{Gauss transformations} if the first $k$ component of $\tau \in \mathbb{n}$ are zero.
+\item by observing that $e^T_j c_k = 0$ whenever $j\leq k$, the inversion formula for elementary matrices produces
+\begin{center}
+$T_k^{-1}=I+c_ke_k^T$\\
+$T_1^{-1}T_2^{-1}=I+c_1e_1^T+c_2e_2^T=\mathcal{L}$
+\end{center}
+where $\mathcal{L}$ is a unit \textbf{lower-triangular matrix}; in our case, we have:
+\begin{center}
+$\mathcal{L}=
+\begin{pmatrix}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & 4 & 1 \\
+\end{pmatrix}$
+\end{center}
+note also that the $(i,j)$-th entry in $\mathcal{L}$ is precisely the multiplier used to annihilate the $(i,j)$-th position during the Gaussian elimination.
+\item the reduction from $A$ to $\mathcal{U}$ by now row operation is equivalent to 
+\begin{center}
+$G_3G_2G_1A=\mathcal{U}$, or $T_2T_1A=\mathcal{U}$\\
+$\implies A=T_1^{-1}T_2^{-1}\mathcal{U}=\mathcal{L} \mathcal{U}$
+\end{center}
+where $\mathcal{L}$ is the a lower-triangular matrix and $\mathcal{U}$ is an upper-triangular matrix; this is naturally called the $\mathcal{LU}$ factorization of $A$.
+\end{itemize}
+For the general case, if $A$ is an $n\times n$ matrix and a zero pivot is never encountered during Gaussian elimination, then $A$ can be factored as $A = \mathcal{LU}$ where
+\begin{itemize}
+\item $\mathcal{L}$ is lower triangular and $\mathcal{U}$ is upper triangular
+\item $l_{ii}=1$ and $u_{ii}\neq 0$ for each $i=1,2, \cdots , n$
+\item below the diagonal of $L$, the entry $l_{ij}$ is the multiple of row $j$ that is subtracted from row $i$ in order to annihilate the $(i, j)$-position during Gaussian elimination
+\item $\mathcal{U}$ is the final result of Gaussian elimination applied to $A$;
+\item $\mathcal{L}$ and $\mathcal{U}$ are uniquely determined by the first two properties.
+\end{itemize}
+Some remarks:
+\begin{itemize}
+\item it is a common practice to successively overwrite the entries in $A$ with the corresponding entries in $\mathcal{L}$ and $\mathcal{U}$ as Gaussian elimination evolves; for example, for the $3 \times 3$ matrix considered in the previous example, the elimination would yield:
+\begin{center}
+$A=\begin{pmatrix}
+2 & 2 & 2 \\
+4 & 7 & 7 \\
+6 & 18 & 22 \\
+\end{pmatrix}\xrightarrow[]{R_2\rightarrow 2R_1, R_3\rightarrow 3R_1, R_3\rightarrow 4R_2}
+\begin{pmatrix}
+2 & 2 & 2 \\
+\boxed{2} & 3 & 3 \\
+\boxed{3} & \boxed{4} & 4 \\
+\end{pmatrix}$
+\end{center}
+where the boxed entries represent the lower-triangular matrix $\mathcal{L}$;
+\item once the $\mathcal{Lu}$ factorization of a nonsingular matrix $A_{n\times n}$ is obtained, the linear system $Ax = b$ can be easily solved by writing $Ax = b$ as
+\begin{center}
+$\mathcal{L}y=b$, where $y=\mathcal{U}x$
+\end{center}
+the solution consists of two steps: the lower-triangular system $\mathcal{L}y = b$ is first solved for $y$ by forward substitution, and then the upper-triangular system $\mathcal{U}x = y$ is solved for $x$ using back substitution;
+\item the advantage of this approach is that, once the $\mathcal{LU}$ factors of $A$ are computed, any other linear system $Ax = \tilde{b}$ can be solved with only $n^2$ multiplications/divisions and $n^2 -n$ additions/subtractions, in contrast to the $2n^3/3$ operations required by Gaussian elimination;
+\item if zero pivots are encountered in the elimination process, then row interchanges are needed to bring a nonzero number into the pivot position; the end result of this procedure is a factorization
+\begin{center}
+$PA=\mathcal{LU}$
+\end{center}
+where $P$ is a permutation matrix (i.e. a product of elementary interchange matrices of type I); it can be shown that this is possible as long as $A$ is nonsingular.
+\end{itemize}
+
+\chapter{Vector Space}
+\section{Spaces and Subspaces}
+\subsection{Definition of Vector Space}
+Ten axioms for the vector space:
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+
+
+\section{Four Fundamental Subspaces}
+\section{Linear Independence}
+\section{Basis and Dimension}
+\end{document}
