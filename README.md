@@ -10,4 +10,4 @@ Include:
 
 + [MA2503 - Linear Algebra](https://www.cityu.edu.hk/ug/201617/course/MA2503.htm)
 
-+ [AP3290 - Thermodynamics] (https://www.cityu.edu.hk/ug/201617/course/AP3290.htm)
++ [AP3290 - Thermodynamics](https://www.cityu.edu.hk/ug/201617/course/AP3290.htm)
