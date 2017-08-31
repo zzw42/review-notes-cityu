@@ -1,10 +1,18 @@
 \documentclass[10.5pt]{article}
  
 \usepackage[margin=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,hyperref,forest,float,color}
-\usepackage{hyperref}
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,forest,float,color}
+\graphicspath{{./figs/}}
 \usepackage{tabularx}
+
+\usepackage{hyperref}
+ \hypersetup{
+ colorlinks,
+ linkcolor=blue
+ }
+
 \usetikzlibrary{positioning}
+
 \newcommand{\n}{\mathbb{N}}
 \newcommand{\z}{\mathbb{Z}}
 \newcommand{\q}{\mathbb{Q}}
@@ -38,10 +46,9 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
- \hypersetup{
- colorlinks,
- linkcolor=blue
- }
+
+
+
  %++++++++++++++++++++++++++++++++++++++++++++++++++
  %+++++++++++++++++++++++++++++++++++++++++++++++++++
 \begin{document}
