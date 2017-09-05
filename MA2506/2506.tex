@@ -1,18 +1,22 @@
 % all chapter and appendix finished :P  2017-4-24 -WEI
-% Last edit: 2017-5-17 -WEI
-% v 0.9999
-\documentclass[UTF8,a4paper,10pt,openany]{book}
+% Last edit: 2017-9-5 -WEI
+% v 1.0
+\documentclass[UTF8,a4paper,openany]{book}
 \usepackage{amsmath,amssymb,amsthm}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks, linkcolor=blue}
+
+\usepackage{sectsty} % Allows your to change titles style
+%    \chapterfont{\sffamily } % Delete the bold style and set the sans-serif font
+    \allsectionsfont{\sffamily} % Delete the bold style and set the sans-serif font
 
 % figures are in the folder ~\figures\   (Windows)
 \usepackage{graphicx}
 \graphicspath {{figures/}}
 \usepackage{float} % adjust the picture [H]
 
-\usepackage[margin=1 in]{geometry}
+%\usepackage[margin=1 in]{geometry}
 
 \usepackage{pgfplots}
 % the package run in compatible mode according to the log
@@ -21,20 +25,20 @@
 
 % Used to create enviroment for therorem
 \theoremstyle{plain}
-\newtheorem{thm}{Theorem}[chapter] % reset theorem numbering for each chapter
+\newtheorem{theo}{Theorem}[chapter] % reset theorem numbering for each chapter
+\newtheorem{coro}{Corollary}[theo]
+\newtheorem{prop}{Proposition}[chapter]
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter] % definition numbers are independent
 \newtheorem{axio}{Axiom}[chapter]
-\newtheorem{prop}{Proposition}[chapter]
-
-\newtheorem{theo}[thm]{Theorem}
-\newtheorem{coro}[thm]{Corollary}
-
+%\newtheorem{theo}[thm]{Theorem}
 \newtheorem{exmp}{Example}[chapter] % Examples are independent
 
+\renewcommand\qedsymbol{$\blacksquare$}
+
 \newenvironment{solution}
-  {\renewcommand\qedsymbol{$\blacksquare$}\begin{proof}[Solution]}
+ {\begin{proof}[Solution]}
   {\end{proof}}   % proof and solution environment with \begin{proof} or \begin{solution}
 
 % ceil and floor function
@@ -46,7 +50,7 @@
 
 %\usepackage{indentfirst}
 %\usepackage{euler} % ams euler font
-%\usepackage{mathpazo}
+%\usepackage{mathptmx}
 %\usepackage{cmbright}
 
 % The document starts here
@@ -65,15 +69,15 @@
 
 \textsc{\LARGE City University of Hong Kong}\\[1.5cm] % Name of your university/college
 \textsc{\Large MA Courses Review Notes}\\[0.5cm] % Major heading such as course name
-\textsc{\large MA2506}\\[0.5cm] % Minor heading such as course title
+\textsc{\large {MA2506}}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \huge \bfseries  Probability and Statistics}\\[0.4cm] % Title of your document
-\rightline{Version 0.9999}
+{ \huge \bfseries  \textsf{Probability and Statistics} }\\[0.4cm] % Title of your document
+\rightline{{\bfseries \textsf{Version 1.0}} }
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -109,7 +113,7 @@ Junhui \textsc{Wang} % Supervisor's Name
 %	LOGO SECTION
 %----------------------------------------------------------------------------------------
 \vspace{5cm}
-\includegraphics[scale=0.1]{figures/CityU_logo_2015.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+\includegraphics[scale=0.2]{figures/CityU_full_logo_2015.pdf}\\[1cm] % Include a department/university logo - this will require the graphicx package
 
 %----------------------------------------------------------------------------------------
 
