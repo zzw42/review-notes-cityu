@@ -40,8 +40,7 @@
 %\\Columbia University School of General Studies
 }
 %\titlepic{\includegraphics[scale=0.07]{CityU_logo_2015.png} \includegraphics[scale=0.15]{Columbia_University_School_of_General_Studies_logo.png}}
-
-
+\usepackage{bm}
 % document starts here
 \begin{document}
 
@@ -51,16 +50,16 @@
 \chapter{Vector and the Geometry of Space}
 \section{Three-Dimensional Coordinate Systems}
 \begin{enumerate}
-\item Three-dimensional \textbf{Rectangular} Coordinate System
+\item Three-dimensional \emph{Rectangular} (Cartesian) Coordinate System
 
 Defined by a triple $(x, y, z)$, can be considered as an orthogonal completed set in three dimension, called the coordinate representation. \\
 
 The gradient expression:
 \begin{equation}
- \boxed{\nabla = \mathbf{\hat{i}}\frac{\partial }{\partial x}+\mathbf{\hat{j}}\frac{\partial }{\partial y}+\mathbf{\hat{k}}\frac{\partial }{\partial z}}
+ \boxed{\nabla = \mathbf{\hat{i}}\frac{\partial }{\partial x}+ \bm{\hat{j}} \frac{\partial }{\partial y}+\mathbf{\hat{k}}\frac{\partial }{\partial z}	}
 \end{equation}
 
-\item Three-dimensional \textbf{Cylindrical} Coordinate System
+\item Three-dimensional \emph{Cylindrical} Coordinate System
 
 Defined by a triple $(\rho, \varphi, z)$.
 
@@ -74,10 +73,10 @@ y = \rho \cos \theta  &  \tan \theta = \frac{y}{x}
 
 The gradient expression:
 \begin{equation}
- \boxed{\nabla = \mathbf{\hat{r}}\frac{\partial }{\partial r}+\frac{1}{r}\mathbf{\hat{\theta}}\frac{\partial }{\partial \theta}+\mathbf{\hat{z}}\frac{\partial }{\partial z}}
+ \boxed{\nabla = \bm{\hat{r}}\frac{\partial }{\partial r}+\frac{1}{r} \bm{\hat{\theta}}	\frac{\partial }{\partial \theta}+\bm{\hat{z}}\frac{\partial }{\partial z}}
 \end{equation}
 
-\item Three-dimensional \textbf{Spherical} Coordinate System
+\item Three-dimensional \emph{Spherical} Coordinate System
 
 Defined by a triple $(\rho, \theta, \varphi)$.
 
@@ -92,7 +91,7 @@ z = \rho \cos \varphi  &  \tan \varphi = \frac{\sqrt{x^2+y^2}}{z}
 
 The gradient expression:
 \begin{equation}
- \boxed{\nabla = \mathbf{\hat{r}}\frac{\partial }{\partial r}+\frac{1}{r}\mathbf{\hat{\theta}}\frac{\partial }{\partial \theta}+\mathbf{\hat{\varphi}}\frac{1}{r\sin \theta}\frac{\partial }{\partial \varphi}}
+ \boxed{\nabla = \mathbf{\hat{r}}\frac{\partial }{\partial r} + \frac{1}{r}\bm{\hat{\theta}}\frac{\partial }{\partial \theta}+\bm{\hat{\varphi}}\frac{1}{r\sin \theta}\frac{\partial }{\partial \varphi}}
 \end{equation}
 \end{enumerate}
 
@@ -102,13 +101,11 @@ The gradient expression:
 \section{Equation for Line and Plane}
 \subsection{Line Function}
 Line function given by the vector function is:
-
-\begin{center}
-$\mathbf{r}=\mathbf{r_0}+t\mathbf{v}$
-where $\mathbf{r}=x\mathbf{\hat{i}}+y\mathbf{\hat{j}}+z\mathbf{\hat{k}}$
-\end{center}
-
-expressed in the coordinate representation:
+%\begin{center}
+\[\mathbf{r}=\mathbf{r_0}+t\mathbf{v},\]
+where $\mathbf{r}=x\mathbf{\hat{i}}+y\mathbf{\hat{j}}+z\mathbf{\hat{k}}$.
+%\end{center}
+Expressed in the coordinate representation:
 
 \[\begin{cases}
 x=x_0+at \\
@@ -120,9 +117,7 @@ or can be expressed as following:
 
 \[\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}=t\]
 
-where the vector $\mathbf{v}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ is the directional vector of this line.
-
-With this, the angle between any two lines can be expressed as following:
+where the vector $\mathbf{v}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ is the directional vector of this line. With this, the angle between any two lines can be expressed as following:
 
 Supposing there are two lines $l_1$ and $l_2$:
 
@@ -146,14 +141,14 @@ Therefore, the expression of the angle between two lines are:
 
 \subsection{Plane Function}
 Plane function given by the vector function is:
-\begin{center}
-$\mathbf{n}\cdot \mathbf{r_0}=0$\\
-\end{center}
-where $\mathbf{r_0}=x_0\mathbf{\hat{i}}+y_0\mathbf{\hat{j}}+z_0\mathbf{\hat{k}}$ ($(x_0,y_0,z_0)$ is a point in the plane) and the $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ are the normal vector of this plane
-expressed in the coordinate representation:
-\begin{center}
-$a(x-x_0)+b(y-y_0)+c(z-z_0)=0$
-\end{center}
+%\begin{center}
+\[\mathbf{n}\cdot \mathbf{r_0}=0,\]
+%\end{center}
+where $\mathbf{r_0}=x_0\mathbf{\hat{i}}+y_0\mathbf{\hat{j}}+z_0\mathbf{\hat{k}}$ ($(x_0,y_0,z_0)$ is a point in the plane) and the $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ are the normal vector of this plane.
+Expressed in the coordinate representation:
+%\begin{center}
+\[a(x-x_0)+b(y-y_0)+c(z-z_0)=0,\]
+%\end{center}
 where the vector $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ is the normal vector of this plane.\\ \\
 With this, the expression of the angle between line and plane is the following:\\
 Supposing there are one line $l$ and one plane $n$:
@@ -575,17 +570,16 @@ If $f_x$ and $f_y$ exist in a neighborhood of $(x_0,y_0)$ and continuous at $(x_
 
 \section{The Chain Rule}
 \subsection{Recall and Analogy}
-$y=f(x)$, $x=g(t)$, the derivative of $y$ w.r.t $t$ is following:
+$y=f(x)$, $x=g(t)$, the derivative of $y$ w.r.t\footnote{with respect to --- By the editor} $t$ is following:
 
-\begin{center}
-$\frac{dy}{dt}=\frac{dy}{dx}\frac{dx}{dt}$
-\end{center}
-
+%\begin{center}
+\[\frac{dy}{dt}=\frac{dy}{dx}\frac{dx}{dt}.\]
+%\end{center}
 Therefore, for differentiable function $z=f(x,y)$, where $x=g(t)$ and $y=h(t)$, we have the following formula:
 
-\begin{center}
-$\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}$
-\end{center}
+%\begin{center}
+\[\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}\]
+%\end{center}
 
 \subsection{Proof}
 An increment $\Delta t$ leads to the increment $\Delta x$, $\Delta y$ and $\Delta z$.
@@ -597,7 +591,8 @@ An increment $\Delta t$ leads to the increment $\Delta x$, $\Delta y$ and $\Delt
 \end{align*}
 
 \subsection{Tree diagram}
-Procedure for writing down the chain formula:\\
+\textsc{Procedure for writing down the chain formula}:
+
 To calculate the derivative of $z$ w.r.t $t$, we can draw the tree diagram and count how many different path from $z$ to $t$. For each path, calculate the product of derivative w.r.t the local variable. Finally, add all the product together.
 
 \begin{center}
@@ -607,7 +602,7 @@ To calculate the derivative of $z$ w.r.t $t$, we can draw the tree diagram and c
   }
   [z[x[t]][y[t]]]
 \end{forest}\\
-$\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}$
+\[\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{dx}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}\]
 \end{center}
 
 Example: Given $xy+yz+zx=u$, where $x=st$, $y=\exp{st}$ and $z=t^2$, find $\frac{dy}{ds}$\\ \\
@@ -871,18 +866,17 @@ Solution:\\
 Follow thee equation:\\
 the tangent vector can be obtained:
 \begin{align*}
-\nabla F(x,y,z)&=\frac{\partial F}{\partial x}\mathbf{\hat{i}}+\frac{\partial F}{\partial y}\mathbf{\hat{j}}+\frac{\partial F}{\partial z}\mathbf{\hat{k}}\\
+\nabla F(x,y,z)&=\frac{\partial F}{\partial x}\mathbf{\hat{i}} + \frac{\partial F}{\partial y}\mathbf{\hat{j}}+\frac{\partial F}{\partial z}\mathbf{\hat{k}}	\\
 &= e^{yz}\mathbf{\hat{i}}+xze^{yz}\mathbf{\hat{j}}+xye^{yz}\mathbf{\hat{k}}\\
 &= \mathbf{\hat{i}}+5\mathbf{\hat{j}}+0\mathbf{\hat{k}}
 \end{align*}
 Therefore, the equation of tangent plane:
-
 \[(x-1)+5(y-0)=0\]
 
 \section{Maximum and Minimum Values}
-Definition: (For) z=f(x,y) defined in the a region $\mathcal{D}$ in the $xy$-plane)
+Definition: (For) $z=f(x,y)$ defined in the a region $\mathcal{D}$ in the $xy$-plane)
 
-$f(x,y)$ has local maximum (minimum) at (a,b) if:
+$f(x,y)$ has local maximum (minimum) at $(a,b)$ if:
 
 \begin{center}
 $f(x,y)\leq f(a,b)$

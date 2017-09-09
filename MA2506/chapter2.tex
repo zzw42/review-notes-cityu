@@ -234,9 +234,7 @@ C: Cable \qquad I: Internet \qquad T:Telephone.\footnote{Acutually a mistake $P(
 
 \subsection{Determining Probabilities Systematically}
 Any event $A$ is a union of simple events, i.e. with only one outcome. Then
-
-\[P(A)=\sum_{E_i \in A}P(E_i)\]
-
+\[P(A)=\sum_{E_i \in A}P(E_i),\]
 and we just need to determine $P(E_i)$.
 
 \begin{exmp}
@@ -410,11 +408,7 @@ Similarly,
 \end{enumerate}
 
 \begin{exmp}
-A new magazine publishes 3 columns.
-
-"Art"(A),"Boobs"(B),"Cinema"(C).
-Research shows the reading habits
-
+A new magazine publishes 3 columns: ``Art"(A), ``Boobs"(B), ``Cinema"(C). Research shows the reading habits:
 \begin{center}
 \begin{tabular}{ccccccc}
 \hline
@@ -422,7 +416,7 @@ $A$ & $B$ & $C$ & $A\cap B$ & $A\cap C$ & $B\cap C$ & $A \cap B\cap C$\\
 \hline
 0.14&0.23&0.37&0.08&0.09&0.13&0.05\\
 \hline
-\end{tabular}
+\end{tabular}.
 \end{center}
 
 Randomly select one reader
@@ -439,7 +433,7 @@ P(A|B\cup C)&=\frac{P(A\cap (B\cup C) )}{P(B\cup C)}\\
 
 (3)
 
-$P(A|A \cup B \cup C)$: What is the probability that the reader read "Art" Column given that  he/she reads at least one column?
+$P(A|A \cup B \cup C)$: What is the probability that the reader read ``Art" Column given that  he/she reads at least one column?
 \begin{align*}
 P(A|A \cup B \cup C)&=\frac{P(A \cap (A \cup B \cup C) )}{P(A \cup B \cup C)}=\frac{P(A)}{P(A \cup B \cup C)}\\
 &=\frac{P(A)}{P(A)+P(B)+P(C)-P(A \cap B)-P(B \cap C)-P(C \cap A)+P(A \cap B \cap C)}\\
@@ -595,13 +589,14 @@ if $A$ and $B$ are independent
   Toss a fair coin repeatedly until the first H occurs.
   \[A=\{\text{at least 5 tosses result in the first H}\}\]
   \[P(A)= \quad ?\]
-	 
+\begin{solution}	 
 Assume the tossing are independent.
 \[A=\{TTTTH\}\cup	\{TTTTTH\} \cup \dots	\]
 \begin{align*}
 P(A)&=P(\{TTTTH\})+\dots =(P(T))^4 P(H)+(P(T))^5 P(H)\\
 &=\left(\frac{1}{2}\right)^5+\left(\frac{1}{2}\right)^6+\dots=\frac{1}{16}
 \end{align*}
+\end{solution}
 \end{exmp}
 
 \subsection{Independence of More Than Two Events}
@@ -615,19 +610,18 @@ Then $A_1,A_2,\dots A_k$ are said to be mutually independent.
 \begin{exmp}
 Component works with probability 0.9, and they work independently.
 \[P(\text{system works})\]
-
+\begin{solution}	
 Let
 \begin{align*}
 &A_i=\{ \text{the }i\text{th component works} \}	\\
 &P(A_i)=0.9	\\
 &P(\text{system works})=P\left( (A_1 \cap A_2)\cup(A_3 \cap A_4) \right)=0.9639\\
 \end{align*}
+\end{solution}
 \end{exmp}
 
 \section{Challenge Question 1}
-Monty Hall problem.
-
-\url{https://en.wikipedia.org/wiki/Monty_Hall_problem}
+Monty Hall problem. \url{https://en.wikipedia.org/wiki/Monty_Hall_problem}
 
 
 \section{Problem in Previous Mid-term Test}

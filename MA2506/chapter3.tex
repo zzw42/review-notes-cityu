@@ -74,7 +74,7 @@ One of those is randomly selected. $X$ = \# of defectives in the selected lot
 \end{exmp}
 
 \begin{exmp}
-Five person 1,2,3,4,5 are blood donors. Among them, only 1 and 2 have "O" type. Collect their blood in a random segment, $X=\text{\# of typing neccessary to get the first "O" type}$.
+Five person 1,2,3,4,5 are blood donors. Among them, only 1 and 2 have ``O" type. Collect their blood in a random segment, $X=\text{\# of typing neccessary to get the first ``O" type}$.
 \[	X = 1,2,3,4		\]
 \[	P(X=1)=P(\text{typing after the first trail})=\frac{2}{5} \]
 \end{exmp}
@@ -422,7 +422,7 @@ P(X=2)=& \frac{\text{\# of outcome in } E}{\text{\# of outcomes in } \mathcal{S}
 
 \subsection{Hypergeometric}
 \begin{prop}
-In general, $M$ of type "1", $N-M$ of type "2 in a box, choose $n$ items.
+In general, $M$ of type ``1", $N-M$ of type ``2 in a box, choose $n$ items.
 \[Y \sim \text{hypergeometric}(N,M,n)\]
 \[P(Y=k)=\frac{\binom Mk \binom {N-M}{n-k}}{\binom N n}\qquad k=(0 \vee n-(N-M)),1,2,\dots,(n \wedge M)\]
 \end{prop}
@@ -444,10 +444,7 @@ Assume there are 25 such wolves in the forest. $P(X=2)=?$
 &E(X)=2	\\
 &Var(X)=1
 \end{align*}
-If we have no idea about the number of wolves in the forest.
-
-But $X=3$, how to estimate the \# of wolves in the forest.
-
+If we have no idea about the number of wolves in the forest. But $X=3$, how to estimate the \# of wolves in the forest ?
 \[N= \text{\# of wolves in total}\]
 \[10 \cdot \frac{5}{N}=E(X)\approx 3\]
 \[N \approx 10 \cdot \frac{5}{3}\approx17\]
@@ -461,18 +458,17 @@ A couple wants 3 girls. How many children they need to have to have fulfil his p
 \[x\geq 3 \qquad \mathcal{D}=\{3,4,\dots\}\]
 \[P(X=k)=\binom {k-1}{2} p^3(1-p)^{k-3}\]
 
-This is called "Negative binomial r.v"
+This is called ``Negative binomial r.v"
 \end{exmp}
 
 \begin{prop}
-In general, $X \sim NegativeBinomial(r,p)$
+In general, $X \sim \textit{Negative Binomial}(r,p)$
 \[P(X=k)=\binom {k-1}{r-1} p^r (1-p)^{k-r}  \qquad k=r,r+1,\dots	\]
 \[E(X)=\frac{r}{p} \qquad  Var(X)=\frac{r(1-p)}{p^2} \]
 \end{prop}
 
 \begin{exmp}
-Roll a dice repeatedly until the first "one" occurs\\
-X=\# of rollings
+Roll a dice repeatedly until the first ``one" occurs. $X =$ \# of rollings.
 \[X \sim n.b(1,\frac{1}{6})\]
 \[E(X)=\frac{1}{\frac{1}{6}}=6  	\qquad Var(X)=30\]
 \end{exmp}
