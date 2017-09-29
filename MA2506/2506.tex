@@ -6,44 +6,50 @@
 
 \usepackage{hyperref}
 \hypersetup{colorlinks, linkcolor=blue}
-%\usepackage{ctex}
+\makeatletter							%help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
+\def\UrlAlphabet{%
+      \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+      \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+      \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+      \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+      \do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother							% https://liam0205.me/2017/05/17/help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
 
-\usepackage{sectsty} % Allows your to change titles style
-%    \chapterfont{\sffamily } % Delete the bold style and set the sans-serif font
-    \allsectionsfont{\sffamily} % Delete the bold style and set the sans-serif font
+\usepackage{sectsty} 					% Allows your to change titles style
+%    \chapterfont{\sffamily } 			% Delete the bold style and set the sans-serif font
+    \allsectionsfont{\sffamily} 		% Delete the bold style and set the sans-serif font
 
-% figures are in the folder ~\figures\   (Windows)
 \usepackage{graphicx}
-\graphicspath {{figures/}}
-\usepackage{float} % adjust the picture [H]
+\graphicspath {{figures/}}				% figures are in the folder ~\figures\   (Windows)
+\usepackage{float} 						% adjust the picture [H]
 
 \usepackage[margin=1 in]{geometry}
 
-\usepackage{pgfplots}
-% the package run in compatible mode according to the log
-% Used to create histogram
-\pgfplotsset{compat=1.12}
+\usepackage{pgfplots}					% Used to create histogram
+\pgfplotsset{compat=1.12}				% the package run in compatible mode according to the log
 
-% Used to create enviroment for therorem
-\theoremstyle{plain}
-\newtheorem{theo}{Theorem}[chapter] % reset theorem numbering for each chapter
-\newtheorem{coro}{Corollary}[theo]
+\theoremstyle{plain}					% Used to create enviroment for therorem
+\newtheorem{theo}{Theorem}[chapter] 	% reset theorem numbering for each chapter
+\newtheorem{coro}{Corollary}[theo]		% Corollary dependent on Theorem
 \newtheorem{prop}{Proposition}[chapter]
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[chapter] % definition numbers are independent
 \newtheorem{axio}{Axiom}[chapter]
-%\newtheorem{theo}[thm]{Theorem}
-\newtheorem{exmp}{Example}[chapter] % Examples are independent
+\newtheorem{exmp}{Example}[chapter] 	 % Examples are independent
 
-\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand\qedsymbol{$\blacksquare$}% change the qed symbol
 
 \newenvironment{solution}
- {\begin{proof}[Solution]}
-  {\end{proof}}   % proof and solution environment with \begin{proof} or \begin{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}   						 % proof and solution environment with \begin{proof} or \begin{solution}
 
-% ceil and floor function
-\usepackage{mathtools}
+\usepackage{mathtools}			  		 % ceil and floor function
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
@@ -68,8 +74,8 @@
 %----------------------------------------------------------------------------------------
 
 \textsc{\LARGE City University of Hong Kong}\\[1.5cm] % Name of your university/college
-\textsc{\Large MA Courses Review Notes}\\[0.5cm] % Major heading such as course name
-\textsc{\large {MA2506}}\\[0.5cm] % Minor heading such as course title
+\textsc{\Large MA Courses Review Notes}\\[0.5cm] 		% Major heading such as course name
+\textsc{\large {MA2506}}\\[0.5cm] 						% Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -113,7 +119,7 @@ Junhui \textsc{Wang} % Supervisor's Name
 %	LOGO SECTION
 %----------------------------------------------------------------------------------------
 \vspace{5cm}
-\includegraphics[scale=0.2]{figures/CityU_full_logo_2015.pdf}\\[1cm] % Include a department/university logo - this will require the graphicx package
+\includegraphics[scale=0.5]{figures/CityU_full_logo_2015.pdf}\\[1cm] % Include a department/university logo - this will require the graphicx package
 
 %----------------------------------------------------------------------------------------
 
@@ -124,18 +130,22 @@ Junhui \textsc{Wang} % Supervisor's Name
 \noindent
 % Copyright \copyright 2017 Zongpu \textsc{Li} and Zezhu \textsc{Wei}. All rights reserved.
 
-This document is free; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+This document is free; you can redistribute it and/or modify it under the terms of 
+the GNU General Public License as published by the Free Software Foundation; either 
+version 2 of the License, or (at your option) any later version.
 
-This document is distributed in the hope that it will be useful, but \emph{without any warranty}; without even the implied warranty of \emph{merchantability} or \emph{fitness for a particular purpose}. See the GNU General Public License for more details.
+This document is distributed in the hope that it will be useful, but \emph{without any 
+warranty}; without even the implied warranty of \emph{merchantability} or \emph{fitness 
+for a particular purpose}. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this document; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+You should have received a copy of the GNU General Public License along with this document; 
+if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-All \LaTeX{} (\texttt{.tex}) files of this document can be accessed from:
-
-\url{https://github.com/zzw42/review-notes-cityu}
+All \LaTeX{} (\texttt{.tex}) files of this document can be accessed from
+\url{https://github.com/zzw42/review-notes-cityu}.
 
 \chapter*{Preface}
-\textsf{
+\textsl{
 Textbook: Probability and Statistics for Engineering and the Sciences, by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. }
 \\
 
@@ -172,8 +182,6 @@ Week & Brief Description \\
 
 % Page 1
 \mainmatter
-%\clearpage
-%\setcounter{page}{1}
 \include{chapter1}
 \include{chapter2}
 \include{chapter3}
