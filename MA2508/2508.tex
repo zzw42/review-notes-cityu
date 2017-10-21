@@ -56,7 +56,7 @@ Defined by a triple $(x, y, z)$, can be considered as an orthogonal completed se
 
 The gradient expression:
 \begin{equation}
- \boxed{\nabla = \mathbf{\hat{i}}\frac{\partial }{\partial x}+ \bm{\hat{j}} \frac{\partial }{\partial y}+\mathbf{\hat{k}}\frac{\partial }{\partial z}	}
+ \boxed{\nabla = \hat{\textbf{\i}}\frac{\partial }{\partial x}+ \hat{\textbf{\j}} \frac{\partial }{\partial y}+\hat{\textbf{k}}\frac{\partial }{\partial z}	}
 \end{equation}
 
 \item Three-dimensional \emph{Cylindrical} Coordinate System
@@ -65,9 +65,9 @@ Defined by a triple $(\rho, \varphi, z)$.
 
 Relationship between the $(x, y, z)$ system:
 \begin{center}
-$\begin{array}{cc}
-x = \rho \sin \theta  &  \rho ^2 = x^2+y^2\\
-y = \rho \cos \theta  &  \tan \theta = \frac{y}{x}
+$\begin{array}{ll}
+x = \rho \sin \theta \qquad &  \rho ^2 = x^2+y^2\\
+y = \rho \cos \theta \qquad &  \tan \theta = \frac{y}{x}
 \end{array}$
 \end{center}
 
@@ -82,20 +82,20 @@ Defined by a triple $(\rho, \theta, \varphi)$.
 
 Relationship between the $(x, y, z)$ system:
 \begin{center}
-$\begin{array}{cc}
-x = \rho \sin \varphi \cos \theta &  \rho ^2 = x^2+y^2+z^2\\
-y = \rho \sin \varphi \sin \theta &  \tan \theta = \frac{y}{x}\\
-z = \rho \cos \varphi  &  \tan \varphi = \frac{\sqrt{x^2+y^2}}{z}
+$\begin{array}{ll}
+x = \rho \sin \varphi \cos \theta \qquad &  \rho ^2 = x^2+y^2+z^2\\
+y = \rho \sin \varphi \sin \theta \qquad &  \tan \theta = \frac{y}{x}\\
+z = \rho \cos \varphi  			\qquad &  \tan \varphi = \frac{\sqrt{x^2+y^2}}{z}
 \end{array}$
 \end{center}
 
 The gradient expression:
 \begin{equation}
- \boxed{\nabla = \mathbf{\hat{r}}\frac{\partial }{\partial r} + \frac{1}{r}\bm{\hat{\theta}}\frac{\partial }{\partial \theta}+\bm{\hat{\varphi}}\frac{1}{r\sin \theta}\frac{\partial }{\partial \varphi}}
+\boxed{\nabla = \hat{\bm{r}}\frac{\partial }{\partial r} 
++ \frac{1}{r}\bm{\hat{\theta}}\frac{\partial }{\partial \theta}
++ \bm{\hat{\varphi}}\frac{1}{r\sin \theta}\frac{\partial }{\partial \varphi}}
 \end{equation}
 \end{enumerate}
-
-
 
 
 \section{Equation for Line and Plane}
@@ -141,7 +141,6 @@ Therefore, the expression of the angle between two lines are:
 
 \subsection{Plane Function}
 Plane function given by the vector function is:
-%\begin{center}
 \[\mathbf{n}\cdot \mathbf{r_0}=0,\]
 %\end{center}
 where $\mathbf{r_0}=x_0\mathbf{\hat{i}}+y_0\mathbf{\hat{j}}+z_0\mathbf{\hat{k}}$ ($(x_0,y_0,z_0)$ is a point in the plane) and the $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ are the normal vector of this plane.

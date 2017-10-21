@@ -1,28 +1,18 @@
 %% The openany option is here just to remove the blank pages before a new chapter
-%\documentclass[UTF8,a4paper, 10pt, openany]{book}
-\documentclass[UTF8,a4paper, 10pt, openany]{svmono}
+\documentclass[UTF8,a4paper, 10pt, openany]{book}
+%\documentclass[UTF8,a4paper, 10pt, openany]{svmono}
 \usepackage{pagenote}
-
-%\usepackage{euler}
-%\usepackage{mathspec}
-%\setmainfont{Myriad Pro}
-%\setmathsfont{Myriad Pro}
-
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{forest}
 \usepackage{color}
-
 \usepackage{graphicx}
-\usepackage{titlepic}
+%\usepackage{titlepic}
 \usepackage{float}
-
 \usepackage{hyperref}
 \hypersetup{
  colorlinks,
  linkcolor=blue
  }
-
-
 \usepackage[margin=1 in]{geometry}
 
 % For customising the endnote markers. Comment these out if you don't want them.
@@ -50,8 +40,6 @@
 
 %% THIS LINE IS MANDATORY
 \makepagenote
-
-
 \begin{document}
 
 \maketitle
@@ -1250,6 +1238,7 @@ $B_{*k}=\displaystyle\sum_{j=1}^{n}\alpha_{j}B_{*j} \iff A_{*k}=\displaystyle\su
 also hold among corresponding rows of $B$;
 \item in summary, row equivalence preserves column relationships, and column equivalence preserves row relationships.
 \end{itemize}
+
 \subsection{Rank Normal Form}
 \textcolor{red}{Theorem 6(Rank normal form)\\
 If $A$ is an $m\times n$ matrix such that $rank(A) = r$, then
@@ -1261,9 +1250,9 @@ I_r & 0 \\
 \end{pmatrix}$
 \end{center}
 where $N_r$ is called the rank normal form of $A$. It is the end product of a complete reduction of $A$ by using both row and column operations.}
-Proof:\\
+\begin{proof}
 \begin{enumerate}
-\item Since $A \sim ^{row} E_A$, there is a nonsingular matrix P such that PA = EA.
+\item Since $A \sim ^{row} E_A$, there is a nonsingular matrix $P$ such that $PA = EA$.
 \item If rank($A$) = $r$, then $E_A$ has $r$ basic columns each of which is of the form $e_i$ $(i = 1, \cdots , r)$. Apply column interchanges to $E_A$ to move these columns to the far left of $E_A$ and denote by $Q_1$ the product of the corresponding elementary matrices. The result is
 \begin{center}
 $PAQ_1=
@@ -1282,7 +1271,9 @@ I_r & -J \\
 \end{center}
 produces $PAQ_1Q_2=N_r$, which shows $A\sim N_r$
 \end{enumerate}
-Example:\\
+\end{proof}
+
+Example:
 As an application, let's show:
 \begin{center}
 $rank
@@ -1322,10 +1313,11 @@ For $m\times n$ matrices $A$ and $B$ the following statement are true:
 \end{itemize}}
 Note: in particular, that:
 \begin{itemize}
-\item either $A\sim^{row} B$ or $A\sim^{col} B$ implies $A\sim B$, but not vice versa
+\item either $A \overset{\rm{row}}{\sim} B$ or $A \overset{\rm{col}}{\sim} \sim^{col} B$ implies $A\sim B$, but not vice versa
 \item multiplication by nonsingular matrices doesn't change rank.  
 \end{itemize}
-Proof:\\
+%Proof:\\
+\begin{proof}
 To prove (a), let $N_r$, $N_s$ be the rank normal form of $A$, $B$ where $rank(A) =r$ and $rank(B)=s$. Then note that $A\sim B$ if and only if:
 \begin{center}
 $N_r\sim A\sim B\sim N_s$
@@ -1338,6 +1330,8 @@ if and only if $E_A=E_B$ (by uniqueness). Finally, the proof of (c) follows by o
 \begin{center}
 $A\sim^{col}B \iff A^T \sim^{row}B^T$
 \end{center}
+\end{proof}
+
 \subsection{Transposition and Rank}
 For all $m\times n$ matrices,
 \begin{center}
