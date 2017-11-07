@@ -1,5 +1,5 @@
 \documentclass[UTF8]{book}
-\usepackage{geometry}
+%\usepackage{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx,mathtools,tikz,forest,float,color}
 \usepackage{siunitx}
@@ -17,7 +17,7 @@
 \usepackage{epigraph}						% quote
 \usepackage{yfonts}							% fraktur font styles in text mode
 
-\def\dbar{{\mathchar'26\mkern-12mu d}}		% inexact differential
+\def\dbar{{\mathchar'26\mkern-12mu \mathrm{d}}}		% inexact differential
 %\newcommand{\n}{\mathbb{N}}
 %\newcommand{\z}{\mathbb{Z}}
 %\newcommand{\q}{\mathbb{Q}}
@@ -109,12 +109,13 @@
 %}
 
  
+\usepackage{pdfpages}
+
 
 \begin{document}
 
 \date{\today}
-
- 
+%\titlehead{\centering\includegraphics[width=6cm]{tiger}}
 \title{ Bachelor Physics Lecture Notes\\ AP3290 Thermodynamics
 %SemA 2016/17
 }
@@ -123,10 +124,29 @@
  \\City University of Hong Kong
  %\\ \\ AP3290 \\ Thermodynamics \\ 
  }
+ \includepdf[pages=-1]{FrontCover.pdf}
+%\includegraphics{FrontCoverEbook.pdf}
+\frontmatter
+%\maketitle
 
-\maketitle
+\begin{titlepage}
+    \centering
+    \vfill
+    {\bfseries\Large
+	Bachelor Physics Lecture Notes\\ 
+	AP3290 Thermodynamics
+        \vskip2cm
+        Peilin \textsc{WU}\\
+    }    
+    \vfill
+    \includegraphics[width=0.5\textwidth]{Carnot_heat_engine.eps} % also works with logo.pdf
+    \vfill
+    \vfill
+\end{titlepage}
+
 \tableofcontents
-\pagebreak
+%\pagebreak
+\mainmatter
 \chapter{Thermodynamic Structure}
 \epigraph{\textfrak{You are very familiar with western ways, but you are too young. You go everywhere to follow the big news, but the questions you ask are too simple — sometimes na\"{i}ve. Understand, or not?}}{\textfrak{Elderly}}
 \section{Laws of Thermodynamics}
@@ -188,7 +208,7 @@ where: $U$ is the internal energy, $Q$ is the heat that flows into system and $W
  {or in differential form:}
 $$\boxed{\mathrm{d} U=\dbar Q+\dbar W}.$$
 
-{We can see the difference of state function and process variables. $dU$ indicates that $U$ is a state function which correspond to conserved potential energy, $\dbar Q$ and $\dbar W$ indicate that $Q$ and $W$ are process variables which depend explicitly upon the path.}
+We can see the difference of state function and process variables. $\mathrm{d}U$ indicates that $U$ is a state function which correspond to conserved potential energy, $\dbar Q$ and $\dbar W$ indicate that $Q$ and $W$ are process variables which depend explicitly upon the path.
 \end{theorem}
 
 \begin{theorem}
@@ -208,6 +228,19 @@ C_p-C_V=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac
 \end{equation}
 \end{theorem}
 \rule{\textwidth}{1pt}
+
+Before, the concepts of reversibility.
+And example of irreversible
+\begin{enumerate}
+\item Heat transfer through a finite temperature difference
+\item Friction
+\item Plastic deformation
+\item Flow of electric current through a resistance
+\item Magnetization or polarization with a hysteresis
+\item Unrestrained expansion of fluids
+\item Spontaneous chemical reactions
+\item Spontaneous mixing of matter of varying composition/states
+\end{enumerate}
 {Applying the first law of thermodynamics to some special cases of ideal gases:}
 \begin{itemize}
 \item  {\textbf{Isobaric} (Constant $p$) Process}
@@ -317,7 +350,7 @@ Third: You can't quit the game.}{}
 \item \textbf{Internal energy $U$}
 $$dU=TdS-pdV$$
 $$T=\left(\dfrac{\partial U}{\partial S}\right)_V \qquad p=-\left(\dfrac{\partial U}{\partial V}\right)_S$$
-\item \textbf{Enthalpy $H$}
+\item \textbf{Enthalpy $H$} \cite{schroeder1999introduction}
 $$dH=TdS+Vdp$$
 $$T=\left(\dfrac{\partial H}{\partial S}\right)_p \qquad V=\left(\dfrac{\partial H}{\partial p}\right)_S$$
 \item \textbf{Helmholtz function $F$}
@@ -327,6 +360,7 @@ $$S=-\left(\dfrac{\partial F}{\partial T}\right)_V \qquad p=-\left(\dfrac{\parti
 $$dG=-SdT+Vdp$$
 $$S=-\left(\dfrac{\partial G}{\partial T}\right)_p \qquad V=\left(\dfrac{\partial G}{\partial p}\right)_T$$
 \item \textbf{Chemical potential $\mu$}
+
 \begin{theorem}
 [Chemical Potential]~  {Notice that in a dynamic process, adding or subtracting particles in a system will change the internal energy thus we have to modify the first law and the second law of thermodynamics with an extra term:}
 $$dU=TdS-pdV+\sum_i\mu _idN_i$$
@@ -339,6 +373,7 @@ dG&=Vdp-SdT+\sum_i\mu _idN_i \implies \mu _i =\left(\dfrac{\partial G}{\partial 
 \end{align*}
 \end{theorem}
 \end{itemize}
+
 \section{Thermodynamic Relationships}
 \begin{theorem}
 [Coefficient Relations]~  {Given any thermodynamic relation among differentials of state functions, the coefficient relations can be written down by inspection. For a state function Z, if $dZ=MdX+NdY$, then:}
@@ -479,7 +514,7 @@ $$U=\sum K.E.=nN_A\dfrac{1}{2}mv_{rms}^2=\dfrac{3}{2}pV=\dfrac{3}{2}nRT$$
 In Equation \ref{heat capacity}, we have
 $$C_p-C_V=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac{\partial V}{\partial T}\right)_p=\dfrac{TV\beta _p^2}{\alpha _T }$$
 \begin{proof}
- {In general, the internal energy will be a function of temperature and volume, so that we can write $U=U(T,V)$. Hence a small change in $U$ can be related to changes in $T$ and $V$ by:}
+\textsf{Section 11.3 \cite{blundell2009concepts}} {In general, the internal energy will be a function of temperature and volume, so that we can write $U=U(T,V)$. Hence a small change in $U$ can be related to changes in $T$ and $V$ by:}
 $$dU=\left(\dfrac{\partial U}{\partial T}\right)_VdT+\left(\dfrac{\partial U}{\partial V}\right)_TdV$$
  {the first law of thermodynamics yields:}
 $$dQ=dU+pdV$$
@@ -491,7 +526,10 @@ C_V&=\left(\dfrac{\partial Q}{\partial T}\right)_V=\left(\dfrac{\partial U}{\par
 C_p&=\left(\dfrac{\partial Q}{\partial T}\right)_p=\left(\dfrac{\partial U}{\partial T}\right)_V+\left[\left(\dfrac{\partial U}{\partial V}\right)_T+p\right]\left(\dfrac{\partial V}{\partial T}\right)_p\\
 C_p-C_V&=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac{\partial V}{\partial T}\right)_p
 \end{align*}
- {therefore, we prove the first part of this relation. And for the second part, we need to use the Maxwell's relation. Considering $S=S(T,V)$ allow us to write down immediately that:}
+ {therefore, we prove the first part of this relation. 
+ 
+ \textsf{Example 16.5 \cite{blundell2009concepts}}
+ And for the second part, we need to use the Maxwell's relation. Considering $S=S(T,V)$ allow us to write down immediately that:}
 $$dS=\left(\dfrac{\partial S}{\partial T}\right)_VdT+\left(\dfrac{\partial S}{\partial V}\right)_TdV$$
  {Differentiating this equation w.r.t $T$ at constant $p$ yields:}
 $$\left(\dfrac{\partial S}{\partial T}\right)_p=\left(\dfrac{\partial S}{\partial T}\right)_V+\left(\dfrac{\partial S}{\partial V}\right)_T\left(\dfrac{\partial V}{\partial T}\right)_p$$
