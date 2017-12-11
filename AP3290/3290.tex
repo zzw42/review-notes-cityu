@@ -9,6 +9,9 @@
 %\usepgfplotslibrary{external} 
 %\tikzexternalize 
 %\usetikzlibrary{positioning}
+\usepackage{makeidx}
+\makeindex
+
 \usepackage{hyperref}
  \hypersetup{
  colorlinks,
@@ -16,6 +19,7 @@
  }
 \usepackage{epigraph}						% quote
 \usepackage{yfonts}							% fraktur font styles in text mode
+\usepackage{physics}
 
 \def\dbar{{\mathchar'26\mkern-12mu \mathrm{d}}}		% inexact differential
 %\newcommand{\n}{\mathbb{N}}
@@ -50,131 +54,197 @@
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
- 
-%% TOC 
-%\usepackage{xcolor}
-%\usepackage{mdframed}
-%\usepackage{titletoc}
-%\usepackage{etoolbox}
-%
-%
-%\definecolor{secnum}{RGB}{13,151,225}
-%\definecolor{ptcbackground}{RGB}{212,237,252}
-%\definecolor{ptctitle}{RGB}{0,177,235}
-%
-%\pretocmd{\tableofcontents}{\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]}{}{}
-%\apptocmd{\tableofcontents}{\end{mdframed}}{}{}
-%\patchcmd{\tableofcontents}{\contentsname}{\color{ptctitle}\contentsname}{}{}
-%
-%\titlecontents{section}
-%  [4em]{\sffamily}
-%  {\color{secnum}\contentslabel{2.3em}\normalcolor}{}
-%  {\titlerule*[1000pc]{.}\contentspage\\\hspace*{-3em}\vspace*{2pt}%
-%    \color{white}\rule{\dimexpr\textwidth-20pt\relax}{1pt}}
-%
-%\titlecontents{lsection}
-%  [5.8em]{\sffamily}
-%  {\color{secnum}\contentslabel{2.3em}\normalcolor}{}
-%  {\titlerule*[1000pc]{.}\contentspage\\\hspace*{-5.8em}\vspace*{2pt}%
-%    \color{white}\rule{\dimexpr\textwidth-15.5pt\relax}{1pt}}
-%
-%\makeatletter
-%\renewcommand*\l@chapter[2]{%
-%  \ifnum \c@tocdepth >\m@ne
-%    \addpenalty{-\@highpenalty}%
-%    \vskip 1.0em \@plus\p@
-%    \setlength\@tempdima{1.5em}%
-%    \begingroup
-%      \parindent \z@ \rightskip \@pnumwidth
-%      \parfillskip -\@pnumwidth
-%      \leavevmode
-%      \advance\leftskip\@tempdima
-%      \hskip -\leftskip
-%      \colorbox{ptctitle}{\strut%
-%        \makebox[\dimexpr\textwidth-2\fboxsep-7pt\relax][l]{%
-%          \color{white}\bfseries\sffamily#1%
-%          \nobreak\hfill\nobreak\hb@xt@\@pnumwidth{\hss #2}}}\par\smallskip
-%      \penalty\@highpenalty
-%    \endgroup
-%  \fi}
-%\makeatother
-%\newcommand\PartialToC{%
-%\startcontents[chapters]%
-%\begin{mdframed}[backgroundcolor=ptcbackground,hidealllines=true]
-%\printcontents[chapters]{l}{1}{\colorbox{ptctitle}{%
-%  \parbox[t]{\dimexpr\textwidth-2\fboxsep\relax}{%
-%    \strut\color{white}\bfseries\sffamily\makebox[5em]{%
-%      Chapter~\thechapter\hfill}Contents}}\vskip5pt}
-%\end{mdframed}%
-%}
-
- 
 \usepackage{pdfpages}
 
+\date{\today}
+%\title{ Bachelor Physics Lecture Notes\\ AP3290 Thermodynamics
+%%SemA 2016/17
+%}
+%\author{Peilin \textsc{WU}
+%%-\\ -Personal Usage- \\
+% \\City University of Hong Kong
+% %\\ \\ AP3290 \\ Thermodynamics \\ 
+% }
 
 \begin{document}
-
-\date{\today}
-%\titlehead{\centering\includegraphics[width=6cm]{tiger}}
-\title{ Bachelor Physics Lecture Notes\\ AP3290 Thermodynamics
-%SemA 2016/17
-}
-\author{Peilin \textsc{WU}
-%-\\ -Personal Usage- \\
- \\City University of Hong Kong
- %\\ \\ AP3290 \\ Thermodynamics \\ 
- }
- \includepdf[pages=-1]{FrontCover.pdf}
-%\includegraphics{FrontCoverEbook.pdf}
+%\includepdf[pages=-1]{FrontCover.pdf}
 \frontmatter
-%\maketitle
 
 \begin{titlepage}
-    \centering
-    \vfill
-    {\bfseries\Large
-	Bachelor Physics Lecture Notes\\ 
-	AP3290 Thermodynamics
-        \vskip2cm
-        Peilin \textsc{WU}\\
-    }    
-    \vfill
-    \includegraphics[width=0.5\textwidth]{Carnot_heat_engine.eps} % also works with logo.pdf
-    \vfill
-    \vfill
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE City University of Hong Kong}\\[1.5cm] % Name of your university/college
+\textsc{\Large AP Courses Review Notes}\\[0.5cm] 		% Major heading such as course name
+\textsc{\large {AP3290}}\\[0.5cm] 						% Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries  \textsf{Thermodynamics} }\\[0.4cm] % Title of your document
+\rightline{{\bfseries \textsf{Version 0.1}} }
+\HRule \\[1.5cm]
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Peilin \textsc{WU} %\\ Zezhu \textsc{Wei}
+\end{flushleft}
+\end{minipage}\\[3cm] % Your name
+~
+%\begin{minipage}{0.4\textwidth}
+%\begin{flushright} \large
+%\emph{Instructor:} \\
+%Junhui \textsc{Wang} % Supervisor's Name
+%\end{flushright}
+%\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%\Large \emph{Author:}\\
+%John \textsc{Smith}\\[3cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+
+{\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+\vspace{5cm}
+%\includegraphics[scale=0.5]{figures/CityU_full_logo_2015.pdf}\\[1cm] % Include a department/university logo - this will require the graphicx package
+%\includegraphics[scale=0.5]{figures/CityU_logo_2015.eps}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
 \end{titlepage}
 
 \tableofcontents
 %\pagebreak
 \mainmatter
 \chapter{Thermodynamic Structure}
-\epigraph{\textfrak{You are very familiar with western ways, but you are too young. You go everywhere to follow the big news, but the questions you ask are too simple — sometimes na\"{i}ve. Understand, or not?}}{\textfrak{Elderly}}
-\section{Laws of Thermodynamics}
+\section{Thermodynamic Systems}
+ In practice, a subset of the universe, called a system, is the focus.
+ The condition of the system at time $t$ is
+described in terms of
+its properties.
 
- {Before we get to the first law of thermodynamics, there are some important preliminary concepts and definitions:}
+\begin{itemize}
+\item{ {\textbf{Unary vs. Multicomponent}}}
+ { with one or more \emph{component}\index{component}.}
+\item{ {\textbf{Homogeneous vs. Heterogeneous}}}
+ { with single phase or multiple \emph{phases}\index{phase}.}
+\item{ {\textbf{Closed vs. Open}}}
+ { with particle exchange with the environment or not.}
+  
+  Special case of closed system: fixed mass, no energy flow $\Rightarrow$ \emph{isolated system}
+\item{ {\textbf{Nonreacting vs. Reacting}}}
+ { with chemical reaction or not.}
+\item{ {\textbf{Otherwise simple vs. Complex}}}
+ { with external field (any gravitational, electrical, magnetic, or surface influence)}
+\end{itemize}
+
+\paragraph{Changes of Systems}
+There are rigorous mathematical
+relationships, derived from the Laws of
+Thermodynamics, linking various
+thermodynamic properties.\footnote{Thermodynamic properties have not been defined at
+this stage.}
+
+There are clear concept of the conditions for
+equilibrium (to be discussed in details later).
+
+\section{Thermodynamic Properties}
+Thermodynamics only deals with
+macroscopic, large‐scale quantities.
+
+\paragraph{State and Process variables}
+\begin{itemize}
+\item[State functions] define the instantaneous
+conditions.\footnote{The State Postulate ``The state of a simple compressible system
+is completely specified by two independent, intensive properties''}
+\item[Process variables] describe the exchanges with
+the environment and/or the reacting
+components
+\end{itemize}
+
+Within these classes, (state) properties may also be
+classified as:
+\begin{itemize}
+\item[Intensive properties] the property at a point, e.g. $T$, $P$, etc.
+\item[Extensive properties] depend on the amount (or
+extent) of substance, e.g. $V$, $U$, $S$, no. of moles, etc.
+\end{itemize}
+
+\section{Thermodynamic Relationships}
+\begin{description}
+\item[The Laws of Thermodynamics] the physical basis for all these relations
+\item[Definitions] new measures of the energy of systems expressed in
+terms of previously formulated variables or introduces the commonly
+lab‐measured quantities
+\item[Coefficient relations] emerged from the mathematical properties of
+state functions
+for a state function $Z$, if $\dd{Z}=M\dd{X}+N\dd{Y}$, then
+\[M=\left(\frac{\partial Z}{\partial X}\right)_Y,
+N=\left(\frac{\partial Z}{\partial Y}\right)_X\]
+\item[Maxwell relations] also derived from the mathematical properties of
+state functions
+\[\left(\frac{\partial M}{\partial Y}\right)_X=\left(\frac{\partial N}{\partial X}\right)_Y\]
+\item[Conditions for equilibrium] relationships between state functions that
+must exist when the system attains its equilibrium state
+\end{description}
+
+\section{Equilibrium}
+This final state is ``in equilibrium" with
+itself and its surrounding.  For simple system, e.g. ice with water,
+the condition is $T _{\rm ice} = T _{\rm water}$
+
+%\epigraph{\textfrak{You are very familiar with western ways, but you are too young. You go everywhere to follow the big news, but the questions you ask are too simple — sometimes na\"{i}ve. Understand, or not?}}{\textfrak{Elderly}}
+\chapter{Laws of Thermodynamics}
+
+Before we get to the first law of thermodynamics, there are some important preliminary concepts and definitions:
 
 \begin{theorem}[Temperature]
 ~  {Within a system, the temperature is a quantity which is the same for both systems when they are in equilibrium.}
 \end{theorem}
 
-\begin{theorem}[A Statistical definition of temperature]
-~ Section 4.4 in \cite{blundell2009concepts}. Consider two systems are in thermal contact with each other but thermally isolated from their surroundings. Assuming the first system has the energy $E_1$ and energy $E_2$ of another system. The total energy $E=E_1+E_2$ is therefore assumed fixed. Following the below assumptions (\textsc{Ergodic hypothesis}):
-%\footnote{ from Concepts in Thermal Physics}
+%\mybox[fill=blue!20]{
+%\begin{theorem}[A Statistical definition of temperature]
+\paragraph{A Statistical definition of temperature}
+~ Section 4.4 in \cite{blundell2009concepts}. Consider two systems are in thermal contact with each other but thermally isolated from their surroundings. Assuming the first system has the energy $E_1$ and energy $E_2$ of another system. The total energy $E=E_1+E_2$ is therefore assumed fixed. Following the below assumptions (\textsl{Ergodic hypothesis}):
 \begin{itemize}
 \item  {each one of the possible microstates of a system is equally likely to occur.}
 \item  {the system's internal dynamics are such that the microstates of the system are continuously changing.}
 \item  {given enough time, the system will explore all possible microstates and spend equal time in each of them.}
 \end{itemize}
 
- {And by this, we define the microstates in each system are $\Omega _1(E_1)$ and $\Omega _2(E_2)$:}
+And by this, we define the microstates in each system are $\Omega _1(E_1)$ and $\Omega _2(E_2)$:
 $$\dfrac{d}{dE_1}(\Omega _1(E_1)\Omega _2(E_2))=\Omega _2(E_2)\dfrac{d\Omega _1(E_1)}{dE_1}+\Omega _1(E_1)\dfrac{d\Omega _2(E_2)}{dE_1}\dfrac{dE_2}{dE_1}=0.$$
-Since the total energy $E=E_1+E_2$ is conserved, we have $dE_1=-dE_2 \implies \dfrac{dE_2}{dE_1}=-1$, therefore:
-$$\dfrac{1}{\Omega _1}\dfrac{\Omega _1}{E_1}-\dfrac{1}{\Omega _2}\dfrac{\Omega _2}{E_2}=0$$
- {Hence:}
-$$\dfrac{d\ln \Omega _1}{E_1}=\dfrac{d\ln \Omega _2}{E_2}$$
- Thus we choose to define temperature:
-$$\boxed{\dfrac{1}{k_BT}=\dfrac{d\ln \Omega }{dE}}$$
-\end{theorem}
+Since the total energy $E=E_1+E_2$ is conserved, we have $\dd{E_1}=-\dd{E_2}
+ \implies \frac{\dd{E_2}}{\dd{E_1}}=-1$, therefore:
+$$ \frac{1}{\Omega _1}\dv{\Omega _1}{E_1}-\frac{1}{\Omega _2}\dv{\Omega _2}{E_2}=0$$
+hence
+\[\dv{\ln \Omega _1}{E_1}=\dv{\ln \Omega _2}{E_2}.\]
+Thus we choose to define \emph{temperature}\index{temperature}
+$$\boxed{\beta=\dfrac{1}{k_BT}=\dv{\ln \Omega }{E}},$$
+where $k_B$ is the Boltzmann constant\index{Boltzmann constant}.
+%\end{theorem}	
+%}
 
 \begin{theorem}
 [Thermal Equilibrium]~  {When two systems are in thermal contact and reach a stage where no thermal changes occur, then they reach the thermal equilibrium.}
@@ -184,10 +254,11 @@ $$\boxed{\dfrac{1}{k_BT}=\dfrac{d\ln \Omega }{dE}}$$
 [The Zeroth Law of Thermodynamics]~ If bodies $A$ and $B$ are each in thermal equilibrium with a third body $T$, then they are in thermal equilibrium with each other.
 \end{theorem}
 
-\subsection{The First Law of Thermodynamics}
+\section{The First Law of Thermodynamics}
 \epigraph{The first law of thermodynamics\\
 Heat is work and work is heat \\
 Very good}{Flanders \& Swann}
+
 \begin{theorem}
 [The First Law of Thermodynamics]~  {Energy is conserved and heat and work are both form of energy, with mathematical description:}
 $$\boxed{\Delta U=\Delta Q+\Delta W}$$
@@ -205,43 +276,49 @@ where: $U$ is the internal energy, $Q$ is the heat that flows into system and $W
      -ve \quad  \textrm{heat flow to environment from system}
    \end{dcases}
 \end{align*}
- {or in differential form:}
-$$\boxed{\mathrm{d} U=\dbar Q+\dbar W}.$$
-
+{or in differential form:}
+$$\boxed{\mathrm{d} U=\dbar Q+\dbar W.}$$
 We can see the difference of state function and process variables. $\mathrm{d}U$ indicates that $U$ is a state function which correspond to conserved potential energy, $\dbar Q$ and $\dbar W$ indicate that $Q$ and $W$ are process variables which depend explicitly upon the path.
 \end{theorem}
 
 \begin{theorem}
 [Heat]~  {Heat is thermal energy in transit.}
 \end{theorem}
+
 \begin{theorem}
 [Heat Capacity]~  {Heat capacity or thermal capacity is a measurable physical quantity equal to the ratio of the heat added to (or removed from) an object to the resulting temperature change.}
-\[\boxed{C=\frac{dQ}{dT} \; [\si{\joule\per\kelvin}]}\]
- {For more specific situations, we also define the heat capacity per unit mass $c\,(\si{\joule\per\kelvin\per\kilo\gram})$, and molar heat capacity $C\,(\si{\joule\per\kelvin\per\mole})$}.
+\[\boxed{C=\dv{Q}{T} \; [\si{\joule\per\kelvin}]}\]
+{For more specific situations, we also define the heat capacity 
+per unit mass $c\,(\si{\joule\per\kelvin\per\kilo\gram})$, 
+and molar heat capacity $C\,(\si{\joule\per\kelvin\per\mole})$}.
 
-{Besides this, by applying a constraint to the system, we define two new quantities in case of \textbf{isochoric} (constant volume) and \textbf{isobaric} (constant pressure) process.}
+{Besides this, by applying a constraint to the system, we define 
+two new quantities in case of \textbf{isochoric} (constant volume) 
+and \textbf{isobaric} (constant pressure) process.}
 $$C_V=\left(\dfrac{\partial Q}{\partial T}\right)_V,$$
 $$C_p=\left(\dfrac{\partial Q}{\partial T}\right)_p,$$
-{where }$C_p > C_V$ { and can be shown that later on:}
+where $C_p > C_V$ { and can be shown that later on:}
 \begin{equation}\label{heat capacity}
 C_p-C_V=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac{\partial V}{\partial T}\right)_p=\dfrac{TV\beta _p^2}{\alpha _T }.
 \end{equation}
 \end{theorem}
 \rule{\textwidth}{1pt}
 
-Before, the concepts of reversibility.
-And example of irreversible
-\begin{enumerate}
-\item Heat transfer through a finite temperature difference
-\item Friction
-\item Plastic deformation
-\item Flow of electric current through a resistance
-\item Magnetization or polarization with a hysteresis
-\item Unrestrained expansion of fluids
-\item Spontaneous chemical reactions
-\item Spontaneous mixing of matter of varying composition/states
-\end{enumerate}
-{Applying the first law of thermodynamics to some special cases of ideal gases:}
+%Before, the concepts of reversibility.
+%And some examples of irreversible process.
+%\begin{enumerate}
+%\item Heat transfer through a finite temperature difference
+%\item Friction
+%\item Plastic deformation
+%\item Flow of electric current through a resistance
+%\item Magnetization or polarization with a hysteresis
+%\item Unrestrained expansion of fluids
+%\item Spontaneous chemical reactions
+%\item Spontaneous mixing of matter of varying composition/states
+%\end{enumerate}
+
+{Applying the first law of thermodynamics to some special cases 
+of ideal gases:}
 \begin{itemize}
 \item  {\textbf{Isobaric} (Constant $p$) Process}
 $$\delta Q=nC_p\Delta T, \quad \delta W=-p\Delta V $$
@@ -250,13 +327,13 @@ $$\delta W=-p \mathrm{d}V=0, \quad \delta Q=dU=nC_v\Delta T$$
 \item  {\textbf{Isothermal} (Constant $T$) Process}
 $$dU=0,\quad \delta Q=-\delta W=(n)RT\ln \dfrac{V_f}{V_i}$$
 \begin{proof}
- {As isothermal process, $\Delta T=0$, and for ideal gas that $dU=C_VdT$, we obtain $\Delta U=0$, thus implies $\delta W=-\delta Q$.}
+{As isothermal process, $\Delta T=0$, and for ideal gas that $dU=C_VdT$, we obtain $\Delta U=0$, thus implies $\delta W=-\delta Q$.}
 $$\Delta Q = \int dQ =-\int dW=\int_{V_i}^{V_f}p d V=\int_{V_i}^{V_f}\dfrac{RT}{V}dV=RT\ln \dfrac{V_f}{V_i}$$
 \end{proof}
 \item  {\textbf{Adiabatic} Process}
 $$\delta Q=0, \,  \mathrm{d} U= \delta W  \qquad PV^{\gamma}=\mathrm{constant}$$
 \begin{proof}
- {As adiabatic process which is both adiathermal and reversible, $\delta Q=0$, implies that $dU=\delta W$. And for ideal gas, $dU=C_VdT$:}
+{As adiabatic process which is both adiathermal and reversible, $\delta Q=0$, implies that $dU=\delta W$. And for ideal gas, $dU=C_VdT$:}
 \begin{align*}
 \int_{T_i}^{T_f}C_VdT&=\int_{V_i}^{V_f}-pdV=\int_{V_i}^{V_f}-\dfrac{RT}{V}dV\\
 \ln \dfrac{T_f}{T_i}&=-\dfrac{R}{C_V}\ln \dfrac{V_f}{V_i}
@@ -270,9 +347,10 @@ pV^{\gamma}&= {constant}
 \end{proof}
 \end{itemize}
 
-\subsection{The Second Law of Thermodynamics}
+\section{The Second Law of Thermodynamics}
 \epigraph{Every mathematician knows it is impossible to understand an elementary course in thermodynamics.}{Vladimir Igorevich Arnold}
 Chapter 14 -- Entropy in \cite{blundell2009concepts}.
+
 \begin{theorem}[Clausius Inequality]
 {For all thermodynamic cycles, reversible or irreversible, the Clausius inequality is valid:}
 $$\oint \dfrac{\delta Q}{T}\leq 0$$
@@ -284,6 +362,7 @@ $$\int_{1}^{2}\dfrac{\delta Q}{T}+\int_{1}^{2}\left(\dfrac{\delta Q}{T}\right)_{
 $$dS=S_2-S_1\geq \int_{1}^{2}\left(\dfrac{\delta Q}{T}\right)$$
 $$S_2-S_1=\int_{1}^{2}\left(\dfrac{\delta Q}{T}\right)+S_{gen}$$
 \end{theorem}
+
 \begin{theorem}
 [Entropy]~  {Therefore, we can define this property as entropy:}
 $$dS=\left(\dfrac{\delta Q}{T}\right)_{rev}\geq \dfrac{\delta Q}{T}\geq 0$$
@@ -300,12 +379,13 @@ $$dU=\left(\dfrac{\partial U}{\partial S}\right)_VdS+\left(\dfrac{\partial U}{\p
 \end{itemize}
 \end{theorem}
 \rule{\textwidth}{1pt}
+
 {However, it is possible to construct the entropy in the terms of the statistic views.}
 \begin{theorem}
 [Statistical Definition of Entropy]~  { Using $dS=\delta Q/T$, we can define the entropy via statistics. As the first law of thermodynamics implies:}
 $$T=\left(\dfrac{\partial U}{\partial S}\right)_V \qquad \dfrac{1}{T}\left(\dfrac{\partial S}{\partial U}\right)_V$$
  {As we recall the statistical definition of temperature:}
-$$\dfrac{1}{k_BT}=\dfrac{d\ln \Omega}{dE}$$
+$$\dfrac{1}{k_BT}=\dv{\ln \Omega}{E}$$
  {we can determine the statistical definition of entropy:}
 $$\boxed{S=k_B\ln \Omega }$$
  {And for more generality, here are Gibb's expression of the entropy:}
@@ -313,7 +393,7 @@ $$S=-k_B\sum_{i}P_i\ln P_i$$
  {where $P_i=\dfrac{n_i}{N}$}
 \end{theorem}
 
-\subsection{The Third Law of Thermodynamics}
+\section{The Third Law of Thermodynamics}
 \epigraph{Zeroth: You must play the game.\\
 First: You can't win.\\
 Second: You can't break even.\\
@@ -330,64 +410,36 @@ Third: You can't quit the game.}{}
 [Simon's statement of the third law]~  {The contribution to the entropy of a system by each aspect of the system which is in internal thermodynamic equilibrium tended to zero as $T \rightarrow 0$.}
 \end{theorem}
 
-\section{Thermodynamic Systems}
-\begin{itemize}
-\item{ {\textbf{Unary vs. Multicomponent}}}
- { with one or more component.}
-\item{ {\textbf{Homogeneous vs. Heterogeneous}}}
- { with single phase or multiple phases}
-\item{ {\textbf{Closed vs. Open}}}
- { with particle exchange with the environment or not}
-\item{ {\textbf{Nonreacting vs. Reacting}}}
- { with chemical reaction or not}
-\item{ {\textbf{Otherwise simple vs. Complex}}}
- { with external field (any gravitational, electrical, magnetic, or surface influence)}
-\end{itemize}
-
-\section{Thermodynamic Properties}
-\subsection{Thermal Variables}
-\begin{itemize}
-\item \textbf{Internal energy $U$}
-$$dU=TdS-pdV$$
-$$T=\left(\dfrac{\partial U}{\partial S}\right)_V \qquad p=-\left(\dfrac{\partial U}{\partial V}\right)_S$$
-\item \textbf{Enthalpy $H$} \cite{schroeder1999introduction}
-$$dH=TdS+Vdp$$
-$$T=\left(\dfrac{\partial H}{\partial S}\right)_p \qquad V=\left(\dfrac{\partial H}{\partial p}\right)_S$$
-\item \textbf{Helmholtz function $F$}
-$$dF=-SdT-pdV$$
-$$S=-\left(\dfrac{\partial F}{\partial T}\right)_V \qquad p=-\left(\dfrac{\partial F}{\partial V}\right)_T$$
-\item \textbf{Gibbs function $G$}
-$$dG=-SdT+Vdp$$
-$$S=-\left(\dfrac{\partial G}{\partial T}\right)_p \qquad V=\left(\dfrac{\partial G}{\partial p}\right)_T$$
-\item \textbf{Chemical potential $\mu$}
-
-\begin{theorem}
-[Chemical Potential]~  {Notice that in a dynamic process, adding or subtracting particles in a system will change the internal energy thus we have to modify the first law and the second law of thermodynamics with an extra term:}
-$$dU=TdS-pdV+\sum_i\mu _idN_i$$
- {where $N$ is the number of the particles in the system. This means that we can write an expression $\mu $ as a partial differential of $U$ as follows:}
-$$\mu =\left(\dfrac{\partial U}{\partial N}\right)_{S,V}$$
- {However, keeping $S$ and $V$ constant is a difficult constraint to apply, so it is convenient to consider other thermodynamics potentials.}
-\begin{align*}
-dF&=-pdV-SdT+\sum_i\mu _idN_i \implies \mu _i =\left(\dfrac{\partial F}{\partial N}\right)_{V,T,i}\\
-dG&=Vdp-SdT+\sum_i\mu _idN_i \implies \mu _i =\left(\dfrac{\partial G}{\partial N}\right)_{p,T,i}
-\end{align*}
-\end{theorem}
-\end{itemize}
 
 \section{Thermodynamic Relationships}
+\paragraph{Thermodynamic potentials (Energy functions)}
+\begin{align*}
+\dd U = & -p \dd{V}+T \dd{S}\\
+\dd H = & +V \dd{p}+T \dd{S}\\
+\dd F = & -p \dd{V}-S \dd{T}\\
+\dd U = & +V \dd{p}-S \dd{T}
+\end{align*}
+
 \begin{theorem}
-[Coefficient Relations]~  {Given any thermodynamic relation among differentials of state functions, the coefficient relations can be written down by inspection. For a state function Z, if $dZ=MdX+NdY$, then:}
+[Coefficient Relations]~  {Given any thermodynamic relation among differentials of state functions, the coefficient relations can be written down by inspection. For a state function $Z$, if $dZ=MdX+NdY$, then:}
 $$M=\left( \frac{\partial Z}{\partial Y}\right)_{X}\qquad N=\left( \frac{\partial Z}{\partial X}\right)_{Y}$$
 \end{theorem}
 \begin{theorem}
 [Maxwell's Relation]~  {For any state function $f$ is a function of variables $x$ and $y$. Then we have:}
 $$df=\left(\dfrac{\partial f}{\partial x}\right)_ydx+\left(\dfrac{\partial f}{\partial y}\right)_xdy$$
 $$\left(\dfrac{\partial ^2 f}{\partial x\partial y }\right)=\left(\dfrac{\partial ^2 f}{\partial y\partial x }\right)$$
-$$F_x=\left(\dfrac{\partial f}{\partial x}\right)_y \ and \ F_y=\left(\dfrac{\partial f}{\partial y}\right)_x$$
-$$\left(\dfrac{\partial F_y}{\partial x}\right)=\left(\dfrac{\partial F_x}{\partial y}\right)$$
+%$$F_x=\left(\dfrac{\partial f}{\partial x}\right)_y \ and \ F_y=\left(\dfrac{\partial f}{\partial y}\right)_x$$
+%$$\left(\dfrac{\partial F_y}{\partial x}\right)=\left(\dfrac{\partial F_x}{\partial y}\right)$$
  {Therefore, for the above four thermodynamic potentials $U$, $H$, $F$, and $G$, we can apply the theorem.}
-$$\left(\dfrac{\partial T}{\partial V}\right)_S=-\left(\dfrac{\partial p}{\partial S}\right)_V \qquad \left(\dfrac{\partial T}{\partial p}\right)_S=\left(\dfrac{\partial V}{\partial S}\right)_p$$
-$$\left(\dfrac{\partial S}{\partial V}\right)_T=\left(\dfrac{\partial p}{\partial T}\right)_V \qquad \left(\dfrac{\partial S}{\partial p}\right)_T=-\left(\dfrac{\partial V}{\partial T}\right)_p$$
+%$$\left(\dfrac{\partial T}{\partial V}\right)_S=-\left(\dfrac{\partial p}{\partial S}\right)_V \qquad \left(\dfrac{\partial T}{\partial p}\right)_S=\left(\dfrac{\partial V}{\partial S}\right)_p$$
+%$$\left(\dfrac{\partial S}{\partial V}\right)_T=\left(\dfrac{\partial p}{\partial T}\right)_V \qquad \left(\dfrac{\partial S}{\partial p}\right)_T=-\left(\dfrac{\partial V}{\partial T}\right)_p$$
+
+\begin{align*}
++\left({\frac {\partial T}{\partial V}}\right)_{S}=&-\left({\frac {\partial P}{\partial S}}\right)_{V}={\frac {\partial ^{2}U}{\partial S\partial V}}\\
++\left({\frac {\partial T}{\partial P}}\right)_{S}=&+\left({\frac {\partial V}{\partial S}}\right)_{P}={\frac {\partial ^{2}H}{\partial S\partial P}}\\
++\left({\frac {\partial S}{\partial V}}\right)_{T}=&+\left({\frac {\partial P}{\partial T}}\right)_{V}=-{\frac {\partial ^{2}F}{\partial T\partial V}}\\
++\left({\frac {\partial S}{\partial P}}\right)_{T}=&-\left({\frac {\partial V}{\partial T}}\right)_{P}=-{\frac {\partial ^{2}G}{\partial T\partial P}}
+\end{align*}
 \end{theorem}
 \begin{proof}
  {Here is an elegant derivation of the Maxwell's relation by using the Jocabian. Consider a cyclic process that can be described in both $T-S$ and $p-V$ planes. The internal energy $U$ is a state function and therefore is path independent, which implies that $\oint dU=0$. Therefore:}
@@ -399,9 +451,9 @@ $$\dfrac{\partial (T,S)}{\partial (x,y)}=\dfrac{\partial (p,V)}{\partial (x,y)}$
  {where $(x,y)$ are taken as $(T,p)$, $(T,V)$, $(p,S)$, and $(S,V)$.}
 \end{proof}
 
- {Note, here is an memorize technique. For each Maxwell's relations, it is in of the form:}
-$$\left(\dfrac{\partial \ast}{\partial \ddagger}\right)_\star=\pm \left(\dfrac{\partial \dagger}{\partial \star}\right)_\ddagger$$
- {where $\ast $ and $\star$, $\dagger$ and $\ddagger$ are conjugate variables, and you always have a minus sign when $V$ and $T$ are on the same side of equation.}
+Note, here is an memorize technique. For each Maxwell's relations, it is in of the form:
+$$\left(\dfrac{\partial \ast}{\partial \ddagger}\right)_\star=\pm \left(\dfrac{\partial \dagger}{\partial \star}\right)_\ddagger,$$
+where $\ast $ and $\star$, $\dagger$ and $\ddagger$ are conjugate variables, and you always have a minus sign when $V$ and $T$ are on the same side of equation.
 
 \begin{theorem}
 [Common Usage of Maxwell's Relation]~  {Utilizing the Maxwell's relations, we can achieve that to obtain expression only in terms of the experimental variables:}
@@ -415,18 +467,28 @@ $$\left(\dfrac{\partial x}{\partial z}\right)_y=\left(\dfrac{\partial z}{\partia
 $$\left(\dfrac{\partial x}{\partial y}\right)_z\left(\dfrac{\partial y}{\partial z}\right)_x\left(\dfrac{\partial z}{\partial x}\right)_y=-1$$
 \item  {Identify a heat capacity:}
 $$\dfrac{C_V}{T}=\left(\dfrac{\partial S}{\partial T}\right)_V \quad \dfrac{C_p}{T}=\left(\dfrac{\partial S}{\partial T}\right)_p$$
-\item  {Identify a generalized susceptibility:}\\
- {the isoabric expansivity $\beta _p$:}
+\item  {Identify a generalized susceptibility (experimental variables):}\\
+ {the isoabric expansivity $\beta _p$ (Coefficient of Thermal Expansion $\alpha$):}
 $$\beta _p =\dfrac{1}{V}\left(\dfrac{\partial V}{\partial T}\right)_p$$
  {the adiabatic expansivity $\beta_S$:}
 $$\beta _S =\dfrac{1}{V}\left(\dfrac{\partial V}{\partial T}\right)_S$$
- {the isothermal compressibility $\alpha _T$:}
+ {the isothermal compressibility $\alpha _T$ (Coefficient of Compressibility $\beta$):}
 $$\alpha _T =-\dfrac{1}{V}\left(\dfrac{\partial V}{\partial p}\right)_T$$
  {the adiabatic compressibility $\alpha _S$:}
 $$\alpha _S =-\dfrac{1}{V}\left(\dfrac{\partial V}{\partial p}\right)_S$$
 \end{itemize}
 \end{theorem}
 
+\subsection{Examples of the use of the
+relations}
+Section 5, page 24.
+\paragraph{Relation of Entropy to $T$ and $P$}
+\[\dd{V}= \left(\dfrac{\partial V}{\partial p}\right)_S\]
+\paragraph{Energy Functions expressed in terms of T and P}
+
+\chapter{Equilibrium and Applications}
+%\epigraph{\textfrak{Were it to benefit my country I would lay down my life;\\
+%What then is risk to me?}}{\textfrak{Elderly}}
 \section{Equilibrium}
 \begin{theorem}
 [General Criterion for Equilibrium]~  {An equilibrium state is:}
@@ -444,7 +506,7 @@ $$\alpha _S =-\dfrac{1}{V}\left(\dfrac{\partial V}{\partial p}\right)_S$$
 [The Extremum Principle]~  {In an isolated system the equilibrium state is the state that has the maximum value of entropy that the system can exhibit.}
 \end{theorem}
 
- {The following is a example of the equilibrium in a unary two phase $(\alpha , \beta)$, nonreacting otherwise simple system. Within it, each phase has its own set of extensive and intensive properties. All extensive properties of the system id the sum of the values of the individual phases. The boundary is a natural boundary and each phase is an open system.}
+ {The following is a example of the equilibrium in a unary two \emph{phase}\index{phase} $(\alpha , \beta)$, nonreacting otherwise simple system. Within it, each phase has its own set of extensive and intensive properties. All extensive properties of the system is the sum of the values of the individual phases. The boundary is a natural boundary and each phase is an open system.}
  
  {First, we express the total entropy of the system as:}
 $$dS'_{sys}=dS'^\alpha +dS'^\beta $$
@@ -462,22 +524,52 @@ $$dS'_{sys}=\left(\dfrac{1}{T^\alpha }-\dfrac{1}{T^\beta }\right)dU'^\alpha+\lef
 \item  {For the properties constrained to constant $S,P$, equilibrium yield the minimized properties $H$}
 \item  {For the properties constrained to constant $T,V$, equilibrium yield the minimized properties $F$}
 \item  {For the properties constrained to constant $T,P$, equilibrium yield the minimized properties $G$}
+For any irreversible spontaneous change in an
+isothermal, isobaric system, $ T,P = [Q – Q rev ] + [W – W rev ]$
 \end{itemize}
 
-\chapter{Cases Studies and Applications}
-\epigraph{\textfrak{Were it to benefit my country I would lay down my life;\\
-What then is risk to me?}}{\textfrak{Elderly}}
 \section{Unary Heterogeneous System}
-\subsection{The Gibbs-Duhem Equation}
-$$d\mu =-sdT+vdp$$
+\subsection{Phase}
+A phase is \emph{homogeneous} if the
+\emph{intensive} thermodynamic properties
+of the system are uniform (or, at
+most, slowly varying) in space.
+
+The information about what phases a substance can be
+in, and when phase transitions occur, are summarized in
+\emph{phase diagrams}.
+\subsection{Chemical potential and phases}
+\[
+\dd{G}=-S \dd{T} +V \dd{P}+\mu \dd{n}
+\]
+The extensivity tells us that $G=gn$, and so:
+\[
+\mu = \left(\frac{\partial G}{\partial n}\right)_{T,p}
+\]
+\paragraph{The Gibbs-Duhem Equation}
+Substituting $G=n\mu$ into the differential expression of $G$
+$$d\mu =-sdT+vdp,$$
+where $s=S/n$, $v=V/n$. This is called the \emph{Gibbs-Duhem} equation.
+
  {From this equation we can see the relationship of those variables:}
 $$\left(\dfrac{\partial \mu }{\partial p}\right)_T=v \qquad \left(\dfrac{\partial \mu}{\partial T}\right)_p=-s$$
 \subsection{Chemical Potential Surfaces}
 
 \subsection{Gibbs Phase Rule}
+\[
+F = C -P+2
+\]
 \subsection{Clausius-Clapeyron Equation}
-\section{Statistical Thermodynamics}
+\[
+{\displaystyle -(s_{\beta }-s_{\alpha })\mathrm {d} T+(v_{\beta }-v_{\alpha })\mathrm {d} P=0}
+\]
+\[
+{\displaystyle {\frac {\mathrm {d} P}{\mathrm {d} T}}={\frac {s_{\beta }-s_{\alpha }}{v_{\beta }-v_{\alpha }}}={\frac {\Delta s}{\Delta v}}}
+\]
+
+\chapter{Statistical Thermodynamics}
 \section{Maxwell-Boltzmann Distribution}
+
 \subsection{Kinetic Theory for Gases}
 \begin{itemize}
 \item Internal Energy for Ideal Gases
@@ -505,8 +597,11 @@ $$U=\sum K.E.=nN_A\dfrac{1}{2}mv_{rms}^2=\dfrac{3}{2}pV=\dfrac{3}{2}nRT$$
 
 \section{Quantum Statistical Thermodynamics}
 \subsection{Bose-Einstein distributions}
+
 \subsection{Fermi-Dirac distributions}
-%\pagebreak
+Since Fermi-Dirac statistics applies to particles with half-integer spin, they
+are called fermions. It is most commonly applied to electrons,
+which are fermions with spin $1/2$.
 \newpage
 
 \chapter{Supplementary Materials}
@@ -520,26 +615,28 @@ $$dU=\left(\dfrac{\partial U}{\partial T}\right)_VdT+\left(\dfrac{\partial U}{\p
 $$dQ=dU+pdV$$
 $$dQ=\left(\dfrac{\partial U}{\partial T}\right)_VdT+\left[\left(\dfrac{\partial U}{\partial V}\right)_T+p\right]dV$$
 $$\dfrac{dQ}{dT}=\left(\dfrac{\partial U}{\partial T}\right)_V+\left[\left(\dfrac{\partial U}{\partial V}\right)_T+p\right]\dfrac{dV}{dT}$$
- {recall the definition of the heat capacity and note the constraint.}
+recall the definition of the heat capacity and note the constraint.
 \begin{align*}
 C_V&=\left(\dfrac{\partial Q}{\partial T}\right)_V=\left(\dfrac{\partial U}{\partial T}\right)_V\\
 C_p&=\left(\dfrac{\partial Q}{\partial T}\right)_p=\left(\dfrac{\partial U}{\partial T}\right)_V+\left[\left(\dfrac{\partial U}{\partial V}\right)_T+p\right]\left(\dfrac{\partial V}{\partial T}\right)_p\\
 C_p-C_V&=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac{\partial V}{\partial T}\right)_p
 \end{align*}
- {therefore, we prove the first part of this relation. 
+therefore, we prove the first part of this relation. 
  
- \textsf{Example 16.5 \cite{blundell2009concepts}}
- And for the second part, we need to use the Maxwell's relation. Considering $S=S(T,V)$ allow us to write down immediately that:}
+\textsf{Example 16.5 \cite{blundell2009concepts}}
+And for the second part, we need to use the Maxwell's relation. Considering $S=S(T,V)$ allow us to write down immediately that:
 $$dS=\left(\dfrac{\partial S}{\partial T}\right)_VdT+\left(\dfrac{\partial S}{\partial V}\right)_TdV$$
- {Differentiating this equation w.r.t $T$ at constant $p$ yields:}
+Differentiating this equation w.r.t $T$ at constant $p$ yields:
 $$\left(\dfrac{\partial S}{\partial T}\right)_p=\left(\dfrac{\partial S}{\partial T}\right)_V+\left(\dfrac{\partial S}{\partial V}\right)_T\left(\dfrac{\partial V}{\partial T}\right)_p$$
- {Now the first two terms can be replaced by $C_p/T$ and $C_V/T$ respectively, while use of a Maxwell's relation and a partial differential identity:}
+Now the first two terms can be replaced by $C_p/T$ and $C_V/T$ respectively, while use of a Maxwell's relation and a partial differential identity:
 $$\left(\dfrac{\partial x}{\partial y}\right)_z=-\left(\dfrac{\partial x}{\partial z}\right)_y\left(\dfrac{\partial z}{\partial y}\right)_x$$
- {This yields:}
+This yields:
 \[\left(\dfrac{\partial S}{\partial V}\right)_T=\left(\dfrac{\partial p}{\partial T}\right)_V=-\left(\dfrac{\partial p}{\partial V}\right)_T\left(\dfrac{\partial V}{\partial T}\right)_p\]
-and combine the definition of the heat capacity:$C_p-C_V=\dfrac{TV\beta _p^2}{\alpha _T }.$
+and combine the definition of the heat capacity: $C_p-C_V=\dfrac{TV\beta _p^2}{\alpha _T }$.
 \end{proof}
 
 \bibliographystyle{alpha}
 \bibliography{3290cite}
+\printindex
+
 \end{document}
