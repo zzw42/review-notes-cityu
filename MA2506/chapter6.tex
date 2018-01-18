@@ -1,5 +1,6 @@
 % chapter 6
 % Last edit: 2017-4-27
+% Modified in Version 1.02 -- 2018-1-18
 \chapter{Point Estimation}
 \section{Some General Concepts of Point Estimation}
 \begin{exmp}
@@ -64,13 +65,17 @@ If $X_1, X_2,\dots, X_n$ is a random sample from a distribution with mean $\mu$,
 \end{prop}
 
 \subsection{Estimators with Minimum Variance}
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-        \textbf{Principle of Minimum Variance Unbiased Estimation} 
-        
-        Among all estimators of $\theta$ that are unbiased, choose the one that has minimum variance. The resulting is called the minimum variance unbiased estimator (MVUE) of $\theta$.
-    }%
-}
+\begin{mdframed}[style=exampledefault,frametitle={Principle of Minimum Variance Unbiased Estimation}]
+Among all estimators of $\theta$ that are unbiased, choose the one that has minimum variance. 
+The resulting is called the minimum variance unbiased estimator (MVUE) of $\theta$.
+\end{mdframed}
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
+%        \textbf{Principle of Minimum Variance Unbiased Estimation} 
+%        
+%        Among all estimators of $\theta$ that are unbiased, choose the one that has minimum variance. The resulting is called the minimum variance unbiased estimator (MVUE) of $\theta$.
+%    }%
+%}
 
 \begin{exmp}
 (Example 6.6 in textbook)
@@ -174,13 +179,13 @@ Let $X_1,\dots,X_n$ have joint pmf or pdf $f(x_1,\dots,x_n;\theta)$. The MLE of 
 \end{exmp}
 
 \subsection{Estimating Functions of Parameters}
-\noindent\fbox{%
-    \parbox{\textwidth}{%
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
 \begin{prop}[The Invariance Principle]
 Let $\hat{\theta}_1,\dots,\hat{\theta}_n$ be the mle’s of the parameters $\theta_1,\dots,\theta_m$. Then the mle of any function $h(\theta_1,\dots,\theta_m)$ of these parameters is the function $h(\hat{\theta_1},\dots,\hat{\theta_m})$ of the mle’s.
 \end{prop}
-	}
-}
+%	}
+%}
 
 \begin{exmp}
 (Example 6.20 in the textbook)

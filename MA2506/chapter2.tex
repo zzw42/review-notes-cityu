@@ -1,5 +1,6 @@
 % chapter 2
 % Last edit: 2017-5-4
+% Modified in Version 1.02 -- 2018-1-18
 \chapter{Probability}
 \section{Sample Spaces and Events}
 
@@ -92,7 +93,7 @@ $A$ and $A'$ are disjoint.
 
 
 \begin{figure}[H]
-\includegraphics[width=15cm]{figures/venn_diagram.jpg}
+\includegraphics[width=15cm]{figures/venn_diagram.pdf}
 \caption{Venn diagrams}
 \label{fig:4}
 \end{figure}
@@ -289,7 +290,8 @@ In general: suppose a set consists of $K$ ordered elements (K-tuples), 1st eleme
 \item How many possible committees with position assigned?
 \[70 \times 69 \times 68 \times 67=\frac{70!}{66!} \]
 \item How many possible committees without position assigned?
-\[{70 \choose 4} =\frac{70!}{4!66!}\]
+%\[{70 \choose 4} =\frac{70!}{4! \times 66!}\]
+\[\binom{70}{4}=\frac{70!}{4! \times 66!}\]
 \end{enumerate}
 \end{exmp}
 
@@ -575,11 +577,11 @@ So $A$ and $C$ are independent. $A \not\!\perp\!\!\!\perp B$
 \end{exmp}
 
 \begin{prop}
-if $A$ and $B$ are independent
+If $A$ and $B$ are independent,
 \begin{itemize}
-  \item $A'$ and $B'$ are independent
-  \item $A'$ and $B$ are independent
-  \item $A$ and $B'$ are independent
+  \item $A'$ and $B'$ are independent,
+  \item $A'$ and $B$ are independent,
+  \item $A$ and $B'$ are independent.
 \end{itemize}
 \end{prop}
 

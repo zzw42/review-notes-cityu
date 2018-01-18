@@ -1,5 +1,6 @@
 % Appendix
 % Last edit: 2017-5-4
+% Modified in Version 1.02 -- 2018-1-18
 \appendix
 \chapter{Moment generating function}
 \section{Definition}
@@ -110,7 +111,7 @@ Let $B \sim \chi^2(n)$
 
 \section{Application}
 \begin{theo}
-Let $Y_1,Y_2,\dots,Y_n$ be a sequence of rv's with cdf $F_{Y_1}(y)$, $F_{Y_2}(y)$, \dots and mgf $M_{Y_1}(\theta), M_{Y_2}(\theta),\dots $. Suppose as $n \to\infty$ 
+Let $Y_1,Y_2,\dots,Y_n$ be a sequence of rv's with cdf $F_{Y_1}(y)$, $F_{Y_2}(y)$, \dots and mgf $M_{Y_1}(\theta)$, $M_{Y_2}(\theta),\dots $. Suppose as $n \to\infty$ 
 
 \[M_{Y_n}(\theta) \rightarrow M_Y(\theta) \text{ for any }\theta\]
 
@@ -123,16 +124,17 @@ or $Y_n\overset{d}{\longrightarrow} Y$.\footnote{converge to distribution}
 \begin{exmp}
 If $X_n\sim Bin(n,p)$. $np=\lambda>0$. fixed
 \begin{align*}
-M_{X_n}(\theta)= & E(e^{\theta X_n}) =\sum_{i=1}^n e^{\theta k} {n \choose k} p^k (1-p)^{n-k}\\
-= & \sum_{k=0}^n {n \choose k} (pe^{\theta})^k (1-p)^{n-k} \\
+M_{X_n}(\theta)= & E(e^{\theta X_n}) =\sum_{i=1}^n e^{\theta k} 
+{\binom{n}{k} } p^k (1-p)^{n-k}\\
+= & \sum_{k=0}^n {\binom{n}{k}} (pe^{\theta})^k (1-p)^{n-k} \\
 = & (pe^{\theta}+1-p)^n \\
 = & \left(1+\frac{\lambda}{n}(e^{\theta}-1)\right)^n 
 \end{align*}
+%n \choose k
 
-Let $n \to \infty$ ($p\to 0$)
-\[M_{X_n}(\theta)=  \left(1+\frac{\lambda}{n}(e^{\theta}-1)\right)^n \longrightarrow e^{\lambda(e^{\theta}-1)}\]
-
-Since $\lim_{n\to \infty}\left(1+\frac{a}{n}\right)^n=e^a$.
+Let $n \to \infty (p\to 0)$
+\[M_{X_n}(\theta)=  \left(1+\frac{\lambda}{n}(e^{\theta}-1)\right)^n \longrightarrow e^{\lambda(e^{\theta}-1)},\]
+since $\lim_{n\to \infty}\left(1+\frac{a}{n}\right)^n=e^a$.
 
 Let $Y \sim Poisson(\lambda)$, $P(Y=k)=\frac{e^{-\lambda}\lambda^k}{k!}$
 \begin{align*}
@@ -146,9 +148,7 @@ M_Y{\theta}= & E(e^{\theta Y}) =\sum_{k=0}^{\infty} e^{\theta k} \frac{e^{-\lamb
 \end{exmp}
 
 
-\begin{theo}
-Central Limit Theorem
-
+\begin{theo}[Central Limit Theorem]
 Let $X_1,\dots,X_n \overset{iid}{\sim} (\mu,\sigma^2)$. $S_n=X_1+\dots+X_n$.
 \[\bar{X}=\frac{S_n}{n} \qquad Z_n=\frac{\sqrt{n}(\bar{X}-\mu)}{\sigma}=\frac{S_n-n\mu}{\sqrt{n}\sigma}\]
 
@@ -158,8 +158,8 @@ Let $Y_i=X_i-\mu$, then $Y_1,Y_2,\dots,Y_n\overset{iid}{\sim} (0,\sigma^2)$.
 \[M_{S_n-n\mu}(\theta)=M_{Y_1}(\theta)\dots M_{Y_n}(\theta)\]
 \begin{align*}
 M_{Z_n}(\theta)= & E(e^{\theta Z_n})=E\left(e^{\theta \frac{S_n-n\mu}{\sqrt{n}\sigma}} \right) \\
-= & E\left(e^{\frac{\theta}{\sqrt{n}\sigma}(S_n-n\mu)} \right) \\
-= & M_{S_n-n\mu} \left(\frac{\theta}{\sqrt{n}\sigma}\right) \\
+= & E\left(e^{\frac{\theta}{\sqrt{n}\sigma}(S_n-n\mu)} \right) 
+=  M_{S_n-n\mu} \left(\frac{\theta}{\sqrt{n}\sigma}\right) \\
 = & M_{Y_1}\left(\frac{\theta}{\sqrt{n}\sigma}\right) \dots M_{Y_n}\left(\frac{\theta}{\sqrt{n}\sigma}\right)\\
 = & \left(M_{Y_1}\left(\frac{\theta}{\sqrt{n}\sigma}\right)\right)^n
 \end{align*}
@@ -167,11 +167,9 @@ M_{Z_n}(\theta)= & E(e^{\theta Z_n})=E\left(e^{\theta \frac{S_n-n\mu}{\sqrt{n}\s
 Note that $E(Y_1)=0$, $E(Y_1^2)=Var(Y_1)+(E(Y_1))^2=\sigma^2$
 \begin{align*}
 M_{Y_1}(\theta) =& 1+ E(Y_1) \frac{\theta}{1!} + E(Y_2) \frac{\theta^2}{2!} +\dots \\
-= 1+ \sigma^2 \frac{\theta^2}{2} + \mathcal{O}(\theta^2)
+=& 1+ \sigma^2 \frac{\theta^2}{2} + \mathcal{O}(\theta^2),
 \end{align*}
-
-where $\mathcal{O}(\theta^2)$ denotes a function $g(\theta)$ s.t $\frac{g(\theta)}{\theta^2}\to 0$, as $\theta to 0$
-
+where $\mathcal{O}(\theta^2)$ denotes a function $g(\theta)$ such that $\frac{g(\theta)}{\theta^2}\to 0$, as $\theta \to 0$.
 \begin{align*}
 M_{Z_n}(\theta) =& \left(		1+\frac{1}{2}\left(\frac{\theta}{\sqrt{n}\sigma}\right)^2+\mathcal{O}\left(\frac{\theta^2}{n\sigma^2}\right)		\right)^n \\
 = & \left(		1+\frac{\frac{1}{2}\theta^2}{n}+\mathcal{O}\left(\frac{1}{n}\right)		\right)^n \longrightarrow e^{\frac{1}{2}\theta^2} \text{ as } n\to\infty
@@ -195,4 +193,4 @@ Modified CLT
 \end{enumerate}
 
 \newpage
-Happy \TeX(\LaTeX,~\LaTeXe)ing with pdf\TeX, \XeTeX, \LuaTeX!
+Happy \TeX(\LaTeX,~\LaTeXe)ing! %with pdf\TeX, \XeTeX, \LuaTeX!

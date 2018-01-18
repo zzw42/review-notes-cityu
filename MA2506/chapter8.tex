@@ -1,5 +1,6 @@
 % chapter 8 
 % Last edit: 2017-4-23
+% Modified in Version 1.02 -- 2018-1-18
 \chapter[Tests of Hypotheses]{Tests of Hypotheses Based on a Single Sample}
 \section{Hypotheses and Test Procedures}
 A test hypothesis is a method using sample data to describe between two competing claims about a population characteristic.
@@ -52,15 +53,22 @@ If $x=1,2,3$, they are very strong.
   
 \end{exmp}
 
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-    \textbf{Test Procedure}:
+\begin{mdframed}[style=exampledefault,frametitle={Test Procedure}]
     \begin{enumerate}
     \item A test statistic: a function of sample data on which the decision is made.
     \item Rejection Region (RR): the set of all the statistic values for which $H_0$ will be rejected.
     \end{enumerate}
-	}
-}
+\end{mdframed}
+
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
+%    \textbf{Test Procedure}:
+%    \begin{enumerate}
+%    \item A test statistic: a function of sample data on which the decision is made.
+%    \item Rejection Region (RR): the set of all the statistic values for which $H_0$ will be rejected.
+%    \end{enumerate}
+%	}
+%}
 
 \subsection{Errors in Hypothesis Testing}
 \begin{center}
@@ -74,7 +82,7 @@ If $x=1,2,3$, they are very strong.
  \hline
 \end{tabular}
 \end{center}
-Denote $\alpha=P$(Type I Error), $\beta=P$(Type II Error).
+Denote $\alpha=P(\text{Type I Error})$, $\beta=P(\text{Type II Error})$.
 
 \begin{exmp}
 (Example 8.1 in textbook)
@@ -129,19 +137,27 @@ Level-$\alpha$ test
 \[P(Z\geq c \text{ or } Z \leq -c)\leq 0.05 \Rightarrow x \geq z_{0.025}=1.96 \Rightarrow c=1.96\]
 \end{enumerate}
 
-
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-	\textbf{Conclusion}:
-	
+\begin{mdframed}[style=exampledefault,frametitle={Conclusion}]
 	$H_0:\mu=\mu_0$. Test statistic $Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}$
 	\begin{enumerate}
 	\item $H_a:\mu < \mu_0$, $RR: Z\leq -z_{\alpha}$
 	\item $H_a:\mu > \mu_0$, $RR: Z\geq z_{\alpha}$
 	\item $H_a:\mu \neq \mu_0$, $RR: |Z|\geq z_{\alpha/2}$ 
 	\end{enumerate}
-	}
-}
+\end{mdframed}
+
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
+%	\textbf{Conclusion}:
+%	
+%	$H_0:\mu=\mu_0$. Test statistic $Z=\frac{\bar{X}-\mu_0}{\sigma_0/\sqrt{n}}$
+%	\begin{enumerate}
+%	\item $H_a:\mu < \mu_0$, $RR: Z\leq -z_{\alpha}$
+%	\item $H_a:\mu > \mu_0$, $RR: Z\geq z_{\alpha}$
+%	\item $H_a:\mu \neq \mu_0$, $RR: |Z|\geq z_{\alpha/2}$ 
+%	\end{enumerate}
+%	}
+%}
 
 \subsubsection{Procedure}
 \begin{enumerate}
@@ -228,11 +244,8 @@ Obviously that statistic $T^*=\frac{27.54-25}{5.47/\sqrt{5}}=1.04$. $T^* \notin 
 \end{exmp}
 
 \subsubsection{$\beta$ and Sample Size Determination}
-See the text in textbook. \\ \\
-
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-	Claim: 99.9\% of MTR train will be on-time. 
+See the text in textbook. 
+\begin{mdframed}[style=exampledefault,frametitle={Claim: $99.9\%$ of MTR train will be on-time. }]
 	\[X_1,\dots,X_n \overset{iid}{\sim} Bern(p)\]
 	\[H_0:p=0.999\]
 	\begin{enumerate}
@@ -240,8 +253,20 @@ See the text in textbook. \\ \\
 	\item $H_a:p<0.999$ work against MTR
 	\item $H_a:p>0.999$ work for MTR
 	\end{enumerate}
-	}
-}
+\end{mdframed}
+
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
+%	Claim: 99.9\% of MTR train will be on-time. 
+%	\[X_1,\dots,X_n \overset{iid}{\sim} Bern(p)\]
+%	\[H_0:p=0.999\]
+%	\begin{enumerate}
+%	\item $H_a:p\neq0.999$
+%	\item $H_a:p<0.999$ work against MTR
+%	\item $H_a:p>0.999$ work for MTR
+%	\end{enumerate}
+%	}
+%}
 
 \begin{exmp}
 (Exercise 8.32 in textbook)
@@ -350,13 +375,10 @@ $P$-value: $P(Z\leq-2.61)=0.0045$. Consider $\alpha=0.0045$, $RR:Z\leq-2.61$.
 $P$-value is the smallest level of significance at which $H_0$ will be rejected when the test is used on a given database.
 \end{defn}
 
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-	Conclusion:
-	
-	If $P$-value$\leq \alpha$, then reject $H_0$. If $P$-value$\geq \alpha$, then fail to reject $H_0$. 
-	}
-}
+\begin{mdframed}[style=exampledefault,frametitle={Conclusion}]
+If $P$-value$\leq \alpha$, then reject $H_0$. If $P$-value$\geq \alpha$, then fail to reject $H_0$. 
+\end{mdframed}
+
 
 \begin{defn}
 The $P$-value is the probability, calculated assuming that the null hypothesis is true, of obtaining a value of the test statistic at least as contradictory to $H_0$ as the value calculated from the available sample. The smaller the $P$-value, the more contradiction is the data to $H_0$.

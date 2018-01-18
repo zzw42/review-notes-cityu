@@ -1,5 +1,6 @@
 % chapter 5
 % Last edit: 2017-4-24
+% Modified in Version 1.02 -- 2018-1-18
 \chapter[Joint Probability Distributions]{Joint Probability Distributions and Random Samples}
 \section{Jointly Distributed Random Variables}
 \subsection{Two Discrete Random Variables}
@@ -194,11 +195,12 @@ kx_1 x_2(1-x_3)   & 0\leq x_1,x_2,x_3 \leq 1,x_1+x_2+x_3\leq 1\\
 &=\int_0^1 \int_0^{1-x_1} \int_{0}^{1-x_2-x_1} kx_1 x_2(1-x_3) \,dx_3 \,dx_2 \,dx_1 \\
 &= \frac{k}{144} \Rightarrow k=144
 \end{align*}
-(2)
+(2) \dbend \footnote{The value might be wrong, run this in Wolfram Mathematica or Wolfram Alpha
+ -\texttt{ Integrate[144 * x y (1 - z), \{x, 0, 0.5\}, \{y, 0, 0.5 - x\}, \{z, 0, 1 - x - y\}]} }
 \begin{align*}
 P(X_1+X_2 \leq 0.5)=\iiint kx_1 x_2(1-x_3) \,dx_3 \,dx_2 \,dx_1 =0.606
 \end{align*}
-$0\leq x_1,x_2,x_3 \leq 1, x_1+x_2 \leq 0.5$ \footnote{The value might be wrong, run this in Mathematica -\texttt{ Integrate[144*x y (1 - z), \{x, 0, 0.5\}, \{y, 0, 0.5 - x\}, \{z, 0, 1 - x - y\}]} }
+$0\leq x_1,x_2,x_3 \leq 1, x_1+x_2 \leq 0.5$. 
 \end{exmp}
 
 \subsubsection{Independence}
@@ -526,8 +528,6 @@ $\bar{X}\sim N(70,\frac{20^2}{36})$
 
 \subsection{The Central Limit Theorem}
 What if $X_1, X_2, \dots , X_n \overset{iid}{\sim}(\mu,\sigma^2)$? No normality.
-\begin{theo}
-\textbf{The Central Limit Theorem(CLT)}
-
+\begin{theo}[The Central Limit Theorem(CLT)]
 Let $X_1, X_2, \dots , X_n$ be a random sample from a distribution with mean $\mu$ and variance $\sigma^2$. Then if $n$ is sufficiently large, $\bar{X}$ has approximately a normal distribution with $\mu_{\bar{X}}=\mu$ and $\sigma_{\bar{X}}=\frac{\sigma^2}{n}$, and $T$ also has approximately a normal distribution with $\mu_{T}=n \mu$, $\sigma_{T}^2=n \sigma^2$. The larger the value of $n$, the better the approximation. Usually, $n \geq 30$.
 \end{theo}

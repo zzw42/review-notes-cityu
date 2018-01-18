@@ -1,5 +1,6 @@
 % Chapter 7 
 % Last edit: 2017-5-4
+% Modified in Version 1.02 -- 2018-1-18
 \chapter[Statistical Intervals]{Statistical Intervals Based on a Single Sample}
 \section{Basic Properties of Confidence Intervals}
 $X_1,\dots,X_n \overset{iid}{\sim} f(x;\theta)$, use an interval to ``estimate" $\theta$.
@@ -44,25 +45,28 @@ So $\bar{x} \pm  z_{\alpha/2} \frac{\sigma_0}{\sqrt{n}} $ is the $100(1-\alpha)\
 
 % Section 7.2
 \section{Intervals Based on a Normal Population Distribution}
-\noindent\fbox{%
-    \parbox{\textwidth}{%
-    \textbf{Assumption}
-	
+
+\begin{mdframed}[style=exampledefault,frametitle={Assumption}]
 	The population of interest is normal, so that $X_1,\dots,X_n$ constitutes a random sample from a normal distribution with both $\mu$ and $\sigma$ unknown.
-	}
-}
+\end{mdframed}
+%\noindent\fbox{%
+%    \parbox{\textwidth}{%
+%    \textbf{Assumption}
+%	
+%	The population of interest is normal, so that $X_1,\dots,X_n$ constitutes a random sample from a normal distribution with both $\mu$ and $\sigma$ unknown.
+%	}
+%}
+
 
 \begin{theo}
 $X_1,\dots,X_n \overset{iid}{\sim} N(\mu,\sigma^2)$, $\sigma$ unknown.
 \[\frac{\bar{X}-\mu}{S/\sqrt{n}} \sim t(n-1)\]
 where $S=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (X_i-\bar{X})^2}$ is the sample s.d.
-
 \begin{figure}[H]
-\caption{t and Z distribution}
 \centering
-\includegraphics[scale=0.7]{t_distribution.png}
+\includegraphics{t_distribution.pdf}
+\caption{$t$ and $Z$ distribution}
 \end{figure}
-
 \[P\left(-t_{\alpha/2,n-1} \leq \frac{\bar{X}-\mu}{S/\sqrt{n}}  \leq  t_{\alpha/2,n-1} \right) = 1-\alpha\]
 where $t_{\alpha/2,n-1}$ denotes the $\frac{\alpha}{2}$-th upper percentile of $t(n-1)$.
 

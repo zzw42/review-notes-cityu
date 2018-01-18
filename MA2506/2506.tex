@@ -1,8 +1,16 @@
 % all chapter and appendix finished :P  2017-4-24 -WEI
 % Last edit: 2017-9-9 -WEI
 % v 1.01
-\documentclass[UTF8,a4paper,openany]{book}
+
+% Modified in Version 1.02 -- 2018-1-18
+% -- add framed theorems and conclusion
+% -- replace all the figures with vector graphics
+% -- correct some mistakes.
+% -- change the typesetting
+
+\documentclass[UTF8,a4paper]{book}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{manfnt}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks, linkcolor=blue}
@@ -25,7 +33,7 @@
     \allsectionsfont{\sffamily} 		% Delete the bold style and set the sans-serif font
 
 \usepackage{graphicx}
-\graphicspath {{figures/}}				% figures are in the folder ~\figures\   (Windows)
+\graphicspath {{figures/}}				% figures are in the folder .\figures\   (Windows)
 \usepackage{float} 						% adjust the picture [H]
 
 \usepackage[margin=1 in]{geometry}
@@ -33,21 +41,53 @@
 \usepackage{pgfplots}					% Used to create histogram
 \pgfplotsset{compat=1.12}				% the package run in compatible mode according to the log
 
+%%%%%%%%%% Theorem Environment %%%%%%%%
+%%%%%%%%%% amsthm framed xcolor %%%%%%%%
+%%%%%%%%%% colored: theo, prop %%%%%%%%% 
+%\theoremstyle{plain}					% Used to create enviroment for therorem
+%\newtheorem{theo}{Theorem}[chapter] 	% reset theorem numbering for each chapter
+%\newtheorem{coro}[theo]{Corollary}		% Corollary dependent on Theorem
+%\newtheorem{prop}[theo]{Proposition}
+%
+%\theoremstyle{definition}
+%\newtheorem{defn}[theo]{Definition} % definition numbers are independent
+%\newtheorem{axio}[theo]{Axiom}
+%\newtheorem{exmp}[theo]{Example} 	 % Examples are independent
+
+\usepackage{xcolor}
+\usepackage{framed}
+\colorlet{shadecolor}{orange!15}
+
 \theoremstyle{plain}					% Used to create enviroment for therorem
-\newtheorem{theo}{Theorem}[chapter] 	% reset theorem numbering for each chapter
-\newtheorem{coro}{Corollary}[theo]		% Corollary dependent on Theorem
-\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter] 	% reset theorem numbering for each chapter
+\newtheorem{coro}[theorem]{Corollary}		% Corollary dependent on Theorem
+\newtheorem{proposition}[theorem]{Proposition}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[chapter] % definition numbers are independent
-\newtheorem{axio}{Axiom}[chapter]
-\newtheorem{exmp}{Example}[chapter] 	 % Examples are independent
+\newtheorem{defn}[theorem]{Definition} % definition numbers are independent
+\newtheorem{axio}[theorem]{Axiom}
+\newtheorem{exmp}[theorem]{Example} 	 % Examples are independent
+ 
+\newenvironment{theo}
+   {\begin{shaded}\begin{theorem}}
+   {\end{theorem}\end{shaded}}
+\newenvironment{prop}
+   {\begin{shaded}\begin{proposition}}
+   {\end{proposition}\end{shaded}}
 
 \renewcommand\qedsymbol{$\blacksquare$}% change the qed symbol
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
 {\end{proof}}   						 % proof and solution environment with \begin{proof} or \begin{solution}
+%%%%%%%%%% End %%%%%%%%%%%
+
+\usepackage{mdframed}
+\mdfdefinestyle{exampledefault}{%
+rightline=true,innerleftmargin=10,innerrightmargin=10,
+frametitlerule=true,frametitlerulecolor=green,
+frametitlebackgroundcolor=yellow,
+frametitlerulewidth=2pt}
 
 \usepackage{mathtools}			  		 % ceil and floor function
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
@@ -55,8 +95,6 @@
 
 \usepackage{metalogo}
 
-%\usepackage{euler} % ams euler font
-%\usepackage{mathptmx}
 
 
 % The document starts here
@@ -83,7 +121,7 @@
 
 \HRule \\[0.4cm]
 { \huge \bfseries  \textsf{Probability and Statistics} }\\[0.4cm] % Title of your document
-\rightline{{\bfseries \textsf{Version 1.01}} }
+\rightline{{\bfseries \textsf{Version 1.02}} }
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -146,8 +184,15 @@ if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA
 All \LaTeX{} (\texttt{.tex}) files of this document can be accessed from
 \url{https://github.com/zzw42/review-notes-cityu}.
 
+% content, figures
+\tableofcontents
+\listoffigures
+
 \chapter*{Preface}
-\textsl{
+\markboth{Preface}{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+%\textsl
+{\sl
 Textbook: Probability and Statistics for Engineering and the Sciences, by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. }
 \\
 
@@ -175,11 +220,9 @@ Week & Brief Description \\
 \end{tabular}
 \end{center}
 
-\addcontentsline{toc}{chapter}{Preface}
 
-% content, figures
-\tableofcontents
-\listoffigures
+
+
 
 
 % Page 1

@@ -1,5 +1,6 @@
 % chapter 4
 % Last edit: 2017-5-4
+% Modified in Version 1.02 -- 2018-1-18
 \chapter[Continuous Random Variables]{Continuous Random Variables and Probability Distributions}
 \section{Probability Density Functions}
 \begin{exmp}
@@ -195,21 +196,20 @@ The \textbf{variance} of a continuous random variable $X$ with pdf $f(x)$ and me
 \end{prop}
 
 \section{The Normal Distribution}
-X has p.d.f 
-\[f(x)=\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}   \qquad -\infty< x< \infty \]
-
-Then X has a normal distribution, or $X \sim N(\mu,\sigma^2)$
+If $X$ has p.d.f 
+\[f(x)=\frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2 \sigma^2}}   \qquad -\infty< x< \infty. \]
+Then $X$ has a normal distribution, or $X \sim N(\mu,\sigma^2)$.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{figures/normal_distribution.png}
+\includegraphics{figures/normal_distribution.pdf}
 \caption{Bell-shaped curve}
 \end{figure}
 
 Symmetric about $\mu$, $\mu$=shift, $\sigma$=scale, large $\sigma\Rightarrow$large spread out.
  
-\begin{prop}
-Properties
+\begin{prop}[Properties of normal distribution]
+
 \begin{enumerate}
 \item $E(X)=\mu \qquad	Var(X)=\sigma^2$
 \item $f(x) \to 0$, when $x \to \pm \infty$
@@ -220,7 +220,7 @@ Properties
 The Standard Normal Distribution, $N(0,1)$, denoted by $Z$,
 \[f(x)=\frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}  \qquad -\infty< x< \infty\]
 c.d.f of $Z$
-\[\Phi(x)=\int_{-\infty}^{\infty} \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}  dx\]
+\[\Phi(x)=\int_{-\infty}^{x} \frac{1}{\sqrt{2 \pi}} e^{-\frac{y^2}{2}}  dy\]
 \begin{align*}
 &\Phi(0)=0.5 \\
 &\Phi(1.645)=0.95 \qquad \Phi(1.96)=0.975 \\
@@ -493,7 +493,7 @@ If $\alpha=1$, $X \sim Weibull(1,\beta)$. Then $X \sim exp(\frac{1}{\beta}) $
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=1]{figures/weibull_distribution.png}
+\includegraphics{figures/weibull_distribution.pdf}
 \caption{The Weibull Distribution}
 \end{figure}
 

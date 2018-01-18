@@ -1,5 +1,6 @@
 % chapter 9
 % Last edit: 2017-5-4
+% Modified in Version 1.02 -- 2018-1-18
 \chapter{Inferences Based on Two Samples}
 \section{$z$ Tests and Confidence Intervals for a Difference Between Two Population Means}
 
@@ -185,13 +186,14 @@ Conclusion:
 \end{exmp}
 
 \section{Challenge Question 4}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{median.jpeg}
-\end{figure}
-
+\begin{exmp}
+For the sample median, $\tilde{X}_n$, from a symmetric distribution 
+with location $\theta$, where the distribution median is $\theta$,
+we consider $x=\theta$ and $p=F_{X}(\theta)=1/2$, so
+\[\sqrt{n}(\tilde{X}_n-\theta) \overset{d}{\longrightarrow}
+X \sim N \left(0, \frac{1}{4 \{f_{X}(\theta)\}^2 } \right).\]
 \begin{proof}
-\[\lim_{n \to\infty} P(\sqrt{n}(\tilde{X_n}-\theta)\leq a)=P(Z \leq 2 f(\theta)a)\]
+\[\lim_{n \to\infty} P(\sqrt{n}(\tilde{X}_n-\theta)\leq a)=P(Z \leq 2 f(\theta)a)\]
 
 Let $Y_i=I\left(X_i\leq \theta+\frac{a}{\sqrt{n}}\right) \qquad i=1,2,\dots,n$
 \[Y_i=\begin{cases}
@@ -237,3 +239,11 @@ $X_1,\dots,X_n \overset{iid}{\sim} f(x)$. Distribution of $\tilde{X_n}$. Bootstr
 
 Sample $n$ values from $\{x_1,\dots,x_n\}$ with replacement.
 \end{proof}
+\end{exmp}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{median.jpeg}
+%\end{figure}
+
+
+
