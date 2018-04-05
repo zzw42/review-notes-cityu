@@ -1,0 +1,148 @@
+\chapter{Vector Function}
+\section{Vector Function}
+\subsection{Definition}
+Basic form for vector function:
+\begin{center}
+$\mathbf{v}(t)=\langle f(t),g(t),h(t)\rangle=f(t)\mathbf{\hat{i}}+g(t)\mathbf{\hat{j}}+h(t)\mathbf{\hat{k}}$
+\end{center}
+
+\subsection{Limit}
+\begin{center}
+$\displaystyle	\lim_{t \to t_0} \mathbf{v}(t) = \langle\displaystyle\lim_{t \to t_0}f(t),\displaystyle\lim_{t \to t_0}g(t),\displaystyle\lim_{t \to t_0}h(t)	\rangle$\\
+$=\displaystyle\lim_{t \to t_0}f(t)\mathbf{\hat{i}}+\displaystyle\lim_{t \to t_0}g(t)\mathbf{\hat{j}}+\displaystyle\lim_{t \to t_0}h(t)\mathbf{\hat{k}}$
+\end{center}
+
+\subsection{Continuity}
+$\mathbf{v}(t)$ is continuous at $t=t_0$, iff $\mathbf{v}(t_0)$ is defined.\\
+Criteria for the continuity:
+\begin{itemize}
+\item $\displaystyle\lim_{t \to t_0} \mathbf{v}(t)$ exist
+\item $\displaystyle\lim_{t \to t_0} \mathbf{v}(t)=\mathbf{v}(t_0)$
+\end{itemize}
+
+\subsection{Derivative}
+\begin{center}
+$\frac{\mathrm d}{\mathrm d t}\mathbf{v}(t)=\mathbf{v}'(t)=\langle f'(t),g'(t),h'(t) \rangle$\\
+$=\frac{\mathrm d}{\mathrm d t}f(t)\mathbf{\hat{i}}+\frac{\mathrm d}{\mathrm d t}g(t)\mathbf{\hat{j}}+\frac{\mathrm d}{\mathrm d t}h(t)\mathbf{\hat{k}}$
+\end{center}
+
+\subsection{Operating Rules}
+\begin{itemize}
+\item $\frac{\mathrm d}{\mathrm d t}(\mathbf{v}(t)\pm \mathbf{w}(t))=\frac{\mathrm d}{\mathrm d t}\mathbf{v}(t)\pm \frac{\mathrm d}{\mathrm d t}\mathbf{w}(t)$
+\item $\frac{\mathrm d}{\mathrm d t}[c(t)\mathbf{v}(t)]=[\frac{\mathrm d}{\mathrm d t}c(t)]\mathbf{v}(t)+c(t)\frac{\mathrm d}{\mathrm d t}\mathbf{v}(t)$
+\item $\frac{\mathrm d}{\mathrm d t}(\mathbf{v}(t)\cdot \mathbf{w}(t))=\frac{\mathrm d}{\mathrm d t}\mathbf{v}(t)\cdot \mathbf{w}+\mathbf{v}(t)\cdot \frac{\mathrm d}{\mathrm d t}\mathbf{w}(t)$
+\item $\frac{\mathrm d}{\mathrm d t}(\mathbf{v}(t)\times \mathbf{w}(t))=\frac{\mathrm d}{\mathrm d t}\mathbf{v}(t)\times \mathbf{w}+\mathbf{v}(t)\times \frac{\mathrm d}{\mathrm d t}\mathbf{w}(t)$
+\item $\frac{\mathrm d}{\mathrm d t}\mathbf{v}(c(t))=\mathbf{v}'(c(t))c'(t)$
+\end{itemize}
+
+\subsection{Integration}
+\begin{center}
+$\displaystyle\int\limits_a^b \mathbf{v}(t)dt=\displaystyle\int\limits_a^b f(t)dt \mathbf{\hat{i}}+\displaystyle\int\limits_a^b g(t)dt \mathbf{\hat{j}}+\displaystyle\int\limits_a^b h(t)dt \mathbf{\hat{k}}$
+\end{center}
+Also similar to the principle of definite integral:\\
+If $\mathbf{V}'(t)=\mathbf{v}(t)$, then
+\begin{center}
+$\displaystyle\int\limits_a^b \mathbf{v}(t)dt=\mathbf{V}(t) |_{a}^b$
+\end{center}
+\subsection{Parameter Representation a tangent line of a space curve}
+\begin{center}
+$\vec{\tau}(t)=\displaystyle\lim_{\Delta t\to 0}\frac{\vec{r}(t+\Delta t)-\vec{r}(t)}{\Delta t} $
+\end{center}
+For convenience, we choose to get the unit vector of the tangent vector 
+\[
+\hat{\tau }(t)=\frac{\vec{\tau }(t)}{|\vec{\tau }(t)|}
+\]
+%\begin{center}
+%$$
+%\end{center}
+
+\subsection{Arc Length and Curvature}
+Given a curve $\mathcal{C}$: $x=x(t)\quad y=y(t)\quad z=z(t)$, for small $\Delta t$: the length between two points can be approximated as the distance between two points, thus we have the following formula:
+\begin{align*}
+\Delta\mathcal{L} & = \sqrt{|\mathbf{r}(t+\Delta t)-\mathbf{r}(t)|^2}\\
+& =\sqrt{(x(t+\Delta t)-x(t))^2+(y(t+\Delta t)-y(t))^2+(z(t+\Delta t)-z(t))^2}
+\end{align*}
+
+\begin{align*}
+\lim_{\Delta t \to 0}\frac{\Delta\mathcal{L}}{\Delta t} &= \sqrt{|\mathbf{r}(t+\Delta t)-\mathbf{r}(t)|^2}	\\
+&= \sqrt{\frac{(x(t+\Delta t)-x(t))^2}{\Delta t^2}+\frac{(y(t+\Delta t)-y(t))^2}{\Delta t^2}+\frac{(z(t+\Delta t)-z(t))^2}{\Delta t^2}}		\\
+&\iff \displaystyle\lim_{\Delta t}\frac{\mathcal{L}(t+\Delta t)-\mathcal{L}(t)}{\Delta t}=\sqrt{x'^2(t)+y'^2(t)+z'^2(t)}=\frac{d\mathcal{L}}{dt}
+\end{align*}
+
+Therefore, we can express the arc length in the differentiation form:
+
+\begin{equation}
+\boxed{d\mathcal{L}=\sqrt{x'^2(t)+y'^2(t)+z'^2(t)}dt}
+\end{equation}
+
+If we reconsider the tangent vector $\overrightarrow{\tau }(t)$,
+
+\begin{center}
+$\overrightarrow{\tau }(t)=x'(t)\mathbf{\hat{i}}+y'(t)\mathbf{\hat{j}}+z'(t)\mathbf{\hat{k}}=\mathbf{r}'(t)$\\
+$\frac{d\mathcal{L}}{dt}=\sqrt{x'^2(t)\mathbf{\hat{i}}^2+y'^2(t)\mathbf{\hat{j}}^2+z'^2(t)\mathbf{\hat{k}}^2}=|\mathbf{r}'(t)|$
+\end{center}
+
+therefore, we have the formula for the arc length:
+
+\begin{equation}
+\boxed{\mathcal{L}=s(t)=\displaystyle\int\limits_{t_0}^t|\overrightarrow{\tau }(t)|dt=\displaystyle\int\limits_{t_0}^t|\mathbf{r}'(t)|dt}
+\end{equation}
+
+In this way, we can see that $\mathcal{L}=s(t)$ is a function of $t$, suppose that the inverse function exist $t=t(s)$, we can rewrite the curve with respect to $s$:
+\begin{center}
+$x=x(t)=x(t(s))=X(s)$\\
+$y=y(t)=y(t(s))=Y(s)$\\
+$z=z(t)=z(t(s))=Z(s)$
+\end{center}
+as that $s$ is the parameter instead of $t$:
+\begin{center}
+$\mathcal{L}=s(t)=\displaystyle\int\limits_{t_0}^t|\mathbf{r}'(t(s)|dt \qquad \frac{ds}{dt}=|\mathbf{r}'(t)|$\\
+$\implies \frac{d\mathbf{r}(t(s))}{dt}=\frac{d\mathbf{r}}{ds}\frac{ds}{dt}=|\mathbf{r}'(t)|\frac{d\mathbf{r}}{ds}$\\
+$\implies \frac{1}{|\mathbf{r}'(t)|}\frac{d\mathbf{r}}{dt}=\frac{d\mathbf{r}}{ds}$\\
+\end{center}
+\begin{equation}
+\boxed{\implies \hat{\tau}(t)=\frac{d\mathbf{r}}{ds}}
+\end{equation}
+\subsection{Curvature}
+Definition:\\
+Supposing that $\hat{\tau}$ is the unit tangent vector of the curve $\mathcal{C}$, then the curvature is:
+\begin{equation}
+\boxed{		\kappa=\left| \frac{d\hat{\tau}}{ds} \right|	=	\left|\frac{\frac{d\hat{\tau}}{dt}}{\frac{ds}{dt}}\right|	=	\left|\frac{\hat{\tau}'(t)}{\mathbf{r}'(t)}\right|	}
+\end{equation}
+
+We want to use $\mathbf{r}(t)$ to represent $\hat{\tau}'(t)$, so consider:
+
+\begin{center}
+$\mathbf{r}'(t)=|\mathbf{r}'(t)|\hat{\tau}(t)=\frac{ds}{dt}\hat{\tau}(t)$\\
+$\mathbf{r}''(t)=\frac{d^2s}{dt^2}\hat{\tau}(t)+\frac{ds}{dt}\hat{\tau}'(t)$\\
+$\mathbf{r}'(t)\times \mathbf{r}''(t)=(\frac{ds}{dt})^2(\hat{\tau}(t)\times \hat{\tau}'(t))$\\
+$|\mathbf{r}'(t)\times \mathbf{r}''(t)|=|(\frac{ds}{dt})^2||(\hat{\tau}\times \hat{\tau}'|=|(\frac{ds}{dt})^2||\hat{\tau}||\hat{\tau}'|=|(\frac{ds}{dt})^2||\hat{\tau}'|$
+\end{center}
+
+Thus,
+
+\begin{equation}
+\boxed{|\hat{\tau}'|=\frac{|\mathbf{r}'(t)\times \mathbf{r}''(t)|}{(\frac{ds}{dt})^2}=\frac{|\mathbf{r}'(t)\times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^2}}
+\end{equation}
+Therefore:
+\begin{equation}
+\boxed{\kappa=\frac{|\hat{\tau}'(t)|}{|\mathbf{r}'(t)|}=\frac{|\mathbf{r}'(t)\times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}}
+\end{equation}
+Note that:\\
+for higher dimension general case, this equation always holds true.\\ \\
+For $1$-dimensional special case:
+\begin{equation}
+\boxed{\kappa=\frac{|f''(x)|}{[1+(f'(x))^2]^{\frac{3}{2}}}}
+\end{equation}
+\subsection{The Normal and Binormal Vectors}
+The principle unit normal vector:
+\begin{center}
+$\mathbf{N}(t)=\frac{\hat{\tau}'(t)}{|\hat{\tau}'(t)|}$
+\end{center}
+Osculating plane: the plane that $\hat{\tau}(t)$ and $\mathbf{N}(t)$ span out.\\
+Osculating circle: the approximation of the curve by circle with the radius $\rho = \frac{1}{\kappa}$\\
+The binormal vector:
+\begin{center}
+$\mathbf{B}(t)=\hat{\tau}(t)\times \mathbf{N}(t)$
+\end{center}
+Normal plane: the plane that $\mathbf{B}(t)$ and $\mathbf{N}(t)$ span out.

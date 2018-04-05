@@ -1,0 +1,141 @@
+\chapter{Vector and the Geometry of Space}
+\section{Three-Dimensional Coordinate Systems}
+\begin{itemize}
+\item Three-dimensional \emph{Rectangular} (Cartesian) Coordinate System
+
+Defined by a triple $(x, y, z)$, can be considered as an orthogonal completed set in three dimension, called the coordinate representation. \\
+
+The gradient expression:
+\begin{equation}
+ \boxed{\nabla = \hat{\bm{\imath}}\frac{\partial }{\partial x}+ \hat{\bm{\jmath}} \frac{\partial }{\partial y}+\hat{\bm{k}}\frac{\partial }{\partial z}	}
+\end{equation}
+
+\item Three-dimensional \emph{Cylindrical} Coordinate System
+
+Defined by a triple $(\rho, \varphi, z)$.
+
+Relationship between the $(x, y, z)$ system:
+\begin{center}
+$\begin{array}{ll}
+x = \rho \sin \theta \qquad &  \rho ^2 = x^2+y^2\\
+y = \rho \cos \theta \qquad &  \tan \theta = \frac{y}{x}
+\end{array}$
+\end{center}
+
+The gradient expression:
+\begin{equation}
+\boxed{\nabla = 
+\hat{\bm{r}}\frac{\partial }{\partial r}+
+\frac{1}{r} \hat{\bm{\theta}}	\frac{\partial }{\partial \theta}+
+\hat{\bm{z}}\frac{\partial }{\partial z}}
+\end{equation}
+
+\item Three-dimensional \emph{Spherical} Coordinate System
+
+Defined by a triple $(\rho, \theta, \varphi)$.
+
+Relationship between the $(x, y, z)$ system:
+\begin{center}
+$\begin{array}{ll}
+x = \rho \sin \varphi \cos \theta \qquad &  \rho ^2 = x^2+y^2+z^2\\
+y = \rho \sin \varphi \sin \theta \qquad &  \tan \theta = \frac{y}{x}\\
+z = \rho \cos \varphi  			\qquad &  \tan \varphi = \frac{\sqrt{x^2+y^2}}{z}
+\end{array}$
+\end{center}
+
+The gradient expression:
+\begin{equation}
+\boxed{\nabla = \hat{\bm{r}}\frac{\partial }{\partial r} 
++ \frac{1}{r}\hat{\bm{\theta}}\frac{\partial }{\partial \theta}
++ \hat{\bm{\varphi}}\frac{1}{r\sin \theta}\frac{\partial }{\partial \varphi}}
+\end{equation}
+\end{itemize}
+
+
+\section{Equation for Line and Plane}
+\subsection{Line Function}
+Line function given by the vector function is:
+%\begin{center}
+\[\mathbf{r}=\mathbf{r}_0+t\mathbf{v},\]
+where $\mathbf{r}=x\mathbf{\hat{i}}+y\mathbf{\hat{j}}+z\mathbf{\hat{k}}$.
+%\end{center}
+Expressed in the coordinate representation:
+
+\[\begin{cases}
+x=x_0+at \\
+y=y_0+bt \\
+z=z_0+ct
+\end{cases}\]
+
+or can be expressed as following:
+
+\[\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}=t\]
+
+where the vector $\mathbf{v}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ is the directional vector of this line. With this, the angle between any two lines can be expressed as following:
+
+Supposing there are two lines $l_1$ and $l_2$:
+
+\begin{center}
+line $l_1$: $\frac{x-x_0}{a_1}=\frac{y-y_0}{b_1}=\frac{z-z_0}{c_1}=t_1$
+
+line $l_2$: $\frac{x-x_0}{a_2}=\frac{y-y_0}{b_2}=\frac{z-z_0}{c_2}=t_2$
+\end{center}
+
+the angle between this two lines equal to the angle between the directional vectors of this two:
+
+\[\cos \theta = \langle \mathbf{v_1},\mathbf{v_2} \rangle =\frac{\mathbf{v_1}\cdot \mathbf{v_2}}{|\mathbf{v_1}||\mathbf{v_2}|}\]
+
+Therefore, the expression of the angle between two lines are:
+
+\begin{equation}
+\boxed{\cos \theta =\frac{|a_1a_2+b_1b_2+c_1c_2|}{\sqrt{{a_1}^2+{b_1}^2+{c_1}^2}\sqrt{{a_2}^2+{b_2}^2+{c_2}^2}}}
+\end{equation}
+
+
+
+\subsection{Plane Function}
+Plane function given by the vector function is:
+\[\mathbf{n}\cdot \mathbf{r_0}=0,\]
+%\end{center}
+where $\mathbf{r_0}=x_0\mathbf{\hat{i}}+y_0\mathbf{\hat{j}}+z_0\mathbf{\hat{k}}$ ($(x_0,y_0,z_0)$ is a point in the plane) and the $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ are the normal vector of this plane.
+Expressed in the coordinate representation:
+%\begin{center}
+\[a(x-x_0)+b(y-y_0)+c(z-z_0)=0,\]
+%\end{center}
+where the vector $\mathbf{n}=a\mathbf{\hat{i}}+b\mathbf{\hat{j}}+c\mathbf{\hat{k}}$ is the normal vector of this plane.\\ \\
+With this, the expression of the angle between line and plane is the following:\\
+Supposing there are one line $l$ and one plane $n$:
+\begin{center}
+line $l$: $\frac{x-x_0}{a_1}=\frac{y-y_0}{b_1}=\frac{z-z_0}{c_1}=t$\\
+plane $n$: $a_2(x-x_0)+b_2(y-y_0)+c_2(z-z_0)=0$
+\end{center}
+The angle between them are given by the angle between the directional vector of the line and the normal vector of the plane:
+\begin{equation}
+\boxed{\sin \varphi =\frac{|a_1a_2+b_1b_2+c_1c_2|}{\sqrt{{a_1}^2+{b_1}^2+{c_1}^2}\sqrt{{a_2}^2+{b_2}^2+{c_1}^2}}}
+\end{equation}
+
+\subsection{Line function given by two plane}
+Notice that the directional vector is perpendicular to two normal vector of two plane $\mathbf{n_1}=a_1\mathbf{\hat{i}}+b_1\mathbf{\hat{j}}+c_1\mathbf{\hat{k}}$ and $\mathbf{n_2}=a_2\mathbf{\hat{i}}+b_2\mathbf{\hat{j}}+c_2\mathbf{\hat{k}}$:
+\begin{equation}
+\boxed{\mathbf{v}=\mathbf{n_1}\times \mathbf{n_2}=
+\begin{vmatrix}
+\mathbf{\hat{i}} & \mathbf{\hat{j}} & \mathbf{\hat{k}}\\
+a_1 & b_1 & c_1 \\
+a_2 & b_2 & c_2
+\end{vmatrix}
+}
+\end{equation}
+Moreover the angle between this two plane are:
+\begin{equation}
+\boxed{\cos \theta =\frac{|a_1a_2+b_1b_2+c_1c_2|}{\sqrt{{a_1}^2+{b_1}^2+{c_1}^2}\sqrt{{a_2}^2+{b_2}^2+{c_1}^2}}}
+\end{equation}
+
+\subsection{Distance}
+Supposing one point $(x_0,y_0,z_0)$ and a plane with its normal vector $\bm{n}
+=a\hat{\bm{\imath}}+b\hat{\bm{\jmath}}+c\hat{\bm{k}}$ or $ax+by+cz+d=0$:
+the distance between this two can be expressed as the following:
+\begin{equation}
+\boxed{d=\frac{ax_0+by_0+cz_0+d}{\sqrt{a^2+b^2+c^2}}}
+\end{equation}
+
+\section{Cylinders and Quadric Surfaces}

@@ -1,0 +1,274 @@
+\chapter{Multiple Integral}
+\section{Double Integral}
+\subsection{Definition}
+Recall in two dimensional case:\\
+
+The integral is defined as following:
+
+\begin{center}
+$\displaystyle\int_{a}^{b}f(x)=\lim_{\Delta x\to 0}\displaystyle\sum_{i=1}^{n} f(x_i^*)\Delta x_i$
+\end{center}
+
+Then, move on to the higher dimension case, say three dimension case:\\
+
+Consider $f(x,y)$ defined in a region $\mathcal{R}$ in the $xy$-plane.
+
+\begin{center}
+$\displaystyle\int_{c}^{d}\displaystyle\int_{a}^{b}f(x,y)dxdy =\lim_{\substack{\Delta x\to 0\\ \Delta x\to 0}}\displaystyle\sum_{j=1}^{m}\displaystyle\sum_{i=1}^{n} f(x_i^*,y_j^*)\Delta A_{ij}$
+\end{center}
+
+If the limit exists,we called it the double integral for this function within the region $\mathcal{R}$ and denoted by:
+
+\begin{equation}
+\boxed{\iint_{\mathcal{R}}f(x,y)dA=\iint_{\mathcal{R}}f(x,y)dxdy}
+\end{equation}
+
+In order to evaluate the double integral by the definite integral (For the single variables integral), we introduce by double iterated integral directly from definite integrals.\\
+
+consider $f(x,y)$. if we hold $y$ as a constant, then we may regard $f(x,y)$ as a function of single variables x, then:
+
+\begin{align*}
+\displaystyle\int_{a}^{b}f(x,y)dx &= A(y)\\
+\displaystyle\int_{c}^{d}A(y)dy &= \displaystyle\int_{c}^{d}\left(\displaystyle\int_{a}^{b}f(x,y)dx\right)dy\\
+\displaystyle\int_{c}^{d}f(x,y)dy &= B(x)\\
+\displaystyle\int_{a}^{b}B(x)dx &= \displaystyle\int_{a}^{b}\left(\displaystyle\int_{c}^{d}f(x,y)dy\right)dx\\
+\end{align*}
+
+Generalized result in two different evaluation process corresponding to the simplification:
+
+\begin{center}
+$\boxed{\displaystyle\int_{c}^{d}\left(\displaystyle\int_{h_1(y)}^{h_2(y)}f(x,y)dx\right)dy \quad \& \quad \displaystyle\int_{a}^{b}\left(\displaystyle\int_{g_1(x)}^{g_2(x)}f(x,y)dy\right)dx}$
+\end{center}
+
+\subsection{Evaluation in Different Cases}
+\begin{itemize}
+\item Rectangular Case:
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA &= \lim_{\substack{\Delta x\to 0\\ \Delta x\to 0}}\displaystyle\sum_{j=1}^{m}\displaystyle\sum_{i=1}^{n} f(x_i^*,y_j^*)\Delta x_{i}\Delta y_{j}\\
+&= \lim_{\Delta y\to 0}\displaystyle\sum_{j=1}^{m}\left(\lim_{\Delta x\to 0}\displaystyle\sum_{i=1}^{n} f(x_i^*,y_j^*)\Delta x_{i} \right)\Delta y_{j}\\
+&= \lim_{\Delta y\to 0}\displaystyle\sum_{j=1}^{m}\left(\displaystyle\int_{a}^{b}f(x,y)dx \right)\Delta y_{j}\\
+&= \displaystyle\int_{c}^{d}\displaystyle\int_{a}^{b}f(x,y)dxdy
+\end{align*}
+Therefore, in rectangular case, we can convert the double integral to the double iterated integral:
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA =\quad \cdots \quad=\displaystyle\int_{c}^{d}\displaystyle\int_{a}^{b}f(x,y)dxdy \\
+\iint_{\mathcal{R}}f(x,y)dA =\quad \cdots \quad=\displaystyle\int_{a}^{b}\displaystyle\int_{c}^{d}f(x,y)dydx
+\end{align*}
+These two relationship hold true only for the rectangular region.\\
+Furthermore, Fubini's Theorem is based on the rectangular region
+$$\mathcal{R}=[a,b]\times [c,d]$$
+then the double integral can be evaluated in a simple way:
+$$\iint_{\mathcal{R}}f(x)g(y)dA=\int_{a}^{b}f(x)dx\int_{c}^{d}g(y)dy$$
+\item $y=h_{i}(x)$ bounded region case:\\
+In this case, region $\mathcal{R}={(x,y)|a\leq x\leq b, h_{1}(x)\leq y\leq h_{2}(x)}$
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA &= \lim_{\substack{\Delta x\to 0\\ \Delta x\to 0}}\displaystyle\sum_{i=1}^{n}\displaystyle\sum_{j=1}^{m} f(x_i^*,y_j^*)\Delta y_{j}\Delta x_{i}\\
+&= \lim_{\Delta x\to 0}\displaystyle\sum_{i=1}^{n}\left(\lim_{\Delta y\to 0}\displaystyle\sum_{j=1}^{m} f(x_i^*,y_j^*)\Delta y_{j} \right)\Delta x_{i}\\
+&= \lim_{\Delta x\to 0}\displaystyle\sum_{i=1}^{n}\left(\displaystyle\int_{h_{1}(x)}^{h_{2}(x)}f(x,y)dy \right)\Delta x_{i}\\
+&= \displaystyle\int_{a}^{b}\left(\displaystyle\int_{h_{1}(x)}^{h_{2}(x)}f(x,y)dy \right)dx
+\end{align*}
+\item $x=g_{i}(y)$ bounded region case:\\
+In this case, region $\mathcal{R}={(x,y)|g_{1}(x)\leq x\leq g_{2}(x), c\leq y\leq d}$
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA &= \lim_{\substack{\Delta x\to 0\\ \Delta y\to 0}}\displaystyle\sum_{i=1}^{n}\displaystyle\sum_{j=1}^{m} f(x_i^*,y_j^*)\Delta x_{i}\Delta y_{j}\\
+&= \displaystyle\int_{c}^{d}\left(\displaystyle\int_{g_{1}(y)}^{g_{2}(y)}f(x,y)dx \right)dy
+\end{align*}
+\item Two well-defined boundary region case (two point closed loop):\\
+In this case, region $\mathcal{R}={(x,y)|g_{1}(x)\leq x\leq g_{2}(x), c\leq y\leq d}$or\\
+$\mathcal{R}={(x,y)|a\leq x\leq b, h_{1}(x)\leq y\leq h_{2}(x)}$\\
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA &= \lim_{\substack{\Delta x\to 0\\ \Delta y\to 0}}\displaystyle\sum_{i=1}^{n}\displaystyle\sum_{j=1}^{m} f(x_i^*,y_j^*)\Delta y_{j}\Delta x_{i}\\
+&= \displaystyle\int_{a}^{b}\left(\displaystyle\int_{h_{1}(x)}^{h_{2}(x)}f(x,y)dy \right)dx\\
+&= \displaystyle\int_{c}^{d}\left(\displaystyle\int_{g_{1}(y)}^{g_{2}(y)}f(x,y)dx \right)dy
+\end{align*}
+\end{itemize}
+
+Note:
+\begin{itemize}
+\item For an irregular regions, we divided it into regular regions.
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA=\iint_{\mathcal{R}_1}f(x,y)dA+\iint_{\mathcal{R}_2}f(x,y)dA
+\end{align*}
+\item A double integral (DI) can be evaluated ny a double iterated integral (DII) while DII can be evaluated by some DI
+\end{itemize}
+
+\subsection{Properties of DI}
+The equations:
+
+\begin{enumerate}
+\item $\iint_{\mathcal{R}}dA=$ area of $\mathcal{R}$
+\item if $\mathcal{R}=\mathcal{R}_1+\mathcal{R}_2$, then:
+$$\iint_{\mathcal{R}}f(x,y)dA=\iint_{\mathcal{R}_1}f(x,y)dA+\iint_{\mathcal{R}_2}f(x,y)dA$$
+\item $\iint_{\mathcal{R}}[f(x,y)\pm g(x,y)]dA=\iint_{\mathcal{R}}f(x,y)dA\pm \displaystyle\iint_{\mathcal{R}}g(x,y)dA$
+\item $\iint_{\mathcal{R}}cf(x,y)dA=c\iint_{\mathcal{R}}f(x,y)dA$
+\end{enumerate}
+
+The inequality:
+
+\begin{enumerate}
+\item if $m\leq f(x,y) \leq M$, for all $(x,y)$ in $\mathcal{R}$:
+$$mA(\mathcal{R})\leq \iint_{\mathcal{R}}f(x,y)dA \leq MA(\mathcal{R})$$
+\end{enumerate}
+
+\section{Double Integral in Polar Coordinates}
+Consider the following function:
+$$\iint_{\mathcal{R}}f(x,y)dA$$
+take an arbitrary point $(x_{ij}^*,y_{ij}^*)$, say $(x_{ij}^*,y_{ij}^*)=(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})$, then the integral can be rewritten as the following:
+
+\begin{align*}
+\iint_{\mathcal{R}}f(x,y)dA &= \lim_{\substack{\Delta r\to 0\\ \Delta \theta\to 0}}\displaystyle\sum_{i=1}^{n}\displaystyle\sum_{j=1}^{m}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})\Delta A_{ij}\\
+&=\cdots =f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})
+\end{align*}
+
+Generalization:
+As we can use the Jacobian Matrix to generalize the gradient of the scalar field. The Jacobian can also be thought of as describing the amount of ``stretching", ``rotating" or ``transforming" that a transformation imposes locally. \\
+
+Therefore, in the polar coordinates case:
+\begin{align*}
+dx \, dy& =\det\mathcal{J}(r,\theta)drd\theta\\
+&=\det
+\begin{vmatrix}
+\frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta} \\
+\frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta} \\
+\end{vmatrix}drd\theta\\
+&=\det
+\begin{vmatrix}
+\cos \theta & -r\sin \theta \\
+\sin \theta & r\cos \theta \\
+\end{vmatrix}drd\theta\\
+&=rdrd\theta
+\end{align*}
+
+Thus we obtain:
+$$dx \,dy=r \, dr \, d\theta$$
+Therefore, after substitute into the definition of the double integral in the polar coordinates:
+
+\begin{itemize}
+\item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\alpha_{1}}^{\alpha_{2}}\int_{\rho_{1}}^{\rho_{2}}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rdrd\theta$
+\item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\alpha_{1}}^{\alpha_{2}}\int_{h_{1}(\theta)}^{h_{2}(\theta)}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rdrd\theta$
+\item $\displaystyle\iint_{\mathcal{R}}f(x,y)dA=\int_{\rho_{1}}^{\rho_{2}}\int_{g_{1}(r)}^{g_{1}(r)}f(r_{i}\cos \theta_{j},r_{i}\sin \theta_{j})rd\theta dr$
+\end{itemize}
+
+Note that: Usually, if the region involves a circle or part of a circle, we use the polar coordinate to the evaluation, otherwise we use the rectangular coordinates.
+
+\subsection{Example}
+Evaluate:
+$$\iint_{\mathcal{R}}x \,dA$$
+where the region $\mathcal{R}$ is bounded by $x^2+y^2=2x$\\ \\
+
+Solution: First we find the polar coordinate representation of $\mathcal{R}$:\\
+
+$$r^2=2r\cos \theta$$
+
+then, we start to evaluate the integral:
+\begin{align*}
+\iint_{\mathcal{R}}xdA &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_{0}^{2\cos \theta}r\cos \theta rdrd\theta \\
+&= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \left(\frac{\cos \theta}{3}r^3\right)|_{0}^{2\cos \theta}d\theta \\
+&= \frac{8}{3}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\cos^4\theta d\theta \\
+&= \frac{8}{3}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\left(\frac{1+\cos 2\theta}{2}\right)^2d\theta \\
+&= \frac{2}{3}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\left(1+2\cos 2\theta +\cos^2 2\theta \right)^2d\theta =\cdots
+\end{align*}
+
+
+
+\section{Applications of Double Integral}
+
+\subsection{Area}
+$$\iint_{\mathcal{R}}\,dA=A(\mathcal{R})$$
+
+\subsection{Mass of a Plate}
+Consider a plate with density varies in the density function $\rho (x,y)$, find the mass of this plate:
+\begin{align*}
+M &= \lim_{\substack{\Delta x\to 0 \\ \Delta y\to 0}}\sum_{j=1}^{m}\sum_{i=1}^{n}\rho (x_{ij}^*,y_{ij}^*)\Delta A_{ij}\\
+&= \iint_{\mathcal{R}}\rho (x,y)dA
+\end{align*}
+
+\subsection{Moment of a Plate}
+After finding the mass of a plate with density function $\rho (x,y)$, we can further find the moment of a plate:\\
+\begin{enumerate}
+\item Moment about the $x$-direction
+$$\iint_{\mathcal{R}}y\rho (x,y)dA$$
+\item Moment about the $x$-direction
+$$\iint_{\mathcal{R}}x\rho (x,y)dA$$
+\item Center of mass $(x,y)$
+$$m\overline{x}=M_y \implies \overline{x}=\frac{M_y}{m}=\frac{\displaystyle\iint_{\mathcal{R}}x\rho (x,y)dA}{\displaystyle\iint_{\mathcal{R}}\rho (x,y)dA}$$
+$$m\overline{y}=M_x \implies \overline{y}=\frac{M_x}{m}=\frac{\displaystyle\iint_{\mathcal{R}}y\rho (x,y)dA}{\displaystyle\iint_{\mathcal{R}}\rho (x,y)dA}$$
+\end{enumerate}
+
+\subsection{Moment of Inertia}
+\begin{enumerate}
+\item moment of inertia about $x$-axis
+$$\iint_{\mathcal{R}}y^2\rho (x,y)dA$$
+\item moment of inertia about $y$-axis
+$$\iint_{\mathcal{R}}x^2\rho (x,y)dA$$
+\item moment of inertia about origin\
+$$\iint_{\mathcal{R}}(x^2+y^2)\rho (x,y)dA$$
+
+\subsection{Radii of Gyration}
+$$\bar{\bar{x}}^2=\frac{\displaystyle\iint_{\mathcal{R}}x^2\rho (x,y)dA}{\displaystyle\iint_{\mathcal{R}}\rho (x,y)dA}$$
+$$\bar{\bar{y}}^2=\frac{\displaystyle\iint_{\mathcal{R}}y^2\rho (x,y)dA}{\displaystyle\iint_{\mathcal{R}}\rho (x,y)dA}$$
+\end{enumerate}
+
+
+
+\section{Surface Area}
+Given a surface $z=f(x,y)$, the following equation gives the surface area:
+\begin{center}
+$$\mathcal{S}=\iint_{\mathcal{R}}\sqrt{1+|\nabla f(x,y)|^2}dA$$\\
+$$\mathcal{S}=\iint_{\mathcal{R}}\sqrt{1+\frac{\partial f}{\partial x}^2+\frac{\partial f}{\partial y}^2}dA$$
+\end{center}
+
+
+
+\section{Triple Integral}
+Consider a three dimensional function $f(x,y,z)$ which is defined in a region $\mathcal{D}$ on the space bounded by surface $\mathcal{S}$. We divided $\mathcal{D}$ into many small cube in a similar manner to the double integral, then wecan define the triple integral:
+$$\boxed{\iiint_{\mathcal{D}}f(x,y,z)dv=\lim_{\substack{\Delta x\to 0\\ \Delta y\to 0\\ \Delta z\to 0}}\sum_{k=1}^{q}\sum_{j=1}^{m}\sum_{i=1}^{n}f(x_{ijk}^*,y_{ijk}^*,z_{ijk}^*)\Delta x_{i}\Delta y_{j}\Delta z_{k}}$$
+\textbf{Generalization:}\\
+By considering the boundary condition, the triple integral can be evaluated in three manners:\\
+Note: Usually, the three manners is chosen regard to which the projection region is easy to find.
+\begin{itemize}
+\item $\displaystyle\iiint_{\mathcal{D}}f(x,y,z)dv=\displaystyle\iint_{\mathcal{R}}\left(\int_{\phi_1(x,y)}^{\phi_2(x,y)}f(x,y,z)dz\right)dA$
+\item $\displaystyle\iiint_{\mathcal{D}}f(x,y,z)dv=\displaystyle\iint_{\mathcal{R}}\left(\int_{\psi_1(x,z)}^{\psi_2(x,z)}f(x,y,z)dy\right)dA$
+\item $\displaystyle\iiint_{\mathcal{D}}f(x,y,z)dv=\displaystyle\iint_{\mathcal{R}}\left(\int_{g_1(y,z)}^{g_2(y,z)}f(x,y,z)dx\right)dA$
+\end{itemize}
+
+
+
+\section{Triple Integral in Cylindrical Spherical Coordinates}
+Similar to the transformation in the double integral, the volume unit is given by the Jacobian matrix determinant.
+
+\[dx\,dy\,dz=\det \mathbf{J}(r,\theta,z)\,dr\,d\theta \,dz=r\,dr\,d\theta \,dz\]
+\[dx\,dy\,dz=\det \mathbf{J}(\rho,\theta,\phi)\,d\rho \,d\theta \,d\phi=\rho ^2\sin \phi \,d\rho \,d\theta \,d\phi\]
+
+Therefore, substitute into the original definition, we can evaluate the triple integral in both cylindrical and spherical coordinates:
+
+\begin{align*}
+\iiint_{\mathcal{R}}f(x,y,z)dv &=\iiint_{\mathcal{R}}f(r\cos \theta,r\sin \theta,z)rdrd\theta dz \\
+&= \iiint_{\mathcal{R}}f(r\sin \phi \cos \theta,r\sin \phi \sin \theta,r\cos \phi)\rho ^2\sin \phi d\rho d\theta d\phi
+\end{align*}
+
+
+
+\section{Application of Triple Integral}
+
+\subsection{Volume}
+$$\iiint_{\mathcal{D}}dv=V(\mathcal{D})$$
+\subsubsection{Mass}
+In a region $\mathcal{D}$, with the density function $\rho (x,y,z)$, the mass can be given by the following equation:
+$$\iiint_{\mathcal{D}}\rho (x,y,z)dv=M(\mathcal{D})$$
+
+\subsection{Mass Center and Moment}
+$$\bar{x}=\frac{m_{yz}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}x\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+$$\bar{y}=\frac{m_{xz}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}y\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+$$\bar{z}=\frac{m_{xy}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}z\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+
+\subsection{Radii of Gyration}
+$$\bar{\bar{x}}^2=\frac{I_{yz}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}(y^2+z^2)\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+$$\bar{\bar{y}}^2=\frac{I_{xz}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}(x^2+z^2)\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+$$\bar{\bar{z}}^2=\frac{I_{xy}}{M}=\frac{\displaystyle\iiint_{\mathcal{D}}(x^2+y^2)\rho(x,y,z)}{\displaystyle\iiint_{\mathcal{D}}\rho (x,y,z)dv}$$
+
+Please refer to the link:
+
+\url{http://math.ucsd.edu/~lni/math20e/schedule.html}
+
+\url{https://web.math.rochester.edu/people/faculty/edummit/handouts.html}
