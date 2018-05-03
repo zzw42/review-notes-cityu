@@ -11,10 +11,13 @@
 \documentclass[UTF8,a4paper]{book}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{manfnt}
+\usepackage{metalogo}
 
 \usepackage{hyperref}
-\hypersetup{colorlinks, linkcolor=blue}
-\makeatletter							%help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
+  \hypersetup{colorlinks,linkcolor=blue}
+
+%%%%%%%%%%
+\makeatletter							
 \def\UrlAlphabet{%
       \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
       \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
@@ -26,20 +29,25 @@
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \g@addto@macro{\UrlBreaks}{\UrlAlphabet}
 \g@addto@macro{\UrlBreaks}{\UrlDigits}
-\makeatother							% https://liam0205.me/2017/05/17/help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
+\makeatother							
+% help-the-url-command-from-hyperref-to-break-at-line-wrapping-point
+% More at: https://liam0205.me/2017/05/17/help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
 
 \usepackage{sectsty} 					% Allows your to change titles style
 %    \chapterfont{\sffamily } 			% Delete the bold style and set the sans-serif font
     \allsectionsfont{\sffamily} 		% Delete the bold style and set the sans-serif font
 
 \usepackage{graphicx}
-\graphicspath {{figures/}}				% figures are in the folder .\figures\   (Windows)
+  \graphicspath {{figures/}}				% figures are in the folder .\figures\   (Windows)
 \usepackage{float} 						% adjust the picture [H]
 
 \usepackage[margin=1 in]{geometry}
 
+\usepackage[dvipsnames]{xcolor}  % loaded before ``pgfplots"
+%  See https://tex.stackexchange.com/questions/83101/option-clash-for-package-xcolor
+
 \usepackage{pgfplots}					% Used to create histogram
-\pgfplotsset{compat=1.12}				% the package run in compatible mode according to the log
+  \pgfplotsset{compat=1.12}				% the package run in compatible mode according to the log
 
 %%%%%%%%%% Theorem Environment %%%%%%%%
 %%%%%%%%%% amsthm framed xcolor %%%%%%%%
@@ -54,19 +62,19 @@
 %\newtheorem{axio}[theo]{Axiom}
 %\newtheorem{exmp}[theo]{Example} 	 % Examples are independent
 
-\usepackage{xcolor}
+
 \usepackage{framed}
-\colorlet{shadecolor}{orange!15}
+  \colorlet{shadecolor}{White!90!Cerulean}
 
 \theoremstyle{plain}					% Used to create enviroment for therorem
-\newtheorem{theorem}{Theorem}[chapter] 	% reset theorem numbering for each chapter
-\newtheorem{coro}[theorem]{Corollary}		% Corollary dependent on Theorem
-\newtheorem{proposition}[theorem]{Proposition}
+  \newtheorem{theorem}{Theorem}[chapter] 	% reset theorem numbering for each chapter
+  \newtheorem{coro}[theorem]{Corollary}		% Corollary dependent on Theorem
+  \newtheorem{proposition}[theorem]{Proposition}
 
 \theoremstyle{definition}
-\newtheorem{defn}[theorem]{Definition} % definition numbers are independent
-\newtheorem{axio}[theorem]{Axiom}
-\newtheorem{exmp}[theorem]{Example} 	 % Examples are independent
+  \newtheorem{defn}[theorem]{Definition} % definition numbers are independent
+  \newtheorem{axio}[theorem]{Axiom}
+  \newtheorem{exmp}[theorem]{Example} 	 % Examples are independent
  
 \newenvironment{theo}
    {\begin{shaded}\begin{theorem}}
@@ -83,17 +91,20 @@
 %%%%%%%%%% End %%%%%%%%%%%
 
 \usepackage{mdframed}
-\mdfdefinestyle{exampledefault}{%
-rightline=true,innerleftmargin=10,innerrightmargin=10,
-frametitlerule=true,frametitlerulecolor=green,
-frametitlebackgroundcolor=yellow,
-frametitlerulewidth=2pt}
+  \mdfdefinestyle{exampledefault}{%
+    rightline                =  true,
+    innerleftmargin          =  10,
+    innerrightmargin         =  10,
+    frametitlerule           =  true,
+    frametitlerulecolor      =  White!90!Cerulean,
+    frametitlebackgroundcolor=  White!50!Cerulean,
+    frametitlerulewidth      =  2pt
+  }
 
 \usepackage{mathtools}			  		 % ceil and floor function
-\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+  \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+  \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
-\usepackage{metalogo}
 
 
 
@@ -121,7 +132,7 @@ frametitlerulewidth=2pt}
 
 \HRule \\[0.4cm]
 { \huge \bfseries  \textsf{Probability and Statistics} }\\[0.4cm] % Title of your document
-\rightline{{\bfseries \textsf{Version 1.02}} }
+\rightline{{\bfseries \textsf{Version 1.02.1}} }
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -193,7 +204,8 @@ All \LaTeX{} (\texttt{.tex}) files of this document can be accessed from
 \addcontentsline{toc}{chapter}{Preface}
 %\textsl
 {\sl
-Textbook: Probability and Statistics for Engineering and the Sciences, by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. }
+Textbook: Probability and Statistics for Engineering and the Sciences, 
+by Jay Devore, 8th Ed., Brooks/Cole Cengage Learning, 2012. }
 \\
 
 Schedules:

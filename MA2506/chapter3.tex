@@ -4,7 +4,9 @@
 \chapter{Discrete Random Variables}
 \section{Random Variable}
 \begin{defn}
-  For a given sample space $\mathcal{S}$ of some experiment, a random variable (rv) is any rule that associates a number with each outcome in $\mathcal{S}$. In mathematical language, a random variable is a function whose domain is the sample space
+  For a given sample space $\mathcal{S}$ of some experiment, a \textbf{random variable (rv)} is any rule 
+  that associates a number with each outcome in $\mathcal{S}$. In mathematical language, 
+  a random variable is a \textbf{function} whose domain is the sample space
 and whose range is the set of real numbers.
 \end{defn}
 
@@ -15,7 +17,8 @@ Flip a coin, $\mathcal{S}=\{\text{H} ,\text{T} \}$
 
 \begin{exmp}
 Randomly pick a student, height
-\[X(\text{height}\geq \text{6 feet})=1  \qquad X(\text{height}\leq \text{6 feet})=0
+\[X(\text{height}\geq \text{6 feet})
+= 1 \qquad X(\text{height}\leq \text{6 feet})=0
 \]
 \end{exmp}
 
@@ -44,7 +47,8 @@ a \textbf{continuous} r.v. is a r.v. whose possible values consist of an entire 
 
 \begin{defn}
 
-$\mathcal{S}$ is a sample space, $X(s)$ is a r.v. $p(x)=P(s\in \mathcal{S};X(s)= x) $ is called the probability mass function (p.m.f) or probability distribution function (p.d.f) of $x$.
+$\mathcal{S}$ is a sample space, $X(s)$ is a r.v. $p(x)=P(s\in \mathcal{S};X(s)= x) $ is called 
+the probability mass function (p.m.f) or probability distribution function (p.d.f) of $x$.
 \end{defn}
 
 \begin{exmp}
@@ -75,7 +79,8 @@ One of those is randomly selected. $X$ = \# of defectives in the selected lot
 \end{exmp}
 
 \begin{exmp}
-Five person 1,2,3,4,5 are blood donors. Among them, only 1 and 2 have ``O" type. Collect their blood in a random segment, $X=\text{\# of typing neccessary to get the first ``O" type}$.
+Five person 1,2,3,4,5 are blood donors. Among them, only 1 and 2 have ``O" type. 
+Collect their blood in a random segment, $X=\text{\# of typing neccessary to get the first ``O" type}$.
 \[	X = 1,2,3,4		\]
 \[	P(X=1)=P(\text{typing after the first trail})=\frac{2}{5} \]
 \end{exmp}
@@ -486,16 +491,18 @@ Check
  \[\sum_{k=0}^{\infty} \frac{\lambda^k}{k!} e^{-\lambda}=e^{-\lambda} \sum_{k=0}^{\infty} \frac{\lambda^k}{k!} =1 \]
 
 Since 
-\[e^{\lambda}=\sum_{k=0}^{\infty} \frac{\lambda^k}{k!}  \]
+\[e^{\lambda}=\sum_{k=0}^{\infty} \frac{\lambda^k}{k!}	\qquad \text{(Taylor expansion)}  \]
 
-(Taylor expansion)
+
 \subsection{The Mean and Variance of $X$}
 \begin{prop}
-If $X \sim Poisson(\lambda)$,$E(X)=\lambda$, $Var(X)=\lambda$
+If $X \sim Poisson(\lambda)$, $E(X)=\lambda$, $Var(X)=\lambda$.
 \begin{proof}
 \begin{align*}
 E(X)&=\sum _{k=0}^{\infty}kP(X=k)=\sum _{k=0}^{\infty}  k \frac{\lambda^k}{k!} e^{-\lambda} \\
-&=\lambda \sum _{k=0}^{\infty} \frac{\lambda^{k-1}}{(k-1)!} e^{-\lambda}=\lambda \sum _{k'=0}^{\infty} \frac{\lambda^{k'}}{k'!} e^{-\lambda}=\lambda
+&=\lambda \sum _{k=0}^{\infty} \frac{\lambda^{k-1}}{(k-1)!} e^{-\lambda}
+=\lambda \sum _{k'=0}^{\infty} \frac{\lambda^{k'}}{k'!} e^{-\lambda}
+=\lambda
 \end{align*}
 \end{proof}
 \end{prop}
@@ -506,8 +513,10 @@ If $X \sim Bin(n,p)$, $n$ is large, $p$ is small. Then $X \sim Poisson(\lambda)$
 \end{prop}
 
 \begin{exmp}
-A publisher is publishing a non-technical book. P(making at least one error in a page)=0.005. The book has 400 pages, independent from page to page.\\
-X=\# of pages with errors $\sim$ Bin(400,0.005)
+A publisher is publishing a non-technical book. 
+$P(\text{making at least one error in a page})=0.005$. 
+The book has $400$ pages, independent from page to page.\\
+$X=$\# of pages with errors $\sim Bin(400,0.005)$
 \[P(X=2)=\binom {400}{2} 0.005^2 (1-0.005)^{400-2}\]
 \[X \sim Poisson(2)\]
 \[P(X=2)=\frac{2^2}{2!}e^{-2}=0.27\]
@@ -527,7 +536,7 @@ Counting the number of customers at a bank counter. Suppose
 \end{enumerate}
 
 Then $P(k$ customers during $(0,t))=\frac{(\alpha t)^k}{k!}e^{-\alpha t}$.
-Let $X_t$ = \# of customers during $(0,t)$.
+Let $X_t = $ \# of customers during $(0,t)$.
 \[X_t \sim Poisson(\alpha t)\]
 \[E(X_t)=\alpha t \qquad Var(X_t)=\alpha t\]
 \end{exmp}

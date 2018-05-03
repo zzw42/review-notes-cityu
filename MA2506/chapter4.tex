@@ -431,7 +431,7 @@ If $X\sim exp(\lambda)$. Then $X \sim Gamma(1,1/\lambda)$
 \end{prop}
 
 \begin{exmp}
-X=response time at some computer terminal. $X \sim exp(\lambda)$. Suppose that the expected reacting time is 5 seconds.
+$X = $ response time at some computer terminal. $X \sim exp(\lambda)$. Suppose that the expected reacting time is 5 seconds.
 \[E(X)=5 \qquad \frac{1}{\lambda}=5 \Rightarrow \lambda=\frac{1}{5}\]
 \[P(X\leq 10)=\int_0^{10} \frac{1}{5} e^{-x/5} dx=\left. e^{-x/5}\right|_{0}^{10}=1-e^{-2}. \]
 \end{exmp}
@@ -440,41 +440,39 @@ In general, if $X\sim exp(\lambda)$,
 \[F(x)=\int_0^{x} \lambda e^{-\lambda y} dy=\left. e^{-\lambda y}\right|_{0}^{x}=1-e^{-\lambda x}\]
 
 \subsubsection{Two applications}
-\paragraph{(A)}
+\paragraph{A. Poisson process}
 
 Suppose \# of customers coming in any wait time $\sim Possion(\alpha)$, and \# of customers is non-overlapping intervals are independent. Then
-\[X= \text{the elapsed time between the successive customers coming in}\sim exp(\alpha)\]
+\[X= \text{the elapsed time between the successive customers coming in}\sim exp(\alpha).\]
 
-Why? Let $X_1$=waiting time before the 1st customer coming in. Want to show that $X_1 \sim exp()\lambda$, just need to find $f_{X_1}(x)$. Then we just need to find $F_{X_1}(x)$, as $f_{X_1}(x)=F'_{X_1}(x)$.
+Why? Let $X_1=$ waiting time before the 1st customer coming in. Want to show that $X_1 \sim exp()\lambda$, just need to find $f_{X_1}(x)$. Then we just need to find $F_{X_1}(x)$, as $f_{X_1}(x)=F'_{X_1}(x)$.
 \begin{align*}
 F_{X_1}(x)&= P(X_1\leq x)=P(\text{at least 1 customer in }(0,x)) \\
 &= 1-P(\text{no customer in }(0,x)) \\
-&=1-\frac{(\alpha x)^0}{0!}e^{-\alpha x}=1-e^{-\alpha x}
+&=1-\frac{(\alpha x)^0}{0!}e^{-\alpha x}=1-e^{-\alpha x}.
 \end{align*}
 \[f_{X_1}(x)=F'_{X_1}(x)=\alpha e^{-\alpha x} \qquad x>0\]
 \[X_1 \sim exp(\lambda)\]
 
 
-\paragraph{(B)Memoryless property}
+\paragraph{B. Memoryless property}
+Suppose component lifetime $\sim exp(\lambda)$. Putting this component into work, after $t_0$ time, check it and find it is still working. What is the probability that it will last at least another $t$ time?
 
-Suppose component lifetime $\sim exp(\lambda)$. Putting this component into work, after $t_0$ time, check it and find it is still working. What is the probability that it will last at least another $t$ time?\\
-Let $T$ = lifetime of this component $\sim exp(\lambda)$
+Let $T$ = lifetime of this component $\sim exp(\lambda)$,
 \begin{align*}
 P(T\geq t_0+t|T \geq t_0)&=\frac{P(T\geq t_0+t \cap T \geq t_0)}{P(T \geq t_0)} \\
 &=\frac{P(T\geq t_0+t)}{P(T \geq t_0)}=\frac{1-P(T\leq t_0+t)}{1-P(T \leq t_0)} \\
 &=\frac{1-(1+e^{-\alpha(t_0+t)})}{1-(1+e^{-\alpha t_0})}=\frac{e^{-\alpha(t_0+t)}}{e^{-\alpha t_0}} \\
-&=e^{-\alpha t}
+&=e^{-\alpha t}.
 \end{align*}
 
 \subsection{The Chi-Squared Distribution}
 Let $\nu$ be an integer, if $X \sim Gamma(\frac{\nu}{2},2)$, then we say $X$ has a $\chi^2$-distribution with parameter $\nu$, $X \sim \chi^2 (\nu)$.
-
 It's p.d.f is
 \[f(x;\nu)=\begin{cases}
 \frac{1}{2^{\nu/2}\Gamma(\nu/2)} x^{\nu/2-1}e^{-x/2} & x>0 \\
 0 & o.w.
-\end{cases}\]
-
+\end{cases}.\]
 
 \begin{prop}
 Properties
@@ -491,7 +489,7 @@ If $X \sim Weibull(\alpha,\beta)$
 \[f(x)=\frac{1}{\beta^{\alpha}}x^{\alpha-1}e^{-(x/\beta)^{\alpha}} \qquad x >0\]
 If $\alpha=1$, $X \sim Weibull(1,\beta)$. Then $X \sim exp(\frac{1}{\beta}) $
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
 \includegraphics{figures/weibull_distribution.pdf}
 \caption{The Weibull Distribution}
