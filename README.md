@@ -14,10 +14,12 @@ Include:
 
 + [AP2212 - Measurement and Instrumentation](https://www.cityu.edu.hk/ug/201617/course/AP2212.htm)
 
++ [AP2213 - Advanced Measurement and Instrumentation](https://www.cityu.edu.hk/ug/201718/course/AP2213.htm)
+
 + [AP3114 - Computational Methods for Physicists and Materials Engineers](https://www.cityu.edu.hk/ug/201617/course/AP3114.htm)
 
 + [AP3204 - Waves and Optics](http://www.cityu.edu.hk/ug/201617/course/AP3204.htm)
 
 + [AP3290 - Thermodynamics](https://www.cityu.edu.hk/ug/201617/course/AP3290.htm)
 
-
++ [AP4233 - Imaging Physics](https://www.cityu.edu.hk/ug/201718/course/AP4233.htm)
