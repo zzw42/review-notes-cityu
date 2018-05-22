@@ -1,5 +1,5 @@
-\documentclass[10.5pt]{article}
- 
+\documentclass[]{article}
+%\documentclass[columns=2]{cheatsheet}
 \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,forest,float,color}
 \graphicspath{{./figs/}}
@@ -54,10 +54,8 @@
 \begin{document}
 
  
-\title{MA2503 \\ Bachelor Mathematics Lecture Notes\\
-SemA 2016/17}
+\title{\textsc{MA Courses Review Notes}\\MA2503 Linear Algebra}
 \author{Peilin \textsc{WU}
-%\\ -Personal Usage- \\ \\City University of Hong Kong\\ \\ MA2503 \\ Linear Algebra \\ \\ Test Time: 13-Dec-2016 18:30-21:30 \\ Test Venue: LT5 \\ Seat Number: 0063
 } 
 \date{\today}
 
@@ -103,6 +101,7 @@ Extending $\{v_1,\cdots ,v_n\}$ $(r<n)$ to a basis for $\mathbb{R}^n$ & $[v_1|\c
 \caption{Summary of applications of Gaussian and Gauss-Jordan elimination}
 \end{table}
 \pagebreak
+
 \section{Matrix Algebra}
 \subsection{Addition and Transposition}
 \begin{theo}[Symmetries]
@@ -344,25 +343,25 @@ r &= \textit{the number of nonzero rows in any row echelon form of }A\\
 \end{align*}
 \end{reflection}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.7]{3.PNG}
+\includegraphics[width=0.8\textwidth]{3.PNG}
 \caption{Four Fundamental Subspace of Matrix}
 \end{figure}
 \pagebreak
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.6]{1.PNG}
-\caption{Dimensions and orthogonality for any m by n matrix A of rank r}
+\includegraphics[width=0.8\textwidth]{1.PNG}
+\caption{Dimensions and orthogonality for any $m$ by $n$ matrix $A$ of rank $r$}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.7]{2.PNG}
+\includegraphics[width=0.8\textwidth]{2.PNG}
 \caption{Orthonormal bases that diagonalize A (3 by 4) and A$^+$ (4 by 3)}
 \end{figure}
-\pagebreak
+\newpage
 
 \section{Norms. Inner Product, and Orthogonality}
 \begin{definition}[Norm]
@@ -375,12 +374,14 @@ The $p$-norm can also defined as:
 $$||x||_p=\left(\sum_{i=1}^{n}x_{i}^{p}\right)^{\frac{1}{p}}=(x^*x)^{\frac{1}{p}}$$
 whenever $x\in \mathcal{C}^{n\times 1}$, $p \geq 1$\\
 \end{definition}
+
 \begin{definition}[Standard Inner Product]
 ~ The Euclidean vector norm can be viewed as a norm induced by the standard inner product:
-$$<x,y>=x^Ty=\sum_{i=1}^nx_iy_i \qquad \textit{whenever }x,y\in \mathbb{R}^{n\times 1}$$
-$$<x,y>=x^*y=\sum_{i=1}^n\bar{x_i}y_i \qquad \textit{whenever }x,y\in \mathbb{C}^{n\times 1}$$
-with the Euclidean norm defined by $||x||=<x,x>^{1/2}$
+$$\langle x,y \rangle = x^Ty=\sum_{i=1}^nx_iy_i \qquad \textit{whenever }x,y\in \mathbb{R}^{n\times 1}$$
+$$\langle x,y \rangle = x^*y=\sum_{i=1}^n\bar{x_i}y_i \qquad \textit{whenever }x,y\in \mathbb{C}^{n\times 1}$$
+with the Euclidean norm defined by $||x||=\langle x,x \rangle^{1/2}$
 \end{definition}
+
 \begin{definition}[Orthogonality]
 ~ Let $\mathcal{V}$ be either $\mathbb{R}^n$ or $\mathbb{C}^n$, Two vectors $x,y\in \mathcal{V}$ are said to be orthogonal (to each other) if $<x,y>=0$, and this is denoted by writing $x\bot y$.\\
 And note that:
@@ -544,6 +545,7 @@ $$det(A)=a_{1j}A_{1j}+a_{2j}A_{2j}+\cdots +a_{nj}A_{nj}, \qquad (\textit{about t
 \item $det(A)\neq 0$
 \end{itemize}
 \end{theorem}
+\newpage
 
 \section{Eigenvalue and Eigenvectors}
 \begin{definition}[Eigenvalue and Eigenvector]
