@@ -1,5 +1,5 @@
 \documentclass[UTF8]{book}
-%\usepackage{geometry}
+\usepackage{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx,mathtools,tikz,forest,float,color}
 \usepackage{siunitx}
@@ -13,10 +13,21 @@
 \makeindex
 
 \usepackage{hyperref}
- \hypersetup{
- colorlinks,
- linkcolor=blue
- }
+ \hypersetup{colorlinks,linkcolor=blue}
+ \makeatletter							%help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
+\def\UrlAlphabet{%
+      \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+      \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+      \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+      \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+      \do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother							% https://liam0205.me/2017/05/17/help-the-url-command-from-hyperref-to-break-at-line-wrapping-point/
+
 \usepackage{epigraph}						% quote
 \usepackage{yfonts}							% fraktur font styles in text mode
 \usepackage{physics}
@@ -54,20 +65,15 @@
 \newenvironment{corollary}[2][Corollary]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
-\usepackage{pdfpages}
+%\usepackage{pdfpages}
 
 \date{\today}
 %\title{ Bachelor Physics Lecture Notes\\ AP3290 Thermodynamics
 %%SemA 2016/17
 %}
-%\author{Peilin \textsc{WU}
-%%-\\ -Personal Usage- \\
-% \\City University of Hong Kong
-% %\\ \\ AP3290 \\ Thermodynamics \\ 
-% }
+
 
 \begin{document}
-%\includepdf[pages=-1]{FrontCover.pdf}
 \frontmatter
 
 \begin{titlepage}
@@ -89,7 +95,7 @@
 
 \HRule \\[0.4cm]
 { \huge \bfseries  \textsf{Thermodynamics} }\\[0.4cm] % Title of your document
-\rightline{{\bfseries \textsf{Version 0.1}} }
+\rightline{{\bfseries \textsf{Version 0.2}} }
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -101,14 +107,13 @@
 \emph{Author:}\\
 Peilin \textsc{WU} %\\ Zezhu \textsc{Wei}
 \end{flushleft}
-\end{minipage}\\[3cm] % Your name
-~
-%\begin{minipage}{0.4\textwidth}
-%\begin{flushright} \large
-%\emph{Instructor:} \\
-%Junhui \textsc{Wang} % Supervisor's Name
-%\end{flushright}
-%\end{minipage}\\[2cm]
+\end{minipage}%\\[3cm] % Your name
+~\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Instructor:} \\
+Johnny C. \textsc{Ho} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[2cm]
 
 % If you don't want a supervisor, uncomment the two lines below and remove the section above
 %\Large \emph{Author:}\\
@@ -226,7 +231,7 @@ Before we get to the first law of thermodynamics, there are some important preli
 %\mybox[fill=blue!20]{
 %\begin{theorem}[A Statistical definition of temperature]
 \paragraph{A Statistical definition of temperature}
-~ Section 4.4 in \cite{blundell2009concepts}. Consider two systems are in thermal contact with each other but thermally isolated from their surroundings. Assuming the first system has the energy $E_1$ and energy $E_2$ of another system. The total energy $E=E_1+E_2$ is therefore assumed fixed. Following the below assumptions (\textsl{Ergodic hypothesis}):
+~ Section 4.4 in \cite{blundell-concepts}. Consider two systems are in thermal contact with each other but thermally isolated from their surroundings. Assuming the first system has the energy $E_1$ and energy $E_2$ of another system. The total energy $E=E_1+E_2$ is therefore assumed fixed. Following the below assumptions (\textsl{Ergodic hypothesis}):
 \begin{itemize}
 \item  {each one of the possible microstates of a system is equally likely to occur.}
 \item  {the system's internal dynamics are such that the microstates of the system are continuously changing.}
@@ -349,7 +354,7 @@ pV^{\gamma}&= {constant}
 
 \section{The Second Law of Thermodynamics}
 \epigraph{Every mathematician knows it is impossible to understand an elementary course in thermodynamics.}{Vladimir Igorevich Arnold}
-Chapter 14 -- Entropy in \cite{blundell2009concepts}.
+Chapter 14 -- Entropy in \cite{blundell-concepts}.
 
 \begin{theorem}[Clausius Inequality]
 {For all thermodynamic cycles, reversible or irreversible, the Clausius inequality is valid:}
@@ -525,7 +530,7 @@ $$dS'_{sys}=\left(\dfrac{1}{T^\alpha }-\dfrac{1}{T^\beta }\right)dU'^\alpha+\lef
 \item  {For the properties constrained to constant $T,V$, equilibrium yield the minimized properties $F$}
 \item  {For the properties constrained to constant $T,P$, equilibrium yield the minimized properties $G$}
 For any irreversible spontaneous change in an
-isothermal, isobaric system, $ T,P = [Q – Q rev ] + [W – W rev ]$
+isothermal, isobaric system, $ T,P = [Q – Q_{\rm rev} ] + [W – W_{\rm rev} ]$
 \end{itemize}
 
 \section{Unary Heterogeneous System}
@@ -609,7 +614,7 @@ which are fermions with spin $1/2$.
 In Equation \ref{heat capacity}, we have
 $$C_p-C_V=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfrac{\partial V}{\partial T}\right)_p=\dfrac{TV\beta _p^2}{\alpha _T }$$
 \begin{proof}
-\textsf{Section 11.3 \cite{blundell2009concepts}} {In general, the internal energy will be a function of temperature and volume, so that we can write $U=U(T,V)$. Hence a small change in $U$ can be related to changes in $T$ and $V$ by:}
+\textsf{Section 11.3 \cite{blundell-concepts}} {In general, the internal energy will be a function of temperature and volume, so that we can write $U=U(T,V)$. Hence a small change in $U$ can be related to changes in $T$ and $V$ by:}
 $$dU=\left(\dfrac{\partial U}{\partial T}\right)_VdT+\left(\dfrac{\partial U}{\partial V}\right)_TdV$$
  {the first law of thermodynamics yields:}
 $$dQ=dU+pdV$$
@@ -623,7 +628,7 @@ C_p-C_V&=\left[p+\left(\dfrac{\partial U}{\partial V}\right)_T\right]\left(\dfra
 \end{align*}
 therefore, we prove the first part of this relation. 
  
-\textsf{Example 16.5 \cite{blundell2009concepts}}
+\textsf{Example 16.5 \cite{blundell-concepts}}
 And for the second part, we need to use the Maxwell's relation. Considering $S=S(T,V)$ allow us to write down immediately that:
 $$dS=\left(\dfrac{\partial S}{\partial T}\right)_VdT+\left(\dfrac{\partial S}{\partial V}\right)_TdV$$
 Differentiating this equation w.r.t $T$ at constant $p$ yields:
@@ -635,8 +640,13 @@ This yields:
 and combine the definition of the heat capacity: $C_p-C_V=\dfrac{TV\beta _p^2}{\alpha _T }$.
 \end{proof}
 
+\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{alpha}
 \bibliography{3290cite}
+
+\newpage
+\addcontentsline{toc}{chapter}{Index}
 \printindex
 
 \end{document}
