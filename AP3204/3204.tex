@@ -1,20 +1,23 @@
-\documentclass[openany]{book}
+\documentclass[UTF8]{book}
+\usepackage[scheme=plain]{ctex}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{graphicx,float} % Required for the inclusion of images
+\usepackage{graphicx,float} 			% Required for the inclusion of images
 \usepackage{wrapfig}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{cite}  			% BibTeX
-\usepackage{makeidx} 		% For index
+\usepackage{cite}  						% BibTeX
+\usepackage{makeidx} 					% For index
 \usepackage[nottoc]{tocbibind}
+
+\usepackage{geometry}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks,linkcolor=blue}
 
 \usepackage[titletoc]{appendix}
-\usepackage{bm}				% For bold greek letter
-\usepackage{indentfirst}	% enable /indent
-\usepackage{remreset}		% renumbering the sections
+\usepackage{bm}							% For bold greek letter
+\usepackage{indentfirst}				% enable /indent
+\usepackage{remreset}					% renumbering the sections
 
 \usepackage{sectsty} 					% Allows your to change titles style
 %    \chapterfont{\sffamily } 			% Delete the bold style and set the sans-serif font
@@ -26,23 +29,19 @@
 \renewcommand{\thesection}{\arabic{section}}
 %++++++++++++++++++++++++++++++++++++++++++
 
-\interfootnotelinepenalty=10000 %enable longer length of footnote
+\interfootnotelinepenalty=10000 		% enable longer length of footnote
 
-\usepackage{titlesec} %Set the Section symbol
+\usepackage{titlesec} 					% Set the Section symbol
 \titleformat{\section}{\normalfont\Large\bfseries}{\S\thesection}{1em}{}
 
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++
-\title{AP Courses Review Notes\\AP3204\\Waves and Optics} % Title
-\author{WU PEILIN \\ ~ \\
-% 12-May-2017 14:00 to 16:00 \\
-% AC2 1614 Lecture Theatre \\
-% 0045
-} % Author name
+
 \makeindex
 %+++++++++++++++++++++++++++++++++++++++++++++++++++++
 \begin{document}
 \frontmatter
-\maketitle
+%\maketitle
+\input{title}
 \tableofcontents
 \clearpage
 
@@ -51,9 +50,12 @@
 \chapter{Vibration}
 \section{Free Vibration}
 \subsection{Simple Harmonic Motion}
-A periodic motion is a motion which repeats itself after regular intervals of time, and the simplest kind of periodic motion is a \emph{simple harmonic motion}\index{simple harmonic motion} in which the displacement varies sinusoidally with time.
+A periodic motion is a motion which repeats itself after regular intervals of time, 
+and the simplest kind of periodic motion is a \emph{simple harmonic motion}\index{simple harmonic motion} 
+in which the displacement varies sinusoidally with time.
 
-To understand simple harmonic motion, we consider a point $P$ rotating on the circumference of a circle of radius $a$ with an angular velocity $\omega $.
+To understand simple harmonic motion, we consider a point $P$ rotating 
+on the circumference of a circle of radius $a$ with an angular velocity $\omega $.
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.3\textwidth]{Figure/1.PNG}
@@ -79,7 +81,9 @@ Here is a crucial observation about the acceleration, we have a second order dif
 \ddot{\mathbf{r}}=-\omega ^2\mathbf{r}
 \end{equation}
 
-Let's consider an alternative situation: A mass $m$ attached to a spring with stiffness $k$. With initial position deviate from the equilibrium position, mass $m$ will exhibits periodic motion with the net exerted by spring as a \emph{linear restoring force}\index{Linear restoring force}
+Let's consider an alternative situation: A mass $m$ attached to a spring with stiffness $k$. 
+With initial position deviate from the equilibrium position, mass $m$ will exhibits periodic 
+motion with the net exerted by spring as a \emph{linear restoring force}\index{Linear restoring force}
 \[\mathbf{F}=-k\mathbf{x},\]
 and with the \emph{Newton's second law}\index{Newton's second law} of motion
 \[\mathbf{F}=m\mathbf{a}.\]
@@ -158,7 +162,10 @@ The linear restoring force $\mathbf{F}=-c\bm{\theta}$, followed by $-c\theta =J\
 
 therefore, $\omega =\sqrt{\frac{c}{J}}$, $\theta =\Theta \sin \left(\sqrt{\frac{c}{J}} t+\phi \right)$
 \section{Damped Vibration}
-For damped vibration, one big difference is that there is an additional first order force $\mathbf{F}_r$, $\mathbf{F}=\mathbf{F}_0+\mathbf{F}_r=-kx-r\dot{\mathbf{x}}$. Its physical interpretation gives the first order resistance or friction contributing to the continuous energy dissipation and decay of amplitude. Again by Newton's second law, $\mathbf{F}=m\ddot{\mathbf{x}}$,
+For damped vibration, one big difference is that there is an additional first order force 
+$\mathbf{F}_r$, $\mathbf{F}=\mathbf{F}_0+\mathbf{F}_r=-kx-r\dot{\mathbf{x}}$. Its physical interpretation 
+gives the first order resistance or friction contributing to the continuous energy dissipation 
+and decay of amplitude. Again by Newton's second law, $\mathbf{F}=m\ddot{\mathbf{x}}$,
 
 \begin{equation}\label{eq:4}
 \ddot{\mathbf{x}}+\underbrace{\frac{r}{m}}_{\gamma }\dot{\mathbf{x}}+\underbrace{\frac{k}{m}}_{\omega _0}\mathbf{x}=0
@@ -187,8 +194,8 @@ Since three cases have differently behaviours, we want to quantify the quality o
 \end{enumerate}
 
 \section{Forced Vibration}
-Despite the linear restoring force and retarding force, there is also a periodic force angular frequency $\omega $ $\mathbf{F}_p=\mathbf{F}_0\sin \omega t$, following the same deduction,
-
+Despite the linear restoring force and retarding force, there is also a periodic force 
+angular frequency $\omega $ $\mathbf{F}_p=\mathbf{F}_0\sin \omega t$, following the same deduction,
 \begin{equation}\label{eq:5}
 \ddot{\mathbf{x}}+\underbrace{\frac{r}{m}}_{\gamma =2\beta}\dot{\mathbf{x}}+\underbrace{\frac{k}{m}}_{\omega _0}\mathbf{x}=\underbrace{\frac{\mathbf{F}_0}{m}}_{P}\sin \omega t
 \end{equation}
@@ -206,8 +213,8 @@ Therefore, the general solution for force damping system:
 
 \subsection{Steady State}
 After damping term goes to zero, we have steady state solution, or physically interpreted as the response to the periodic force.
-
 \[F=F_0\sin \omega t \quad \to \quad x=B\sin (\omega t-\delta )\]
+
 
 \subsection{Resonance and Q factor}
 For lightly damped motion, amplitude $B$ reaches its maximum at resonance. Therefore, we obtain $\omega _r=\sqrt{\omega _0^2-2\beta ^2}$ is the resonance frequency\footnote{For comparison: $\omega _r<\omega _f<\omega _0$} ($\omega _f=\sqrt{\omega _0^2-\beta ^2}$), and the amplitude for resonance is
@@ -216,6 +223,7 @@ For lightly damped motion, amplitude $B$ reaches its maximum at resonance. There
 Furthermore, we can define another evaluation factor $Q=\frac{\omega _0}{\gamma }=\frac{\omega _0}{2\beta }$. The larger the value of $Q$, the less the dissipative effect and the greater the number of free oscillation for given decrease of amplitude. And the amplitude for resonance with $B_0=\frac{F_0}{m\omega _0^2}=\frac{F_0}{k}$ is
 
 \[B_r=\frac{F/m}{2\beta \sqrt{\omega _0^2-\beta ^2}}=\frac{\frac{F_0}{m\omega _0^2}}{\frac{2\beta }{\omega _0}\beta \sqrt{1-\frac{\beta ^2}{\omega _0^2}}}=\frac{B_0Q}{\sqrt{1-\frac{1}{4Q^2}}}\]
+
 
 \subsection{Power Consumption}
 Power is given by 
@@ -233,6 +241,7 @@ We get maximun mean power $\bar{P}_{max}=\frac{F_0^2}{4m\beta }$ when $\omega =\
 In terms of quality factor, we can re-express the mean power as\footnote{Refer to the previous definition: $k=m\omega _0^2$}
 \[\bar{P}=\frac{F_0^2\omega ^2B}{m\left((\omega _0^2-\omega ^2)^2+4\omega ^2\beta ^2\right)}=\frac{{F_0^2\omega ^2}/{2kQ}}{\left(\frac{\omega _0}{\omega }-\frac{\omega }{\omega _0}\right)^2+4\beta ^2}\]
 
+
 \subsection{Bandwidth}
 Since the mean power is the a function respect to $\omega $, we can draw $P-\omega $ graph. Within that graph, we further define that the width of the line segment at $\frac{1}{2}\bar{P}_{max}$ is bandwidth $\gamma $.\footnote{This result rises from non-trivial derivation:
 
@@ -240,10 +249,16 @@ Since the mean power is the a function respect to $\omega $, we can draw $P-\ome
 
 Making the approximation that $\frac{\omega _0}{\omega }-\frac{\omega }{\omega _0}\approx 2\frac{\omega _0-\omega}{\omega _0}$, we obtain that $\omega =\omega _0\pm \frac{\omega _0}{2Q}=\omega _0\pm \beta$, therefore gives that $\Delta \omega =\gamma$. Moreover, even if you did not make the approximation, the result is the same, because the second term in roots will cancel each out in the last subtraction. }
 
+
 \subsection{Principle of Superposition}
 Principle of superposition\footnote{Actually, principle of superposition for multiple periodic force naturally rises from the linear combination of the particular solutions corresponding to different source terms.} states that if two or more driving forces act on a system the response will equal the vector sum of the responses for each force acting alone.
 
+
+
+
 \chapter{Wave Models}
+
+
 \section{Wave Equation}
 A wave is a disturbance of a continuous medium that propagates with fixed shape at constant velocity. How would you represent such an object mathematically? In a simple scenario, a wave is generated by shaking one end of a taut
 string. Let's consider a simple property that the possible mathematical expression of wave should apply. Denote $f(z,t)$ as the displacement of the string at point $z$ at time $t$ and the initial position $g(z)=f(z,0)$
@@ -257,9 +272,14 @@ Based on that, wave equation gives mathematical description for waves and automa
 \underbrace{\nabla ^2\Psi }_\text{Force}=\underbrace{\frac{1}{v^2}\frac{\partial ^2}{\partial t^2}\Psi}_\text{Inertia}
 \end{equation}
 
+
 \subsection{Derivation of Wave Function}
+
+
 \subsubsection{Transverse Waves}
-Let's derive wave equation for one-dimensional case. For wave on a string (transverse waves) with linear density $\rho $ and the string tension $T$ (for a small angle $\theta $) as figure \ref{fig2} shows
+Let's derive wave equation for one-dimensional case. For wave on a string (transverse waves) with 
+linear density $\rho $ and the string tension $T$ (for a small angle $\theta $) as figure \ref{fig2} 
+shows
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{Figure/2.PNG}
@@ -270,15 +290,16 @@ Let's derive wave equation for one-dimensional case. For wave on a string (trans
 
 Newton's second law says: $\Delta F=\rho \Delta z\frac{\partial ^2f}{\partial t^2}$, therefore gives the wave equation: 
 \begin{equation}
-\frac{\partial ^2f}{\partial z^2}=\frac{\rho }{T}\frac{\partial ^2f}{\partial t^2}
+\frac{\partial ^2f}{\partial z^2}=\frac{\rho }{T}\frac{\partial ^2f}{\partial t^2},
 \end{equation}
-
 and high dimension follow the same derivation. 
 
-Notice, in this case, the propagating speed $v=\sqrt{\frac{T}{\rho }}$
+Notice, in this case, the propagating speed $v=\sqrt{\frac{T}{\rho }}$.
 
 For simplicity, we usually consider sinusoidal wave of the form $z=A\sin (kx-\omega t+\phi )$\footnote{By convention, we denote $k=\frac{2\pi }{\lambda }$ and called it \emph{angular wave number}\index{Angular wave number}, $\omega =\frac{2\pi }{T}$ and called it \emph{angular frequency}\index{Angular frequency}, and $\nu =\frac{1}{T}$ as \emph{harmonic frequency}\index{Harmonic frequency}, by this
 \[v=\lambda \nu=\frac{\lambda }{T}=\frac{\omega }{k}\]}
+
+
 \subsubsection{Longitudinal Waves}
 First consider the following spring model as shown by figure \ref{fig:3}, an array of little weights of mass m interconnected with massless springs of length $h$. The springs have a spring constant of $k$:
 \begin{figure}[H]
@@ -323,6 +344,8 @@ The speed of a stress wave in a beam is therefore $v=\sqrt{E \over \rho}$.\footn
 \subsection{Impedance of Stretched String}
 When a transverse wave propagates in a string, the string offers certain opposition to the propagation of wave. This opposition is known as \emph{impedance}\index{Impedance}\footnote{$T=\rho v^2$} \footnote{Make it clear that the maximum transverse force is not $T$, but proportional to $T$} \footnote{From this you can see that impedance is only depend on the material properties} \footnote{Mechanics Impedance: \[F(\omega )=Z(\omega )v(\omega )\]}. 
 \[Z=\frac{\text{maximum transverse force}}{\text{maximum transverse velocity}}=\frac{T}{v}=\rho v=\sqrt{T\rho }\]
+
+
 \subsubsection{Derivation of Impedance}
 \begin{wrapfigure}{L}{0.45\textwidth}
   \vspace{-20pt}  
@@ -353,11 +376,17 @@ Wave in a stretched string carries energy. And the \emph{transport energy}\index
 
 Since the rate of transfer of energy is given by the product of energy of unit length and velocity of propagation of wave, therefore rate of transfer of energy, or \emph{power}\index{Power}, will be
 \[P=\frac{1}{2}\rho \omega ^2A^2v=\frac{1}{2}Z\omega ^2A^2\]
+
+
 \section{Wave at Boundary}
+
+
 \subsection{Reflection and Transmission}
 A boundary divides regions of different impedance, an incident wave propagates at boundary will be both reflected and transmitted forming \emph{reflective wave}\index{Reflective wave} and \emph{transmitted wave}\index{Transmitted wave}.
 
 Denote that the incident wave function is $\psi _i=A_ie^{i(\omega t-k_1z)}$, reflective wave as $\psi =B_re^{i(\omega t+k_1z)}$, and transmitted wave as$\psi =A_te^{i(\omega t-k_2z)}$ and then $f_i(t-\frac{x}{v_1})=\psi _i$, $f_r(t+\frac{x}{v_1})=\psi _r$, and $f_t(t-\frac{x}{v_1})=\psi _t$.
+
+
 \subsubsection{Derivation of Reflective and Transmission Coefficients}
 \begin{wrapfigure}{L}{0.3\textwidth}
   \vspace{-20pt}  
@@ -401,6 +430,8 @@ combining \eqref{eq:10} and \eqref{eq:11}, we can determine the \emph{reflection
 R&\equiv \frac{B_r}{A_i}=\frac{v_2-v_1}{v_2+v_1}=\frac{Z_1-Z_2}{Z_1+Z_2}=\frac{\sqrt{\rho _1}-\sqrt{\rho _2}}{\sqrt{\rho _1}+\sqrt{\rho _2}}\\
 T&\equiv \frac{A_t}{A_i}=\frac{2v_2}{v_2+v_1}=\frac{2Z_1}{Z_1+Z_2}=\frac{2\sqrt{\rho _1}}{\sqrt{\rho _1}+\sqrt{\rho _2}}
 \end{align*}
+
+
 \subsubsection{Reflection and Transmission of Power}
 \begin{enumerate}
 \item \emph{Reflection coefficient of power}\index{Reflection coefficient of power}
@@ -408,6 +439,8 @@ T&\equiv \frac{A_t}{A_i}=\frac{2v_2}{v_2+v_1}=\frac{2Z_1}{Z_1+Z_2}=\frac{2\sqrt{
 \item \emph{Transmission coefficient of power}\index{Transmission coefficient of power}
 \[\frac{\text{Transmitted power}}{\text{Incident power}}=\frac{\frac{1}{2}Z_2\omega ^2A_t^2}{\frac{1}{2}Z_1\omega ^2A_i^2}=T^2=\left(\frac{2Z_1}{Z_1+Z_2}\right)^2\]
 \end{enumerate}
+
+
 \subsection{Image Waves}
 The most general solution to wave equation  \eqref{eq:6} is of the form
 \[\Psi (z,t)=f(z-vt)+g(z+vt)\]
@@ -421,29 +454,45 @@ Applying this idea, we can explain wave reflection at a fixed end quite clearly,
 \caption{Reflection of a wave as a superposition of two travelling waves.}
 \label{fig:6}
 \end{figure}
+
+
+
 \section{Huygens' Principle}
 Like all waves, light can be viewed as a series of crests and trough moving away from a source.
 
 A \emph{ray}\index{Ray} is an arrow drawn perpendicular to a wave front that points in the direction of the wave’s motion.
+
+
 \subsection{Huygens' Principle}
 Huygens' theory is essentially based on a geometrical construction which allows us to determine the shape of the wave front at any time, if the shape of the wave front at an earlier time is known. A \emph{wave front}\index{Wave front} is the locus of the points which are in the same phase.
 
 Now, according to \emph{Huygens' principle}\index{Huygens' principle}\footnote{Huygens' principle can be seen as a consequence of the homogeneity of space — the space is uniform in all locations. Any disturbance created in a sufficiently small region of homogeneous space (or in a homogeneous medium) propagates from that region in all geodesic directions. The waves created by this disturbance, in turn, create disturbances in other regions, and so on. The superposition of all the waves results in the observed pattern of wave propagation.}, each point of a wave front is a source of secondary disturbance, and the wavelets emanating from these points spread out in all directions with the speed of the wave. The envelope of these wavelets gives the shape of the new wave front.
+
 
 \subsection{Principle of Reversibility}
 The path of a ray of light through any
 system is completely reversible.
 
 \section{Wave Behaviours}
+
+
 \subsection{Reflection and Transmission}
+
+
 \subsection{Refraction}
+
+
 \subsection{Interference}
 Superposition principle states that when two or more waves move in the same linear medium, the net displacement of the medium at any point equals the algebraic sum of the wave functions of the individual waves.
+
+
 \subsubsection{Harmonic Waves}
 Consider two waves, denoted as $\psi _1(z,t)=A_0\sin (kz-\omega t)$ and $\psi _2(z,t)=A_0\sin (kz-\omega t -\phi)$, have same travelling direction with same amplitude and frequency only having phase difference $\phi $ are called \emph{harmonic waves}\index{Harmonic waves}. The interference between two harmonic waves
 \[\psi (z,t)=\psi _1(z,t)+\psi _2(z,t)=A_0\sin (kz-\omega t)+A_0\sin (kz-\omega t -\phi)=2A_0\cos \frac{\phi }{2}\sin (kz-\omega t-\frac{\phi }{2})\]
 
 Therefore, we can see that after the interference, the amplitude becomes $A=2A_0\cos \frac{\phi }{2}$, and the path difference between the two waves can be determined by $\Delta z=\frac{\phi}{2\pi}\lambda $
+
+
 \subsubsection{Standing Waves}
 A \emph{standing wave}\index{Standing wave}\footnote{Strictly speaking, standing wave is not a wave because it doesn't satisfy wave equation \eqref{eq:6}.} can be produced in a string due to the interference of two sinusoidal waves with equal amplitude and frequency traveling in opposite directions, denoted as $\psi _i(z,t)=A_0\sin (kz-\omega t)$ and $\psi _r(z,t)=A_0\sin (kz+\omega t)$. The interference between these two sinusoidal waves gives the standing waves
 \[\psi (z,t)=\psi _i(z,t)+\psi _r(z,t)=A_0\sin (kz-\omega t)+A_0\sin (kz+\omega t)=2A_0\sin kz\cos \omega t \]
@@ -483,6 +532,7 @@ For the wave length, since one end is closed, therefore, at the end\footnote{If 
 \label{fig:7}
 \end{figure}
 
+
 \subsection{Wave Packet}
 \subsubsection{Group Velocity and Phase Velocity}
 Continue with the beats, let's redenote the wave equation that $\psi _1=A_0\sin (kz-\omega t)$ and $\psi _2=A_0\sin \left((k+\Delta k)z-(\omega +\Delta \omega)t\right)$. Their superposition gives the waveform as shown by \ref{fig:7},
@@ -513,6 +563,7 @@ Simplify, we have $t=x\frac{d}{d\nu}(\frac{\nu}{v})$, thus
 $V_g=\frac{x}{t}=\frac{d\nu}{d(\frac{1}{\lambda})}=\frac{d\omega}{dk}$\footnote{This approach is said to be used by Fermi. From: 
 \url{https://www.zhihu.com/question/56142122}.}.
 
+
 \subsubsection{Non-dispersive and Dispersive Waves}
 If a travelling wave is losing energy, then it called \emph{dispersive waves}\index{Dispersive waves} and those does not are called \emph{non-dispersive waves}\index{Non-dispersive waves}.
 
@@ -520,7 +571,12 @@ In non-dispersive waves\footnote{This is for the wave travelling in vacuum only.
 
 In dispersive waves\footnote{This is true for waves travelling in a medium other than vacuum.}, components travel at different speeds: $v_p=\frac{\omega (k)}{k}$, thus we use group velocity $v_g=\frac{d\omega (k)}{dk}$
 
+
+
+
 \chapter{Sound Waves - Longitudinal Waves}
+
+
 \section{Longitudinal Waves}
 Please refers to the derivation of longitudinal wave equation \eqref{eq:w2} in \S 4.1.
 \begin{equation}
@@ -546,7 +602,11 @@ by Newton's second law:
 \[F(x+\Delta x)-F(x)=\frac{\partial F}{\partial x}\Delta x=EA\Delta x\frac{\partial ^2u(x,t)}{\partial x^2}=m\ddot{x}=\rho A\Delta x\frac{\partial ^2u(x,t)}{\partial t^2}\]
 
 thus, we obtain ${\partial^2 u(x,t) \over \partial x^2 }={ \rho\over E}{\partial^2 u(x,t) \over \partial t^2}$, with wave speed $v=\sqrt{\frac{E}{\rho}}$
+
+
 \section{Sound Speed}
+
+
 \subsection{Sound Speed in Liquid and Gas Media}
 Sound wave speed $v$ depends on the bulk modulus $B$ and equilibrium density $\rho $ of the medium.
 
@@ -560,11 +620,15 @@ where $\gamma =\frac{c_p}{c_v}$ is \emph{characteristic parameter}\index{Charact
 
 If it is an ideal gas, by applying ideal gas law's corollary $PM=\rho RT$, we can re-express the equation in terms of the absolute temperature $T$ and molar mass $M$.
 \[v=\sqrt{\frac{\gamma RT}{M}}\]
+
+
 \section{Harmonic Sound Waves}
 For displacement wave function $u(x,t)=u_0\cos (kx-\omega t)$, its corresponding pressure can be determined by $\Delta P=\Delta P_{max}\sin (kx-\omega t)=-B\frac{\partial u(x,t)}{\partial x}=-Bku_0\sin (kx-\omega t)$, therefore, we have that The displacement and the pressure variation are out of phase by $\frac{\pi }{2}$.
 
 The pressure amplitude is proportional to the displacement amplitude.
 \[\Delta P_{max}=Bku_0=\rho v\omega u_0\]
+
+
 \section{Sound Wave Intensity and Intensity Level}
 \subsection{Intensity}
 Sound wave intensity\footnote{Both $\mathbf{I}$ and $\mathbf{v}$ are vectors, which means that both have a direction as well as a magnitude. The direction of sound intensity is the average direction in which energy is flowing.} is defined as $\mathbf{I}=p\mathbf{v}=\rho v(\omega A_0)^2$, the multiple of sound pressure and particle velocity. 
@@ -581,6 +645,7 @@ A logarithmic intensity level scale is defined using a \emph{reference intensity
 \beta =10\log \frac{I}{I_0}\ (dB)
 \end{equation}
 
+
 \section{Doppler Effect}
 The change in frequency heard by an observer whenever there is relative motion between the source and the observer is called \emph{Doppler effect}\index{Doppler effect}.
 
@@ -588,13 +653,20 @@ By conventional assumptions, the observer is in the left hand side the source is
 \begin{equation}\label{eq:doppler effect}
 f'_o=f_s\left(\frac{v_{\text{wave speed}}\pm v_{\text{observer speed}}}{v_{\text{wave speed}}\pm v_{\text{source speed}}}\right)
 \end{equation}
+
+
 \subsection{Shock Waves}
 \emph{Shock waves}\index{Shock waves} are produced when a sound source moves through a medium with a speed $v_s$ which is greater than the wave speed.
 \[\sin \theta =\frac{v}{v_s}\]
 
 The shock wave front has a conical shape with a half angle which depends on the Mach number of the source, defined as the ratio $\frac{v_s}{v}$.
 
+
+
+
 \chapter{Light Waves - Electromagnetic Waves}
+
+
 \section{Maxwell's Equations}
 \begin{subequations}
 Maxwell's equations (In general):
@@ -613,7 +685,11 @@ Maxwell's equations (In general):
           &\nabla \times \mathbf{H}=\mathbf{J}_f+\frac{\partial \mathbf{D}}{\partial t}\quad &\textrm{Ampere's Law} 
 \end{align}
 \end{subequations}
+
+
 \subsection{Derivation of Speed of Light}
+
+
 \subsubsection{Electric Field Equation}
 \begin{align*}
 \nabla \times \nabla \times \mathbf{E}&=\nabla \times \left(-\frac{\partial \mathbf{B}}{\partial t}\right)=\frac{\partial }{\partial t}\left(\nabla \times \mathbf{B}\right)\\
@@ -630,12 +706,16 @@ This is a wave equation, have the electric wave travels at the speed of $c=\sqrt
 \end{align*}
 
 This is, again, a wave equation, have the magnetic wave travels at the speed of $c=\frac{1}{\sqrt{\mu_0\varepsilon_0 }}$
+
+
 \subsection{Light as Electromagnetic Waves}
 For speed of light equals to the phase speed of electric wave as well as magnetic waves suggests a profound nature that light is an electromagnetic waves. 
 \[\begin{cases}
 \nabla ^2\mathbf{E}=\mu_0 \varepsilon_0\frac{\partial ^2 \mathbf{E}}{\partial t^2}\\
 \nabla ^2\mathbf{B}=\mu_0\varepsilon_0 \frac{\partial ^2\mathbf{B}}{\partial t^2}
 \end{cases}\]
+
+
 \subsection{Conservation Laws}
 \subsubsection{Continuity Equation}
 Consider the conservation law of charge, formally the charge in a volume $\Omega $ is 
@@ -695,6 +775,7 @@ and hence
 \[\frac{\partial u}{\partial t}=-\nabla \cdot \mathbf{S}\]
 
 This is the "continuity equation" for energy - $u$ (energy density) plays the role of $\rho $ (charge density), and $\mathbf{S}$ takes the part of $\mathbf{J}$ (current density). It expresses local conservation of electromagnetic energy. 
+
 
 \subsubsection{Momentum}
 Let us consider a linearly polarized electromagnetic wave propagating in the $+z$ direction; we assume the electric field to be along the $x$ direction and the magnetic field along the $y$ direction. The electromagnetic wave is assumed to interact with a charge $q$; the electric field makes the charge move up and down along the $x$ axis.
@@ -763,6 +844,7 @@ Further, to obtain the intensity of the beam, we must multiply $<u>$ by the spee
 I&=\frac{1}{2}\varepsilon _0cE_0^2=\frac{1}{2}\sqrt{\frac{\varepsilon _0}{\mu _0}}E_0^2
 \end{align*}
 
+
 \subsection{Spherical Electromagnetic Waves}
 \subsubsection{Wave Function}
 For the spherical waves, the wave equation can be rewritten as
@@ -792,10 +874,15 @@ If reflection happens on a smooth surface, then we called it as the \emph{regula
 \end{figure}
 The critical angle: $\theta _c=\arcsin \frac{n_2}{n_1}$
 
+
 \subsection{Refraction}
+
+
 \subsubsection{Refraction Index}
 \emph{Refraction index}\index{Refraction index} is defined as the ratio between the light speed the wave propagate speed in medium.
 \[n=\frac{c}{v}\]
+
+
 \subsubsection{Snell's Law of Refraction}
 \emph{Snell's law of refraction}\index{Snell's law of refraction} states that the light beam or part of it enters a different medium with changed direction corresponding to both refraction index,
 \[n_1\sin \theta_1=n_2\sin \theta_2\]
@@ -806,6 +893,8 @@ This result follows naturally from both Fermat's principle and Huygen's principl
 \includegraphics[scale=1]{Figure/10.PNG}
 \caption{Snell's Law of Refraction}
 \end{figure}
+
+
 \subsubsection{Dispersion}
 An important property of $n$ is that, for a given material, the $n$ varies with the wavelength of the light passing through the material (i.e. Prism) – this behaviour is called \emph{dispersion}\index{Dispersion}.
 
@@ -969,6 +1058,8 @@ This can be shown by the following figure:
 \end{figure}
 The most interesting result here is that $r=-r'$. Thus, whatever phase is associated with reflection on one side of the interface, it is $\pi$ different on the other side of the interface. 
 
+
+
 \subsection{Division of Wave Amplitude}
 
 \paragraph{Thin Film}
@@ -996,6 +1087,8 @@ For the second case, where two rays are all phase shift by $\pi$, therefore, the
 d = \frac{1}{4}(2m+1)\lambda _n\Rightarrow 2nd=\left(m+\frac{1}{2}\right)\lambda &m\in \mathbb{N} \textrm{ Construction Interference}\\
 d = \frac{1}{4}(2m)\lambda _n\Rightarrow 2nd=m\lambda &m\in \mathbb{N} \textrm{ Destruction Interference}
 \end{cases}\]
+
+
 
 \subsubsection{Fringes of Equal Thickness}
 \paragraph{Air Wedge}
@@ -1059,6 +1152,7 @@ r&\approx\sqrt{R^2-\left(R-d\right)^2} &\textrm{Spherical lens approximation}\\
 \end{align*}
 \end{proof}
 
+
 \subsection{Phasor Diagram}
 \begin{wrapfigure}{L}{0.45\textwidth}
   \vspace{-20pt}
@@ -1078,6 +1172,7 @@ E_2&=E_0\sin \left(\omega t+\theta _2\right)\\
 E_n&=E_0\sin \left(\omega t+\theta _N\right)
 \end{align*}
 
+
 \subsubsection{Phasor Addition of Waves}
 First we can consider the first two sinusoidal waves, as shown by the figure \ref{fig:Phasor Diagram1}, with the length of the phasor represents their amplitudes, we can add them like two vectors and obtain the equivalent total phasor, and that phasor represents the interference wave. Moreover, Consider that the phase difference is $\Delta \theta =\theta _2-\theta _1$, we can calculate:
 \begin{align*}
@@ -1086,6 +1181,8 @@ E_1+E_2&=E_0\sin \left(\omega t+\theta _1\right)+A_0\sin \left(\omega t+\theta _
 \end{align*}
 
 This result is the same as the double slit interference, thus we can generate this result into multiple slit interference.
+
+
 \subsection{Multiple Slit Interference}
 \begin{wrapfigure}{L}{0.32\textwidth}
   \vspace{-20pt}
@@ -1109,6 +1206,8 @@ In this case, we can get the final results, as
 \[E=\sum _{i=1}^{N}E_i=\underbrace{NE_0\cos \frac{N}{2}\theta }_\text{Interference amplitude}\sin \left(\omega t+\frac{N}{2}\theta\right)\]
 
 Thus we can see that the intensity of interference is $N^2$ as the $I_0$, and we can also see that the secondary maximum has $N-2$ betweem each primary maximum\footnote{This question would be so much easier to understand by taking views of the phasor diagram. For $N$ phasor, there are $N-2$ different polygon that cancel out some phasors and leave the rest to interference as secondary maximum.}.
+
+
 
 \subsection{Multiple-Beam Interference (Optional)}
 If the amplitude-reflection coefficients, $r$'s, for the parallel plate, are not small, the high-order reflected waves, become quite significant, resulting \emph{multiple-beam interference}\index{Multiple-Beam Interference}.
@@ -1191,6 +1290,8 @@ I_i=I_{r-min}+I_{t-max} &\textrm{ when }\cos \delta =1\textrm{ in which }\delta 
 I_i=I_{r-max}+I_{t-min} &\textrm{ when }\cos \delta =-1\textrm{ in which }\delta =(2m+1)\pi 
 \end{cases}\]
 
+
+
 \subsection{Fabry-Perot Interferometer}
 Based on the principle of multi beam interferometry, \emph{Fabry-Perot interferometer}\index{Fabry-Perot Interferometer}\footnote{The Fabry-Perot etalon is very important in laser technology. The optical resonator in most lasers is a Fabry-Perot interferometer.} consists of two plane glass (or quartz) plates which are coated on one side with a partially reflecting metallic film (of aluminum or silver) of $80\%$ reflectivity.
 \begin{figure}[H]
@@ -1210,6 +1311,8 @@ Maximum occur when $\cos \delta =1$ in which $\delta =2m\pi $,
 
 As $n_f=1$, we have that $2d\cos \theta _tm\lambda $
 
+
+
 \section{Diffraction}
 The spreading and bending of wave behind obstacles that lie in their path is called \emph{diffraction}\index{Diffraction}.
 
@@ -1218,6 +1321,8 @@ The diffraction occurs when the split/object is small enough compared with light
 Conventionally the term interference is used when considering the intensity pattern produced by superposing a finite number of separated, coherent sources. 
 
 The intensity pattern produced by interference between a continuous distribution of coherent sources is usually called \emph{diffraction}.
+
+
 
 \subsection{Fraunhofer and Fresnel Diffraction}
 \emph{Fraunhofer diffraction}\index{Fraunhofer diffraction} - rays reaching a point are parallel. Produced either by having large separations between source, obstacle and screen or by using \emph{lenses} (often the eye lens) to focus the rays.
@@ -1324,6 +1429,7 @@ while for diffraction, the minimum
 
 therefore, $m$th ($m=\frac{d}{a}$) maximum will disappear.
 
+
 \subsection{Diffraction and Image Resolution}
 The ability of a lens to produce distinct images of two close objects is called \emph{resolution}\index{Resolution}. Diffraction effects limit this ability.
 
@@ -1353,16 +1459,15 @@ where $D=2NA$ where $NA$ is  \emph{numerical aperture}\index{Numerical aperture}
 \caption{Three Criterions}
 \end{figure}
 
+
 \subsection{Grating}
 Grating is multi-slits interference and diffraction:
 \[I=I_0\underbrace{\left(\frac{\sin \alpha}{\alpha}\right)^2}_\text{Diffraction}\underbrace{\left[\frac{\sin N\beta }{\beta }\right]^2}_\text{Interference}\]
-
 where:
 \begin{align*}
 \alpha &=\frac{\pi }{\lambda }a\sin \theta\\
 \beta &=\frac{\pi }{\lambda }d\sin \theta
 \end{align*}
-
 and $a$ is the slit width, and the $d$ is the interdistance between two slits.
 
 Interference maxima for: $d\sin \theta=n\lambda $, and diffraction minima for $a\sin \theta =m\lambda $, therefore, just like the double slit diffraction interference pattern, there are some missing order.
@@ -1376,14 +1481,18 @@ If the light consists of a mixture of wavelengths, apart from the central image 
 
 The number of slits is very large so the number of parallel rays travelling in a direction $\theta $ will also be very large. For the light with the same wavelength, except for phase angle equal zero, at all other angles complete darkness occurs.
 
+
 \subsubsection{Resolving Power}
 The resolving power of a diffraction grating is defined as:
-\[R=\frac{\lambda }{\Delta \lambda}\]
-
+\[R=\frac{\lambda }{\Delta \lambda},\]
 where $\lambda =\frac{1}{2}(\lambda _1+\lambda _2)$ and $\Delta \lambda =\lambda _2-\lambda _1$.
 
 This depends only on the order $m$ of the pattern and the number of slits $N$.
-\[R=Nm\]
+\[R=Nm.\]
+
+
+
+
 \appendix
 \chapter{Electromagnetism}
 \section{Energy and Energy Density}
