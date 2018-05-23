@@ -1,9 +1,11 @@
 \documentclass[UTF8]{article} 
-\usepackage[margin=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,tikz,forest,float,color}
+\usepackage{geometry} 
+%\usepackage{notestex}
+\usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,forest,float,color}
 \graphicspath{{./figs/}}
 \usepackage{wrapfig}
 
+\usepackage{tikz}
 \usepackage{circuitikz}
 \usepackage{pgfplots} 
 \pgfplotsset{width=10cm,compat=1.9} 
@@ -12,29 +14,25 @@
 \usetikzlibrary{positioning}
 
 \usepackage{hyperref}
- \hypersetup{
- colorlinks,
- linkcolor=blue
- }
+\hypersetup{colorlinks,linkcolor=blue}
  
-
-\newcommand{\n}{\mathbb{N}}
-\newcommand{\z}{\mathbb{Z}}
-\newcommand{\q}{\mathbb{Q}}
-\newcommand{\cx}{\mathbb{C}}
-\newcommand{\real}{\mathbb{R}}
-\newcommand{\field}{\mathbb{F}}
-\newcommand{\ita}[1]{\textit{#1}}
-\newcommand{\com}[2]{#1\backslash#2}
-\newcommand{\oneton}{\{1,2,3,...,n\}}
-\newcommand\idea[1]{\begin{gather*}#1\end{gather*}}
-\newcommand\ef{\ita{f} }
-\newcommand\eff{\ita{f}}
-\newcommand\proofs[1]{\begin{proof}#1\end{proof}}
-\newcommand\inv[1]{#1^{-1}}
-\newcommand\setb[1]{\{#1\}}
-\newcommand\en{\ita{n }}
-\newcommand{\vbrack}[1]{\langle #1\rangle}
+%\newcommand{\n}{\mathbb{N}}
+%\newcommand{\z}{\mathbb{Z}}
+%\newcommand{\q}{\mathbb{Q}}
+%\newcommand{\cx}{\mathbb{C}}
+%\newcommand{\real}{\mathbb{R}}
+%%\newcommand{\field}{\mathbb{F}}
+%\newcommand{\ita}[1]{\textit{#1}}
+%\newcommand{\com}[2]{#1\backslash#2}
+%\newcommand{\oneton}{\{1,2,3,...,n\}}
+%\newcommand\idea[1]{\begin{gather*}#1\end{gather*}}
+%\newcommand\ef{\ita{f} }
+%\newcommand\eff{\ita{f}}
+%\newcommand\proofs[1]{\begin{proof}#1\end{proof}}
+%\newcommand\inv[1]{#1^{-1}}
+%\newcommand\setb[1]{\{#1\}}
+%\newcommand\en{\ita{n }}
+%\newcommand{\vbrack}[1]{\langle #1\rangle}
 
 \newtheorem{theo}{Theorem}
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
@@ -54,19 +52,11 @@
 
 \begin{document}
 
-\title{Bachelor Physics Lecture Notes\\ AP2212  Measurement \& Instrumentation
-%\\
-%SemA 2016/17
-}
-\author{Peilin \textsc{WU}
-%\\ -Personal Usage- \\
- \\City University of Hong Kong
-% \\ \\ AP2212 \\  \\ 
- } 
-\date{\today}
 
  
-\maketitle
+%\maketitle
+
+\input{title}
 \tableofcontents
 
 \newpage
@@ -130,10 +120,11 @@ First, let's give the basic relation between impedance $Z$, resistance $R$ and r
 %\end{tikzpicture}
 %\end{center}
 
-$$Z=R+jX=R+j(\omega L-\dfrac{1}{\omega C})$$
-\begin{itemize}
-
-\item Resistance
+$$Z=R+jX=R+j \left( \omega L-\dfrac{1}{\omega C} \right)$$
+%\begin{itemize}
+\paragraph{Resistance}
+%\begin{theorem}[Resistance]
+%\item Resistance
 \begin{figure}[H]
   \begin{center}    
     \begin{circuitikz}[scale=0.8]
@@ -144,7 +135,7 @@ $$Z=R+jX=R+j(\omega L-\dfrac{1}{\omega C})$$
   \end{center}
 \end{figure}
 
-\begin{theorem}[Resistance]
+%\begin{theorem}[Resistance]
 ~ {For the resistance, the value of resistance is the \textbf{real part} value of its impedance in circuit, which also suggests that \textbf{resistor dissipate energy}.}
 $$\textit{Impedance}=R$$
  {Resistances are in \textbf{series or parallel} in circuit, the equivalent resistance given by:}
@@ -152,9 +143,11 @@ $$\textit{Impedance}=R$$
 \textit{Series: }&R_{12}=R_1+R_2 \\
 \textit{Parallel: }&\dfrac{1}{R_{12}}=\dfrac{1}{R_1}+\dfrac{1}{R_2} \textit{ or } R_{12}=\dfrac{R_1R_2}{R_1+R_2}
 \end{align*}
-\end{theorem}
+%\end{theorem}
 
-\item Capacitor
+%\paragraph{•}
+%\item Capacitor
+\paragraph{Capacitor}
 \begin{figure}[H]
   \begin{center}    
     \begin{circuitikz}[scale=0.8]
@@ -164,12 +157,14 @@ $$\textit{Impedance}=R$$
   \end{center}
 \end{figure}
 
-\begin{theorem}[Capacitor]
-~For the capacitor, it stores charge $Q=CV$, which means that capacitor in circuit can \textbf{store energy}, and current passing through the capacitor is the rate of charge $Q$ with respect to time $t$:
+
+For the capacitor, it stores charge $Q=CV$, which means that capacitor in circuit can \textbf{store energy}, and current passing through the capacitor is the rate of charge $Q$ with respect to time $t$:
 $$i=\dfrac{dQ}{dt}=\dfrac{dV}{dt}$$
 $$V=\dfrac{Q}{C}=\dfrac{1}{C}\int_{T} idt$$
 and the \textbf{reactance of capacitor} in circuit with angular frequency $\omega$ is expressed as: 
-$$\dfrac{\textit{Peak value of voltage}}{\textit{Peak value of current}}=\dfrac{1}{\omega C}$$
+\[
+X_C=\dfrac{\text{Peak value of voltage}}{\text{Peak value of current}}=\dfrac{1}{\omega C}
+\]
  {the impedance of the capacitor is given by (the minus sign shows the phase difference): }
 $$\textit{Impedance}=-j\cdot \textit{Reactance}=-j\dfrac{1}{\omega C}$$
  {Capacitors are in \textbf{series or parallel} in circuit, the equivalent capacitor given by:}
@@ -177,23 +172,26 @@ $$\textit{Impedance}=-j\cdot \textit{Reactance}=-j\dfrac{1}{\omega C}$$
 \textit{Series: }&\dfrac{1}{C_{12}}=\dfrac{1}{C_1}+\dfrac{1}{C_2} \textit{ or } C_{12}=\dfrac{C_1C_2}{C_1+C_2}\\
 \textit{Parallel: }&C_{12}=C_1+C_2
 \end{align*}
-\end{theorem}
+%\end{theorem}
 
-\item Inductive
+%\item Inductive
+\paragraph{Inductor}
+
 \begin{figure}[H]
   \begin{center}    
     \begin{circuitikz}[scale=0.8]
      	\draw (0,0) to [american inductor] (2,0);
     \end{circuitikz}
-    \caption{Inductive}
+    \caption{Inductor}
   \end{center}
 \end{figure}
 
-\begin{theorem}[Inductive]
-~For the inductive, it create the magnetic field, which means that inductive in circuit can \textbf{store energy}, and since the self-inductance process, the inductance is defined: 
+%\begin{theorem}[Inductive]
+For the inductor, it create the magnetic field, which means that inductor in circuit can \textbf{store energy}, and since the self-inductance process, the inductance $L$ is defined: 
 $$V=L\dfrac{di}{dt}$$
 $$i=\dfrac{1}{L}\int_{T} Vdt$$
-and the \textbf{reactance of inductance} in circuit with angular frequency $\omega$ is expressed as: 
+and the \textbf{reactance of inductance} $X_L$ 
+in circuit with angular frequency $\omega$ is expressed as: 
 $$\dfrac{\textit{Peak value of voltage}}{\textit{Peak value of current}}=\omega L$$
 the impedance of the inductive is given by: 
 $$\textit{Impedance}=j\cdot \textit{Reactance}=j\omega L$$
@@ -202,9 +200,9 @@ Capacitors are in \textbf{series or parallel} in circuit, the equivalent capacit
 \textit{Series: }&L_{12}=L_1+L_2 \\
 \textit{Parallel: }&\dfrac{1}{L_{12}}=\dfrac{1}{L_1}+\dfrac{1}{L_2} \textit{ or } L_{12}=\dfrac{L_1L_2}{L_1+L_2}
 \end{align*}
-\end{theorem}
+%\end{theorem}
 
-\end{itemize}
+%\end{itemize}
 
 \subsection{Representation Techniques}
 For the seek of simplicity, there are three major approaches: \\
@@ -233,7 +231,7 @@ Only consider the particular part:
 \begin{align*}
 i(t) &= \dfrac{c V_0 \omega  \left(\left(1-c L \omega ^2\right) (\cos  (t \omega ))+c R \omega  (\sin  (t \omega ))\right)}{c \omega ^2 \left(L \left(c L \omega ^2-2\right)+c R^2\right)+1}
 =\dfrac{V_0 \left(\left(L \omega -\dfrac{1}{c \omega }\right) \cos (t \omega )+R \sin (t \omega )\right)}{\left(\dfrac{1}{c \omega }-L \omega \right)^2+R^2}\\
-&= \dfrac{V_0}{\sqrt{\left(L \omega -\dfrac{1}{c \omega }\right)^2+R^2}}\sin (\omega t -\phi ) \qquad \textit{where }\phi=\tan^{-1}\left(\dfrac{L \omega -\dfrac{1}{c \omega }}{R}\right)
+&= \dfrac{V_0}{\sqrt{\left(L \omega -\dfrac{1}{c \omega }\right)^2+R^2}}\sin (\omega t -\phi ) \qquad \text{where }\phi=\tan^{-1}\left(\dfrac{L \omega -\dfrac{1}{c \omega }}{R}\right)
 \end{align*}
 
 \subsubsection{Impedance - Complex Representation}
@@ -256,23 +254,25 @@ A phasor is a rotating vector having the following properties:
 \item  {\textbf{Projection}}: the projection along the vertical axis corresponding to the value of the alternating quality at time $t$.
 \end{itemize}
 $$X<\phi = Xe^{j\phi}e^{j\omega t} = X\cos (\omega t+\phi)+j\sin (\omega t+\phi)$$
-\begin{theorem}[Resistance]
+
+\paragraph{Resistance}
 ~ {The phasor of the resistance can be expressed as:}
 $$R<0$$
  {and we can see that resistance don not change the phase.}
-\end{theorem}
-\begin{theorem}[Capacitor]
+
+\paragraph{Capacitor}
 ~ {The phasor of the capacitor can be expressed as:}
 $$\dfrac{1}{\omega C}<-\dfrac{\pi}{2}$$
  {and we can see that capacitor will change the phase and we can say that:}
 $$\boxed{\textit{The current \textbf{leads} tthe voltage by }\dfrac{\pi}{2}\textit{ in a \textbf{capavitive circuit}.}}$$
-\end{theorem}
-\begin{theorem}[Inductive]
+
+\paragraph{Inductive}
 ~ {The phasor of the inductive can be expressed as:}
 $$\omega L<\dfrac{\pi}{2}$$
  {and we can see that inductive will change the phase and we can say that:}
 $$\boxed{\textit{The current \textbf{lags} tthe voltage by }\dfrac{\pi}{2}\textit{ in a \textbf{inductive circuit}.}}$$
-\end{theorem}
+
+
 \pagebreak
 \subsection{Analysis}
 \subsubsection{Kirchhoff's Law}
@@ -313,33 +313,88 @@ $$V=V_V+V_I \qquad I=I_V+I_I$$
 \subsection{Equivalent Circuit}
 \subsubsection{Thevenin's Theorem}
 \begin{theorem}[Thevenin's Theorem]
-~ {In circuit theory terms, the theorem allows any one-port network to be reduced to a single voltage source and a single impedance. Any black box containing resistances only and voltage and current sources can be replaced by a Thevenin equivalent circuit consisting of an equivalent voltage source in series connection with an equivalent resistance.}
+~{In circuit theory terms, the theorem allows any one-port network to be reduced to a single voltage source and a single impedance. Any black box containing resistances only and voltage and current sources can be replaced by a Thevenin equivalent circuit consisting of an equivalent voltage source in series connection with an equivalent resistance.}
 \begin{itemize}
-\item  {Any linear electrical network with voltage and current sources and only resistances can be replaced at terminals A-B by an equivalent voltage source $V_{th}$ in series connection with an equivalent resistance $R_{th}$.}
+\item  {Any linear electrical network with voltage and current sources and only resistances can be replaced 
+at terminals $A$-$B$ by an equivalent voltage source $V_{th}$ in series connection with an equivalent resistance $R_{th}$.}
 \item  {The equivalent voltage $V_{th}$ is the voltage obtained at terminals A-B of the network with terminals A-B open circuited.}
 \item  {The equivalent resistance $R_{th}$ is the resistance that the circuit between terminals A and B would have if all ideal voltage sources in the circuit were replaced by a short circuit and all ideal current sources were replaced by an open circuit.}
 \item  {If terminals A and B are connected to one another, the current flowing from A to B will be $V_{th}/R_{th}$. This means that $R_{th}$ could alternatively be calculated as $V_{th}$ divided by the short-circuit current between A and B when they are connected together.}
 \end{itemize}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.35]{TheveninEquivalent-1.png}
+\includegraphics[width=0.5\textwidth]{TheveninEquivalent-1.png}
 \caption{Thevenin Equivalent Circuit}
 \end{figure}
 \end{theorem}
+\begin{proof}
+This proof is from Paul Horowitz and Winfield Hill, \textit{The Art of Electronics}, 
+3rd ed., (Cambridge University Press, New York, 2015), Appendix D.
+
+For linear circuit elements (here resistors), the ``nodal 
+equations" (Kirchhoff's voltage law, KVL, and Kirchhoff's current 
+law, KCL) are a set of linear equations. So we can
+find any circuit quantity (a voltage or a current), which depends 
+on all the ``independent sources'' (batteries, current
+sources), by turning on each source in turn, and adding the
+partial contributions. (This is exactly analogous to using
+superposition to find, say, the electric field from a set of
+charges.) This technique is often useful in circuit analysis.
+
+Here we wish to mimic the V versus I of the actual circuit 
+with the (simpler) Th\'{e}venin equivalent of a single battery 
+in series with a single resistor. Imagine we determine
+that $V$ versus $I$ function by applying an external current $I_{\rm ext}$
+that flows through the two-terminal circuit, and observing
+the resultant $V$ across those same two terminals. $V$ depends
+on $I_{\rm ext}$ and on all the internal batteries ($V_{\rm int}$) and current
+sources ($I_{\rm int}$).
+\begin{enumerate}
+\item Set all $V_{\rm int}=0$ and all $I_{\rm int}=0$; that is, replace all internal
+batteries with short circuits and all current sources with
+open circuits. Now, with a given applied I ext , observeV 1 .
+\item Define $R_{T} = V_1 /I_{ext} $. (They must be proportional, by linearity.)
+\item Now set $I_{ext} = 0$, and turn on the internal batteries and
+current sources. Observe $V_2$ , which we will call $V_T$ .
+\item Finally, by superposition it must be the case that
+\[
+V({\rm actual}) =V_1 +V_2 = I_{ext} R_{T} +V_{T} .
+\]
+\end{enumerate}
+
+This is true for all $I_{ext} $, and is exactly what you get with
+the  Th\'{e}venin equivalent circuit, when connected to any
+load (which need not be linear).
+%; see Figure D.2.
+\end{proof}
+%To summarize: (a) you determine $R_T$ and $V_T$ by first
+%finding the open-circuit voltage, which equals $V_T$ ; then (b)
+%you find the short-circuit current, $I_{SC}$ , which equals the
+%ratio of $V_T$ to $R_T$ . In other words, $V_T$ = $V _{OC}$ and $R T =
+%V OC /I SC$. You do this by analysis, if you know the ``black-
+%box" circuit; or by measurement, if you don’t.
+%any ``load"
+%(not necessarily linear)
+%
+%Figure D.2. The Thévenin equivalent circuit behaves exactly like
+%the original network, regardless of the nature of the load.
+
 For example:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.9]{Thevenin-example-png.png}
+\includegraphics[width=\textwidth]{Thevenin-example-png.png}
 \caption{Thevenin's Theorem Example}
 \end{figure}
+
 The evaluation process:
 \begin{itemize}
 \item let A-B be a open circuit and determine the voltages between A-B which is $V_{th}$,
 \item then replace all sources as its internal resistance and calculate the resistance between A-B which is $R_{th}$. 
 \end{itemize}
-\subsubsection{Norton’s Theorem}
-\begin{theorem}[Norton’s Theorem]
-~ {As the dual of the Thevenin's theorem, Norton's theorem states that any one-port network can be reduced to a single current source and a single impedance. Any black box containing resistances only and voltage and current sources can be replaced by an equivalent circuit consisting of an equivalent current source in parallel connection with an equivalent resistance.}
+
+\subsubsection{Norton's Theorem}
+\begin{theorem}[Norton's Theorem]
+~{As the dual of the Thevenin's theorem, Norton's theorem states that any one-port network can be reduced to a single current source and a single impedance. Any black box containing resistances only and voltage and current sources can be replaced by an equivalent circuit consisting of an equivalent current source in parallel connection with an equivalent resistance.}
 \begin{itemize}
 \item  {Any linear electrical network with voltage and current sources and only resistances can be replaced at terminals A-B by an equivalent current source $I_{no}$ in parallel connection with an equivalent resistance $R_{no}$.}
 \item  {This equivalent current $I_{no}$ is the current obtained at terminals A-B of the network with terminals A-B short circuited.}
@@ -347,16 +402,18 @@ The evaluation process:
 \end{itemize}
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.55]{NortonEquivalentCircuits.png}
+\includegraphics[width=0.5\textwidth]{NortonEquivalentCircuits.png}
 \caption{Norton Equivalent Circuit}
 \end{figure}
 \end{theorem}
+
 For example:
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.9]{Norton-example.png}
+\includegraphics[width=\textwidth]{Norton-example.png}
 \caption{Norton's Theorem Example}
 \end{figure}
+
 The evaluation process:
 \begin{itemize}
 \item Find the Norton current $I_{no}$. Calculate the output current, $I_{AB}$, with a short circuit as the load (meaning 0 resistance between A and B). This is $I_{no}$.
@@ -366,6 +423,7 @@ The evaluation process:
 \item Or replace independent voltage sources with short circuits and independent current sources with open circuits. The total resistance across the output port is the Norton impedance $R_{no}$.
 \end{enumerate}
 \end{itemize}
+
 \subsubsection{Conversion between both Theorems}
 \begin{wrapfigure}{r}{0.5\textwidth}
   \vspace{-50pt}
@@ -384,9 +442,9 @@ I_{no}&=\dfrac{V_{th}}{R_{no}}
 \end{align*}
 
 \subsection{RLC Circuit Summaries}
-\subsubsection{R Circuit}
-\subsubsection{C Circuit}
-\subsubsection{L Circuit}
+%\subsubsection{R Circuit}
+%\subsubsection{C Circuit}
+%\subsubsection{L Circuit}
 \subsubsection{RC Circuit}
  {RC Circuit can be used as the RC filter - high-pass filter:}
 \begin{figure}[H]
@@ -404,14 +462,15 @@ I_{no}&=\dfrac{V_{th}}{R_{no}}
   \end{center}
 \end{figure}
  {In this RC circuit with $V_i=V_P\sin \omega t$, we can first determine the current and then determine the $V_{out}$}
-$$i=\dfrac{V_P}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi) \qquad \textit{where }\phi =\tan ^{-1}\dfrac{1}{\omega CR}$$
+$$i=\dfrac{V_P}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi) \qquad \text{where }\phi =\tan ^{-1}\dfrac{1}{\omega CR}$$
 \begin{align*}
-V_0&=\dfrac{V_PR}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi)\\
-&=\dfrac{V_P\omega CR}{\sqrt{\omega ^2C^2R^2+1}}\sin (\omega t+\phi)\\
+V_0&=\dfrac{V_PR}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi)
+=\dfrac{V_P\omega CR}{\sqrt{\omega ^2C^2R^2+1}}\sin (\omega t+\phi)\\
 &=\dfrac{V_P\omega \tau}{\sqrt{\omega ^2\tau ^2+1}}\sin (\omega t+\phi)
 \end{align*}
 $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{\omega ^2\tau ^2}{\omega ^2\tau ^2+1}}$$
- {From the expression, we can see that as the increase of frequency, the proportion will increase as well. Therefore, this is a high-pass filter.}\\
+ {From the expression, we can see that as the increase of frequency, the proportion will increase as well. Therefore, this is a high-pass filter.}
+ 
  {Also, if we take the output voltage as the capacitor, it becomes the low-pass filter:}
 \begin{figure}[H]
   \begin{center}    
@@ -427,16 +486,20 @@ $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{\omega ^2\tau ^2}{\omega ^2\tau ^2+
     \caption{RC Filter}
   \end{center}
 \end{figure}
-$$i=\dfrac{V_P}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi) \qquad \textit{where }\phi =\tan ^{-1}\dfrac{1}{\omega CR}$$
+$$i=\dfrac{V_P}{\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\sin (\omega t+\phi) \qquad \text{where }\phi =\tan ^{-1}\dfrac{1}{\omega CR}$$
 \begin{align*}
-V_0 &= \dfrac{1}{C}\int idt = |V_i\times \dfrac{Z_C}{Z_C+Z_R}|\\
-&= \dfrac{V_P}{\omega C\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\cos (\omega t+\phi)\\
-&= \dfrac{V_P}{\sqrt{\omega ^2C^2R^2+1}}\cos (\omega t+\phi)\\
-&= \dfrac{V_P}{\sqrt{\omega ^2\tau ^2+1}}\cos (\omega t+\phi)
+V_0 &= \dfrac{1}{C}\int idt 
+= \left|V_i\times \dfrac{Z_C}{Z_C+Z_R}\right|
+= \dfrac{V_P}{\omega C\sqrt{R^2+\left(\frac{1}{\omega C}\right)^2}}\cos (\omega t+\phi)\\
+&= \dfrac{V_P}{\sqrt{\omega ^2C^2R^2+1}}\cos (\omega t+\phi)= \dfrac{V_P}{\sqrt{\omega ^2\tau ^2+1}}\cos (\omega t+\phi)
 \end{align*}
-$$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}$$
+\[
+\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}
+\]
+
+
 \subsubsection{RL Circuit}
- {RC Circuit can be used as the RC filter - high-pass filter:}
+RL Circuit can be used as the RL high and low-pass filters:
 \begin{figure}[H]
   \begin{center}    
     \begin{circuitikz}[scale=1]
@@ -448,19 +511,24 @@ $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}$$
         \draw (3,0) to [] (4,0);
         \draw (4,4) to [open,v=$V_o$] (4,0);
     \end{circuitikz}
-    \caption{RC Filter}
+    \caption{RL low-pass Filter}
   \end{center}
 \end{figure}
  {In this RC circuit with $V_i=V_P\sin \omega t$, we can first determine the current and then determine the $V_{out}$}
-$$i=\dfrac{V_P}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi) \qquad \textit{where }\phi =\tan ^{-1}\dfrac{\omega L}{R}$$
+$$i=\dfrac{V_P}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi) \qquad \text{where }\phi =\tan ^{-1}\dfrac{\omega L}{R},$$
 \begin{align*}
-V_0&=\dfrac{V_PR}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi)\\
-&=\dfrac{V_P}{\sqrt{1+\dfrac{\omega ^2L^2}{R^2}}}\sin (\omega t+\phi)\\
-&=\dfrac{V_P}{\sqrt{1+\omega ^2\tau ^2}}\sin (\omega t+\phi)
+V_o
+&=\dfrac{V_PR}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi)
+=\dfrac{V_P}{\sqrt{1+\dfrac{\omega ^2L^2}{R^2}}}\sin (\omega t+\phi)
+=\dfrac{V_P}{\sqrt{1+\omega ^2\tau ^2}}\sin (\omega t+\phi).
 \end{align*}
-$$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}$$
- {From the expression, we can see that as the decrease of frequency, the proportion will increase as well. Therefore, this is a low-pass filter.}\\
- {Similar to RC circuit, take the output voltage as the inductive, it becomes a high-pass filter}
+The voltage magnitude gain is
+$$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}.$$
+From the expression, we can see that as the decrease of frequency,
+the proportion will increase as well. Therefore, this is 
+a low-pass filter.
+ 
+Similar to RC circuit, take the output voltage as the inductive, it becomes a high-pass filter.
 \begin{figure}[H]
   \begin{center}    
     \begin{circuitikz}[scale=1]
@@ -472,14 +540,15 @@ $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{1}{\omega ^2\tau ^2+1}}$$
         \draw (3,0) to [] (4,0);
         \draw (4,4) to [open,v=$V_o$] (4,0);
     \end{circuitikz}
-    \caption{RC Filter}
+    \caption{RL high-pass Filter}
   \end{center}
 \end{figure}
-$$i=\dfrac{V_P}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi) \qquad \textit{where }\phi =\tan ^{-1}\dfrac{\omega L}{R}$$
+$$i=\dfrac{V_P}{\sqrt{R^2+\omega ^2L^2}}\sin (\omega t+\phi) \qquad \text{where }\phi =\tan ^{-1}\dfrac{\omega L}{R}$$
 \begin{align*}
-V_0&=\dfrac{1}{L}\dfrac{di}{dt}\\
-&=\dfrac{V_P\omega L}{\sqrt{R^2+\omega ^2L^2}}\cos (\omega t+\phi)\\
-&=\dfrac{V_P \omega \tau}{\sqrt{1+\omega ^2\tau ^2}}\cos (\omega t+\phi)
+V_o 
+&=\dfrac{1}{L}\dfrac{di}{dt}
+=\frac{V_P\omega L}{\sqrt{R^2+\omega ^2L^2}}\cos (\omega t+\phi)
+=\frac{V_P \omega \tau}{\sqrt{1+\omega ^2\tau ^2}}\cos (\omega t+\phi)
 \end{align*}
 $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{\omega ^2\tau ^2}{\omega ^2\tau ^2+1}}$$
 \subsubsection{Transfer Function of RC and RL}
@@ -501,13 +570,13 @@ $$\left|\dfrac{V_o}{V_i}\right|=\sqrt{\dfrac{\omega ^2\tau ^2}{\omega ^2\tau ^2+
 $$\dfrac{V_o}{V_i}=\dfrac{Z_2}{Z_1+Z_2}$$
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.9]{c2.PNG}
-\caption{RC-RL Filter}
+\includegraphics[width=0.8\textwidth]{c2.PNG}
+\caption{Comparison of RC-RL Filter}
 \end{figure}
 \subsubsection{RLC Circuit}
 \begin{itemize}
 \item RLC in Series
-\begin{figure}[H]
+\begin{figure}[htbp]
   \begin{center}    
     \begin{circuitikz}[scale=1]
      	\draw (0,0) to [esource,esource=$V_i$] (0,4);
@@ -528,13 +597,13 @@ $$\omega L=\dfrac{1}{\omega C} \implies \omega _0=\dfrac{1}{\sqrt{LC}}$$
 $$i=C\dfrac{dV}{dt}=C\dfrac{d}{dt}A\sin \omega t=A\omega C\cos \omega t$$
  {therefore, as the definition of the quality factor which can be determined as the following:}
 \begin{align*}
-Q&=2\pi \dfrac{\textit{Max of the energy store}}{\textit{dissipated energy in resonant circle}}\\
-&=2\pi \dfrac{E_S}{E_D}=2\pi \dfrac{\frac{1}{2}Li^2+\frac{1}{2}CV^2}{R<i^2>}\\
-&=2\pi \dfrac{\dfrac{1}{2}L\omega ^2C^2A^2\cos ^2\omega t+\dfrac{1}{2}CA^2\sin ^2\omega t}{R\dfrac{\omega _0^2C^2A^2}{2}\dfrac{2\pi}{\omega _0}}\\
+Q&=2\pi \dfrac{\text{Max of the energy store}}{\text{dissipated energy in resonant circle}}\\
+&=2\pi \dfrac{E_S}{E_D}=2\pi \dfrac{\frac{1}{2}Li^2+\frac{1}{2}CV^2}{R \langle i^2 \rangle }
+=2\pi \dfrac{\dfrac{1}{2}L\omega ^2C^2A^2\cos ^2\omega t+\dfrac{1}{2}CA^2\sin ^2\omega t}{R\dfrac{\omega _0^2C^2A^2}{2}\dfrac{2\pi}{\omega _0}}\\
 &=2\pi \dfrac{\dfrac{1}{2}CA^2}{R\dfrac{\omega _0^2C^2A^2}{2}\dfrac{2\pi}{\omega _0}}=\dfrac{1}{\omega _0RC}
 \end{align*}
 \item RLC in Parallel
-\begin{figure}[H]
+\begin{figure}[htbp]
   \begin{center}    
     \begin{circuitikz}[scale=1]
      	\draw (0,0) to [sV,sV=$V_i$] (0,4);
@@ -632,8 +701,8 @@ $$i=i_f+(i_i-i_f)e^{-\dfrac{t}{\tau}}$$
 $$\dfrac{1}{\omega _n^2}\dfrac{d^2y}{dt^2}+\dfrac{2\zeta }{\omega _n}\dfrac{dy}{dt}+y=x$$
  {For this second order differential equation, we have:}
 \begin{align*}
-\omega _n & \textit{ is the \textbf{undamped natural frequency} (rad/s)}\\
-\zeta & \textit{ is the \textbf{damping factor}}
+\omega _n & \text{ is the \textbf{undamped natural frequency} (rad/s)}\\
+\zeta & \text{ is the \textbf{damping factor}}
 \end{align*}
 
 \subsubsection{Graph}
