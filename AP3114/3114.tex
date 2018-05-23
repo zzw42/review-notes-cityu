@@ -1,29 +1,69 @@
-\documentclass[openany]{book}
+% pdflatex
+\documentclass[a4paper]{book}
+
 \makeatletter
 \renewcommand{\@chapapp}{Lecture}
 \makeatother
+
+%\usepackage{times}
+%%\usepackage{}
+%%\usepackage{courier}
+%\usepackage{inconsolata}
+%\usepackage{ccfonts,eulervm}
+%\usepackage[T1]{fontenc}
+
+%\usepackage{euler}
+%% Enable if you have ``CMU Concrete font'' installed
+%\usepackage{fontspec}
+%\setmainfont{CMU Concrete}
+%\defaultfontfeatures{Scale=MatchLowercase}
+%\setmonofont{Consolas}
+
+
+
+%\usepackage{beton}
+%\usepackage[euler-digits,euler-hat-accent]{eulervm}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem*{remark}{Remark}
+
+\usepackage{physics}
+
+\usepackage{geometry}
+%\usepackage[papersize={159mm,228mm},
+%            top=18mm,
+%            textwidth=111mm,  % increase one or both of these by 1mm or so to
+%            textheight=188mm, % make the source compile with TeX Live 2013
+%            hcentering,       % if you get "Too many unprocessed floats" error
+%]{geometry}
 
 \usepackage{hyperref}
 \hypersetup{colorlinks}
 
 \usepackage{listings}
-\usepackage[usenames, dvipsnames]{color}
+\usepackage[usenames,dvipsnames]{xcolor}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygray}{rgb}{0.95,0.95,0.95}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myblue}{rgb}{0.4,0.8,1}
 
 \lstset{ %
-  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  backgroundcolor=\color{mygray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
   basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
+%  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
   captionpos=b,                    % sets the caption-position to bottom
-  commentstyle=\color{mygreen},    % comment style
+  commentstyle=\itshape\color{mygreen},    % comment style
   deletekeywords={...},            % if you want to delete keywords from the given language
   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  frame=single,	                   % adds a frame around the code
+%  frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},        % keyword style
 %  language=Octave,                 % the language of the code
@@ -35,7 +75,8 @@
   surf, scf, clf, meshgrid, }, %keywordstyle=\color{BurntOrange},classoffset=0,           % if you want to add more keywords to the set
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
-  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+%  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  numberstyle=\tiny\color{myblue}, % the style that is used for the line-numbers
   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
   showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
   showstringspaces=false,          % underline spaces within strings only
@@ -43,10 +84,12 @@
   stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
   tabsize=2,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  title={\sl \lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+
 \begin{document}
 \frontmatter
+
 % Title page
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
@@ -67,7 +110,7 @@
 
 \HRule \\[0.4cm]
 { \huge \bfseries  \textsf{Computational Methods for Physicists and Materials Engineers} }\\[0.4cm] % Title of your document
-\rightline{{\bfseries \textsf{Version 1.0}} }
+\rightline{{\bfseries \textsf{Version 0.9}} }
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -127,12 +170,28 @@ The homepage of this document is
 found.
 
 The note on cubic equation by Urs Oswald is also 
-helpful. \url{http://www.ursoswald.ch/download/CUBIC.pdf}.
+useful. \url{http://www.ursoswald.ch/download/CUBIC.pdf}.
 
-These {\tt .sci} files have been tested under Scilab 5.52.
+These {\tt .sci} files have been tested under Scilab 5.5.2, though some
+functions might be obsolete in Scilab 6.0.0 or newer versions.
+
 \mainmatter
-\chapter{Typical Problems in Physics and Materials Engineering
+\chapter[Typical Problems]{Typical Problems in Physics and Materials Engineering
 \& Introduction to Scilab}
+%\begin{lstlisting}
+%-->i = 2
+% i  =
+%    2.  
+%-->if ( i = 2 ) then 
+%Warning: obsolete use of '=' instead of '=='.
+%         !       
+%-->  disp("Hello !")
+% 
+% Hello !   
+%-->else
+%-->  disp("Goodbye !")
+%-->end
+%\end{lstlisting}
 \section{Homework}
 \lstinputlisting{./personal_answer_Homework/lecture1_exe.sce}
 
@@ -150,6 +209,15 @@ These {\tt .sci} files have been tested under Scilab 5.52.
 \section{Homework}
 \lstinputlisting{./personal_answer_Homework/lecture3_exe.sce}
 
+\begin{lstlisting}
+-->a=[1 2 3;4 5 6];
+-->y=[1;1];
+-->a\y
+ans =
+-0.5
+6.799D-17
+0.5
+\end{lstlisting}
 
 \chapter{Program II \& Plotting I}
 \section{Lecture}
@@ -160,13 +228,97 @@ These {\tt .sci} files have been tested under Scilab 5.52.
 
 \chapter{Programming III \& Plotting II}
 \section{Lecture}
+The plotting examples are available at 
+\url{http://www.openeering.com/scilab_tutorials}.
+\textsf{Plotting in Scilab}
+---
+In this Scilab tutorial we make a collection of the most important plots arising in scientific and engineering applications and we show how straightforward it is to create smart charts with Scilab.
+
 \lstinputlisting{./lecture/lecture_5_programmingiii_plottingii.sce}
+
 \section{Homework}
+Plot a scatter plot of $M(x_i,y_i)$ with blue triangles
+\begin{lstlisting}
+X = [1,3,3,7,7,9,10];
+Y = [8,7,5,5,4,2,2];
+\end{lstlisting}
+
 \lstinputlisting{./personal_answer_Homework/lecture5_exe1.sci}
+
+Plot $y=3 \sin x /x + \cos x$ in the range of
+$x=-4 \pi $ to $4 \pi$.
+
 \lstinputlisting{./personal_answer_Homework/lecture5_exe2.sci}
+
+\paragraph{Exercise 3}
+Suppose you are holding two balls at the peak of Lion Rock. At time zero, you drop them simultaneously.
+\begin{itemize}
+\item Ball 1: Free fall, 
+\[
+d_1 = \frac{1}{2} g t^2
+\]
+\item Ball 2: Air resistance is proportional to the linear power of the velocity
+\[
+d_2 = \frac{g}{k} t - \frac{g}{k^2} (1-e^{-kt})
+\]
+\end{itemize}
+
+Please do the following to compare two cases:
+(1) Generate functions to calculate the displacement of ball 1 and ball;
+(2) Plot the displacement as a function of time on the same plot using two colors, red and blue, respectively
+(3) Label x-axis``Time(s)", y-axis ``Distance(m)",  add legends to two curves 
+(4) The height of the peak is 495m. Which ball arrives at the horizontal line first and why? Calculate or estimate the time when it arrives at the horizontal line.
+%(5) Save \& submit your script file (yourstudentno_lecture5_exe3.sci) and figures. 
+
 \lstinputlisting{./personal_answer_Homework/lecture5_exe3.sci}
+
+\paragraph{Exercise 4}
+We have plot curves for two functions
+\[
+f(x)=(x^2+2x)e^{-x} \qquad g(x)=\sin{\left(\frac{x}{2}\right)}
+\]
+
+(1) Plot them again in the $x$ range of $-2$ to $5$.
+
+(2) In what ranges, the first one is larger than the second one
+(with accuracy 0.01)?
 \lstinputlisting{./personal_answer_Homework/lecture5_exe4.sci}
+\begin{remark}
+After $f$ and $g$ are defined, find the ranges.
+\begin{lstlisting}
+for x=-2:0.01:5
+if (f(x)>g(x)) then
+disp(x)
+end
+end
+\end{lstlisting}
+Other solution 1:
+\begin{lstlisting}
+k=find(f(x)>g(x)&x<-1)
+disp(x(max(k)))
+disp(x(min(k)))
+kk=find(f(x)>g(x)&x>-1)
+disp(x(max(kk)))
+disp(x(min(kk)))
+\end{lstlisting}
+Other solution 2:
+\begin{lstlisting}
+x = -2:0.01:5; x(f(x)>g(x));
+\end{lstlisting}
+\end{remark}
+
+\paragraph{Exercise 5}
+The spiral of Archimedes  may be represented in polar coordinates
+by the equation
+\[
+r = a \theta,
+\]
+where $a$ is some constant. Write some command-line 
 \lstinputlisting{./personal_answer_Homework/lecture5_exe5.sci}
+
+\paragraph{Exercise 6}
+Create the following plot
+
 \lstinputlisting{./personal_answer_Homework/lecture5_exe6.sci}
 
 
@@ -174,11 +326,60 @@ These {\tt .sci} files have been tested under Scilab 5.52.
 \section{Lecture}
 \lstinputlisting{./lecture/lecture_6_random-number.sce}
 \section{Homework}
+\paragraph{Exercise 1}
+(a) The initial heat distribution of a steel plate is
+given by the function
+\[
+u(x,y) = 80 y^2 e^{- x^2 - 0.3 y^2}.
+\]
+Plot the surface $u$ over the grid defined by
+\[
+-2.1 \leq x \leq 2.1, \qquad -6 \leq y \leq 6
+\]
+
+(b) Create a surface plot of $z=\sin(x)\cosh(y)$ on 
+$-\pi \leq x \leq \pi$, $-\pi \leq y \leq \pi$ using
+{\tt plot3d}.
+
 \lstinputlisting{./personal_answer_Homework/lecture6_exe1.sci}
 \lstinputlisting{./personal_answer_Homework/lecture6_exe1b.sci}
+\paragraph{Exercise 2}
+A drunk man was returning to his house from the bar. The
+house is very near the bar just 10 steps away. But he was so
+drunk that he only had 60\% chance for each step of heading
+towards home. Simulate the situation and calculate whether
+he could arrive home in 600 steps.
 \lstinputlisting{./personal_answer_Homework/lecture6_exe2.sci}
+\paragraph{Exercise 3}
+Suppose a certain type of bacteria divides into two in a given
+time interval with a probability of 0.8, and that if it does not
+dived, it dies. Simulate that with a start of 4 bacteria, how
+many bacteria is left after \emph{two} times of division.
 \lstinputlisting{./personal_answer_Homework/lecture6_exe3.sci}
+\paragraph{Exercise 4}
+In a game of Bingo the numbers 1-99 are drawn at random
+from a bag. Write a script to simulate the draw of numbers
+(each number can be drawn only once). Store the sequence
+of drawing into a vector.
 \lstinputlisting{./personal_answer_Homework/lecture6_exe4.sci}
+\paragraph{Exercise 5}
+Dribblefire Jets Inc. make two types of aeroplane, the two-engines
+DFII, and the four-engines DFIV. The engines are terrible and fail with
+probability 0.5 on a standard flight (the engines fail independently of
+each other). The manufacturers claim that the planes can fly if at least
+half of their engines are working,\begin{itemize}
+\item i.e. the DFII will crash only if both its engines fail,
+\item while the DFIV will crash if all four, or if any three engines fail.
+\end{itemize}
+
+You worked for the Civil Aviation Board to ascertain which of the two
+models is less likely to crash. Since parachutes are expensive, the
+cheapest (and safest) way to do this is to simulate a large number of
+flights of each model. For example, two calls of random number
+generator could represent one standard DFII flight: If both random
+numbers are less than 0.5, that flight crashes, otherwise it doesn't. Write
+a script which simulates a large number of (at least 500) flights of both
+models, and estimates the probability of a crash in each case.
 \lstinputlisting{./personal_answer_Homework/lecture6_exe5.sci}
 
 
@@ -186,7 +387,20 @@ These {\tt .sci} files have been tested under Scilab 5.52.
 \section{Lecture}
 \lstinputlisting{./lecture/lecture_7_statistics.sce}
 \section{Homework}
+\paragraph{Exercise 1}
+Generate a $10\times6$ random matrix of integers and find out mean, 
+median and standard deviation of the matrix, rows and columns
 \lstinputlisting{./personal_answer_Homework/lecture7_exe1.sci}
+
+\paragraph{Exercise 2}
+For
+
+{\tt A= [2. 51. 39. 24. 50. 42. 8. 62. 34. 70. 52. 28. 65. 8.]}
+
+{\tt B= [96. 50. 52. 55. 56. 46. 79. 98. 81. 42. 24. 92. 10. 46.]}
+
+
+Please find the correlation coefficient.
 \lstinputlisting{./personal_answer_Homework/lecture7_exe2.sci}
 
 
@@ -233,15 +447,25 @@ for the case of $4x^3+5x^2+ 1x + 2 = 0$.
 
 Test {\tt cubicroots} on the following examples, checking the results in each case.
 \lstinputlisting{./personal_answer_Homework/lecture8_exe3.sci}
+\lstinputlisting{./official_answer/hw-8_3.sci}
 
 \paragraph{Exercise 4}
 Find the roots of below polynomial using the function {\tt roots}:
+\begin{enumerate}
+\item $-10+x+5x^3+3x^5$
+\item $1-x^2+x^5-6x^7$
+\item $3+x-x^2+x^4$
+\end{enumerate}
 \lstinputlisting{./personal_answer_Homework/lecture8_exe4.sci}
+\lstinputlisting{./official_answer/hw-8_4.sci}
 
 \paragraph{Exercise 5}
-
+Show that $f (x ) = x^3 + 4x^2 - 10 = 0$ has a root in $[1, 2]$ and 
+use the \emph{Bisection method and Newton-Raphson respectively} to 
+determine an approximation to the root that is accurate to at 
+least within $10^{-4}$.
 \lstinputlisting{./personal_answer_Homework/lecture8_exe5.sci}
-
+\lstinputlisting{./official_answer/hw-8_5.sci}
 
 \setcounter{chapter}{9}
 
@@ -249,13 +473,64 @@ Find the roots of below polynomial using the function {\tt roots}:
 \section{Lecture}
 \lstinputlisting{./lecture/lecture_10_solving_differential_equations_i.sce}
 \section{Homework}
+\paragraph{Exercise 1}
+Determine the general solution to the following linear ordinary differential equations using
+the corresponding characteristic equation:
+\begin{enumerate}
+\item $\dv[3]{y}{x} + 4\dv{y}{x} + 5 y = 0$
+\item $\dv[2]{y}{x} + 2\dv{y}{x} + y = 0$
+\item $\dv[4]{y}{x} + \dv[2]{y}{x} + \dv{y}{x} + 3y = 0$
+\item $\dv[2]{y}{x} - 3y = 0$
+\end{enumerate}
 \lstinputlisting{./personal_answer_Homework/lecture10_exe1.sci}
+\lstinputlisting{./official_answer/hw-9_1.sci}
+
+\paragraph{Exercise 2}
+Plot the time variation of position, velocity, and acceleration 
+of a damped mechanical
+oscillator for the following parameters:
+
+Plot v-vs-x, a-vs-x, and a-vs-v phase portraits of the motions 
+described above problem.
 \lstinputlisting{./personal_answer_Homework/lecture10_exe2.sci}
+\lstinputlisting{./official_answer/hw-9_2.sci}
+\lstinputlisting{./official_answer/damping.sci}
+
+
+\paragraph{Exercise 3}
+For the following functions approximate the derivative $df/dx$ at 
+$x = a$ with $(f(a+h)-f(a))/h$ using values of $h = 0.1$, $0.01$, $0.001$, 
+$0.0001$, $0.00001$. Plot the error involved in the numerical estimate 
+of the derivative against the value of $h$.
 \lstinputlisting{./personal_answer_Homework/lecture10_exe3.sci}
+\lstinputlisting{./official_answer/hw-9_3.sci}
+
+\paragraph{Exercise 4}
+Given the ODE,
+\[
+\dv{y}{x}=y\sin{x},
+\]
+and the boundary condition,
+\[y(0) = 1,\]
+write a Scilab function that uses the Euler method to obtain a numerical 
+solution to this ODE in the interval $0 < x < 2.5$. Use $\Delta x = 0.25, 
+0.1$, and $0.05$.
+The exact solution is given by
+\[
+y = e^{-\cos{x}+1}.
+\]
+Plot the numerical solution against the exact solution for comparison.
 \lstinputlisting{./personal_answer_Homework/lecture10_exe4.sci}
 
 
 \chapter{Solving Differential Equations II}
+Finite differences and numerical solutions
+\begin{itemize}
+\item Finite differences
+\item Solution of a first-order ODE using finite differences --- Euler forward method
+\item Solution of a first-order ODE using finite differences --- an implicit method
+\end{itemize}
+
 \section{Lecture}
 \lstinputlisting{./lecture/lecture_11_solving_differential_equations_ii.sce}
 
@@ -265,6 +540,10 @@ Find the roots of below polynomial using the function {\tt roots}:
 \section{Lecture}
 \lstinputlisting{./lecture/lecture_12_fourier.sce}
 \section{Homework}
+For the function: $f(x) = e^x$:
+Please produce the Fourier series for $x$ in $[-1, 1]$ using function {\tt fourierseries}.
+Calculate each for 5, 10, 20, and 40 components, respectively.
+Plots of the original figure and of the series with different number of components are also required.
 \lstinputlisting{./personal_answer_Homework/lecture12_exe.sci}
 
 
@@ -275,4 +554,5 @@ Find the roots of below polynomial using the function {\tt roots}:
 
 \chapter{Final Exam}
 \lstinputlisting{personal_answer_final.sce}
+
 \end{document}
